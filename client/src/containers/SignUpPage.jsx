@@ -1,3 +1,7 @@
+/* 
+New user signup (registration) page.  
+The signup form is a component that will be rendered insidethis page.
+*/
 import React, { PropTypes } from 'react';
 import SignUpForm from "../components/SignUpForm.jsx";
 

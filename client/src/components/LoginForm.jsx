@@ -1,3 +1,8 @@
+/* 
+This is the login form.
+This is the "dumb" component that will get the information from the user and will use the methods from the parent component to check the input.
+*/
+
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Card, CardText } from 'material-ui/Card';

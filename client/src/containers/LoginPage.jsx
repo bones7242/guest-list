@@ -1,3 +1,9 @@
+/*
+This is the login page.  This is where users that have already signed up can log in.
+This login page will display the login form component.
+*/
+
+
 import React, { PropTypes } from 'react';
 import Auth from "../modules/Auth";
 import LoginForm from '../components/LoginForm.jsx';
