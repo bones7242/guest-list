@@ -1,17 +1,17 @@
-//INITIAL LOGIN PAGE -IF USER CLICKS "NEW ACCOUNT" THEY WILL BE DIRECTED TO GUEST.JS/BAND.JS/VENUE.JS
+//VENUE INFO FROM VENUE SIGNUP FORM
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 // define the User model schema
-const UserSchema = new mongoose.Schema({
-    Email: {
+const venueSchema = new mongoose.Schema({
+    venueEmail: {
         type: String,
         index: {unique: true }
     },
-    Password: String,
-    Name: String,
-    userRole: String,
+    venuePassword: String,
     venueName: String,
+    userRole: String,
+    venueAddress: String
     
 });
 

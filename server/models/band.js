@@ -1,4 +1,3 @@
-//INITIAL LOGIN PAGE -IF USER CLICKS "NEW ACCOUNT" THEY WILL BE DIRECTED TO GUEST.JS/BAND.JS/VENUE.JS
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
