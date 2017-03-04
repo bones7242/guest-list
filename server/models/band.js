@@ -1,17 +1,21 @@
-//INITIAL LOGIN PAGE -IF USER CLICKS "NEW ACCOUNT" THEY WILL BE DIRECTED TO GUEST.JS/BAND.JS/VENUE.JS
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 // define the User model schema
-const UserSchema = new mongoose.Schema({
-    Email: {
+const BandSchema = new mongoose.Schema({
+    bandEmail: {
         type: String,
         index: {unique: true }
     },
-    Password: String,
-    Name: String,
+    bandPassword: String,
+    bandName: String,
     userRole: String,
-    venueName: String,
+    bandName: String,
+    bandAddressOne: String,
+    bandCity: String,
+    bandState: String,
+    bandZip: String,
+
     
 });
 
