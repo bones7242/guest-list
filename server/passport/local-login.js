@@ -29,7 +29,7 @@ module.exports = new PassportLocalStrategy(
             if (err) {return done(err); }
             // if user does not exist 
             if (!user) {
-                const error = new Error("Incorrect email or password");
+                const error = new Error("Please create an account"); // note: this is less secure because facilitates password guessing.  Should have same error message as incorrect password.
                 error.name = "IncorrectCredentialsError";
 
                 return done(error)
