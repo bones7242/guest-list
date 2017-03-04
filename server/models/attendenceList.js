@@ -1,17 +1,26 @@
-//INITIAL LOGIN PAGE -IF USER CLICKS "NEW ACCOUNT" THEY WILL BE DIRECTED TO GUEST.JS/BAND.JS/VENUE.JS
+//ATTENDEE DATA BASE FOR EACH EVENT (CONTENT LIST)
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 // define the User model schema
-const UserSchema = new mongoose.Schema({
-    Email: {
+const EventSchema = new mongoose.Schema({
+    attendeeName: {
         type: String,
         index: {unique: true }
     },
-    Password: String,
-    Name: String,
-    userRole: String,
-    venueName: String,
+    userIDAdded: String,
+    plusOne: Int,
+    vip: Boolean,
+    allAccess: Boolean,
+    photoPass: Boolean,
+    pressPass: Boolean,
+    gender: Int,
+    attendeeEmail: String,
+    attendeePhone: String,
+    attendeeDateAdded: Date,
+    attendeeTimeEntered: Date,
+    
+
     
 });
 
