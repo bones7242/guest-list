@@ -1,3 +1,8 @@
+/*
+This is the signup form that will be rendered inside of our signup page.  
+The form handles showing the fields and getting the user input and checking the input.
+*/
+
 import React, { PropTypes } from "react";
 import { Link } from "react-router";
 import { Card, CardText } from "material-ui/Card";

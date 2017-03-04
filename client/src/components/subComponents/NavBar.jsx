@@ -1,12 +1,12 @@
 import React, { PropTypes, Component } from 'react';
-import './NavBar.css';
+//import './NavBar.css';
 
 
 class NavBar extends Component {
 	render() {
 		return (
 			<div className="nav-bar">
-				<p> this is the nav </p>
+				<p>This is the nav bar sub component.</p>
 			</div>
 		);
 	}

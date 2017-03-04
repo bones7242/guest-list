@@ -1,12 +1,12 @@
 import React, { PropTypes, Component } from 'react';
-import './Content.css';
+//import './Content.css';
 
 
 class Content extends Component {
 	render() {
 		return (
 			<div className="content">
-				<p> this is the Content </p>
+				<p>This is the Content subComponent.</p>
 			</div>
 		);
 	}

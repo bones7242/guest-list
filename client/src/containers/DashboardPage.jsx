@@ -1,3 +1,7 @@
+/*
+This is the dashboard page.  After a user logs in successfully, this page will be displayed instead of the home page.
+*/
+
 import React from "react";
 import Auth from "../modules/Auth";
 import Dashboard from "../components/Dashboard.jsx";
@@ -8,30 +12,15 @@ class DashboardPage extends React.Component {
         super(props);
 
         this.state = {
-            secretData: ""
+            testMessage: ""
         };
     }
 
-    // this method will be executed after initial rendering
-    componentDidMount() {
-        /*make an AJAX-request to the server to get a message available only to authorized users*/
-        const xhr = new XMLHttpRequest();
-        xhr.open("get", "/api/dashboard");
-        xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
-        xhr.responseType = "json";
-        xhr.addEventListener("load", () => {
-            if (xhr.status === 200) {
-                this.setState({
-                    secretData: xhr.response.message
-                });
-            }
-        });
-        xhr.send();
-    }
-
-    // rener the componentDidMount
+    // render the component
     render() {
-        return (<Dashboard secretData={this.state.secretData} />);
+        return (
+            <Dashboard />
+        );
     }
 }
 

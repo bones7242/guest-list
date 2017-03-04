@@ -2,7 +2,7 @@ import Base from "./components/Base.jsx";
 import HomePage from "./components/HomePage.jsx";
 import LoginPage from "./containers/LoginPage.jsx";
 import SignUpPage from "./containers/SignUpPage.jsx";
-import DashboardPage from "./components/Dashboard.jsx";
+import DashboardPage from "./containers/DashboardPage.jsx";
 import Auth from "./modules/Auth";
 
 const routes = {
@@ -15,7 +15,7 @@ const routes = {
             path: "/",
             // decide which component to render, depending on whether the user is authenticated.
             getComponent: (location, callback) => {
-                if (Auth.isUserAuthenticated()) {
+                if (Auth.isUserAuthenticated()) {  // run "isUserAuthenticated" and it will return true or false.
                     callback(null, DashboardPage);
                 } else {
                     callback(null, HomePage);
