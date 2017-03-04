@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 // define the User model schema
-const venueSchema = new mongoose.Schema({
+const VenueSchema = new mongoose.Schema({
     venueEmail: {
         type: String,
         index: {unique: true }
@@ -11,7 +11,10 @@ const venueSchema = new mongoose.Schema({
     venuePassword: String,
     venueName: String,
     userRole: String,
-    venueAddress: String
+    venueAddressOne: String,
+    venueCity: String,
+    venueState: String,
+    venueZip: String, 
     
 });
 

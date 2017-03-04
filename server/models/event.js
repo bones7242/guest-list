@@ -1,20 +1,26 @@
+//EVENT DATA BASE FOR EACH VENUE (SIDE BAR LIST)
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 // define the User model schema
-const BandSchema = new mongoose.Schema({
-    bandEmail: {
+const EventSchema = new mongoose.Schema({
+    headliner: {
         type: String,
         index: {unique: true }
     },
-    bandPassword: String,
-    bandName: String,
-    userRole: String,
-    bandName: String,
-    bandAddressOne: String,
-    bandCity: String,
-    bandState: String,
-    bandZip: String,
+    supportOne: String,
+    supportTwo: String,
+    supportThree: String,
+    eventDate: Date,
+    eventTime: Int,
+    headlinerAllotment: Int,
+    supportOneAllotment: Int,
+    supportTwoAllotment: Int,
+    supportThreeAllotment: Int,
+    totalGuestOnList: Int,
+    guestIDArray: String,
+    venueID: Int
+    dateCreated: Date;
 
     
 });

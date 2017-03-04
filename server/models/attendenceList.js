@@ -1,20 +1,25 @@
+//ATTENDEE DATA BASE FOR EACH EVENT (CONTENT LIST)
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 // define the User model schema
-const BandSchema = new mongoose.Schema({
-    bandEmail: {
+const EventSchema = new mongoose.Schema({
+    attendeeName: {
         type: String,
         index: {unique: true }
     },
-    bandPassword: String,
-    bandName: String,
-    userRole: String,
-    bandName: String,
-    bandAddressOne: String,
-    bandCity: String,
-    bandState: String,
-    bandZip: String,
+    userIDAdded: String,
+    plusOne: Int,
+    vip: Boolean,
+    allAccess: Boolean,
+    photoPass: Boolean,
+    pressPass: Boolean,
+    gender: Int,
+    attendeeEmail: String,
+    attendeePhone: String,
+    attendeeDateAdded: Date,
+    attendeeTimeEntered: Date,
+    
 
     
 });

@@ -1,15 +1,16 @@
+//new attendee log in info from new guest account form
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 // define the User model schema
-const UserSchema = new mongoose.Schema({
-    Email: {
+const GuestSchema = new mongoose.Schema({
+    guestEmail: {
         type: String,
         index: {unique: true }
     },
-    Password: String,
-    Name: String,
-    userRole: String,
+    guestPassword: String,
+    guestName: String,
+    UserRole: String,
     venueName: String,
     
 });
