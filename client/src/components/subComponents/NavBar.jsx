@@ -1,3 +1,5 @@
+//EVENTTAB'S GO IN HERE BELOW THE LOGO
+
 import React, { PropTypes, Component } from 'react';
 import './NavBar.css';
 
@@ -5,8 +7,12 @@ import './NavBar.css';
 class NavBar extends Component {
 	render() {
 		return (
-			<div className="nav-bar">
-				<p> this is the nav </p>
+			<div className="nav-bar" className="left">
+				<div className="row">
+					<div className="col s12 m4 l3" className="valign-wrapper">
+
+					</div>
+				</div>
 			</div>
 		);
 	}
