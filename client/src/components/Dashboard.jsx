@@ -1,6 +1,10 @@
 import React, { PropTypes } from "react";
 import { Card, CardTitle, CardText } from "material-ui/Card";
 
+import navbar from "./subComponents/Navbar.jsx";
+import content from "./subComponents/Content.jsx";
+import EventInfo from "./subComponents/Eventinfo.jsx"
+
 const Dashboard = ({ secretData }) => {
     return (
         <Card className="container">

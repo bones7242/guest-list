@@ -1,7 +1,7 @@
 //EVENTTAB'S GO IN HERE BELOW THE LOGO
 
 import React, { PropTypes, Component } from 'react';
-import './NavBar.css';
+//import './NavBar.css';
 
 
 class NavBar extends Component {

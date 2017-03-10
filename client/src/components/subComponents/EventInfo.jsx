@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import './EventInfo.css';
+//import './EventInfo.css';
 
 
 class EventInfo extends Component {
