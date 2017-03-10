@@ -64,7 +64,7 @@ SignUpForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
-    user: PropTypes.object.isRequied
+    user: PropTypes.object.isRequired
 };
 
 export default SignUpForm;

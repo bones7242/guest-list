@@ -109,7 +109,7 @@ class SignUpPage extends React.Component {
 
 // ?? 
 SignUpPage.contextTypes = {
-    router: PropTypes.object.isREquired
+    router: PropTypes.object.isRequired
 };
 
 export default SignUpPage;

@@ -1,4 +1,4 @@
-import Base from "./components/Base.jsx";
+import TopNav from "./components/TopNav.jsx";
 import HomePage from "./components/HomePage.jsx";
 import LoginPage from "./containers/LoginPage.jsx";
 import SignUpPage from "./containers/SignUpPage.jsx";
@@ -7,7 +7,7 @@ import Auth from "./modules/Auth";
 
 const routes = {
     // Base component (wrapper for the whole applications).
-    component: Base,
+    component: TopNav,
     // Child routes.
     childRoutes: [
         {

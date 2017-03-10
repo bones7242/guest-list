@@ -3,9 +3,10 @@ import { Card, CardTitle } from "material-ui/Card";
 
 const HomePage = () => {
     return (
-        <Card className="container">
-            <CardTitle title="React Application" subtitle="This is the home page." />
-        </Card>
+        <div>
+            <h2>Welcome to "Guest List"</h2>
+            <h3>The premiere cloud-based guest-list solution</h3>
+        </div>
     )
 };
 

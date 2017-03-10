@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
         index: {unique: true }
     },
     password: String,
-    Name: String,
+    name: String,
     userRole: String,
     venueName: String,
     
