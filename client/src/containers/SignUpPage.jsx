@@ -16,7 +16,8 @@ class SignUpPage extends React.Component {
             user: {
                 email: "",
                 name: "",
-                password: ""
+                password: "",
+                role: ""
             }
         };
         // bind "this" to the methods we define below 
@@ -79,7 +80,7 @@ class SignUpPage extends React.Component {
 
     // Change the user object.
     /*
-        This will change the component state by taking the name attribute of an input element as a key. A value for this key will be taken from a user’s input.
+        This will change the component state by taking the name attribute of an input element as the key. The value for this key will be taken from the user’s input into the element.  It then updates the this.state.user with the new information.
     */
     changeUser(event) {
         const field = event.target.name;
@@ -93,7 +94,7 @@ class SignUpPage extends React.Component {
 
     // Render the component.
     /*
-        In this method, we render the presentational component SignUpForm with the passed event handlers and state values as props.
+        In this method, we render the presentational component SignUpForm, and we pass to it the event handlers and state values as props.
     */
     render() {
         return (

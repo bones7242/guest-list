@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema({
         index: {unique: true }
     },
     password: String,
-    userRole: String,
+    userRole: String,  // options: "owner", "guest", etc.
 });
 
 /*
