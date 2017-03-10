@@ -1,17 +1,14 @@
+import React, { PropTypes } from "react";
+import { Link } from "react-router";
+
 /*
 This is the signup form that will be rendered inside of our signup page.  
 The form handles showing the fields and getting the user input and checking the input.
 */
 
-import React, { PropTypes } from "react";
-import { Link } from "react-router";
-import { Card, CardText } from "material-ui/Card";
-import RaisedButton from "material-ui/RaisedButton";
-import TextField from "material-ui/TextField";
-
 const SignUpForm = ({onSubmit, onChange, errors, user}) => {
     return (
-        <Card className="container">
+        <div className="container">
             <form action="/" onSubmit={onSubmit}>
                 
                 <h2 className="card-heading">Sign Up</h2>
@@ -19,44 +16,47 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
                 {errors.summary && <p className="error-message">{errors.summary}</p>}
 
                 <div className="field-line">
-                    <TextField
-                        floatingLabelText="Name"
+                    <label htmlFor="name">Name </label>
+                    <input
                         name="name"
-                        errorText={errors.name}
+                        
                         onChange={onChange}
                         value={user.name}
                     />
+                    <p className="error-message">{errors.name}</p>
                 </div>
 
                 <div className="field-line">
-                    <TextField
-                        floatingLabelText="Email"
+                    <label htmlFor="email">Email </label>
+                    <input
                         name="email"
-                        errorText={errors.email}
+                        
                         onChange={onChange}
                         value={user.email}
                     />
+                    <p className="error-message">{errors.email}</p>
                 </div>
 
                 <div className="field-line">
-                    <TextField
-                        floatingLabelText="Password"
+                    <label htmlFor="password">Password </label>
+                    <input
                         type="password"
                         name="password"
-                        errorText={errors.password}
+                        
                         onChange={onChange}
                         value={user.password}
                     />
+                    <p className="error-message">{errors.password}</p>
                 </div>
 
                 <div className="button-line">
-                    <RaisedButton type="submit" label="Create New Account" primary />
+                    <button type="submit" label="Create New Account">Create New Account</button>
                 </div>
 
-                <CardText>Already have an account? <Link to={"/login"}>Log in</Link></CardText>
+                <p>Already have an account? <Link to={"/login"}>Log in</Link></p>
 
             </form>
-        </Card> 
+        </div> 
     );
 };
 

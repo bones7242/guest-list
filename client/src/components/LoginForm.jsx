@@ -1,17 +1,13 @@
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
+
 /* 
 This is the login form.
 This is the "dumb" component that will get the information from the user and will use the methods from the parent component to check the input.
 */
 
-import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
-import { Card, CardText } from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
-
-
 const LoginForm = ({onSubmit, onChange, errors, successMessage, user}) => (
-  <Card className="container">
+  <div className="container">
     <form action="/" onSubmit={onSubmit}>
       <h2 className="card-heading">Login</h2>
 
@@ -19,33 +15,33 @@ const LoginForm = ({onSubmit, onChange, errors, successMessage, user}) => (
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
       <div className="field-line">
-        <TextField
-          floatingLabelText="Email"
+        <label htmlFor="email">Email</label>
+        <input
           name="email"
-          errorText={errors.email}
           onChange={onChange}
           value={user.email}
         />
+        <p className="error-message">{errors.email}</p>
       </div>
 
       <div className="field-line">
-        <TextField
-          floatingLabelText="Password"
+        <label htmlFor="password">Password</label>
+        <input
           type="password"
           name="password"
           onChange={onChange}
-          errorText={errors.password}
           value={user.password}
         />
+        <p className="error-message">{errors.password}</p>
       </div>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Log in" primary />
+        <button type="submit" label="Log in">Log In</button>
       </div>
 
-      <CardText>Don't have an account? <Link to={'/signup'}>Create one</Link>.</CardText>
+      <p>Don't have an account? <Link to={'/signup'}>Create one</Link>.</p>
     </form>
-  </Card>
+  </div>
 );
 
 LoginForm.propTypes = {
