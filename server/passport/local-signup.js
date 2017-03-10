@@ -18,11 +18,19 @@ module.exports = new PassportLocalStrategy(
             password: password.trim(),
             name: req.body.name.trim()
         };
+
+        console.log("USERDATA!!!!!!! ",userData);
         // create a new user record, via the User schema, from the user data 
         const newUser = new User(userData);
+            console.log("firstNEWUSER ", newUser);
+            console.log("SECONDuserDate ", userData);
+        
         // save the new user record 
         newUser.save((err) => {
+
+            console.log("NEWUSER???? ", newUser);
             // handle errors with the save.
+            console.log("NEWUSER ERR ", err);
             if (err) { return done (err); }
             // return if no errors.
             return done(null);

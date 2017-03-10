@@ -65,3 +65,9 @@ a:hover {
   padding: 0 16px;
   color: green;
 }
+
+
+
+#logoContainer {
+  height: 20%;
+}

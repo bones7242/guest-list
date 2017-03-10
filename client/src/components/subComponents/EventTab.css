@@ -1,1 +1,8 @@
+.event-tab {
+	height: 30px;
+	background-color: #304ffe;
+}
 
+p, h5 {
+	color: #fafafa;
+}
