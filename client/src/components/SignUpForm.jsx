@@ -16,7 +16,7 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
                 {errors.summary && <p className="error-message">{errors.summary}</p>}
 
                 <div className="field-line">
-                    <label htmlFor="name">Name </label>
+                    <label htmlFor="name">Name: </label>
                     <input
                         name="name"
                         
@@ -27,7 +27,7 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
                 </div>
 
                 <div className="field-line">
-                    <label htmlFor="email">Email </label>
+                    <label htmlFor="email">Email: </label>
                     <input
                         name="email"
                         
@@ -38,7 +38,7 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
                 </div>
 
                 <div className="field-line">
-                    <label htmlFor="password">Password </label>
+                    <label htmlFor="password">Password: </label>
                     <input
                         type="password"
                         name="password"
@@ -48,6 +48,23 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
                     />
                     <p className="error-message">{errors.password}</p>
                 </div>
+
+                <div className="field-line">
+                    <label htmlFor="role">Role (optional): </label>
+                    <select name="role" onChange={onChange}
+                        value={user.role}>
+                        <option value="none">N/A</option>
+                        {/*I think all users should be a guest by default (i.e. guest profiles are just the basic user profile), and they can also gain the owner/support/artist role by filling out additional information?*/}
+                        <option value="owner">Venue Owner</option>
+                        <option value="support">Venue Support</option>
+                        <option value="artist">Artist</option>
+                    </select>
+                    {/*<p className="error-message">{errors.role}</p>*/}
+                </div>
+
+                {/*
+                    display additional questions here, depending on the role selected above
+                */}
 
                 <div className="button-line">
                     <button type="submit" label="Create New Account">Create New Account</button>
