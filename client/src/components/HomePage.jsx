@@ -1,5 +1,8 @@
 import React from "react";
-import { Card, CardTitle } from "material-ui/Card";
+
+/*
+This is the home page.  It is displayed when a user arrives at the site before the user logs in.
+*/
 
 const HomePage = () => {
     return (

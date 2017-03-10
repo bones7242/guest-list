@@ -2,9 +2,7 @@
 This is the dashboard component.  It will be rendered inside the dashboard page.  
 It will render sub-components that have the nav and content our users want to see.
 */
-
 import React, { PropTypes } from "react";
-import { Card, CardTitle, CardText } from "material-ui/Card";
 
 import Navbar from "./subComponents/Navbar.jsx";
 import Content from "./subComponents/Content.jsx";

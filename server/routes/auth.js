@@ -97,7 +97,6 @@ router.post("/signup", (req, res, next) => {
         })
     } else {
         return passport.authenticate("local-signup", (err) => {
-            console.log("error is type:", typeof(err));
             /* handle errors.
             If a user with the same email address already exists, he should get a concrete error message, but if something unpredictable happens he shouldn’t get a descriptive message containing error codes, as he may use the information for bad purposes.
             */
@@ -153,7 +152,6 @@ router.post("/login", (req, res, next) => {
             We’re checking if there are no errors have appeared (for example, a user has provided a wrong password). 
             In the successful case, we send a response with a token.
             */
-            console.log("error is type:", typeof(err));
             if (err) {
                 console.log("login validation (authentication) failed. Error:", err);
                 // look for this specific error.
