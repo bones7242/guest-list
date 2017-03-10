@@ -4,11 +4,11 @@ const bcrypt = require("bcrypt");
 
 // define the User model schema
 const UserSchema = new mongoose.Schema({
-    Email: {
+    email: {
         type: String,
         index: {unique: true }
     },
-    Password: String,
+    password: String,
     Name: String,
     userRole: String,
     venueName: String,
@@ -28,6 +28,8 @@ UserSchema.methods.comparePassword = function comparePassword(password, callback
 // The pre-save hook method. this will hash the user's password and will be executed before the user's info is saved to the db.
 UserSchema.pre("save", function saveHook(next) {
     const user = this;
+
+    console.log("USER.JS USER IN SAVE:::: ",user);
     // proceed further only if the password is modified or the user is new
     if (user.isModified("password") === false) return next();
     // generate a salt string to use for hashing 

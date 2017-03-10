@@ -17,6 +17,8 @@ function validateSignupForm(payload) {
     let isFormValid = true;
     let message = "";
 
+    console.log("hitting authroute", payload);
+
     // make sure an email is provided, is an email, and is a string.
     if (!payload || typeof payload.email !== "string" || !validator.isEmail(payload.email)) {
         isFormValid = false;

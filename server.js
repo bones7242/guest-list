@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const config = require("./config");
 
+
 // Connect to the database and load models.
 require("./server/models").connect(config.dbUri); 
 
