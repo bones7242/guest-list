@@ -4,20 +4,42 @@ It will render sub-components that have the nav and content our users want to se
 */
 import React, { PropTypes } from "react";
 
-import Navbar from "./subComponents/Navbar.jsx";
+import NavBar from "./subComponents/NavBar.jsx";
 import Content from "./subComponents/Content.jsx";
-import EventInfo from "./subComponents/Eventinfo.jsx"
+import EventInfo from "./subComponents/EventInfo.jsx";
+import Footer from "./subComponents/Footer.jsx";
+import DashboardLogo from "./subComponents/DashboardLogo.jsx";
+import DashboardHeader from "./subComponents/DashboardHeader.jsx";
 
 const Dashboard = () => {
     return (
         <div>
-            {/*this is a title card that shows what the page is about*/}
-            <h2>Dashboard</h2>
-            <h3>This is the dashboard component, which will have your events and your guest lists.</h3>
-            {/*this is our nav bar subcomponent, which will show the logo and all the upcoming events*/}
-            <Navbar />
-            {/*this is the content subcomponent, which will show the guests on the guestlist for the selected event  */}
-            <Content />
+            <div className="row">
+                {/*this is a title card that shows what the page is about*/}
+               
+                {/*this is our nav bar subcomponent, which will show the logo and all the upcoming events*/}
+                <div className="col s3 m3 l3" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+                    <DashboardLogo />
+                </div>
+
+                <div className="col s9 m9 l9" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+                    <DashboardHeader />
+                </div>
+            </div>
+            <div className="row">
+
+                
+
+                <div className="col s3 m3 l3" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+                    <NavBar />
+                </div>
+
+                {/*this is the content subcomponent, which will show the guests on the guestlist for the selected event  */}
+                <div className="col s9 m9 l9" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+                    <Content />
+                </div>
+
+            </div>
         </div>
     );
 }
