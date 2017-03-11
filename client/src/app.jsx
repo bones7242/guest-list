@@ -6,13 +6,16 @@ import injectTapEventPlugin from "react-tap-event-plugin";
 import { browserHistory, Router } from "react-router";
 import routes from "./routes.js";
 
+
 // Remove tap delay, essential for MaterialUI to work properly on mobile.
 injectTapEventPlugin();
 
 // 1. Create the App component that everything will live inside
-const App = () => {
+const App = () => { //??
     return (
         <Router history={browserHistory} routes={routes} />
+
+        
     )
 };
 

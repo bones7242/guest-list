@@ -7,11 +7,11 @@ const TopNav = ({ children }) => {
         <div>
             <div className="top-bar">
                 {/*logo area on top left of screen*/}
-                <div className="row left deep-orange" className="valign-wrapper" id="logoContainer">
+                <div className="row left " className="valign-wrapper" id="logoContainer">
                     <div className="col s3">
                         
                         <div className="top-bar-left">
-                            <h1>GL</h1>
+                            <h1 className="deep-orange-text">GL</h1>
                             <a className="waves-effect waves-light btn hoverable" className="valign">
                                 <i className="material-icons left">cloud</i>
                                 button

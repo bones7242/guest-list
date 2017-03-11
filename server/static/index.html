@@ -6,9 +6,10 @@
     <title>Guest List</title>
     <!--style sheets for our app-->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="../../components/subcomponents/EventInfo.css">
-	<link rel="stylesheet" href="../../components/subcomponents/Content.css">
-	<link rel="stylesheet" href="../../components/subcomponents/NavBar.css">
+    <link rel="stylesheet" href="../../components/subComponents/EventInfo.css">
+	<link rel="stylesheet" href="../../client/src/components/subComponents/Content.css">
+	<link rel="stylesheet" href="../../client/src/components/subComponents/NavBar.css">
+    <link rel="stylesheet" href="../../client/src/components/subComponents/footer.css">
 	<!--MATERIALIZE STYLE LINKS-->
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -22,16 +23,7 @@
 <body>
     <!--this is where the app attaches-->
     <div id="react-app"></div>
-    <!--this is the footer.  should probably be a react componenet-->
-    <div className="row">
-    	<div className="col s12">
-		    <div className="footer-copyright">
-		        <div className="container">
-		            © 2014 Copyright Text
-		        </div>
-		    </div>
-		</div>
-	</div>
+    
     
     <!--this will load the bundled js from webpack-->
     <script src="/js/app.js"></script>

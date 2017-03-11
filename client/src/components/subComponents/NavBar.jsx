@@ -7,7 +7,7 @@ import React, { PropTypes, Component } from 'react';
 class NavBar extends Component {
 	render() {
 		return (
-			<div className="nav-bar" className="left">
+			<div className="nav-bar purple" className="left">
 				<div className="row">
 					<div className="col s12 m4 l3" className="valign-wrapper">
 

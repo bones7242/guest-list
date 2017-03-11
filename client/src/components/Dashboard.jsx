@@ -4,9 +4,9 @@ It will render sub-components that have the nav and content our users want to se
 */
 import React, { PropTypes } from "react";
 
-import Navbar from "./subComponents/Navbar.jsx";
+import NavBar from "./subComponents/NavBar.jsx";
 import Content from "./subComponents/Content.jsx";
-import EventInfo from "./subComponents/Eventinfo.jsx"
+import EventInfo from "./subComponents/EventInfo.jsx"
 
 const Dashboard = () => {
     return (
@@ -15,7 +15,7 @@ const Dashboard = () => {
             <h2>Dashboard</h2>
             <h3>This is the dashboard component, which will have your events and your guest lists.</h3>
             {/*this is our nav bar subcomponent, which will show the logo and all the upcoming events*/}
-            <Navbar />
+            <NavBar />
             {/*this is the content subcomponent, which will show the guests on the guestlist for the selected event  */}
             <Content />
         </div>
