@@ -1,17 +1,16 @@
 
 //	TAB ON LEFT SIDE BAR FOR EACH EVENT. EACH EVENT WILL HAVE ONE OF THESE.
 import React, { PropTypes, Component } from 'react';
-import './EventTab.css';
+//import './EventTab.css';
 
 
 class EventTab extends Component {
 	render() {
 		return (
-			<div className="event-tab hoverable">
+			<div className="row">
+			<div className="hoverable indigo accent-4 col s12 event-tab" style={{padding: "0", width:"100%", borderBottomStyle:"solid", borderColor: "white", borderWidth: "1px"}}>
 				
-				<div className="row">
-					<div className="col s3" >
-						
+					<div>
 						<h5 className="center-align"> EVENTNAME DB</h5>
 						<p className="center-align">eventdate DB</p>
 

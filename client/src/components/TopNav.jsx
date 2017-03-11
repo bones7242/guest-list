@@ -5,8 +5,8 @@ import Auth from "../modules/Auth";
 const TopNav = ({ children }) => {
     return (
         <div>
-            <div className="top-bar">
-                {/*logo area on top left of screen*/}
+            <div className="top-bar deep-purple" style={{marginBottom:"0"}}>
+                {/*logo area on top left of screen
                 <div className="row left " className="valign-wrapper" id="logoContainer">
                     <div className="col s3">
                         
@@ -19,7 +19,7 @@ const TopNav = ({ children }) => {
                         </div>
                     </div>
                         
-                </div>
+                </div>*/}
 
                 {/*conditional statement to decide which links to render*/}
                 {Auth.isUserAuthenticated() ? (

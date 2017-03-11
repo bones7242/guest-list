@@ -5,7 +5,7 @@ import React, { PropTypes, Component } from 'react';
 class NavBar extends Component {
 	render() {
 		return (
-			<!--this is the footer.  should probably be a react componenet-->
+			
 		    <div className="row">
 		    	<div className="col s12">
 				    <div className="footer-copyright">
