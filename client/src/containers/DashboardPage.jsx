@@ -12,7 +12,7 @@ class DashboardPage extends React.Component {
         super(props);
 
         this.state = {
-            venueName: "Test Venue Name",
+            venueName: "Venue name is loading...",
             events: []
         };
 

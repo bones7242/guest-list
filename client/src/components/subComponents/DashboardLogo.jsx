@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes } from 'react';
 
 const DashboardLogo = ({venueName}) => {
 	return (
@@ -14,7 +14,5 @@ const DashboardLogo = ({venueName}) => {
 		</div>
 	);
 }
-
-
 
 export default DashboardLogo;
