@@ -2,6 +2,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
+console.log("test1");
+
 // define the User model schema
 const UserSchema = new mongoose.Schema({
     name: String,  // note: we should break into fname lname
@@ -10,7 +12,7 @@ const UserSchema = new mongoose.Schema({
         index: {unique: true }
     },
     password: String,
-    userRole: String,  // options: "owner", "guest", etc.
+    role: String,  // options: "owner", "guest", etc.
 });
 
 /*
@@ -30,7 +32,6 @@ UserSchema.methods.comparePassword = function comparePassword(password, callback
 UserSchema.pre("save", function saveHook(next) {
     const user = this;
 
-    console.log("USER.JS USER IN SAVE:::: ",user);
     // proceed further only if the password is modified or the user is new
     if (user.isModified("password") === false) return next();
     // generate a salt string to use for hashing 

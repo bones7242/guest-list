@@ -12,14 +12,34 @@ class DashboardPage extends React.Component {
         super(props);
 
         this.state = {
-            testMessage: ""
+            venueName: "Test Venue Name"
         };
+    }
+
+    componentWillMount(){
+        //make an AJAX-request to the server to get information related to this user
+        const xhr = new XMLHttpRequest();
+        const queryUrl = "/api/dashboard/" + localStorage.getItem("guestListUserId");
+        console.log("query:", queryUrl);
+        xhr.open("get", queryUrl);
+        xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
+        xhr.responseType = "json";
+        xhr.addEventListener("load", () => {
+            if (xhr.status === 200) {
+                console.log("xhr response:", xhr.response.message);
+                this.setState({
+                    venueName: xhr.response.message.name
+                });
+            }
+        });
+        xhr.send();
+
     }
 
     // render the component
     render() {
         return (
-            <Dashboard />
+            <Dashboard venueName={this.state.venueName}/>
         );
     }
 }

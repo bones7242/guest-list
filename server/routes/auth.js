@@ -17,9 +17,9 @@ function validateSignupForm(payload) {
     let isFormValid = true;
     let message = "";
 
-    console.log("hitting authroute", payload);
+    //console.log("hitting authroute", payload);
 
-    // make sure an email is provided, is an email, and is a string.
+    // Make sure an email is provided, is an email, and is a string.
     if (!payload || typeof payload.email !== "string" || !validator.isEmail(payload.email)) {
         isFormValid = false;
         errors.email = "Please provide a correct email address.";
@@ -31,6 +31,7 @@ function validateSignupForm(payload) {
         errors.password = "Password must have at least 8 characters.";
     }
 
+    // Make sure a name is provided.
     if (!payload || typeof payload.name !== "string" || payload.name.trim().length === 0) {
         isFormValid = false;
         errors.name = "Please provide your name.";
@@ -87,8 +88,10 @@ function validateLoginForm(payload) {
 // POST ROUTES
 // Route for signup.
 router.post("/signup", (req, res, next) => {
-    //console.log("/auth/signup POST received.");
+    console.log("/auth/signup POST received.");
+    // Call the validation method on the body of the request to make sure fields were filled out correctly.
     const validationResult = validateSignupForm(req.body);
+    // Handle the response based on the outcome of the validation method.
     if (!validationResult.success) {
         return res.status(400).json({
             success: false,

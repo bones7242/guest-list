@@ -36,7 +36,7 @@ const LoginForm = ({onSubmit, onChange, errors, successMessage, user}) => (
       </div>
 
       <div className="button-line">
-        <button type="submit" label="Log in" Link to={'/dashboard'}>Log In</button>
+        <button type="submit">Log In</button>
       </div>
 
       <p>Don't have an account? <Link to={'/signup'}>Create one</Link>.</p>

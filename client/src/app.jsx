@@ -6,6 +6,9 @@ import injectTapEventPlugin from "react-tap-event-plugin";
 import { browserHistory, Router } from "react-router";
 import routes from "./routes.js";
 import "../../server/static/vendor/materialize/js/materialize.min.js";
+// materialize ui 
+import getMuiTheme from "material-ui/styles/getMuiTheme";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 // Remove tap delay, essential for MaterialUI to work properly on mobile.
 injectTapEventPlugin();
@@ -13,9 +16,9 @@ injectTapEventPlugin();
 // 1. Create the App component that everything will live inside
 const App = () => { //??
     return (
-        <Router history={browserHistory} routes={routes} />
-
-        
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+            <Router history={browserHistory} routes={routes} />
+        </MuiThemeProvider>        
     )
 };
 

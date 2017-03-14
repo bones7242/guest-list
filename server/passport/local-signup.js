@@ -1,4 +1,7 @@
 const User = require("mongoose").model("User");
+const Venue = require("mongoose").model("Venue");
+// const Venue = require("mongoose").model("Venue"); 
+
 const PassportLocalStrategy = require("passport-local").Strategy;
 
 // return the Passport Local Strategy object.
@@ -12,28 +15,45 @@ module.exports = new PassportLocalStrategy(
     }, 
     // the second argument is the callback 
     (req, email, password, done) => {
+        console.log("body 1 ->", req.body);
         // define an object that contains all the user data  
         const userData = {
             email: email.trim(),
             password: password.trim(),
-            name: req.body.name.trim()
+            name: req.body.name.trim(),
+            role: req.body.role.trim()
         };
 
-        console.log("USERDATA!!!!!!! ",userData);
         // create a new user record, via the User schema, from the user data 
         const newUser = new User(userData);
-            console.log("firstNEWUSER ", newUser);
-            console.log("SECONDuserDate ", userData);
-        
         // save the new user record 
-        newUser.save((err) => {
-
-            console.log("NEWUSER???? ", newUser);
+        newUser.save((err, doc) => {
+            
             // handle errors with the save.
-            console.log("NEWUSER ERR ", err);
             if (err) { return done (err); }
-            // return if no errors.
-            return done(null);
+            
+            // if no errors.
+            //return done(null);
+            if (userData.role === "owner"){
+                // create a venue object, and attach the owner's id to it.
+                const venueData = {
+                    name: req.body.venueName.trim(),
+                    addressOne: req.body.venueAddressOne.trim(),
+                    addressTwo: req.body.venueAddressTwo.trim(),
+                    zip: req.body.venueZip.trim(),
+                    owner: doc._id
+                };
+                // create a venue record
+                const newVenue = new Venue(venueData);
+                // save the new venue record
+                newVenue.save((err) => {
+                    // handle errors with the save.
+                    if (err) { return done (err); }
+                    // return if no errors.
+                    return done(null);
+                })
+            }
+
         });
     }
 );
