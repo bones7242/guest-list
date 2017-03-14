@@ -7,9 +7,10 @@ const Event = require("mongoose").model("Event");
 const router = new express.Router();
 
 /* 
-api routes will go here as needed
+api routes that require authentication go below
 */
 
+// general dashboard routes
 router.get("/dashboard/:id", (req, res) => {
     console.log("received api/dashboard/id GET request for:", req.params.id);
     Venue.findOne({owner: req.params.id}, function(err, doc){
@@ -24,6 +25,7 @@ router.get("/dashboard/:id", (req, res) => {
     
 }); 
 
+// event routes 
 router.post("/event", (req, res) => {
     console.log("received api/event POST request:", req.body);
     // create a new artist record, via the Artist schema, from the request data
@@ -46,6 +48,27 @@ router.post("/event", (req, res) => {
         };
     });
     
+}); 
+
+router.get("/event/:id", (req, res) => {
+    console.log("received api/event GET request:", req.params.id);
+    // create a new artist record, via the Artist schema, from the request data
+    Event.find({
+            venue: req.params.id
+        }).
+        limit(10).
+        sort({ date: -1 }).
+        exec((err, docs) => {
+            // handle errors with the save.
+            if (err) { 
+                res.json({message: err})
+            // if no errors.
+            } else {
+                res.status(200).json({
+                    message: docs
+                });
+            };
+        });    
 }); 
 
 

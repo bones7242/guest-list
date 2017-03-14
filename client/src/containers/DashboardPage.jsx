@@ -12,29 +12,52 @@ class DashboardPage extends React.Component {
         super(props);
 
         this.state = {
-            venueName: "Test Venue Name"
-            //events: []
+            venueName: "Test Venue Name",
+            events: []
         };
 
-        // pass the "this" context, so we will have access to class members from our event handler methods (createNewEvent).
+        // pass the "this" context, so we will have access to class members from our event handler methods (createNewEvent, getAllEvents).
         this.createNewEvent = this.createNewEvent.bind(this);
+        this.getAllEvents = this.getAllEvents.bind(this);
     }
 
     // custom methods
     createNewEvent(newEvent){
-        console.log("new event:", newEvent);
-        //store the data in state 
+        // add the new event to the mongo database 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "/api/event", true);
+        xhr.open("POST", "/api/event");
         xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.responseType = "json";
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
+                // console log for testing. 
                 console.log(" createNewEvent xhr response:", xhr.response.message);
+                // update the events in state
+                this.getAllEvents("58c84145d8c6541e80b285dd")
             }
         });
         xhr.send(JSON.stringify(newEvent));
+    }
+
+    getAllEvents(venueId){
+        // add the new event to the mongo database 
+        const xhr = new XMLHttpRequest();
+        let queryUrl = "/api/event/" + venueId;  //note: the redwood bar is hard coded in.  grab from local storage.
+        xhr.open("GET", queryUrl);
+        xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
+        xhr.responseType = "json";
+        xhr.addEventListener("load", () => {
+            if (xhr.status === 200) {
+                // console log for testing. 
+                console.log("get all events xhr response:", xhr.response.message);
+                // update the events in state
+                this.setState({
+                    events: xhr.response.message  //this must return all events
+                });
+            }
+        });
+        xhr.send();
     }
 
     // lifecycle methods.
