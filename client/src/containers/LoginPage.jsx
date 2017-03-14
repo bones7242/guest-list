@@ -65,8 +65,10 @@ class LoginPage extends React.Component {
                 this.setState({
                     errors: {}
                 });
-                // save the token.
-                Auth.authenticateUser(xhr.response.token); //note: i changed fromd deauthenticateUser to authenticateUser 
+                // save the token to authenticate user 
+                Auth.authenticateUser(xhr.response.token);
+                // save the user's id 
+                localStorage.setItem("guestListUserId", xhr.response.user.id);
                 // redirect by changing the current URL to "/".
                 this.context.router.replace("/");
             // Failure case.

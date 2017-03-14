@@ -6,7 +6,10 @@ const config = require("./config");
 
 
 // Connect to the database and load models.
-require("./server/models").connect(config.dbUri); 
+var mongoose = require("mongoose");
+mongoose.connect(config.dbUri); 
+require("./server/models/user");
+require("./server/models/venue");
 
 // Define variable to hold express().
 const app = express();

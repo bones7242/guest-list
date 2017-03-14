@@ -9,7 +9,11 @@ class DashboardHeader extends Component {
 				
 				
 					<div className="col s12 m8 l9 valign-wrapper"   >
-					<h3 style={{color: 'white'}}>this is Header</h3>
+					<h2>Artist Name</h2>
+					<h3>Supprt Name(s)</h3>
+					<p>Date</p>
+					<p>Total People on Guest List: XX</p>
+					<p>Total Guests Checked In: XX</p>
 					</div>
 				
 			</div>

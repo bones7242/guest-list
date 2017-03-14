@@ -17,7 +17,11 @@ class SignUpPage extends React.Component {
                 email: "",
                 name: "",
                 password: "",
-                role: ""
+                role: "owner",
+                venueName: "",
+                venueAddressOne: "",
+                venueAddressTwo: "",
+                venueZip: "",
             }
         };
         // bind "this" to the methods we define below 
@@ -25,7 +29,7 @@ class SignUpPage extends React.Component {
         this.changeUser = this.changeUser.bind(this);
     }
 
-    // Process the form.
+    // Define the a 'process form' method.
     /*
         When a user submits the form, this method will be used to evaluate the input.
         @param {object} event - the JavaScript event object 
@@ -38,13 +42,21 @@ class SignUpPage extends React.Component {
         const name = encodeURIComponent(this.state.user.name);
         const email = encodeURIComponent(this.state.user.email);
         const password = encodeURIComponent(this.state.user.password);
-        const formData = `name=${name}&email=${email}&password=${password}`;
-        //console.log("name:", name, "email:", email, "password", password);
-        //console.log("formData:", formData);
+        const role = encodeURIComponent(this.state.user.role);
+        console.log("role:", role);
+        let formData = `name=${name}&email=${email}&password=${password}&role=${role}`;
+        if (role.toLowerCase() === "owner") { 
+            const venueName = encodeURIComponent(this.state.user.venueName);
+            const venueAddressOne = encodeURIComponent(this.state.user.venueAddressOne);
+            const venueAddressTwo = encodeURIComponent(this.state.user.venueAddressTwo);
+            const venueZip = encodeURIComponent(this.state.user.venueZip);
+            formData = `name=${name}&email=${email}&password=${password}&role=${role}&venueName=${venueName}&venueAddressOne=${venueAddressOne}&venueAddressTwo=${venueAddressTwo}&venueZip=${venueZip}`;
+        };
+        console.log("formData:", formData);
 
         // Create an ajax request, which will change the component state depending on the HTTP response code status received.
         const xhr = new XMLHttpRequest();
-        xhr.open("post", "/auth/signup");
+        xhr.open("post", "/auth/signup");  // send this request as a post to /auth/signup 
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.responseType = "json";
         xhr.addEventListener("load", () => {
@@ -65,10 +77,10 @@ class SignUpPage extends React.Component {
 
             // failure case.
             } else {
-                // ??
+                // receive the errors back 
                 const errors = xhr.response.errors ? xhr.response.errors : {};
                 errors.summary = xhr.response.message;
-                // change the component-container state to show the errors.
+                // change this container's state to show the errors.
                 this.setState({
                     errors
                 });
@@ -78,18 +90,30 @@ class SignUpPage extends React.Component {
         xhr.send(formData);
     }
 
-    // Change the user object.
+    // define a method that will change the 'user' object.
     /*
         This will change the component state by taking the name attribute of an input element as the key. The value for this key will be taken from the user’s input into the element.  It then updates the this.state.user with the new information.
     */
     changeUser(event) {
+        //console.log("event", event);
         const field = event.target.name;
+        //console.log("field", field);
         const user = this.state.user;
         user[field] = event.target.value;
 
         this.setState({
             user
         });
+    }
+
+    // Define lifecycle methods.
+    componentWillMount(){
+        console.log("componentWillMount is finished.");
+    }
+
+    componentDidMount(){
+        //$('select').material_select();
+        console.log("componentDidMount is finished.");
     }
 
     // Render the component.

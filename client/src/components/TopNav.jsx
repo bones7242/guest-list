@@ -6,20 +6,6 @@ const TopNav = ({ children }) => {
     return (
         <div>
             <div className="top-bar deep-purple" style={{marginBottom:"0"}}>
-                {/*logo area on top left of screen
-                <div className="row left " className="valign-wrapper" id="logoContainer">
-                    <div className="col s3">
-                        
-                        <div className="top-bar-left">
-                            <h1 className="deep-orange-text">GL</h1>
-                            <a className="waves-effect waves-light btn hoverable" className="valign">
-                                <i className="material-icons left">cloud</i>
-                                button
-                            </a>
-                        </div>
-                    </div>
-                        
-                </div>*/}
 
                 {/*conditional statement to decide which links to render*/}
                 {Auth.isUserAuthenticated() ? (

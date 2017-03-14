@@ -58,7 +58,8 @@ module.exports = new PassportLocalStrategy(
                 };
                 const token = jwt.sign(payload, config.jwtSecret);
                 const data = {
-                    name: user.name
+                    name: user.name,
+                    id: user._id
                 };
                 // return 
                 console.log("User and password are a match.")

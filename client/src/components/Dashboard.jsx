@@ -11,7 +11,7 @@ import Footer from "./subComponents/Footer.jsx";
 import DashboardLogo from "./subComponents/DashboardLogo.jsx";
 import DashboardHeader from "./subComponents/DashboardHeader.jsx";
 
-const Dashboard = () => {
+const Dashboard = ({venueName}) => {
     return (
         <div>
             <div className="row">
@@ -19,7 +19,7 @@ const Dashboard = () => {
                
                 {/*this is our nav bar subcomponent, which will show the logo and all the upcoming events*/}
                 <div className="col s3 m3 l3" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-                    <DashboardLogo />
+                    <DashboardLogo venueName={venueName}/>
                 </div>
 
                 <div className="col s9 m9 l9" style={{paddingRight:"0px", paddingLeft:"0px"}}>
@@ -43,5 +43,9 @@ const Dashboard = () => {
         </div>
     );
 }
+
+Dashboard.propTypes = {
+    venueName: PropTypes.string.isRequired,
+};
 
 export default Dashboard;
