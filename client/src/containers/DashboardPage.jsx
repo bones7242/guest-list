@@ -16,9 +16,9 @@ class DashboardPage extends React.Component {
             events: []
         };
 
-        // pass the "this" context, so we will have access to class members from our event handler methods (createNewEvent, getAllEvents).
+        // pass the "this" context, so we will have access to class members from our event handler methods (createNewEvent, updateEventsList).
         this.createNewEvent = this.createNewEvent.bind(this);
-        this.getAllEvents = this.getAllEvents.bind(this);
+        this.updateEventsList = this.updateEventsList.bind(this);
     }
 
     // custom methods
@@ -34,13 +34,13 @@ class DashboardPage extends React.Component {
                 // console log for testing. 
                 console.log(" createNewEvent xhr response:", xhr.response.message);
                 // update the events in state
-                this.getAllEvents("58c84145d8c6541e80b285dd")
+                this.updateEventsList("58c84145d8c6541e80b285dd")
             }
         });
         xhr.send(JSON.stringify(newEvent));
     }
 
-    getAllEvents(venueId){
+    updateEventsList(venueId){
         // add the new event to the mongo database 
         const xhr = new XMLHttpRequest();
         let queryUrl = "/api/event/" + venueId;  //note: the redwood bar is hard coded in.  grab from local storage.
@@ -102,7 +102,10 @@ class DashboardPage extends React.Component {
     // render the component
     render() {
         return (
-            <Dashboard venueName={this.state.venueName}/>
+            <Dashboard 
+                venueName={this.state.venueName} 
+                events={this.state.events}
+            />
         );
     }
 }
