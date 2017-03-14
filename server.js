@@ -10,6 +10,8 @@ var mongoose = require("mongoose");
 mongoose.connect(config.dbUri); 
 require("./server/models/user");
 require("./server/models/venue");
+require("./server/models/artist");
+require("./server/models/event");
 
 // Define variable to hold express().
 const app = express();
@@ -18,6 +20,7 @@ app.use(express.static("./server/static/"));
 app.use(express.static("./client/dist/"));
 // Tell the app to parse HTTP body mesages.
 app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
 // Pass the passport middleware.
 app.use(passport.initialize());
 
@@ -35,8 +38,10 @@ app.use("/api", authCheckMiddleware);
 // Routes.
 const authRoutes = require("./server/routes/auth"); 
 const apiRoutes = require("./server/routes/api"); 
+const publicApiRoutes = require("./server/routes/public-api"); 
 app.use("/auth", authRoutes); 
 app.use("/api", apiRoutes); 
+app.use("/public-api", publicApiRoutes); 
 
 // server-site route that directs http routes back to the react app.
 app.get("/*", function(req, res) {

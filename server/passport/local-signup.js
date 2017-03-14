@@ -15,7 +15,7 @@ module.exports = new PassportLocalStrategy(
     }, 
     // the second argument is the callback 
     (req, email, password, done) => {
-        console.log("body 1 ->", req.body);
+        console.log("request body ->", req.body);
         // define an object that contains all the user data  
         const userData = {
             email: email.trim(),
@@ -33,8 +33,8 @@ module.exports = new PassportLocalStrategy(
             if (err) { return done (err); }
             
             // if no errors.
-            //return done(null);
-            if (userData.role === "owner"){
+            if (userData.role === "owner"){  
+                // create a new venue to go with the user record.
                 // create a venue object, and attach the owner's id to it.
                 const venueData = {
                     name: req.body.venueName.trim(),
@@ -52,6 +52,10 @@ module.exports = new PassportLocalStrategy(
                     // return if no errors.
                     return done(null);
                 })
+            } else if (userData.role === "artist") {
+                // create a new artist to go with the user.
+            } else {
+                return done(null);
             }
 
         });
