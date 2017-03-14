@@ -1,6 +1,7 @@
 //VENUE INFO FROM VENUE SIGNUP FORM
 const mongoose = require("mongoose");
-console.log("test2");
+
+console.log("loading Venue schema");
 
 // define the User model schema
 const VenueSchema = new mongoose.Schema({
@@ -39,7 +40,11 @@ const VenueSchema = new mongoose.Schema({
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }
+    },
+    event: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Event"
+    }]
 });
 
 module.exports = mongoose.model("Venue", VenueSchema); 

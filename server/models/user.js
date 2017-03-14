@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
-console.log("test1");
+console.log("loading User schema");
 
 // define the User model schema
 const UserSchema = new mongoose.Schema({

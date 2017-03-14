@@ -1,0 +1,55 @@
+const express = require("express");
+const bodyParser = require("body-parser");
+
+const Venue = require("mongoose").model("Venue");
+const Artist = require("mongoose").model("Artist");
+const Event = require("mongoose").model("Event");
+
+const router = new express.Router();
+
+// public routes.  UNSECURE.  for development and testing only
+
+router.post("/venue", (req, res) => {
+    console.log("received /public-api/venue POST request");
+}); 
+
+// route for creating a new artist in the database 
+router.post("/artist", (req, res) => {
+    /* sample request body {
+        "name": "The Artists formerly known as the Cool Kids 2",
+        "email": "holler@theCoolKids.com",
+        "phone": "555 123-4567",
+        "hometownCity": "Los Angeles",
+        "remittanceAddressOne": "123 Balder Street",
+        "remittanceAddressTwo": "Apt 24",
+        "remittanceCity": "Chicago",
+        "remittanceState": "IL",
+        "remittanceZip": "54321",
+        "owner": "58c736edc3548924286dc139"
+    } */ 
+    console.log("received /public-api/artist POST request:", req.body);
+    // create a new artist record, via the Artist schema, from the request data
+    const newArtist = new Artist(req.body);
+    // save the new artist record 
+    newArtist.save((err, doc) => {
+        // handle errors with the save.
+        if (err) { 
+            //check to see if it is a duplicate code
+            if (err.code === 11000){
+                res.json("that Artist is already in the database")
+            } else {
+                res.json(err)
+            };
+        // if no errors.
+        } else {
+            res.json("artist successfully added");
+        };
+    });
+}); 
+
+router.post("/event", (req, res) => {
+    console.log("received /public-api/event POST request");
+}); 
+
+
+module.exports = router;
