@@ -10,7 +10,6 @@ import LoginPage from "./containers/LoginPage.jsx";
 import SignUpPage from "./containers/SignUpPage.jsx";
 import DashboardPage from "./containers/DashboardPage.jsx";
 
-import PermissionDenied from './components/subComponents/PermissionDenied.jsx'
 import AddGuest from "./components/subComponents/AddGuestForm.jsx";
 
 
@@ -18,21 +17,20 @@ const myRoutes  = (
     <Router history={hashHistory}>
         <Route path="/" component={App}>
             {/*one of the below routes will be passed to App as children*/}
-            <IndexRoute component={HomePage}/>
-            <Route path="dash"
+            <Route path="dash" 
                 getComponent={(location, callback) => {
                     if (Auth.isUserAuthenticated()) {  
                         callback(null, DashboardPage);
                     } else {
-                        callback(null, PermissionDenied);
+                        callback(null, HomePage);
                     };
                 }
             }>
                 <Route path="add-guest" component={AddGuest} />    
             </Route>
-            <Route path="/login" component={LoginPage}/>
-            <Route path="/signup" component={SignUpPage}/>
-            <Route path="/logout" 
+            <Route path="login" component={LoginPage}/>
+            <Route path="signup" component={SignUpPage}/>
+            <Route path="logout" 
                 onEnter={(nextState, replace) => {
                     // de-authenticate the user
                     Auth.deauthenticateUser();
@@ -40,6 +38,11 @@ const myRoutes  = (
                     replace("/");
                 }
             } />
+        <IndexRoute 
+            onEnter={(nextState, replace) => {
+                // redirect the user to the index page
+                replace("/dash");
+            }}/>
         </Route>
     </Router>
 );
