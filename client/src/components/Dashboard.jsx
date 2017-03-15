@@ -11,7 +11,7 @@ import Footer from "./subComponents/Footer.jsx";
 import DashboardLogo from "./subComponents/DashboardLogo.jsx";
 import DashboardHeader from "./subComponents/DashboardHeader.jsx";
 
-const Dashboard = ({venueName, events}) => {
+const Dashboard = ({venueName, events, children}) => {
     return (
         <div>
             <div className="row">
@@ -40,7 +40,10 @@ const Dashboard = ({venueName, events}) => {
 
                 {/*this is the content subcomponent, which will show the guests on the guestlist for the selected event  */}
                 <div className="col s9 m9 l9" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-                    <Content />
+
+                    <Content
+                         children={children}
+                     />
                 </div>
 
             </div>

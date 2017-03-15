@@ -20,7 +20,22 @@ const routes = {
                 } else {
                     callback(null, HomePage);
                 }
-            }
+            },
+            childRoutes: [
+                {   
+                     path:"dash/attendee",
+                    component: attendee
+                },
+                {
+                    path: "dash/event",
+                    component: addEvent
+                },
+                {
+                    path: "dash/addGuest",
+                    component: addGuest
+                },
+
+            ]
         },
         {
             // Log in route.
