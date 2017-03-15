@@ -4,27 +4,24 @@ import React, { PropTypes, Component } from 'react';
 //import './Content.css';
 import Attendee from './Attendee.jsx';
 
-
-class Content extends Component {
-	render() {
-		return (
-			<div className="row" style={{paddingRight:"0px", marginRight:"0px"}}>
-				<div className="content grey darken-3 " >
+const Content = (props) => {
+	return (
+		<div className="row" style={{paddingRight:"0px", marginRight:"0px"}}>
+			<div className="content grey darken-3 " >
+			
+				<div className="col s12 m12 l12 valign-wrapper" style={{padding: '0'}} >
 				
-					<div className="col s12 m12 l12 valign-wrapper" style={{padding: '0'}} >
-					
-					
-					<Attendee />
+				{props.children}
+				{/*<Attendee />*/}
 
-					</div>
 				</div>
 			</div>
-		);
-	}
+		</div>
+	);
 }
 
 Content.propTypes = {
-	children: PropTypes.node,
+	children: PropTypes.node.isRequired,
 	routes: PropTypes.array
 };
 

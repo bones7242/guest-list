@@ -70,7 +70,7 @@ class LoginPage extends React.Component {
                 // save the user's id 
                 localStorage.setItem("guestListUserId", xhr.response.user.id);
                 // redirect by changing the current URL to "/".
-                this.context.router.replace("/");
+                this.context.router.replace("/dash");
             // Failure case.
             } else {
                 // ?? 
