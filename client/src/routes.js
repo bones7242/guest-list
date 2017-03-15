@@ -1,6 +1,6 @@
 
 import React from "react";
-import {Route, Router, hashHistory, IndexRoute} from "react-router";
+import {Route, Router, hashHistory, IndexRoute, Redirect} from "react-router";
 
 import HomePage from "./components/HomePage.jsx";
 import LoginPage from "./containers/LoginPage.jsx";
@@ -13,53 +13,28 @@ import Auth from "./modules/Auth";
 const myRoutes  = (
     <Router history={hashHistory}>
         <Route path="/" component={App}>
-            <IndexRoute component={HomePage}/>
+            {/*one of the below routes will be passed to App as children*/}
+            <IndexRoute 
+                getComponent={(location, callback) => {
+                    if (Auth.isUserAuthenticated()) {  
+                        callback(null, DashboardPage);
+                    } else {
+                        callback(null, HomePage);
+                    };
+                }
+            } />
+            <Route path="login" component={LoginPage}/>
+            <Route path="signup" component={SignUpPage}/>
+            <Route path="logout" 
+                onEnter={(nextState, replace) => {
+                    // de-authenticate the user
+                    Auth.deauthenticateUser();
+                    // redirect the user to the index page
+                    replace("/");
+                }
+            } />
         </Route>
     </Router>
 );
 
 export default myRoutes;
-
-
-
-
-// const routes = {
-//     // Base component (wrapper for the whole applications).
-//     component: TopNav,
-//     // Child routes.
-//     childRoutes: [
-//         {
-//             // Index route.
-//             path: "/",
-//             // decide which component to render, depending on whether the user is authenticated.
-//             getComponent: (location, callback) => {
-//                 if (Auth.isUserAuthenticated()) {  // run "isUserAuthenticated" and it will return true or false.
-//                     callback(null, DashboardPage);
-//                 } else {
-//                     callback(null, HomePage);
-//                 }
-//             }
-//         },
-//         {
-//             // Log in route.
-//             path: "/login",
-//             component: LoginPage
-//         },
-//         {
-//             // Sign up route.
-//             path: "/signup",
-//             component: SignUpPage
-//         },
-//         {
-//             path: "/logout",
-//             onEnter: (nextState, replace) => {
-//                 // de-authenticate the user
-//                 Auth.deauthenticateUser();
-//                 // redirect the user to the index page
-//                 replace("/");
-//             }
-//         }
-//     ]
-// };
-
-// export default routes;

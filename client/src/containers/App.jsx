@@ -11,10 +11,12 @@ import TopNav from "../components/TopNav.jsx";
 const App = (props) => { 
     return (
         <MuiThemeProvider muiTheme={getMuiTheme()}>
-            {/*this is where the top nav goes*/}
-            <TopNav />
-            {/*this is where the HomePage or Dashboard will be displayed */}
-            {props.children}
+            <div>
+                {/*this is where the top nav goes*/}
+                <TopNav />
+                {/*this is where the HomePage or Dashboard will be displayed */}
+                {props.children}
+            </div>
         </MuiThemeProvider>        
     )
 };
