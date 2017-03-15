@@ -2,7 +2,7 @@ import React, { PropTypes } from "react";
 import { Link, IndexLink } from "react-router";
 import Auth from "../modules/Auth";
 
-const TopNav = ({ children }) => {
+const TopNav = () => {
     return (
         <div>
             <div className="top-bar deep-purple" style={{marginBottom:"0"}}>
@@ -21,16 +21,9 @@ const TopNav = ({ children }) => {
 
             </div>
 
-            {/*child components will be rendered here */}
-            { children }
-
         </div>
                 
     );
 };
-
- TopNav.propTypes = {
-     children: PropTypes.object.isRequired
- };
 
  export default TopNav;

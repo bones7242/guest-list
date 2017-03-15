@@ -95,7 +95,7 @@ class DashboardPage extends React.Component {
             headlinerAllotment: 42,
             supportOneAllotment: 5,
             supportTwoAllotment: 6,
-            supportThreeAllotment: 7,
+            supportThreeAllotment: 7
         })
     }
 
