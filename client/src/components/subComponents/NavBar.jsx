@@ -3,7 +3,7 @@
 import React, { PropTypes } from 'react';
 import EventTab from "./EventTab.jsx";
 
-const NavBar = ({events}) => {
+const NavBar = ({events, selectEvent}) => {
 	return (			
 		<div className="row" style={{paddingRight:"0px", marginRight:"0px", borderRightStyle:"dotted", borderColor:"white", borderWidth:"1px"}}>
 		<div className="nav-bar grey darken-3" >
@@ -17,6 +17,9 @@ const NavBar = ({events}) => {
 								key={index} 
 								headliner={item.headliner} 
 								date={item.date} 
+								eventId={item._id}
+								eventIndex={index}
+								selectEvent={selectEvent}
 							/>
 						)
 					})}
@@ -28,7 +31,8 @@ const NavBar = ({events}) => {
 }
 
 NavBar.propTypes = {
-	events: PropTypes.array.isRequired
+	events: PropTypes.array.isRequired,
+	selectEvent: PropTypes.func.isRequired
 };
 
 export default NavBar;

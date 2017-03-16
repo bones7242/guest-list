@@ -64,7 +64,7 @@ class DashboardPage extends React.Component {
     }
 
     selectEvent(eventIndex){
-        console.log("selecting event", eventIndex, ":", this.state.events[eventIndex]);
+        //console.log("selecting event", eventIndex, ":", this.state.events[eventIndex]);
         this.setState({
             currentEvent: this.state.events[eventIndex] 
         });
@@ -119,7 +119,9 @@ class DashboardPage extends React.Component {
             <Dashboard 
                 venueName={this.state.venueName} 
                 events={this.state.events}
+                currentEvent={this.state.currentEvent}
                 children={this.props.children}
+                selectEvent={this.selectEvent}  //pass the function that updates the selected event 
             />
         );
     }

@@ -11,7 +11,7 @@ import Footer from "./subComponents/Footer.jsx";
 import DashboardLogo from "./subComponents/DashboardLogo.jsx";
 import DashboardHeader from "./subComponents/DashboardHeader.jsx";
 
-const Dashboard = ({venueName, events, children}) => {
+const Dashboard = ({venueName, events, currentEvent, children, selectEvent}) => {
     return (
         <div>
             <div className="row">
@@ -34,7 +34,8 @@ const Dashboard = ({venueName, events, children}) => {
 
                 <div className="col s3 m3 l3" style={{paddingRight:"0px", paddingLeft:"0px"}}>
                     <NavBar 
-                        events={events}
+                        events={events}  // pass the array of all the events to the nav bar 
+                        selectEvent={selectEvent}  //pass the function that updates the selected event 
                     />
                 </div>
 
@@ -52,7 +53,10 @@ const Dashboard = ({venueName, events, children}) => {
 
 Dashboard.propTypes = {
     venueName: PropTypes.string.isRequired,
-    events: PropTypes.array.isRequired
+    events: PropTypes.array.isRequired,
+    currentEvent: PropTypes.object.isRequired,
+    //children: PropTypes.object.isRequired,
+    selectEvent: PropTypes.func.isRequired
 };
 
 export default Dashboard;
