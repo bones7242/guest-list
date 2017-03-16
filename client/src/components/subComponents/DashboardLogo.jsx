@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 const DashboardLogo = ({venueName}) => {
 	return (
@@ -7,8 +8,8 @@ const DashboardLogo = ({venueName}) => {
 		<div className="logo-bar" >
 			
 				<div className="col s12 m12 l12 valign-wrapper" style={{padding: '0'}}>
-					<h3 className="hoverable center-align">{venueName}</h3>
-					<a className="waves-effect waves-teal btn-flat center-align">Button</a>
+					<h3 className="hoverable center-align"><Link to={'/'}>{venueName}</Link></h3>
+					<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/dash/add-event'}>Button</Link></a>
 				</div>
 			</div>
 		</div>

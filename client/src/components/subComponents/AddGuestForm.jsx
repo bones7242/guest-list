@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import { Link } from 'react-router';
 
 
 class AddGuestForm extends Component {
@@ -11,19 +12,19 @@ class AddGuestForm extends Component {
 						
 						<div className="input-field col s6">
 							<input placeholder="Name" id="AttendeeName"  type="text" className="validate"></input>
-							<label for="name">Name</label>
+							<label htmlFor="name">Name</label>
 						</div>
 						<div className="input-field col s2">
 							<input placeholder="Affiliation" id="Affiliation"  type="text" className="validate"></input>
-							<label for="Affiliation">Affiliation</label>
+							<label htmlFor="Affiliation">Affiliation</label>
 						</div>
 						<div className="input-field col s2">
 							<input id="email" type="email" class="validate"></input>
-          					<label for="email">Email</label>
+          					<label htmlForr="email">Email</label>
 						</div>
 						<div className="input-field col s2">
 							<input placeholder="PhoneNumber" id="PhoneNumber"  type="text" className="validate"></input>
-							<label for="PhoneNumber">PhoneNumber</label>
+							<label htmlFor="PhoneNumber">PhoneNumber</label>
 						</div>
 					
 					</div>
@@ -49,26 +50,34 @@ class AddGuestForm extends Component {
 						<div className="input-field col s3">
 							<p>
       							<input name="group1" type="radio" id="test1" />
-      							<label for="test1">VIP</label>
+      							<label htmlFor="test1">VIP</label>
     						</p>
 						</div>
 						<div className="input-field col s3">
 							<p>
       							<input name="group1" type="radio" id="test1" />
-      							<label for="test1">All Access</label>
+      							<label htmlFor="test1">All Access</label>
     						</p>
 						</div>
 						<div className="input-field col s3">
 							<p>
       							<input name="group1" type="radio" id="test1" />
-      							<label for="test1">Press</label>
+      							<label htmlFor="test1">Press</label>
     						</p>
+    					</div>
 						<div className="input-field col s3">
 							<p>
       							<input name="group1" type="radio" id="test1" />
-      							<label for="test1">Photo</label>
+      							<label htmlFor="test1">Photo</label>
     						</p>
 						</div>
+
+						<div className="col s12">
+
+						<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Button</Link></a>
+
+						</div>
+					
 					
 					</div>
 
@@ -77,7 +86,8 @@ class AddGuestForm extends Component {
 				
 				</form>
 			</div>
-			</div>
+
+		</div>
 		);
 	}
 }

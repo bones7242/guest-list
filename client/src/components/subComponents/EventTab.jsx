@@ -1,6 +1,7 @@
 
 //	TAB ON LEFT SIDE BAR FOR EACH EVENT. EACH EVENT WILL HAVE ONE OF THESE.
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 const EventTab = ({headliner, date}) => {
 	return (
@@ -10,7 +11,7 @@ const EventTab = ({headliner, date}) => {
 				<div>
 					<h5 className="center-align">Headliner: {headliner}</h5>
 					<p className="center-align">Date: {date}</p>
-					<a className="btn-floating btn-large waves-effect waves-light red hoverable" className="center-align"><i className="material-icons">add</i></a>
+					<a className="btn-floating btn-large waves-effect waves-light red hoverable" className="center-align"><i className="material-icons"><Link to={'/dash/add-guest'}>add</Link></i></a>
 				</div>
 			</div>
 			
