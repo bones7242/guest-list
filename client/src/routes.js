@@ -10,12 +10,17 @@ import LoginPage from "./containers/LoginPage.jsx";
 import SignUpPage from "./containers/SignUpPage.jsx";
 import DashboardPage from "./containers/DashboardPage.jsx";
 
-import AddGuest from "./components/subComponents/AddGuestForm.jsx";
+import AddGuestForm from "./components/subComponents/AddGuestForm.jsx";
+import AddEventForm from "./components/subComponents/AddEventForm.jsx";
+import EventDetails from "./components/subComponents/Event.jsx";
 
 
 const myRoutes  = (
+    
     <Router history={hashHistory}>
+
         <Route path="/" component={App}>
+
             {/*one of the below routes will be passed to App as children*/}
             <Route path="dash" 
                 getComponent={(location, callback) => {
@@ -26,10 +31,19 @@ const myRoutes  = (
                     };
                 }
             }>
-                <Route path="add-guest" component={AddGuest} />    
+        
+                <Route path="add-guest" component={AddGuestForm} />  
+                <Route path="add-event" component={AddEventForm}/> 
+                <Route path= "event" component={EventDetails}/>
+                {/* add event*/}
+                {/* view event*/} 
+        
             </Route>
+        
             <Route path="login" component={LoginPage}/>
+        
             <Route path="signup" component={SignUpPage}/>
+        
             <Route path="logout" 
                 onEnter={(nextState, replace) => {
                     // de-authenticate the user
@@ -38,13 +52,16 @@ const myRoutes  = (
                     replace("/");
                 }
             } />
+        
         <IndexRoute 
             onEnter={(nextState, replace) => {
                 // redirect the user to the index page
                 replace("/dash");
             }}/>
         </Route>
+    
     </Router>
+
 );
 
 export default myRoutes;

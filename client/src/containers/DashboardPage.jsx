@@ -105,6 +105,7 @@ class DashboardPage extends React.Component {
             <Dashboard 
                 venueName={this.state.venueName} 
                 events={this.state.events}
+                children={this.props.children}
             />
         );
     }
