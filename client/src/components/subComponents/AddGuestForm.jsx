@@ -5,8 +5,8 @@ import { Link } from 'react-router';
 class AddGuestForm extends Component {
 	render() {
 		return (
-			<div className="add-guest-form">
-				<div className="row blue darken-1">
+			<div className="row col s12 add-event-form" style={{paddingTop:'15px'}}>
+				<div className="row grey darken-3">
 				<form className="col s12">
 					<div className="row">
 						
@@ -75,6 +75,7 @@ class AddGuestForm extends Component {
 						<div className="col s12">
 
 						<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Button</Link></a>
+						<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Cancel</Link></a>
 
 						</div>
 					
