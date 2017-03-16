@@ -92,9 +92,6 @@ class AddGuestForm extends Component {
 	}
 }
 
-AddGuestForm.propTypes = {
-	children: PropTypes.node,
-	routes: PropTypes.array
-};
+
 
 export default AddGuestForm;
