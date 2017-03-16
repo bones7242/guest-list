@@ -4,9 +4,10 @@ import { Link } from 'react-router';
 class AddEventForm extends Component {
 	render() {
 		return (
-			<div className="add-event-form">
-				<div className="row indigo darken-1">
-				<form className="col s12">
+		 
+			<div className=" row col s12 add-event-form" style={{paddingTop:'15px'}}>
+				<div className="row grey darken-3">
+				<form >
 					<div className="row">
 						
 						<div className="input-field col s6">
@@ -14,27 +15,21 @@ class AddEventForm extends Component {
 							<label htmlor="Headliner">Headliner</label>
 						</div>
 						<div className="input-field col s2">
-							<input placeholder="supportOne" id="supportOne"  type="text" className="validate"></input>
+							<input placeholder="First Support" id="supportOne"  type="text" className="validate"></input>
 							<label htmlFor="supportOne">First Support</label>
 						</div>
 						<div className="input-field col s2">
-							<input placeholder="supportTwo" id="supportTwo"  type="text" className="validate"></input>
-							<label htmlFor="supportTwo">First Support</label>
+							<input placeholder="Second Support" id="supportTwo"  type="text" className="validate"></input>
+							<label htmlFor="supportTwo">Second Support</label>
 						</div>
 						<div className="input-field col s2">
-							<input placeholder="supportThree" id="supportThree"  type="text" className="validate"></input>
-							<label htmlFor="supportThree">First Support</label>
+							<input placeholder="Third Support" id="supportThree"  type="text" className="validate"></input>
+							<label htmlFor="supportThree">Third Support</label>
 						</div>
 					
 					</div>
 
-					<div className="row">
-						<div className="input-field col s12">
-          					<input disabled value="I am not editable" id="disabled" type="text" className="validate"></input>
-          					<label htmlFor="disabled">Disabled</label>
-        				</div>
-
-					</div>
+					
 					<div className="row">
 						<div className="input-field col s3">
 							<input type="datetime-local" name="Event:"></input>
@@ -47,24 +42,25 @@ class AddEventForm extends Component {
 						
 						<div className="input-field col s3">
 							<input placeholder="Headliner Allotment" id="HeadlinerAllot"  type="text" className="validate"></input>
-							<label htmlFor="Headliner">Headliner</label>
+							<label htmlFor="Headliner">Headliner Allotment</label>
 						</div>
 						<div className="input-field col s3">
 							<input placeholder="First Support Allotment" id="supportOneAllot"  type="text" className="validate"></input>
-							<label htmlFor="supportOne">First Support</label>
+							<label htmlFor="supportOne">First Support Allotment</label>
 						</div>
 						<div className="input-field col s3">
 							<input placeholder="Second Support Allotment" id="supportTwoAllot"  type="text" className="validate"></input>
-							<label htmlFor="supportTwo">First Support</label>
+							<label htmlFor="supportTwo">Second Support Allotment</label>
 						</div>
 						<div className="input-field col s3">
 							<input placeholder="Third Support Allotment" id="supportThreeAllot"  type="text" className="validate"></input>
-							<label htmlFor="supportThree">First Support</label>
+							<label htmlFor="supportThree">Third Support Allotment</label>
 						</div>
 
 						<div className="col s12">
 
 						<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Button</Link></a>
+						<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Cancel</Link></a>
 
 						</div>
 					
@@ -76,6 +72,8 @@ class AddEventForm extends Component {
 				</form>
 			</div>
 			</div>
+		
+
 		);
 	}
 }
