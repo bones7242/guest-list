@@ -6,7 +6,7 @@ const DashboardLogo = ({ venueName }) => {
 		<div className="row grey grey darken-3" style={{ borderBottomStyle: "solid", borderColor: "white", borderWidth: "1px" }}>
 			<div className="logo-bar" >
 
-				<div className="col s12 m12 l12 valign-wrapper" style={{ padding: '0' }}>
+				<div className="col s12 m12 l12 valign-wrapper" style={{ textAlign: "center", margin: "auto" }}>
 					<h3 className="hoverable center-align">{venueName}</h3>
 				</div>
 				<div className="col s12 m12 l12 valign-wrapper">
