@@ -9,7 +9,7 @@ const DashboardLogo = ({venueName}) => {
 			
 				<div className="col s12 m12 l12 valign-wrapper" style={{padding: '0'}}>
 					<h3 className="hoverable center-align"><Link to={'/'}>{venueName}</Link></h3>
-					<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/dash/add-event'}>Button</Link></a>
+					<Link className="waves-effect waves-teal btn-flat center-align" to={'/dash/add-event'}>Button</Link>
 				</div>
 			</div>
 		</div>

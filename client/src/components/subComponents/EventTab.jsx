@@ -11,7 +11,7 @@ const EventTab = ({headliner, date}) => {
 				<div>
 					<h5 className="center-align">Headliner: {headliner}</h5>
 					<p className="center-align">Date: {date}</p>
-					<a className="btn-floating btn-large waves-effect waves-light red hoverable" className="center-align"><i className="material-icons"><Link to={'/dash/add-guest'}>add</Link></i></a>
+					<Link className="btn-floating btn-large waves-effect waves-light red hoverable center-align material-icons" to={'/dash/add-guest'}>+</Link>
 				</div>
 			</div>
 			

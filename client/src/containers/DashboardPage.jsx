@@ -13,7 +13,9 @@ class DashboardPage extends React.Component {
 
         this.state = {
             venueName: "Venue name is loading...",
-            events: []
+            events: [],
+            currentVenue: {},
+            currentEvent: {}
         };
 
         // pass the "this" context, so we will have access to class members from our event handler methods (createNewEvent, updateEventsList).
@@ -33,17 +35,17 @@ class DashboardPage extends React.Component {
             if (xhr.status === 200) {
                 // console log for testing. 
                 console.log(" createNewEvent xhr response:", xhr.response.message);
-                // update the events in state
-                this.updateEventsList("58c84145d8c6541e80b285dd")
+                // update the events list in state
+                this.updateEventsList("58c84145d8c6541e80b285dd") //note: the event is card coded currently
             }
         });
         xhr.send(JSON.stringify(newEvent));
     }
 
-    updateEventsList(venueId){
+    updateEventsList(venueId, currentEventIndex){
         // add the new event to the mongo database 
         const xhr = new XMLHttpRequest();
-        let queryUrl = "/api/event/" + venueId;  //note: the redwood bar is hard coded in.  grab from local storage.
+        let queryUrl = "/api/event/" + venueId; 
         xhr.open("GET", queryUrl);
         xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
         xhr.responseType = "json";
@@ -53,11 +55,19 @@ class DashboardPage extends React.Component {
                 console.log("get all events xhr response:", xhr.response.message);
                 // update the events in state
                 this.setState({
-                    events: xhr.response.message  //this must return all events
+                    events: xhr.response.message,  //this must return all events
                 });
+                this.selectEvent(currentEventIndex);   // this will select one of the events 
             }
         });
         xhr.send();
+    }
+
+    selectEvent(eventIndex){
+        console.log("selecting event", eventIndex, ":", this.state.events[eventIndex]);
+        this.setState({
+            currentEvent: this.state.events[eventIndex] 
+        });
     }
 
     // lifecycle methods.
@@ -80,23 +90,27 @@ class DashboardPage extends React.Component {
             }
         });
         xhr.send();
+
+        // Update the events list in state.
+        console.log("updating events list");
+        this.updateEventsList("58c84145d8c6541e80b285dd", 0) //note: the venue (redwood bar) is hard coded currently
     }
 
     componentDidMount(){
-        // testing the event creation....
-        this.createNewEvent({
-            venue: "58c84145d8c6541e80b285dd",  // the redwood bar
-            headliner: "58c833c1e229040fd8022b2f", // the cool kids 
-            supportOne: "58c83bb757196231ac0280ae",
-            supportTwo: "58c83ba257196231ac0280ad",
-            supportThree: null,
-            date: "2014-01-01",
-            time: 1600,
-            headlinerAllotment: 42,
-            supportOneAllotment: 5,
-            supportTwoAllotment: 6,
-            supportThreeAllotment: 7
-        })
+        // testing the event creation ....
+        // this.createNewEvent({
+        //     venue: "58c84145d8c6541e80b285dd",  // the redwood bar
+        //     headliner: "58c833c1e229040fd8022b2f", // the cool kids 
+        //     supportOne: "58c83bb757196231ac0280ae",
+        //     supportTwo: "58c83ba257196231ac0280ad",
+        //     supportThree: null,
+        //     date: "2014-01-01",
+        //     time: 1600,
+        //     headlinerAllotment: 42,
+        //     supportOneAllotment: 5,
+        //     supportTwoAllotment: 6,
+        //     supportThreeAllotment: 7
+        // })
     }
 
     // render the component

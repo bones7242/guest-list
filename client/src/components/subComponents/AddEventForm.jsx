@@ -11,7 +11,7 @@ class AddEventForm extends Component {
 						
 						<div className="input-field col s6">
 							<input placeholder="Headliner" id="Headliner"  type="text" className="validate"></input>
-							<label htmlor="Headliner">Headliner</label>
+							<label htmlFor="Headliner">Headliner</label>
 						</div>
 						<div className="input-field col s2">
 							<input placeholder="supportOne" id="supportOne"  type="text" className="validate"></input>
@@ -64,7 +64,7 @@ class AddEventForm extends Component {
 
 						<div className="col s12">
 
-						<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Button</Link></a>
+						<Link className="waves-effect waves-teal btn-flat center-align" to={'/'}>Button</Link>
 
 						</div>
 					
