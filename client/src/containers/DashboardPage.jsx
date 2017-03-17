@@ -71,9 +71,9 @@ class DashboardPage extends React.Component {
 
     // lifecycle methods.
     componentWillMount(){
-        //make an AJAX-request to the server to get information related to this user and store the data in this component's state 
+        //make an AJAX-request to the server to get venue information related to this user and store the data in this component's state 
         const xhr = new XMLHttpRequest();
-        const queryUrl = "/api/dashboard/" + localStorage.getItem("userId");  // the request uses the userId stored in local storage 
+        const queryUrl = "/api/venue/" + localStorage.getItem("userId");  // the request uses the userId stored in local storage 
         //console.log("query:", queryUrl);
         xhr.open("get", queryUrl);
         xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
@@ -88,13 +88,17 @@ class DashboardPage extends React.Component {
         });
         xhr.send();
 
-        // Update the events list in state.
-        console.log("updating events list");
-        this.updateEventsList("58c84145d8c6541e80b285dd", 0) //note: the venue (redwood bar) is hard coded currently
+        
+        
     }
 
     componentDidMount(){
-       // testing the event creation ....
+        // Update the events list in state.
+        console.log("updating events list");
+        this.updateEventsList("58c84145d8c6541e80b285dd", 0) //note: the venue (redwood bar) is hard coded currently
+
+    componentDidMount(){
+       // this creates test events whenever you sign in ....
         this.createNewEvent({
             venue: "58c84145d8c6541e80b285dd",  // the redwood bar
             headliner: "58c833c1e229040fd8022b2f", // the cool kids 

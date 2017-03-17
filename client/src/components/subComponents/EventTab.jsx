@@ -13,7 +13,6 @@ const EventTab = ({headliner, date, eventId, eventIndex, selectEvent}) => {
 	return (
 		<div className="row">
 			<div className="hoverable valign-wrapper deep-purple accent-3 col s12 event-tab" style={{padding: "0", width:"100%", borderBottomStyle:"solid", borderColor: "white", borderWidth: "1px", overflow: "scroll"}}>
-			
 				<div >
 					<Link onClick={viewEventClicked} to={'/dash/event/'+ eventId}><h5 className="center-align truncate">Headliner: {headliner}</h5></Link>
 					<p className="center-align">Date: {date}</p>
@@ -26,7 +25,7 @@ const EventTab = ({headliner, date, eventId, eventIndex, selectEvent}) => {
 }
 
 EventTab.propTypes = {
-    headliner: PropTypes.string.isRequired,
+    headliner: PropTypes.object.isRequired,
     date: PropTypes.string.isRequired,
 	eventId: PropTypes.string.isRequired,
 	selectEvent: PropTypes.func.isRequired

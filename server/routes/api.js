@@ -10,15 +10,15 @@ const router = new express.Router();
 api routes that require authentication go below
 */
 
-// general dashboard routes
-router.get("/dashboard/:id", (req, res) => {
-    console.log("received api/dashboard/id GET request for:", req.params.id);
-    Venue.findOne({owner: req.params.id}, function(err, doc){
+// route to get venue information for this user
+router.get("/venue/:userId", (req, res) => {
+    console.log("received api/dashboard/id GET request for:", req.params.userId);
+    Venue.findOne({owner: req.params.userId}, function(err, venueInfo){
         if (err) {
             res.send(err);
         } else {
             res.status(200).json({
-                venue: doc
+                venue: venueInfo
             });
         };
     })
@@ -50,14 +50,18 @@ router.post("/event", (req, res) => {
     
 }); 
 
-router.get("/event/:id", (req, res) => {
-    console.log("received api/event GET request:", req.params.id);
-    // create a new artist record, via the Artist schema, from the request data
+router.get("/event/:venueId", (req, res) => {
+    console.log("received api/event GET request:", req.params.venueId);
+    // finding all events where the venue matches the venueId
     Event.find({
-            venue: req.params.id
+            venue: req.params.venueId
         }).
         limit(10).
         sort({ date: -1 }).
+        populate( 'headliner' ).
+        populate('supportOne').
+        populate('supportTwo').
+        populate('supportThree').
         exec((err, docs) => {
             // handle errors with the save.
             if (err) { 
