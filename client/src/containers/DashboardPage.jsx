@@ -2,11 +2,11 @@
 This is the dashboard page.  After a user logs in successfully, this page will be displayed instead of the home page.
 */
 
-import React from "react";
+import React, {Component} from "react";
 import Auth from "../modules/Auth";
 import Dashboard from "../components/Dashboard.jsx";
 
-class DashboardPage extends React.Component {
+class DashboardPage extends Component {
     // class constructor
     constructor(props) {
         super(props);
