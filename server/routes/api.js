@@ -32,13 +32,15 @@ router.post("/event", (req, res) => {
     const newEvent = new Event(req.body);
     // save the new artist record 
     newEvent.save((err, doc) => {
+        console.log("err:", err)
+        console.log("doc:", doc)
         // handle errors with the save.
         if (err) { 
             //check to see if it is a duplicate code
             if (err.code === 11000){
-                res.json({message: "that Event is already in the database"})
+                res.status(500).json({message: "that Event is already in the database"})
             } else {
-                res.json({message: err})
+                res.status(500).json({message: err})
             };
         // if no errors.
         } else {
@@ -58,10 +60,6 @@ router.get("/event/:venueId", (req, res) => {
         }).
         limit(10).
         sort({ date: -1 }).
-        populate('headliner').
-        populate('supportOne').
-        populate('supportTwo').
-        populate('supportThree').
         exec((err, docs) => {
             // handle errors with the save.
             if (err) { 

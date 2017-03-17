@@ -32,11 +32,13 @@ const myRoutes  = (
                 }
             }>
         
+                {/* add a new guest */}
                 <Route path="add-guest" component={AddGuestForm} />  
-                <Route path="add-event" component={AddEventForm}/> 
-                <Route path= "event/:eventId" component={EventDetails}/>
                 {/* add event*/}
+                <Route path="add-event" component={AddEventForm} /> 
                 {/* view event*/} 
+                <Route path= "event/:eventId" component={EventDetails} />
+                
         
             </Route>
         

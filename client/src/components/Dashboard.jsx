@@ -52,6 +52,7 @@ const Dashboard = ({venueInfo, events, currentEvent, children, selectEvent, crea
                             children={children}
                             currentEvent={currentEvent}
                             createNewEvent={createNewEvent}
+                            venueInfo={venueInfo}
                         />
                     </div>
 

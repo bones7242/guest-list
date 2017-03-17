@@ -7,14 +7,14 @@ const DashboardHeader = ({currentEvent}) => {
         <div className="row grey darken-3"> 
           
             <div className="col s12 m3 l3">
-              { currentEvent.headliner && <h2>{currentEvent.headliner.name}</h2> }
+              { currentEvent.headliner && <h2>{currentEvent.headliner}</h2> }
             </div>
-            
+
             <div className="col s3 m3 l3">
               <p className="support">With:</p>
-              { currentEvent.supportOne && <p className="support">{currentEvent.supportOne.name} </p> }
-              { currentEvent.supportTwo && <p className="support">{currentEvent.supportTwo.name}</p> }
-              { currentEvent.supportThree && <p className="support">{currentEvent.supportThree.name}</p> }
+              { currentEvent.supportOne && <p className="support">{currentEvent.supportOne} </p> }
+              { currentEvent.supportTwo && <p className="support">{currentEvent.supportTwo}</p> }
+              { currentEvent.supportThree && <p className="support">{currentEvent.supportThree}</p> }
             </div>
 
             <div className="col s3 m3 l3">
