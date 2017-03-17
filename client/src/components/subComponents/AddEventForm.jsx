@@ -1,12 +1,11 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
 
-class AddEventForm extends Component {
-	render() {
-		return (
-		 
-			<div className=" row col s12 add-event-form" style={{paddingTop:'25px', borderTopStyle:"solid", borderColor: "black", borderWidth: "3px"}}>
-				<div className="row grey darken-3">
+const AddEventForm = (createNewEvent) => {
+	return (
+		<div className=" row col s12 add-event-form" style={{paddingTop:'25px', borderTopStyle:"solid", borderColor: "black", borderWidth: "3px"}}>
+			<div className="row grey darken-3">
+
 				<form >
 					
 					<div className="row" style={{paddingTop:"10px"}}>
@@ -22,8 +21,8 @@ class AddEventForm extends Component {
 						
 						<div className="input-field col s4">
 							<input type="datetime-local" name="datetime-local"></input>
-          					
-        				</div>
+							
+						</div>
 					
 					</div>
 
@@ -31,7 +30,7 @@ class AddEventForm extends Component {
 					<div className="row" style={{paddingTop: "20px"}}>
 						
 
-        				<div className="input-field col s4">
+						<div className="input-field col s4">
 							<input placeholder="First Support" id="supportOne"  type="text" className="validate"></input>
 							<label htmlFor="supportOne">First Support</label>
 						</div>
@@ -64,33 +63,26 @@ class AddEventForm extends Component {
 							<input placeholder="Third Support Allotment" id="supportThreeAllot"  type="text" className="validate"></input>
 							<label htmlFor="supportThree">Third Support Allotment</label>
 						</div>
-
-						
-					
 					</div>
 
 					<div className="row valign-wrapper" >
+						<div className="col s6 right-align" >
 
-							<div className="col s6 right-align" >
+							<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Cancel</Link></a>
+						</div>
 
-								<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Cancel</Link></a>
-							</div>
+						<div className="col s6 left-align" >
 
-							<div className="col s6 left-align" >
-
-								<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Submit</Link></a>
-						
-							</div>
+							<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Submit</Link></a>
+					
+						</div>
 					</div>
-
-
-
-				
+					
 				</form>
-			</div>
-			</div>
-		
 
+			</div>
+		</div>
+		
 		);
 	}
 }

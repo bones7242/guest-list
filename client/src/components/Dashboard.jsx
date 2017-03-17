@@ -11,7 +11,7 @@ import Footer from "./subComponents/Footer.jsx";
 import DashboardLogo from "./subComponents/DashboardLogo.jsx";
 import DashboardHeader from "./subComponents/DashboardHeader.jsx";
 
-const Dashboard = ({venueInfo, events, currentEvent, children, selectEvent}) => {
+const Dashboard = ({venueInfo, events, currentEvent, children, selectEvent, createNewEvent}) => {
     //console.log("current event", currentEvent);
     return (
         <div className="row" style={{backgroundColor:"#424242"}}>
@@ -51,6 +51,7 @@ const Dashboard = ({venueInfo, events, currentEvent, children, selectEvent}) => 
                         <Content 
                             children={children}
                             currentEvent={currentEvent}
+                            createNewEvent={createNewEvent}
                         />
                     </div>
 

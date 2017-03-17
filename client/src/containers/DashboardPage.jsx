@@ -125,6 +125,7 @@ class DashboardPage extends React.Component {
                 currentEvent={this.state.currentEvent}
                 children={this.props.children}
                 selectEvent={this.selectEvent}  //pass the function that updates the selected event 
+                createNewEvent={this.state.createNewEvent}  //pass the function that will create a new event 
             />
         );
     }
