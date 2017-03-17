@@ -13,37 +13,43 @@ import DashboardHeader from "./subComponents/DashboardHeader.jsx";
 
 const Dashboard = ({venueInfo, events, currentEvent, children, selectEvent}) => {
     return (
-        <div>
-            <div className="row">
-                {/*this is a title card that shows what the page is about*/}
-               
-                {/*this is our nav bar subcomponent, which will show the logo and all the upcoming events*/}
-                <div className="col s3 m3 l3" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-                    <DashboardLogo 
-                        venueInfo={venueInfo}
-                    />
-                </div>
-
-                <div className="col s9 m9 l9" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-                    <DashboardHeader />
-                </div>
-            </div>
-            <div className="row">
-
+        <div className="row" style={{backgroundColor:"#424242"}}>
+            <div className="col s3 m3 l3" style={{padding:"0px"}}>
                 
+                <div className="row" style={{padding:"0px"}}>
+                    <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+                        <DashboardLogo 
+                            venueInfo={venueInfo}
+                        />
+                    </div>
 
-                <div className="col s3 m3 l3" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-                    <NavBar 
-                        events={events}  // pass the array of all the events to the nav bar 
-                        selectEvent={selectEvent}  //pass the function that updates the selected event 
-                    />
+                    <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+                        {/*this is our nav bar subcomponent, which will show the logo and all the upcoming events*/}
+                        <NavBar 
+                            events={events}  // pass the array of all the events to the nav bar 
+                            selectEvent={selectEvent}  //pass the function that updates the selected event 
+                        />
+                    </div>
+
                 </div>
 
-                {/*this is the content subcomponent, which will show the guests on the guestlist for the selected event  */}
-                <div className="col s9 m9 l9" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-                    <Content 
-                        children={children}
-                    />
+            </div>
+
+            <div className="col s9 m9 l9" style={{padding:"0px"}}>
+
+                <div className="row" style={{padding:"0px"}}>
+
+                    <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+                        <DashboardHeader />
+                    </div>
+
+                    {/*this is the content subcomponent, which will show the guests on the guestlist for the selected event  */}
+                    <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+                        <Content 
+                            children={children}
+                        />
+                    </div>
+
                 </div>
 
             </div>

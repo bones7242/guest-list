@@ -6,11 +6,11 @@ const EventInfo = () => {
 	return (
 		<div className="event-info" className="right">
 			<div className="row">
-				<div className="col s12 m8 l9" className="valign-wrapper" className="section">
-					<h1>Headliner</h1>
-					<h3>Support</h3>
-					<h3>Support</h3>
-					<h3>Support</h3>
+				<div className="col s12 m12 l12" className="valign-wrapper" className="section">
+					<h4>Headliner</h4>
+					<h4>Support</h4>
+					<h4>Support</h4>
+					<h4>Support</h4>
 
 					<div className="divider"></div>
 

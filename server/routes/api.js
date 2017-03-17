@@ -15,7 +15,7 @@ router.get("/dashboard/:id", (req, res) => {
     console.log("received api/dashboard/id GET request for:", req.params.id);
     Venue.findOne({owner: req.params.id}, function(err, doc){
         if (err) {
-            res.send("error:", err);
+            res.send(err);
         } else {
             res.status(200).json({
                 venue: doc
