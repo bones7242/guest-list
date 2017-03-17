@@ -2,10 +2,10 @@
 New user signup (registration) page.  
 The signup form is a component that will be rendered insidethis page.
 */
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import SignUpForm from "../components/SignUpForm.jsx";
 
-class SignUpPage extends React.Component {
+class SignUpPage extends Component {
     // class constructor
     constructor(props, context) {
         // ??

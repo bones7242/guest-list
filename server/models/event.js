@@ -9,22 +9,10 @@ const EventSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Venue"
     },
-    headliner: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Artist"
-    },
-    supportOne: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Artist"
-    },
-    supportTwo: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Artist"
-    },
-    supportThree: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Artist"
-    },
+    headliner: String,
+    supportOne: String,
+    supportTwo: String,
+    supportThree: String,
     date: Date,
     time: Number,
     headlinerAllotment: Number,
@@ -32,7 +20,12 @@ const EventSchema = new mongoose.Schema({
     supportTwoAllotment: Number,
     supportThreeAllotment: Number,
     totalGuestOnList: Number,
-    guestIDArray: String,
+    guests: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Guest"
+        },
+    ],
     
 });
 
