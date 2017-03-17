@@ -19,8 +19,8 @@ class AddGuestForm extends Component {
 							<label htmlFor="Affiliation">Affiliation</label>
 						</div>
 						<div className="input-field col s2">
-							<input id="email" type="email" class="validate"></input>
-          					<label htmlForr="email">Email</label>
+							<input id="email" type="email" className="validate"></input>
+          					<label htmlFor="email">Email</label>
 						</div>
 						<div className="input-field col s2">
 							<input placeholder="PhoneNumber" id="PhoneNumber"  type="text" className="validate"></input>
@@ -30,7 +30,7 @@ class AddGuestForm extends Component {
 					</div>
 
 					
-					<div class="input-field col s12">
+					<div className="input-field col s12">
 					    <select>
 					      <option value="" disabled selected>Plus One?</option>
 					      <option value="1">Option 1</option>
@@ -73,7 +73,7 @@ class AddGuestForm extends Component {
 						</div>
 
 						<div className="col s12">
-
+							
 						<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Button</Link></a>
 						<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Cancel</Link></a>
 

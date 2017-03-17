@@ -34,7 +34,7 @@ const myRoutes  = (
         
                 <Route path="add-guest" component={AddGuestForm} />  
                 <Route path="add-event" component={AddEventForm}/> 
-                <Route path= "event" component={EventDetails}/>
+                <Route path= "event/:eventId" component={EventDetails}/>
                 {/* add event*/}
                 {/* view event*/} 
         

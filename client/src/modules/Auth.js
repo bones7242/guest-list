@@ -11,9 +11,10 @@ class Auth {
         return localStorage.getItem("token") !== null;
     }
 
-    // deauthenticate a user.  remove a token from Local Storage.
+    // Deauthenticate a user by removing a token from Local Storage.
     static deauthenticateUser() {
-        localStorage.removeItem("token");
+        localStorage.removeItem("token");  // Remove the authority token. 
+        localStorage.removeItem("userId"); // Remove the userId.
     }
 
     // get a token value

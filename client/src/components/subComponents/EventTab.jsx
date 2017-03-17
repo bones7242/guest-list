@@ -3,15 +3,21 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-const EventTab = ({headliner, date}) => {
+const EventTab = ({headliner, date, eventId, eventIndex, selectEvent}) => {
+	function viewEventClicked(){
+		console.log("i've been clicked");
+		//selectEvent(eventIndex);
+
+	}
+
 	return (
 		<div className="row">
 			<div className="hoverable deep-purple accent-3 col s12 event-tab" style={{padding: "0", width:"100%", borderBottomStyle:"solid", borderColor: "white", borderWidth: "1px"}}>
 			
 				<div>
-					<h5 className="center-align">Headliner: {headliner}</h5>
+					<Link onClick={viewEventClicked} to={'/dash/event/'+ eventId}><h5 className="center-align">Headliner: {headliner}</h5></Link>
 					<p className="center-align">Date: {date}</p>
-					<a className="btn-floating btn-large waves-effect waves-light red hoverable" className="center-align"><i className="material-icons"><Link to={'/dash/add-guest'}>add</Link></i></a>
+					<Link className="btn-floating btn-large waves-effect waves-light red hoverable center-align material-icons" to={'/dash/add-guest'}>add guest</Link>
 				</div>
 			</div>
 			
@@ -21,7 +27,9 @@ const EventTab = ({headliner, date}) => {
 
 EventTab.propTypes = {
     headliner: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired
+    date: PropTypes.string.isRequired,
+	eventId: PropTypes.string.isRequired,
+	selectEvent: PropTypes.func.isRequired
 };
 
 export default EventTab;
