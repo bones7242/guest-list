@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 
 
-const DashboardHeader = ({currentEvent}) => {
+const DashboardHeader = (currentEvent) => {
     return (
         <div className="row grey darken-3"> 
           

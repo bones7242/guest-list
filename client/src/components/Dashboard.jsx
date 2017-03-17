@@ -40,13 +40,16 @@ const Dashboard = ({venueInfo, events, currentEvent, children, selectEvent}) => 
                 <div className="row" style={{padding:"0px"}}>
 
                     <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-                        <DashboardHeader />
+                        <DashboardHeader 
+                            currentEvent={currentEvent}
+                        />
                     </div>
 
                     {/*this is the content subcomponent, which will show the guests on the guestlist for the selected event  */}
                     <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
                         <Content 
                             children={children}
+                            currentEvent={currentEvent}
                         />
                     </div>
 
@@ -60,7 +63,7 @@ const Dashboard = ({venueInfo, events, currentEvent, children, selectEvent}) => 
 Dashboard.propTypes = {
     venueInfo: PropTypes.object.isRequired,
     events: PropTypes.array.isRequired,
-    currentEvent: PropTypes.object.isRequired,
+    //currentEvent: PropTypes.object.isRequired,
     //children: PropTypes.object.isRequired,
     selectEvent: PropTypes.func.isRequired
 };

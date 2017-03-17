@@ -35,7 +35,7 @@ class DashboardPage extends React.Component {
                 // console log for testing. 
                 console.log(" createNewEvent xhr response:", xhr.response.message);
                 // update the events list in state
-                this.updateEventsList("58c84145d8c6541e80b285dd") //note: the event is card coded currently
+                this.updateEventsList("58c84145d8c6541e80b285dd", 0) //note: the event is card coded currently
             }
         });
         xhr.send(JSON.stringify(newEvent));
@@ -87,15 +87,14 @@ class DashboardPage extends React.Component {
             }
         });
         xhr.send();
-
-        
         
     }
 
     componentDidMount(){
         // Update the events list in state.
         console.log("updating events list");
-        this.updateEventsList("58c84145d8c6541e80b285dd", 0) //note: the venue (redwood bar) is hard coded currently
+        this.updateEventsList("58c84145d8c6541e80b285dd", 0); //note: the venue (redwood bar) is hard coded currently
+    }
 
     componentDidMount(){
        // this creates test events whenever you sign in ....

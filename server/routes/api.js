@@ -58,7 +58,7 @@ router.get("/event/:venueId", (req, res) => {
         }).
         limit(10).
         sort({ date: -1 }).
-        populate( 'headliner' ).
+        populate('headliner').
         populate('supportOne').
         populate('supportTwo').
         populate('supportThree').
