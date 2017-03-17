@@ -12,6 +12,7 @@ import DashboardLogo from "./subComponents/DashboardLogo.jsx";
 import DashboardHeader from "./subComponents/DashboardHeader.jsx";
 
 const Dashboard = ({venueInfo, events, currentEvent, children, selectEvent}) => {
+    //console.log("current event", currentEvent);
     return (
         <div className="row" style={{backgroundColor:"#424242"}}>
             <div className="col s3 m3 l3" style={{padding:"0px"}}>
@@ -63,7 +64,7 @@ const Dashboard = ({venueInfo, events, currentEvent, children, selectEvent}) => 
 Dashboard.propTypes = {
     venueInfo: PropTypes.object.isRequired,
     events: PropTypes.array.isRequired,
-    //currentEvent: PropTypes.object.isRequired,
+    currentEvent: PropTypes.object.isRequired,
     //children: PropTypes.object.isRequired,
     selectEvent: PropTypes.func.isRequired
 };
