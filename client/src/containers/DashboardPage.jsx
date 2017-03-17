@@ -14,14 +14,7 @@ class DashboardPage extends React.Component {
         this.state = {
             venueInfo: {},
             events: [],
-            currentEvent: {
-                headliner: {
-                    name: "loading"
-                },
-                supportOne: {
-                    name: "loading supportOne"
-                }
-            }
+            currentEvent: {}
         };
 
         // pass the "this" context, so we will have access to class members from our event handler methods (createNewEvent, updateEventsList).

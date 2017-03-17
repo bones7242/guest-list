@@ -4,17 +4,15 @@ import React, { PropTypes, Component } from 'react';
 //import './Content.css';
 import Attendee from './Attendee.jsx';
 
-const Content = (children) => {
+const Content = (children, currentEvent) => {
 	return (
 		<div className="row" style={{paddingRight:"0px", marginRight:"0px"}}>
-			<div className="content grey darken-3 " >
 			
-				<div className="col s12 m12 l12 valign-wrapper" style={{padding: '0'}} >
-				
+			<div className="col s12 m12 l12 content grey darken-3 valign-wrapper" style={{padding: '0'}} >
+			
+				{/*the content children (add event, add guest, event details) will be filled in here*/}
 				{children.children}
-				{/*<Attendee />*/}
 
-				</div>
 			</div>
 		</div>
 	);

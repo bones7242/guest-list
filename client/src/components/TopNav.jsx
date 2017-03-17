@@ -6,7 +6,9 @@ const TopNav = () => {
     return (
         <div>
             <div className="top-bar deep-purple" style={{marginBottom:"0"}}>
-
+                <div className="top-bar-left">
+                    <Link to="/">theGuestList</Link>
+                </div>
                 {/*conditional statement to decide which links to render*/}
                 {Auth.isUserAuthenticated() ? (
                     <div className="top-bar-right">

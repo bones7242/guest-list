@@ -14,40 +14,38 @@ import DashboardHeader from "./subComponents/DashboardHeader.jsx";
 const Dashboard = ({venueInfo, events, currentEvent, children, selectEvent}) => {
     console.log(currentEvent, "this is being created");
     return (
-        <div>
-            <div className="row">
-                {/*this is a title card that shows what the page is about*/}
-               
-                {/*this is our nav bar subcomponent, which will show the logo and all the upcoming events*/}
-                <div className="col s3 m3 l3" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+        <div className="row">
+
+            <div className="col s3 m3 l3">
+
+                <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
                     <DashboardLogo 
                         venueInfo={venueInfo}
                     />
                 </div>
 
-                <div className="col s9 m9 l9" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-                    
-                    <DashboardHeader 
-                    artist ={currentEvent.headliner}
-                    support ={currentEvent.supportOne}
-                    />
-                </div>
-            </div>
-            <div className="row">
-
-                
-
-                <div className="col s3 m3 l3" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+                <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
                     <NavBar 
                         events={events}  // pass the array of all the events to the nav bar 
                         selectEvent={selectEvent}  //pass the function that updates the selected event 
                     />
                 </div>
 
-                {/*this is the content subcomponent, which will show the guests on the guestlist for the selected event  */}
-                <div className="col s9 m9 l9" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+            </div>
+
+            <div className="col s9 m9 l9">
+
+                {/*this is the content subcomponent, which will show add event, add guest, or event details */}
+                <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+                    <DashboardHeader 
+                        currentEvent ={currentEvent}
+                    />
+                </div>
+
+                <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
                     <Content 
                         children={children}
+                        currentEvent ={currentEvent}
                     />
                 </div>
 
