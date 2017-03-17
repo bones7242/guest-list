@@ -20,9 +20,5 @@ const Content = (children) => {
 	);
 }
 
-Content.propTypes = {
-	children: PropTypes.node.isRequired,
-	routes: PropTypes.array
-};
 
 export default Content;
