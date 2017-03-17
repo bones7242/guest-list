@@ -3,13 +3,15 @@ import Autosuggest from 'react-autosuggest';
 
 const guestName = [
   {
-    name: 'C',
-    year: 1972
+    name: 'Eugene Park',
   },
   {
-    name: 'Elm',
-    year: 2012
+    name: 'Louis Kane',
   },
+  {
+    name: 'Bill Bittner',
+  },
+
 ];
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
@@ -18,9 +20,9 @@ const getSuggestions = value => {
   const inputLength = inputValue.length;
 
   return inputLength === 0 ? [] : guestName
-.filter(lang =>
-    lang.name.toLowerCase().slice(0, inputLength) === inputValue
-  );
+    .filter(lang =>
+      lang.name.toLowerCase().slice(0, inputLength) === inputValue
+    );
 };
 
 // When suggestion is clicked, Autosuggest needs to populate the input element
