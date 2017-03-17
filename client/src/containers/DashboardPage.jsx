@@ -12,9 +12,8 @@ class DashboardPage extends React.Component {
         super(props);
 
         this.state = {
-            venueName: "Venue name is loading...",
+            venueInfo: {},
             events: [],
-            currentVenue: {},
             currentEvent: {}
         };
 
@@ -72,10 +71,9 @@ class DashboardPage extends React.Component {
 
     // lifecycle methods.
     componentWillMount(){
-        //make an AJAX-request to the server to get information related to this user
-        //store the data in state 
+        //make an AJAX-request to the server to get information related to this user and store the data in this component's state 
         const xhr = new XMLHttpRequest();
-        const queryUrl = "/api/dashboard/" + localStorage.getItem("guestListUserId");
+        const queryUrl = "/api/dashboard/" + localStorage.getItem("userId");  // the request uses the userId stored in local storage 
         //console.log("query:", queryUrl);
         xhr.open("get", queryUrl);
         xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
@@ -84,8 +82,7 @@ class DashboardPage extends React.Component {
             if (xhr.status === 200) {
                 console.log("get user info xhr response:", xhr.response.venue);
                 this.setState({
-                    venueName: xhr.response.venue.name
-                    //events: xhr.response.venue.events
+                    venueInfo: xhr.response.venue
                 });
             }
         });
@@ -117,7 +114,7 @@ class DashboardPage extends React.Component {
     render() {
         return (
             <Dashboard 
-                venueName={this.state.venueName} 
+                venueInfo={this.state.venueInfo} 
                 events={this.state.events}
                 currentEvent={this.state.currentEvent}
                 children={this.props.children}
