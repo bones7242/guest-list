@@ -15,7 +15,7 @@ const EventTab = ({headliner, date, eventId, eventIndex, selectEvent}) => {
 			<div className="hoverable indigo accent-4 col s12 event-tab" style={{padding: "0", width:"100%", borderBottomStyle:"solid", borderColor: "white", borderWidth: "1px"}}>
 			
 				<div>
-					<Link onClick={viewEventClicked} to={'/dash/event/'+ eventId}><h5 className="center-align">Headliner: {headliner}</h5></Link>
+					<Link onClick={viewEventClicked} to={'/dash/event/'+ eventId}><h5 className="center-align">Headliner: {headliner.name}</h5></Link>
 					<p className="center-align">Date: {date}</p>
 					<Link className="btn-floating btn-large waves-effect waves-light red hoverable center-align material-icons" to={'/dash/add-guest'}>add guest</Link>
 				</div>
@@ -26,7 +26,7 @@ const EventTab = ({headliner, date, eventId, eventIndex, selectEvent}) => {
 }
 
 EventTab.propTypes = {
-    headliner: PropTypes.string.isRequired,
+    headliner: PropTypes.object.isRequired,
     date: PropTypes.string.isRequired,
 	eventId: PropTypes.string.isRequired,
 	selectEvent: PropTypes.func.isRequired

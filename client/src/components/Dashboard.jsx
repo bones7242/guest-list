@@ -12,6 +12,7 @@ import DashboardLogo from "./subComponents/DashboardLogo.jsx";
 import DashboardHeader from "./subComponents/DashboardHeader.jsx";
 
 const Dashboard = ({venueInfo, events, currentEvent, children, selectEvent}) => {
+    console.log(currentEvent, "this is being created");
     return (
         <div>
             <div className="row">
@@ -25,7 +26,11 @@ const Dashboard = ({venueInfo, events, currentEvent, children, selectEvent}) => 
                 </div>
 
                 <div className="col s9 m9 l9" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-                    <DashboardHeader />
+                    
+                    <DashboardHeader 
+                    artist ={currentEvent.headliner}
+                    support ={currentEvent.supportOne}
+                    />
                 </div>
             </div>
             <div className="row">

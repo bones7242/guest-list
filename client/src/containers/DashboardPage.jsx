@@ -14,7 +14,14 @@ class DashboardPage extends React.Component {
         this.state = {
             venueInfo: {},
             events: [],
-            currentEvent: {}
+            currentEvent: {
+                headliner: {
+                    name: "loading"
+                },
+                supportOne: {
+                    name: "loading supportOne"
+                }
+            }
         };
 
         // pass the "this" context, so we will have access to class members from our event handler methods (createNewEvent, updateEventsList).
@@ -71,9 +78,9 @@ class DashboardPage extends React.Component {
 
     // lifecycle methods.
     componentWillMount(){
-        //make an AJAX-request to the server to get information related to this user and store the data in this component's state 
+        //make an AJAX-request to the server to get venue information related to this user and store the data in this component's state 
         const xhr = new XMLHttpRequest();
-        const queryUrl = "/api/dashboard/" + localStorage.getItem("userId");  // the request uses the userId stored in local storage 
+        const queryUrl = "/api/venue/" + localStorage.getItem("userId");  // the request uses the userId stored in local storage 
         //console.log("query:", queryUrl);
         xhr.open("get", queryUrl);
         xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
@@ -88,12 +95,15 @@ class DashboardPage extends React.Component {
         });
         xhr.send();
 
-        // Update the events list in state.
-        console.log("updating events list");
-        this.updateEventsList("58c84145d8c6541e80b285dd", 0) //note: the venue (redwood bar) is hard coded currently
+        
+        
     }
 
     componentDidMount(){
+        // Update the events list in state.
+        console.log("updating events list");
+        this.updateEventsList("58c84145d8c6541e80b285dd", 0) //note: the venue (redwood bar) is hard coded currently
+
         // testing the event creation ....
         // this.createNewEvent({
         //     venue: "58c84145d8c6541e80b285dd",  // the redwood bar
