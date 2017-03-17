@@ -4,12 +4,12 @@ This login page will display the login form component.
 */
 
 
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import Auth from "../modules/Auth";
 import LoginForm from '../components/LoginForm.jsx';
 
 
-class LoginPage extends React.Component {
+class LoginPage extends Component {
 
     // Class constructor.
     constructor(props, context) {

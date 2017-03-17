@@ -1,29 +1,36 @@
 import React, { PropTypes, Component } from 'react';
-import SearchBar from './SearchBar.jsx';
 
+const DashboardHeader = ({ currentEvent }) => {
+  console.log("current event", currentEvent)
+  return (
+    <div className="row grey darken-3">
+      {/*only display the rest of the info if CurrentEvent is not null*/}
+      {currentEvent &&
+        <div>
+          <div className="col s12 m3 l3">
+            {currentEvent.headliner && <h2>{currentEvent.headliner}</h2>}
+          </div>
 
-class DashboardHeader extends Component {
-	constructor() {
-		super();
-	}
-	render() {
-		return (
-			<div className="row grey darken-3">
-				<div className="col s12 m8 l9 valign-wrapper">
-					<h2>Artist Name</h2>
-					<h3>Supprt Name(s)</h3>
-					<p>Date</p>
-					<p>Total People on Guest List: XX</p>
-					<p>Total Guests Checked In: XX</p>
-				</div>
-				<div>
-					<SearchBar />
-				</div>
-			</div>
-			
-		);
-	}
+          <div className="col s3 m3 l3">
+            <p className="support">With:</p>
+            {currentEvent.supportOne && <p className="support">{currentEvent.supportOne} </p>}
+            {currentEvent.supportTwo && <p className="support">{currentEvent.supportTwo}</p>}
+            {currentEvent.supportThree && <p className="support">{currentEvent.supportThree}</p>}
+          </div>
+
+          <div className="col s3 m3 l3">
+            <p>Date</p>
+            <p>Time</p>
+          </div>
+
+          <div className="col s3 m3 l3">
+            <p>Total People on Guest List: XX</p>
+            <p>Total Guests Checked In: XX</p>
+          </div>
+        </div>
+      }
+    </div>
+  );
 }
-
 
 export default DashboardHeader;
