@@ -11,7 +11,10 @@ const TopNav = () => {
                 {Auth.isUserAuthenticated() ? (
                     <div className="top-bar-right">
                         <Link to="/logout">Log out</Link>
+
                     </div>
+                    
+
                 ) : (
                     <div className="top-bar-right">
                         <Link to="/login">Log in</Link>

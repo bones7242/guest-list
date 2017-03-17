@@ -94,20 +94,20 @@ class DashboardPage extends React.Component {
     }
 
     componentDidMount(){
-        // testing the event creation ....
-        // this.createNewEvent({
-        //     venue: "58c84145d8c6541e80b285dd",  // the redwood bar
-        //     headliner: "58c833c1e229040fd8022b2f", // the cool kids 
-        //     supportOne: "58c83bb757196231ac0280ae",
-        //     supportTwo: "58c83ba257196231ac0280ad",
-        //     supportThree: null,
-        //     date: "2014-01-01",
-        //     time: 1600,
-        //     headlinerAllotment: 42,
-        //     supportOneAllotment: 5,
-        //     supportTwoAllotment: 6,
-        //     supportThreeAllotment: 7
-        // })
+       // testing the event creation ....
+        this.createNewEvent({
+            venue: "58c84145d8c6541e80b285dd",  // the redwood bar
+            headliner: "58c833c1e229040fd8022b2f", // the cool kids 
+            supportOne: "58c83bb757196231ac0280ae",
+            supportTwo: "58c83ba257196231ac0280ad",
+            supportThree: null,
+            date: "2014-01-01",
+            time: 1600,
+            headlinerAllotment: 42,
+            supportOneAllotment: 5,
+            supportTwoAllotment: 6,
+            supportThreeAllotment: 7
+        })
     }
 
     // render the component

@@ -5,10 +5,16 @@ import { Link } from 'react-router';
 class AddGuestForm extends Component {
 	render() {
 		return (
-			<div className="row col s12 add-event-form" style={{paddingTop:'15px'}}>
+			<div className="row col s12 add-event-form" style={{paddingTop:'15px', borderTopStyle:"solid", borderColor: "black", borderWidth: "3px"}}>
 				<div className="row grey darken-3">
 				<form className="col s12">
-					<div className="row">
+					<div className="row" style={{paddingTop:"10px"}}>
+							<h3 className="center-align">Add A New Fan To Your List</h3>
+					</div>
+
+
+
+					<div className="row" style={{paddingTop: "20px"}}>
 						
 						<div className="input-field col s6">
 							<input placeholder="Name" id="AttendeeName"  type="text" className="validate"></input>
@@ -45,7 +51,7 @@ class AddGuestForm extends Component {
 					    <label>Materialize Select</label>
 					 </div>
 
-					<div className="row">
+					<div className="row" style={{paddingTop: "20px"}}>
 						
 						<div className="input-field col s3">
 							<p>
@@ -71,15 +77,21 @@ class AddGuestForm extends Component {
       							<label htmlFor="test1">Photo</label>
     						</p>
 						</div>
-
-						<div className="col s12">
-							
-						<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Button</Link></a>
-						<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Cancel</Link></a>
-
-						</div>
 					
-					
+					</div>
+
+					<div className="row valign-wrapper" style={{paddingTop: "25px"}} >
+
+							<div className="col s6 right-align" >
+
+								<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Cancel</Link></a>
+							</div>
+
+							<div className="col s6 left-align" >
+
+								<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Submit</Link></a>
+						
+							</div>
 					</div>
 
 

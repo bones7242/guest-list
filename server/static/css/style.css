@@ -1,52 +1,16 @@
-@-webkit-keyframes color_change {
-  0% { background-color: #252627; }
-25% { background-color: #6200ea; }
-50% { background-color: #2962ff; }
-75% { background-color: #dd2c00; }
-100% { background-color: #00c853; }
-}
-@-moz-keyframes color_change {
-  0% { background-color: #252627; }
-25% { background-color: #6200ea; }
-50% { background-color: #2962ff; }
-75% { background-color: #dd2c00; }
-100% { background-color: #00c853; }
-}
-@-ms-keyframes color_change {
-  0% { background-color: #252627; }
-25% { background-color: #6200ea; }
-50% { background-color: #2962ff; }
-75% { background-color: #dd2c00; }
-100% { background-color: #00c853; }
-}
-@-o-keyframes color_change {
-  0% { background-color: #252627; }
-25% { background-color: #6200ea; }
-50% { background-color: #2962ff; }
-75% { background-color: #dd2c00; }
-100% { background-color: #00c853; }
-}
-@keyframes color_change {
-  0% { background-color: #252627; }
-25% { background-color: #6200ea; }
-50% { background-color: #2962ff; }
-75% { background-color: #dd2c00; }
-100% { background-color: #00c853; }
-}
+
 
 
 body {
   margin: 0;
   font-size: 16px;
   color: #666;
-  animation-name: color_change;
-  animation-duration: 15s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  background: grey;
+
 }
 
 a {
-  color: #d32f2f;
+  color: #e1f5fe;
   font-weight: bold;
   text-decoration: none;
   transition: color 0.4s;
@@ -55,6 +19,7 @@ a {
 a:hover {
   color: #1976d2;
 }
+
 
 .text-center {
   text-align: center;
