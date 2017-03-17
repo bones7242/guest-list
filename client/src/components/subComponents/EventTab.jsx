@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 const EventTab = ({headliner, date}) => {
 	return (
 		<div className="row">
-			<div className="hoverable indigo accent-4 col s12 event-tab" style={{padding: "0", width:"100%", borderBottomStyle:"solid", borderColor: "white", borderWidth: "1px"}}>
+			<div className="hoverable deep-purple accent-3 col s12 event-tab" style={{padding: "0", width:"100%", borderBottomStyle:"solid", borderColor: "white", borderWidth: "1px"}}>
 			
 				<div>
 					<h5 className="center-align">Headliner: {headliner}</h5>

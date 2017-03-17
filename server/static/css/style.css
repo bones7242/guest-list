@@ -46,7 +46,7 @@ body {
 }
 
 a {
-  color: orange;
+  color: #d32f2f;
   font-weight: bold;
   text-decoration: none;
   transition: color 0.4s;
