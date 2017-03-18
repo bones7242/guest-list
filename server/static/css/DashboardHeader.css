@@ -2,3 +2,27 @@
 	margin-right: 0px;
 	margin-bottom: 0px;
 }
+
+.supportHeader {
+	padding-top: 15px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	padding-left: 5px;
+}
+
+.headlinerHeader {
+	padding-top: -5px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+
+
+}
+
+.checkInHeader {
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
+.containerHeader {
+	padding-left: 35px;
+}
