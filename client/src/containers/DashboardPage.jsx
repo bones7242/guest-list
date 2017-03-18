@@ -2,11 +2,11 @@
 This is the dashboard page.  After a user logs in successfully, this page will be displayed instead of the home page.
 */
 
-import React from "react";
+import React, {Component} from "react";
 import Auth from "../modules/Auth";
 import Dashboard from "../components/Dashboard.jsx";
 
-class DashboardPage extends React.Component {
+class DashboardPage extends Component {
     // class constructor
     constructor(props) {
         super(props);
@@ -20,6 +20,7 @@ class DashboardPage extends React.Component {
         // pass the "this" context, so we will have access to class members from our event handler methods (createNewEvent, updateEventsList).
         this.createNewEvent = this.createNewEvent.bind(this);
         this.updateEventsList = this.updateEventsList.bind(this);
+        this.selectEvent = this.selectEvent.bind(this);
     }
 
     // custom methods
@@ -33,9 +34,9 @@ class DashboardPage extends React.Component {
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
                 // console log for testing. 
-                console.log(" createNewEvent xhr response:", xhr.response.message);
+                console.log("createNewEvent ajax response:", xhr.response.message);
                 // update the events list in state
-                this.updateEventsList("58c84145d8c6541e80b285dd") //note: the event is card coded currently
+                this.updateEventsList(this.state.venueInfo._id, 0) //note: the event is card coded currently
             }
         });
         xhr.send(JSON.stringify(newEvent));
@@ -51,11 +52,12 @@ class DashboardPage extends React.Component {
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
                 // console log for testing. 
-                console.log("get all events xhr response:", xhr.response.message);
+                console.log("get all events ajax response:", xhr.response.message);
                 // update the events in state
                 this.setState({
                     events: xhr.response.message,  //this must return all events
                 });
+
                 this.selectEvent(currentEventIndex);   // this will select one of the events 
             }
         });
@@ -71,43 +73,36 @@ class DashboardPage extends React.Component {
 
     // lifecycle methods.
     componentWillMount(){
-        //make an AJAX-request to the server to get information related to this user and store the data in this component's state 
+        //make an AJAX-request to the server to get venue information related to this user and store the data in this component's state 
         const xhr = new XMLHttpRequest();
-        const queryUrl = "/api/dashboard/" + localStorage.getItem("userId");  // the request uses the userId stored in local storage 
+        const queryUrl = "/api/venue/" + localStorage.getItem("userId");  // the request uses the userId stored in local storage 
         //console.log("query:", queryUrl);
         xhr.open("get", queryUrl);
         xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
         xhr.responseType = "json";
         xhr.addEventListener("load", () => {
+            // success case 
             if (xhr.status === 200) {
-                console.log("get user info xhr response:", xhr.response.venue);
+                console.log("get-venue-info ajax response:", xhr.response.venue);
+                // set the venueInfo state
                 this.setState({
                     venueInfo: xhr.response.venue
+                }, () => {
+                    // Update the events list in state.
+                    console.log("updating events list from componentWillMount");
+                    this.updateEventsList(xhr.response.venue._id, 0) //note: the venue (redwood bar) is hard coded currently
                 });
+                
+            //fail case
+            } else {
+                console.log("get-user-info ajax response failed.")
             }
         });
         xhr.send();
-
-        // Update the events list in state.
-        console.log("updating events list");
-        this.updateEventsList("58c84145d8c6541e80b285dd", 0) //note: the venue (redwood bar) is hard coded currently
     }
 
     componentDidMount(){
-       // testing the event creation ....
-        this.createNewEvent({
-            venue: "58c84145d8c6541e80b285dd",  // the redwood bar
-            headliner: "58c833c1e229040fd8022b2f", // the cool kids 
-            supportOne: "58c83bb757196231ac0280ae",
-            supportTwo: "58c83ba257196231ac0280ad",
-            supportThree: null,
-            date: "2014-01-01",
-            time: 1600,
-            headlinerAllotment: 42,
-            supportOneAllotment: 5,
-            supportTwoAllotment: 6,
-            supportThreeAllotment: 7
-        })
+
     }
 
     // render the component
@@ -119,6 +114,7 @@ class DashboardPage extends React.Component {
                 currentEvent={this.state.currentEvent}
                 children={this.props.children}
                 selectEvent={this.selectEvent}  //pass the function that updates the selected event 
+                createNewEvent={this.state.createNewEvent}  //pass the function that will create a new event 
             />
         );
     }

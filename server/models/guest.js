@@ -4,17 +4,27 @@ const bcrypt = require("bcrypt");
 
 // define the User model schema
 const GuestSchema = new mongoose.Schema({
-    guestEmail: {
-        type: String,
-        index: {unique: true }
+    eventId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Venue"
     },
-    guestPassword: String,
-    guestName: String,
-    UserRole: String,
-    venueName: String,
-    
+    name: String,
+    // eventually we will connect user ids, but for now we only have "owner" users
+    // userId: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "Venue"
+    // },
+    email: String,
+    phone: String,
+    plusOne: Number,
+    vip: Boolean,
+    allAccess: Boolean,
+    photoPass: Boolean,
+    pressPass: Boolean,
+    dateAdded: Date,
+    timeEntered: Date
 });
-
+ 
 /*
 Create a schema method that we can use to compare the passed password with the passowrd in the database.
 @param {string} password
