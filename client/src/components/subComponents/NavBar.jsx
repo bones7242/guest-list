@@ -5,7 +5,7 @@ import EventTab from "./EventTab.jsx";
 
 const NavBar = ({events, selectEvent}) => {
 	return (			
-		<div className="row" style={{paddingRight:"0px", marginRight:"0px", borderRightStyle:"dotted", borderColor:"white", borderWidth:"1px"}}>
+		<div className="row event-tab-row" style={{paddingRight:"0px", paddingTop:"0px", marginRight:"0px", marginTop:"0px", borderRightStyle:"solid", borderColor:"white", borderWidth:"3px"}}>
 		<div className="nav-bar grey darken-3" >
 			
 				<div className="col s12 m12 l12" style={{padding: '0'}}> 

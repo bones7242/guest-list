@@ -9,13 +9,13 @@ This is the "dumb" component that will get the information from the user and wil
 const LoginForm = ({onSubmit, onChange, errors, successMessage, user}) => (
   <div className="container">
     <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Login</h2>
+      <h2 className="card-heading  white-text text-darken-2">Login</h2>
 
       {successMessage && <p className="success-message">{successMessage}</p>}
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
       <div className="field-line">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email" className="white-text">Email</label>
         <input
           name="email"
           onChange={onChange}
@@ -25,7 +25,7 @@ const LoginForm = ({onSubmit, onChange, errors, successMessage, user}) => (
       </div>
 
       <div className="field-line">
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password" className="white-text">Password</label>
         <input
           type="password"
           name="password"
