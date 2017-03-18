@@ -1,11 +1,16 @@
-
-
+@keyframes BackgroundGradient {
+  0%{background-position: 0% 50%;}
+  50%{background-position: 100% 50%;}
+  100%{background-position: 0% 100%;}
+}
 
 body {
   margin: 0;
   font-size: 16px;
-  color: #666;
-  background: grey;
+  
+  background: linear-gradient(132deg, #ec5218, #1665c1);
+  background-size: 700% 700%;
+  animation: BackgroundGradient 30s ease infinite;
 
 }
 

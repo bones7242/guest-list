@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const DashboardLogo = ({venueInfo}) => {
 	return (
 		
-		<div className="row grey grey darken-3" style={{borderBottomStyle:"solid", borderColor: "white", borderWidth: "1px", padding: "0px", margin: "0px" }}>
+		<div className="row" style={{borderBottomStyle:"solid", borderColor: "white", borderWidth: "1px", padding: "0px", margin: "0px" }}>
 		<div className="logo-bar" >
 				<div className="col s12 m12 l12 center-align" >
 					<Link to={'/'}>

@@ -48,7 +48,7 @@ class AddGuestForm extends Component {
 					      <option value="7">Option 7</option>
 					      <option value="8">Option 8</option>
 					    </select>
-					    <label>Materialize Select</label>
+					    
 					 </div>
 
 					<div className="row" style={{paddingTop: "20px"}}>
