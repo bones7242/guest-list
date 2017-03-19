@@ -33,7 +33,7 @@ var eventDate = newEventDate.toDateString();
 				<div >
 					{ headliner && <Link onClick={selectEvent.bind(eventId, eventIndex)} to={'/dash/event/'+ eventId}><h5 className="left truncate artistTab">{headliner}</h5></Link> }
 					<p className="left tabDate">{eventDate}</p>
-					<Link className="btn-floating btn-small tiny waves-effect waves-light deep-purple accent-2 hoverable right material-icons" style={{ marginRight:"10"}} to={'/dash/add-guest'}  ><i className="medium material-icons">perm_identity</i></Link>
+					<Link className="btn-floating btn-small tiny waves-effect waves-light deep-purple accent-2 hoverable right material-icons" style={{ marginRight:"10px"}} to={'/dash/add-guest'}  ><i className="medium material-icons">perm_identity</i></Link>
 				</div>
 			</div>
 		</div>
@@ -41,7 +41,7 @@ var eventDate = newEventDate.toDateString();
 }
 
 EventTab.propTypes = {
-    headliner: PropTypes.string.isRequired,
+    //headliner: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
 	eventId: PropTypes.string.isRequired,
 	selectEvent: PropTypes.func.isRequired

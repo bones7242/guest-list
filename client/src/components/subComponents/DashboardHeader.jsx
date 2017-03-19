@@ -31,7 +31,7 @@ const DashboardHeader = ({currentEvent}) => {
 
                     <div className="row checkInHeader">
                       <div className="col s12 m12 l12 center-align checkInHeader">
-                        <p class="center-align checkInHeader">XX Checked In</p>
+                        <p className="center-align checkInHeader">XX Checked In</p>
                       </div>
                     </div>
                 </div>
