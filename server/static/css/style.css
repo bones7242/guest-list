@@ -1,11 +1,18 @@
-
-
+@keyframes BackgroundGradient {
+  0%{background-position: 7% 50%;}
+  25%{background-position: 50% 70%}
+  50%{background-position: 100% 50%;}
+  75%{background-position: 50% 25%;}
+  100%{background-position: 25% 7%;}
+}
 
 body {
   margin: 0;
   font-size: 16px;
-  color: #666;
-  background: grey;
+  
+  background: linear-gradient(132deg, #ec5218, #1665c1);
+  background-size: 700% 700%;
+  animation: BackgroundGradient 30s ease infinite;
 
 }
 
@@ -19,6 +26,8 @@ a {
 a:hover {
   color: #1976d2;
 }
+
+
 
 
 .text-center {
