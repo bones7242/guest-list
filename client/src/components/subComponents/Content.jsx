@@ -6,13 +6,14 @@ import Attendee from './Attendee.jsx';
 
 const Content = (children, currentEvent, createNewEvent, venueInfo) => {
 	return (
-		<div className="row content" style={{paddingRight:"0px", marginRight:"0px"}}>
+
+		<div className="row content" style={{ paddingRight: "0px", marginRight: "0px" }}>
 			<div className="content grey darken-3 " >
-			
-				<div className="col s12 m12 l12 valign-wrapper" style={{padding: '0'}} >
-				
-				{children.children}
-				{/*<Attendee />*/}
+
+				<div className="col s12 m12 l12 valign-wrapper" style={{ padding: '0' }} >
+
+					{children.children}
+					{/*<Attendee />*/}
 
 				</div>
 			</div>
