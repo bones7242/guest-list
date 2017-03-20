@@ -30,6 +30,13 @@ class NavBar extends Component {
 	}
 	
 	render() {
+		// if events has not populated, render a placeholder 
+		if (!this.props.events){
+			return (
+				<div><p>loading events...</p> </div>
+			)
+		}
+		// otherwise, render the page 
 		return (			
 			<div className="row event-tab-row" style={{paddingRight:"0px", paddingTop:"0px", marginRight:"0px", marginTop:"0px", borderRightStyle:"solid", borderColor:"white", borderWidth:"3px"}}>
 			<div className="nav-bar grey darken-3" >

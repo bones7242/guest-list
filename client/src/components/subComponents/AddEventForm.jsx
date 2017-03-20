@@ -32,33 +32,8 @@ class AddEventForm extends Component {
 
 	// lifecycle events
 	componentDidMount(){
-		//set the venueId in this prop's state.  make an AJAX-request to the server to get venue information related to this user and store the data in this component's state. 
-        const xhr = new XMLHttpRequest();
-        const queryUrl = "/api/venue/" + localStorage.getItem("userId");  // the request uses the userId stored in local storage 
-        //console.log("query:", queryUrl);
-        xhr.open("get", queryUrl);
-        xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
-        xhr.responseType = "json";
-        xhr.addEventListener("load", () => {
-            // success case 
-            if (xhr.status === 200) {
-                console.log("get-venue-info ajax response:", xhr.response.venue);
-                // set the venueInfo state
-                this.setState({
-                    venueInfo: xhr.response.venue
-                });
-                // add the info to new newEvent.venue
-				const newEvent = this.state.newEvent;
-				newEvent.venue = xhr.response.venue._id;
-				this.setState({
-					newEvent
-				});
-            //fail case
-            } else {
-                console.log("get-user-info ajax response failed.")
-            }
-        });
-        xhr.send();	
+		
+       // get the venue info 
 	}
 
 	// event handler for input elements.  This takes the input and inserts it into the state using the 'name' of the element that triggered it as the key.

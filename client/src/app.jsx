@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 import injectTapEventPlugin from "react-tap-event-plugin";
-// Import routes.
+
 import { browserHistory, Router } from "react-router";
 import routes from "./routes.js";
 

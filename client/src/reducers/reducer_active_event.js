@@ -1,7 +1,9 @@
+import { EVENT_SELECTED } from "../actions/index";
+
 // the 'state' argument is not application state, only the state this reducer is responsible for.
 export default function(state = null, action) {
     switch(action.type) {
-        case "EVENT_SELECTED":
+        case EVENT_SELECTED:
             return action.payload;
     }
 

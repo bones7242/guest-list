@@ -15,14 +15,15 @@ import AddEventForm from "./components/subComponents/AddEventForm.jsx";
 import EventDetail from "./components/subComponents/EventDetail.jsx";
 
 import { Provider } from 'react-redux';
-import { createStore } from "redux";
-import reducer from "./reducers"
+import { createStore, applyMiddleware } from "redux";
+import reducers from "./reducers"
+import ReduxPromise from "redux-promise";
 
-const store = createStore(reducer);
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 const myRoutes = (
     
-    <Provider store={store}>
+    <Provider store={createStoreWithMiddleware(reducers)}>
 
         <Router history={hashHistory}>
 
