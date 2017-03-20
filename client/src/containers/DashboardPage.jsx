@@ -21,7 +21,7 @@ class DashboardPage extends Component {
         // pass the "this" context, so we will have access to class members from our event handler methods (createNewEvent, updateEventsList).
         this.createNewEvent = this.createNewEvent.bind(this);
         this.updateEventsList = this.updateEventsList.bind(this);
-        this.selectEvent = this.selectEvent.bind(this);
+        
     }
 
     // custom methods

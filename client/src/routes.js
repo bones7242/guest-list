@@ -2,8 +2,6 @@
 import React, { PropTypes } from "react";
 import {Route, Router, hashHistory, IndexRoute, Redirect} from "react-router";
 
-import Provider from "react-redux";
-
 import Auth from "./modules/Auth";
 
 import App from './containers/App.jsx';
@@ -16,8 +14,13 @@ import AddGuestForm from "./components/subComponents/AddGuestForm.jsx";
 import AddEventForm from "./components/subComponents/AddEventForm.jsx";
 import EventDetail from "./components/subComponents/EventDetail.jsx";
 
+import { Provider } from 'react-redux';
+import { createStore } from "redux";
+import reducer from "./reducers"
 
-const myRoutes  = ({store}) => (
+const store = createStore(reducer);
+
+const myRoutes = (
     
     <Provider store={store}>
 
@@ -41,7 +44,7 @@ const myRoutes  = ({store}) => (
                     {/* add event*/}
                     <Route path="add-event" component={AddEventForm} /> 
                     {/* view event*/} 
-                    <Route path= "event/:eventId" component={EventDetail} />
+                    <Route path= "event" component={EventDetail} />
                     
             
                 </Route>
@@ -71,9 +74,5 @@ const myRoutes  = ({store}) => (
     </Provider>
 
 );
-
-myRoutes.propTypes = {
-    store: PropTypes.object.isRequired
-};
 
 export default myRoutes;
