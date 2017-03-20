@@ -57,10 +57,7 @@ const Dashboard = ({venueInfo, children}) => {
 
 Dashboard.propTypes = {
     venueInfo: PropTypes.object.isRequired,
-    events: PropTypes.array.isRequired,
-    //currentEvent: PropTypes.object.isRequired,
     //children: PropTypes.object.isRequired,
-    selectEvent: PropTypes.func.isRequired
 };
 
 export default Dashboard;

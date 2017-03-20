@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
+import { connect } from "react-redux";
 
-var date = "01/01/13"
+var date = "01/13/1986";  // test
 
 var newEventDate = new Date(date);
 var eventMonth = newEventDate.getMonth();
@@ -8,30 +9,36 @@ var eventDay = newEventDate.getDay();
 var eventYear = newEventDate.getFullYear();
 var eventTime = newEventDate.getHours();
 
-const DashboardHeader = ({currentEvent}) => {
-  console.log("current event", currentEvent)
-    return (
-        <div className="row grey darken-3"> 
-            {/*only display the rest of the info if CurrentEvent is not null*/}
-            {currentEvent && 
+class DashboardHeader extends Component {
+
+    render(){
+        // if this.props.book is null, return early
+        if (!this.props.activeEvent) {
+          return <div> Select an event to get started.</div>;
+        }
+        // otherwise...
+        const activeEvent = this.props.activeEvent;
+        return (
+            <div className="row grey darken-3"> 
+          
                 <div className="containerHeader">
                     <div className="col s12 m3 l3 headlinerHeader">
-                      { currentEvent.headliner && <h2 className="headlinerText">{currentEvent.headliner}</h2> }
+                      { activeEvent.headliner && <h2 className="headlinerText">{activeEvent.headliner}</h2> }
                     </div>
 
                     <div className="col s3 m3 l3 supportHeader">
-                      { currentEvent.supportOne && <p className="supportHeader">{currentEvent.supportOne} </p> }
-                      { currentEvent.date && <p className="supportHeader">{currentEvent.eventMonth + " " + currentEvent.eventDay + " " + currentEvent.eventYear}</p> }
+                      { activeEvent.supportOne && <p className="supportHeader">{activeEvent.supportOne} </p> }
+                      { activeEvent.date && <p className="supportHeader">{activeEvent.eventMonth + " " + activeEvent.eventDay + " " + activeEvent.eventYear}</p> }
                     </div>
 
                     <div className="col s3 m3 l3 supportHeader">
-                      { currentEvent.supportTwo && <p className="supportHeader">{currentEvent.supportTwo}</p> }
+                      { activeEvent.supportTwo && <p className="supportHeader">{activeEvent.supportTwo}</p> }
                       
-                      { currentEvent.date && <p className="supportHeader">{currentEvent.eventTime}</p> }
+                      { activeEvent.date && <p className="supportHeader">{activeEvent.eventTime}</p> }
                     </div>
 
                     <div className="col s3 m3 l3 supportHeader">
-                    { currentEvent.supportThree && <p className="supportHeader">{currentEvent.supportThree}</p> }
+                    { activeEvent.supportThree && <p className="supportHeader">{activeEvent.supportThree}</p> }
                       <p className="supportHeader">Total: XX</p>
                       
                     </div>
@@ -42,9 +49,17 @@ const DashboardHeader = ({currentEvent}) => {
                       </div>
                     </div>
                 </div>
-            }
-        </div>
-    );
+                
+            </div>
+        );
+    }
 }
 
-export default DashboardHeader;
+function mapStateToProps(state) {
+	// whatever is returned will be mapped to the props of this component
+	return {
+		activeEvent: state.activeEvent
+	};
+}
+
+export default connect(mapStateToProps)(DashboardHeader);

@@ -5,7 +5,18 @@
 
 export default function() {
     return [
-        { headliner: "the Ohh Sees" },  // test data
-        { headliner: "the foo fighters" } // test data
+        { 
+            headliner: "the Ohh Sees",
+            supportOne: "gingerbread",
+            supportTwo: "the beatles",
+            supportThree: "the byrds"
+
+        },  // test data
+        { 
+            headliner: "the foo fighters",
+            supportOne: "the kills",
+            supportTwo: "Dominoes",
+            supportThree: "the sweeetness"
+        } // test data
     ]
 }

@@ -181,7 +181,7 @@ class AddEventForm extends Component {
 							</div>
 
 							<div className="col s6 left-align" >
-								<button type="submit" className="waves-effect waves-teal btn-flat center-align" onclick="tabColor()"><Link to={'/'}>Submit</Link></button>						
+								<button type="submit" className="waves-effect waves-teal btn-flat center-align" onClick="tabColor()"><Link to={'/'}>Submit</Link></button>						
 
 							</div>
 						</div>

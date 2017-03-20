@@ -76,7 +76,7 @@ class AddGuestForm extends Component {
 	}
 
 	// this custom method will trigger when the submit button is clicked.  it will check the inputs for errors and then initiate the create guest method to actually create the guest.
-	processGuesForm(event) {
+	processGuestForm(event) {
         // Prevent default action.  in this case, action is the form submission event.
         guest.preventDefault();
 		// do basic front-end checks to make sure form was filled out correctly

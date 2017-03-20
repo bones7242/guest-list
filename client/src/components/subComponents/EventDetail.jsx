@@ -5,17 +5,18 @@ class EventDetail extends Component {
 
 	render() {
 		// if this.props.book is null, return early
-		if (!this.props.book) {
+		if (!this.props.activeEvent) {
 			return <div> Select an event to get started.</div>;
-		} else {
-			return (
-				<div className="event">
-					<h1>TEST: EVENT DETAIL BELOW </h1>
-					<h2>{this.props.event.title}</h2>
+		}
+		// otherwise... 
+		const activeEvent = this.props.activeEvent.headliner;
+		return (
+			<div className="event">
+				<h1>TEST: EVENT DETAIL BELOW </h1>
+				<h2>{activeEvent.headliner}</h2>
 
-				</div>
-			);
-		};
+			</div>
+		);
 	}
 }
 
@@ -23,7 +24,7 @@ class EventDetail extends Component {
 function mapStateToProps(state) {
 	// whatever is returned will be mapped to the props of this component
 	return {
-		event: state.activeEvent
+		activeEvent: state.activeEvent
 	};
 }
 
