@@ -12,5 +12,5 @@ import "../../server/static/vendor/materialize/js/materialize.min.js";
 injectTapEventPlugin();
 
 // 2. Render the app component in the document at the div with id of "react-app".
-ReactDom.render(routes, document.getElementById("react-app"));
+ReactDom.render(routes(), document.getElementById("react-app"));
 

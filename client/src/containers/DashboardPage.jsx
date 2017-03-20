@@ -6,6 +6,8 @@ import React, {Component} from "react";
 import Auth from "../modules/Auth";
 import Dashboard from "../components/Dashboard.jsx";
 
+import { connect } from "react-redux";
+
 class DashboardPage extends Component {
     // class constructor
     constructor(props) {
@@ -14,7 +16,6 @@ class DashboardPage extends Component {
         this.state = {
             venueInfo: {},
             events: [],
-            currentEvent: {}
         };
 
         // pass the "this" context, so we will have access to class members from our event handler methods (createNewEvent, updateEventsList).
@@ -42,7 +43,7 @@ class DashboardPage extends Component {
         xhr.send(JSON.stringify(newEvent));
     }
 
-    updateEventsList(venueId, currentEventIndex){
+    updateEventsList(venueId){
         // add the new event to the mongo database 
         const xhr = new XMLHttpRequest();
         let queryUrl = "/api/event/" + venueId; 
@@ -58,17 +59,9 @@ class DashboardPage extends Component {
                     events: xhr.response.message,  //this must return all events
                 });
 
-                this.selectEvent(currentEventIndex);   // this will select one of the events 
             }
         });
         xhr.send();
-    }
-
-    selectEvent(eventIndex){
-        //console.log("selecting event", eventIndex, ":", this.state.events[eventIndex]);
-        this.setState({
-            currentEvent: this.state.events[eventIndex] 
-        });
     }
 
     // lifecycle methods.
@@ -107,17 +100,29 @@ class DashboardPage extends Component {
 
     // render the component
     render() {
+        // e.g. console.log("Test asdf:", this.props.asdf) // -> "Test asdf: 123"
         return (
             <Dashboard 
                 venueInfo={this.state.venueInfo} 
-                events={this.state.events}
-                currentEvent={this.state.currentEvent}
+                //events={this.state.events}
                 children={this.props.children}
-                selectEvent={this.selectEvent}  //pass the function that updates the selected event 
-                createNewEvent={this.state.createNewEvent}  //pass the function that will create a new event 
+                //selectEvent={this.selectEvent}  //pass the function that updates the selected event 
+                //createNewEvent={this.state.createNewEvent}  //pass the function that will create a new event 
             />
         );
     }
 }
 
-export default DashboardPage;
+function mapStateToProps(state) {
+    // whatever gets returned from this method will show up as props inside of this component
+    // this function is the glue between react and redux.
+    // important fact 1: whenever our applicaiton state chagnes, this component will re-render
+    // important fact 2: whenever our applicaiton state chagnes, the object in the state function will be assigned as props to the component 
+    // e.g. asdf: "123"
+    return {
+        events: state.events,
+        activeEvent: state.activeEvent    
+    };
+}
+
+export default connect(mapStateToProps)(DashboardPage);

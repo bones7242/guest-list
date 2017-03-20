@@ -1,5 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 
+var date = "01/01/13"
+
 var newEventDate = new Date(date);
 var eventMonth = newEventDate.getMonth();
 var eventDay = newEventDate.getDay();
