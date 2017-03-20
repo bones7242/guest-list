@@ -9,7 +9,7 @@ const DashboardHeader = ({currentEvent}) => {
             {currentEvent && 
                 <div className="containerHeader">
                     <div className="col s12 m3 l3 headlinerHeader">
-                      { currentEvent.headliner && <h2>{currentEvent.headliner}</h2> }
+                      { currentEvent.headliner && <h2 className="headlinerText">{currentEvent.headliner}</h2> }
                     </div>
 
                     <div className="col s3 m3 l3 supportHeader">

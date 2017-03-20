@@ -10,6 +10,7 @@ const TopNav = () => {
                 {/*conditional statement to decide which links to render*/}
                 {Auth.isUserAuthenticated() ? (
                     <div className="top-bar-right">
+                        
                         <Link to="/logout">Log out</Link>
 
                     </div>
