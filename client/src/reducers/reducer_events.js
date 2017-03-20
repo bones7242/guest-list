@@ -6,16 +6,16 @@
 export default function() {
     return [
         { 
-            headliner: "the Ohh Sees",
+            headliner: "",
             supportOne: "gingerbread",
             supportTwo: "the beatles",
             supportThree: "the byrds"
 
         },  // test data
         { 
-            headliner: "the foo fighters",
+            headliner: "Foo Fighters",
             supportOne: "the kills",
-            supportTwo: "Dominoes",
+            supportTwo: "the Ohh Sees",
             supportThree: "the sweeetness"
         } // test data
     ]

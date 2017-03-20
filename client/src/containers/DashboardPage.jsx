@@ -6,8 +6,6 @@ import React, {Component} from "react";
 import Auth from "../modules/Auth";
 import Dashboard from "../components/Dashboard.jsx";
 
-import { connect } from "react-redux";
-
 class DashboardPage extends Component {
     // class constructor
     constructor(props) {
@@ -21,7 +19,7 @@ class DashboardPage extends Component {
         // pass the "this" context, so we will have access to class members from our event handler methods (createNewEvent, updateEventsList).
         this.createNewEvent = this.createNewEvent.bind(this);
         this.updateEventsList = this.updateEventsList.bind(this);
-        
+
     }
 
     // custom methods
@@ -113,16 +111,4 @@ class DashboardPage extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    // whatever gets returned from this method will show up as props inside of this component
-    // this function is the glue between react and redux.
-    // important fact 1: whenever our applicaiton state chagnes, this component will re-render
-    // important fact 2: whenever our applicaiton state chagnes, the object in the state function will be assigned as props to the component 
-    // e.g. asdf: "123"
-    return {
-        events: state.events,
-        activeEvent: state.activeEvent    
-    };
-}
-
-export default connect(mapStateToProps)(DashboardPage);
+export default DashboardPage;
