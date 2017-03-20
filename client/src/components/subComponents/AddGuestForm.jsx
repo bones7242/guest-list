@@ -191,16 +191,52 @@ class AddGuestForm extends Component {
 					
 					</div>
 
+					<div className="row" style={{paddingTop: "20px"}}>
+						
+						<div className="input-field col s2">
+							<p>
+      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange}/>
+      							<label htmlFor="test1">House List</label>
+    						</p>
+						</div>
+						<div className="input-field col s2">
+							<p>
+      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange}/>
+      							<label htmlFor="test1">Headliner List</label>
+    						</p>
+						</div>
+						<div className="input-field col s2">
+							<p>
+      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange} />
+      							<label htmlFor="test1">Support One List</label>
+    						</p>
+    					</div>
+						<div className="input-field col s2">
+							<p>
+      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange} />
+      							<label htmlFor="test1">Support Two List</label>
+    						</p>
+						</div>
+
+						<div className="input-field col s2">
+							<p>
+      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange} />
+      							<label htmlFor="test1">Support Three List</label>
+    						</p>
+						</div>
+					
+					</div>
+
 					<div className="row valign-wrapper" style={{paddingTop: "25px"}} >
 
 							<div className="col s6 right-align" >
 
-								<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Cancel</Link></a>
+								<a className="waves-effect waves-teal  cyan lighten-3 btn-flat center-align"><Link to={'/'}>Cancel</Link></a>
 							</div>
 
 							<div className="col s6 left-align" >
 
-								<a className="waves-effect waves-teal btn-flat center-align"><Link to={'/'}>Submit</Link></a>
+								<a className="waves-effect waves-teal btn-flat teal lighten-3 center-align"><Link to={'/'}>Submit</Link></a>
 						
 							</div>
 					</div>
