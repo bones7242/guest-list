@@ -1,13 +1,124 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
-
+import Auth from "../../modules/Auth"; //added by lou
 
 class AddGuestForm extends Component {
+	// constructor is called whenever a new instance of the class is created
+	constructor(props) {
+		// super is calling the parent's method "props" (i think to pass them down)
+        super(props); 
+		//console.log("props:", props);
+		// add default values for optional fields, like 'support's, when setting the initial state
+        this.state = {
+            newGuest: {
+				venue: "loading",
+				name: "none",
+				email: "none",
+				phone: "none",
+				plusOne: "2",
+				vip: 1,
+				allAccess: 0,
+				photoPass: 0,
+				pressPass: 0,
+				houseList: 0,
+				supportOneList: 0,
+				supportTwoList: 0,
+				supportThreeList: 0
+			},
+			venueInfo: {}
+        };
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+		this.processGuestForm = this.processGuestForm.bind(this);
+		this.createNewGuest = this.createNewGuest.bind(this);
+    }
+
+	// lifecycle events
+	componentDidMount(){
+		//set the venueId in this prop's state.  make an AJAX-request to the server to get venue information related to this user and store the data in this component's state. 
+        const xhr = new XMLHttpRequest();
+        const queryUrl = "/api/guest/" + localStorage.getItem("userId");  // the request uses the userId stored in local storage 
+        //console.log("query:", queryUrl);
+        xhr.open("get", queryUrl);
+        xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
+        xhr.responseType = "json";
+        xhr.addEventListener("load", () => {
+            // success case 
+            if (xhr.status === 200) {
+                console.log("get-venue-info ajax response:", xhr.response.venue);
+                // set the venueInfo state
+                this.setState({
+                    guestInfo: xhr.response.venue
+                });
+                // add the info to new newEvent.venue
+				const newGuest = this.state.newGuest;
+				newGuest.venue = xhr.response.venue._id;
+				this.setState({
+					newGuest
+				});
+            //fail case
+            } else {
+                console.log("get-user-info ajax response failed.")
+            }
+        });
+        xhr.send();	
+	}
+
+	// event handler for input elements.  This takes the input and inserts it into the state using the 'name' of the element that triggered it as the key.
+	handleInputChange(event){
+		//console.log(event.target.value);
+		const field = event.target.name;
+        const newGuest = this.state.newGuest;
+        newGuest[field] = guest.target.value;
+        this.setState({
+            newGuest
+        });
+	}
+
+	// this custom method will trigger when the submit button is clicked.  it will check the inputs for errors and then initiate the create guest method to actually create the guest.
+	processGuesForm(event) {
+        // Prevent default action.  in this case, action is the form submission event.
+        guest.preventDefault();
+		// do basic front-end checks to make sure form was filled out correctly
+		const newGuest = this.state.newGuest;
+		const venueId = this.state.venueInfo._id;
+		//create the event
+		this.createNewEvent(newGuest, venueId);
+        
+    }
+
+	// this custom method will create the guest in the database.  if successful, it redirects the user to the dashboard.
+    createNewGuest(newEvent, venueId){
+        // add the new event to the mongo database 
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/guest");
+        xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.responseType = "json";
+        xhr.addEventListener("load", () => {
+            if (xhr.status === 200) {
+				console.log("success! message:", xhr.response.message)
+				alert("Event was successfully added :)");
+                // redirect to the dash, and have the dash select the newly created event for display
+
+                	//[ redirect goes here ]
+
+            } else {
+				console.log("there was an error in creating the guest. error:", xhr.response.message)
+				alert("Guest could not be added.  Check the console logs :(");
+			};
+        });
+        xhr.send(JSON.stringify(newGuest));
+    }
+
+
+
+
 	render() {
 		return (
 			<div className="row col s12 add-event-form" style={{paddingTop:'15px', borderTopStyle:"solid", borderColor: "black", borderWidth: "3px"}}>
 				<div className="row grey darken-3">
-				<form className="col s12">
+				<form className="col s12" action="/" onSubmit={this.processGuestForm}>
 					<div className="row" style={{paddingTop:"10px"}}>
 							<h3 className="center-align">Add A New Fan To Your List</h3>
 					</div>
@@ -17,19 +128,19 @@ class AddGuestForm extends Component {
 					<div className="row" style={{paddingTop: "20px"}}>
 						
 						<div className="input-field col s6">
-							<input placeholder="Name" id="AttendeeName"  type="text" className="validate"></input>
+							<input placeholder="Name" id="AttendeeName"  type="text" className="validate" onChange={this.handleInputChange}></input>
 							<label htmlFor="name">Name</label>
 						</div>
 						<div className="input-field col s2">
-							<input placeholder="Affiliation" id="Affiliation"  type="text" className="validate"></input>
+							<input placeholder="Affiliation" id="Affiliation"  type="text" className="validate" onChange={this.handleInputChange}></input>
 							<label htmlFor="Affiliation">Affiliation</label>
 						</div>
 						<div className="input-field col s2">
-							<input id="email" type="email" className="validate"></input>
+							<input id="email" type="email" className="validate" onChange={this.handleInputChange}></input>
           					<label htmlFor="email">Email</label>
 						</div>
 						<div className="input-field col s2">
-							<input placeholder="PhoneNumber" id="PhoneNumber"  type="text" className="validate"></input>
+							<input placeholder="PhoneNumber" id="PhoneNumber"  type="text" className="validate" onChange={this.handleInputChange}></input>
 							<label htmlFor="PhoneNumber">PhoneNumber</label>
 						</div>
 					
@@ -38,7 +149,7 @@ class AddGuestForm extends Component {
 					
 					<div className="input-field col s12">
 					    <select>
-					      <option value="" disabled selected>Plus One?</option>
+					      <option value="" disabled selected onChange={this.handleInputChange}>Plus One?</option>
 					      <option value="1">Option 1</option>
 					      <option value="2">Option 2</option>
 					      <option value="3">Option 3</option>
@@ -55,25 +166,25 @@ class AddGuestForm extends Component {
 						
 						<div className="input-field col s3">
 							<p>
-      							<input name="group1" type="radio" id="test1" />
+      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange}/>
       							<label htmlFor="test1">VIP</label>
     						</p>
 						</div>
 						<div className="input-field col s3">
 							<p>
-      							<input name="group1" type="radio" id="test1" />
+      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange}/>
       							<label htmlFor="test1">All Access</label>
     						</p>
 						</div>
 						<div className="input-field col s3">
 							<p>
-      							<input name="group1" type="radio" id="test1" />
+      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange} />
       							<label htmlFor="test1">Press</label>
     						</p>
     					</div>
 						<div className="input-field col s3">
 							<p>
-      							<input name="group1" type="radio" id="test1" />
+      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange} />
       							<label htmlFor="test1">Photo</label>
     						</p>
 						</div>
