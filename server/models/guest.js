@@ -1,4 +1,6 @@
 //new attendee log in info from new guest account form
+
+//Added houseList - SupportThreeList Boolean values - Lou
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
@@ -21,6 +23,11 @@ const GuestSchema = new mongoose.Schema({
     allAccess: Boolean,
     photoPass: Boolean,
     pressPass: Boolean,
+    houseList: Boolean,
+    headlinerList: Boolean,
+    supportOneList: Boolean,
+    supportTwoList: Boolean,
+    supportThreeList: Boolean,
     dateAdded: Date,
     timeEntered: Date
 });
