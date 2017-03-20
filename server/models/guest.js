@@ -10,6 +10,7 @@ const GuestSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Venue"
     },
+
     name: String,
     // eventually we will connect user ids, but for now we only have "owner" users
     // userId: {
@@ -29,7 +30,8 @@ const GuestSchema = new mongoose.Schema({
     supportTwoList: Boolean,
     supportThreeList: Boolean,
     dateAdded: Date,
-    timeEntered: Date
+    timeEntered: Date,
+    
 });
  
 /*
@@ -64,3 +66,4 @@ UserSchema.pre("save", function saveHook(next) {
 });
 
 module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Guest", GuestSchema);
