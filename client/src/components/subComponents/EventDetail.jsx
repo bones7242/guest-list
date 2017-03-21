@@ -14,7 +14,8 @@ class EventDetail extends Component {
 		return (
 			<div className="event">
 				<h1>TEST: EVENT DETAIL BELOW </h1>
-				<h2>{activeEvent.headliner}</h2>
+				<p>{this.props.activeEvent.headliner}</p>
+				<p>test</p>
 
 			</div>
 		);
