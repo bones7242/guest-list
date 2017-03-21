@@ -17,23 +17,19 @@ var tabColor =()=> {
 
 
 
-const EventTab = ({headliner, date, eventId, eventIndex, selectEvent}) => {
-	function viewEventClicked(){
-		console.log("i've been clicked");
-		//selectEvent(eventIndex);
-
-	}
-var newEventDate = new Date(date);
-var eventDate = newEventDate.toDateString();
+const EventTab = ({headliner, changeEvent}) => {
+	
+	//var newEventDate = new Date(date);
+	//var eventDate = newEventDate.toDateString();
 
 	return (
 		<div className="row">
 
 			<div className="hoverable  cyan lighten-2 col s12 event-tab" id="eventStyle" style={{padding: "0", width:"100%", borderBottomStyle:"solid", borderColor: "white", borderWidth: "1px", overflow: "scroll"}}>
 				<div >
-					{ headliner && <Link onClick={selectEvent.bind(eventId, eventIndex)} to={'/dash/event/'+ eventId}><h5 className="left truncate artistTab">{headliner}</h5></Link> }
-					<p className="left tabDate">{eventDate}</p>
-					<Link className="btn-floating btn-small tiny waves-effect waves-light deep-purple accent-2 hoverable right material-icons" style={{ margin:"10"}} to={'/dash/add-guest'}  ><i className="medium material-icons">perm_identity</i></Link>
+					{ headliner && <Link onClick={changeEvent} to={'/dash/event'}><h5 className="left truncate artistTab">{headliner}</h5></Link> }
+					<p className="left tabDate">{/*eventDate*/}</p>
+					<Link className="btn-floating btn-small tiny waves-effect waves-light deep-purple accent-2 hoverable right material-icons" style={{ margin:"10px"}} to={'/dash/add-guest'}  ><i className="medium material-icons">perm_identity</i></Link>
 
 				</div>
 			</div>
@@ -43,9 +39,9 @@ var eventDate = newEventDate.toDateString();
 
 EventTab.propTypes = {
     //headliner: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-	eventId: PropTypes.string.isRequired,
-	selectEvent: PropTypes.func.isRequired
+    //date: PropTypes.string.isRequired,
+	//eventId: PropTypes.string.isRequired,
+	//selectEvent: PropTypes.func.isRequired
 };
 
 export default EventTab;

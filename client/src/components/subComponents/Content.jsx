@@ -4,7 +4,7 @@ import React, { PropTypes, Component } from 'react';
 //import './Content.css';
 import Attendee from './Attendee.jsx';
 
-const Content = (children, currentEvent, createNewEvent, venueInfo) => {
+const Content = (children) => {
 	return (
 		<div className="row content" style={{paddingRight:"0px", marginRight:"0px"}}>
 			<div className="content grey darken-3 " >

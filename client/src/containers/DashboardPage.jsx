@@ -6,6 +6,10 @@ import React, {Component} from "react";
 import Auth from "../modules/Auth";
 import Dashboard from "../components/Dashboard.jsx";
 
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchVenue, fetchEvents } from "../actions/index";
+
 class DashboardPage extends Component {
     // class constructor
     constructor(props) {
@@ -13,111 +17,43 @@ class DashboardPage extends Component {
 
         this.state = {
             venueInfo: {},
-            events: [],
-            currentEvent: {}
         };
 
-        // pass the "this" context, so we will have access to class members from our event handler methods (createNewEvent, updateEventsList).
-        this.createNewEvent = this.createNewEvent.bind(this);
-        this.updateEventsList = this.updateEventsList.bind(this);
-        this.selectEvent = this.selectEvent.bind(this);
-    }
-
-    // custom methods
-    createNewEvent(newEvent){
-        // add the new event to the mongo database 
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "/api/event");
-        xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.responseType = "json";
-        xhr.addEventListener("load", () => {
-            if (xhr.status === 200) {
-                // console log for testing. 
-                console.log("createNewEvent ajax response:", xhr.response.message);
-                // update the events list in state
-                this.updateEventsList(this.state.venueInfo._id, 0) //note: the event is card coded currently
-            }
-        });
-        xhr.send(JSON.stringify(newEvent));
-    }
-
-    updateEventsList(venueId, currentEventIndex){
-        // add the new event to the mongo database 
-        const xhr = new XMLHttpRequest();
-        let queryUrl = "/api/event/" + venueId; 
-        xhr.open("GET", queryUrl);
-        xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
-        xhr.responseType = "json";
-        xhr.addEventListener("load", () => {
-            if (xhr.status === 200) {
-                // console log for testing. 
-                console.log("get all events ajax response:", xhr.response.message);
-                // update the events in state
-                this.setState({
-                    events: xhr.response.message,  //this must return all events
-                });
-
-                this.selectEvent(currentEventIndex);   // this will select one of the events 
-            }
-        });
-        xhr.send();
-    }
-
-    selectEvent(eventIndex){
-        //console.log("selecting event", eventIndex, ":", this.state.events[eventIndex]);
-        this.setState({
-            currentEvent: this.state.events[eventIndex] 
-        });
     }
 
     // lifecycle methods.
     componentWillMount(){
-        //make an AJAX-request to the server to get venue information related to this user and store the data in this component's state 
-        const xhr = new XMLHttpRequest();
-        const queryUrl = "/api/venue/" + localStorage.getItem("userId");  // the request uses the userId stored in local storage 
-        //console.log("query:", queryUrl);
-        xhr.open("get", queryUrl);
-        xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
-        xhr.responseType = "json";
-        xhr.addEventListener("load", () => {
-            // success case 
-            if (xhr.status === 200) {
-                console.log("get-venue-info ajax response:", xhr.response.venue);
-                // set the venueInfo state
-                this.setState({
-                    venueInfo: xhr.response.venue
-                }, () => {
-                    // Update the events list in state.
-                    console.log("updating events list from componentWillMount");
-                    this.updateEventsList(xhr.response.venue._id, 0) //note: the venue (redwood bar) is hard coded currently
-                });
-                
-            //fail case
-            } else {
-                console.log("get-user-info ajax response failed.")
-            }
-        });
-        xhr.send();
+        //make a request to the server to get venue information related to this user
+        this.props.fetchVenue(localStorage.getItem("userId"), Auth.getToken());
     }
-
+    
     componentDidMount(){
-
+        // make a request to get all the event info 
+        //this.props.fetchEvents(this.props.venue._id, Auth.getToken());
+        this.props.fetchEvents("58d038c295cda41ce0391d99", Auth.getToken());
+        
     }
 
     // render the component
     render() {
+        // e.g. console.log("Test asdf:", this.props.asdf) // -> "Test asdf: 123"
         return (
             <Dashboard 
-                venueInfo={this.state.venueInfo} 
-                events={this.state.events}
-                currentEvent={this.state.currentEvent}
                 children={this.props.children}
-                selectEvent={this.selectEvent}  //pass the function that updates the selected event 
-                createNewEvent={this.state.createNewEvent}  //pass the function that will create a new event 
             />
         );
     }
 }
 
-export default DashboardPage;
+function mapStateToProps(state) {
+	// whatever is returned will be mapped to the props of this component
+	return {
+		venue: state.venue
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ fetchVenue, fetchEvents }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);
