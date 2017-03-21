@@ -4,6 +4,8 @@ import Auth from "../../modules/Auth"; //added by lou
 
 import { connect } from "react-redux";
 
+import ReactDOM from 'react-dom';
+
 class AddGuestForm extends Component {
 	// constructor is called whenever a new instance of the class is created
 	constructor(props) {
@@ -13,34 +15,60 @@ class AddGuestForm extends Component {
 		// add default values for optional fields, like 'support's, when setting the initial state
         this.state = {
             newGuest: {
-				venue: "loading",
+				eventId: "loading",
 				name: "none",
 				email: "none",
+				affiliation: "none",
 				phone: "none",
-				plusOne: "2",
-				vip: 1,
-				allAccess: 0,
-				photoPass: 0,
-				pressPass: 0,
-				houseList: 0,
-				supportOneList: 0,
-				supportTwoList: 0,
-				supportThreeList: 0
-			},
-			venueInfo: {}
+				plusOne: 0,
+				vip: false,
+				allAccess: false,
+				photoPass: false,
+				pressPass: false,
+				houseList: false,
+				headlinerList: false,
+				supportOneList: false,
+				supportTwoList: false,
+				supportThreeList: false
+			}
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
 		this.processGuestForm = this.processGuestForm.bind(this);
+		this.toggleInput = this.toggleInput.bind(this);
 		this.createNewGuest = this.createNewGuest.bind(this);
     }
 
 	// event handler for input elements.  This takes the input and inserts it into the state using the 'name' of the element that triggered it as the key.
 	handleInputChange(event){
-		//console.log(event.target.value);
+		//console.log("event value", event.target.value);
+		//console.log("event name", event.target.name);
+		//console.log("event id", event.target.id);
 		const field = event.target.name;
         const newGuest = this.state.newGuest;
-        newGuest[field] = guest.target.value;
+        newGuest[field] = event.target.value;
+        this.setState({
+            newGuest
+        });
+	}
+
+	toggleInput(event){
+		
+		//console.log("event name", event.target.name);
+		//console.log("event id", event.target.id);
+		
+		const field = event.target.name;
+        const newGuest = this.state.newGuest;
+
+		//console.log("value", newGuest[field]);
+		// toggle the state for the particular field 
+		if (newGuest[field] === true){
+			newGuest[field] = false;
+		} else if (newGuest[field] === false){
+			newGuest[field] = true;
+		}
+		console.log("value", newGuest[field]);
+		// reset the state 
         this.setState({
             newGuest
         });
@@ -49,17 +77,17 @@ class AddGuestForm extends Component {
 	// this custom method will trigger when the submit button is clicked.  it will check the inputs for errors and then initiate the create guest method to actually create the guest.
 	processGuestForm(event) {
         // Prevent default action.  in this case, action is the form submission event.
-        guest.preventDefault();
+        event.preventDefault();
 		// do basic front-end checks to make sure form was filled out correctly
 		const newGuest = this.state.newGuest;
-		const venueId = this.state.venueInfo._id;
+		newGuest.eventId = this.props.activeEvent._id;
 		//create the event
-		this.createNewEvent(newGuest, venueId);
+		this.createNewGuest(newGuest);
         
     }
 
 	// this custom method will create the guest in the database.  if successful, it redirects the user to the dashboard.
-    createNewGuest(newEvent, venueId){
+    createNewGuest(newGuest){
         // add the new event to the mongo database 
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "/api/guest");
@@ -97,64 +125,58 @@ class AddGuestForm extends Component {
 					<div className="row" style={{paddingTop: "20px"}}>
 						
 						<div className="input-field col s6">
-							<input placeholder="Name" id="AttendeeName"  type="text" className="validate" onChange={this.handleInputChange}></input>
+							
+							<input placeholder="Name" id="AttendeeName"  name="name" type="text" className="validate" onChange={this.handleInputChange}></input>
 							<label htmlFor="name">Name</label>
+							
 						</div>
 						<div className="input-field col s2">
-							<input placeholder="Affiliation" id="Affiliation"  type="text" className="validate" onChange={this.handleInputChange}></input>
+							<input placeholder="Affiliation" id="Affiliation" name="affiliation" type="text" className="validate" onChange={this.handleInputChange}></input>
 							<label htmlFor="Affiliation">Affiliation</label>
 						</div>
 						<div className="input-field col s2">
-							<input id="email" type="email" className="validate" onChange={this.handleInputChange}></input>
+							<input id="email" type="email" name="email" className="validate" onChange={this.handleInputChange}></input>
           					<label htmlFor="email">Email</label>
 						</div>
 						<div className="input-field col s2">
-							<input placeholder="PhoneNumber" id="PhoneNumber"  type="text" className="validate" onChange={this.handleInputChange}></input>
+							<input placeholder="PhoneNumber" id="PhoneNumber" name="phone"  type="text" className="validate" onChange={this.handleInputChange}></input>
 							<label htmlFor="PhoneNumber">PhoneNumber</label>
 						</div>
 					
 					</div>
 
-					
-					<div className="input-field col s12">
-					    <select>
-					      <option value="" disabled selected onChange={this.handleInputChange}>Plus One?</option>
-					      <option value="1">Option 1</option>
-					      <option value="2">Option 2</option>
-					      <option value="3">Option 3</option>
-					      <option value="4">Option 4</option>
-					      <option value="5">Option 5</option>
-					      <option value="6">Option 6</option>
-					      <option value="7">Option 7</option>
-					      <option value="8">Option 8</option>
-					    </select>
-					    
+					<div className="row">
+						<div className="input-field col s12">
+							<input placeholder="0" id="plusOne" name="plusOne"  type="text" className="validate" onChange={this.handleInputChange}></input>
+							<label htmlFor="plusOne">Plus One</label>
+						</div>
 					 </div>
 
 					<div className="row" style={{paddingTop: "20px"}}>
 						
 						<div className="input-field col s3">
+
 							<p>
-      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange}/>
-      							<label htmlFor="test1">VIP</label>
+      							<input name="vip" type="radio" id="vip" onChange={this.toggleInput} checked={this.state.newGuest.vip} />
+      							<label htmlFor="vip">VIP</label>
     						</p>
 						</div>
 						<div className="input-field col s3">
 							<p>
-      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange}/>
-      							<label htmlFor="test1">All Access</label>
+      							<input name="allAccess" type="radio" id="allAccess" onChange={this.toggleInput} checked={this.state.newGuest.allAccess}/>
+      							<label htmlFor="allAccess">All Access</label>
     						</p>
 						</div>
 						<div className="input-field col s3">
 							<p>
-      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange} />
-      							<label htmlFor="test1">Press</label>
+      							<input name="pressPass" type="radio" id="pressPass" onChange={this.toggleInput} checked={this.state.newGuest.pressPass} />
+      							<label htmlFor="pressPass">Press</label>
     						</p>
     					</div>
 						<div className="input-field col s3">
 							<p>
-      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange} />
-      							<label htmlFor="test1">Photo</label>
+      							<input name="photoPass" type="radio" id="photoPass" onChange={this.toggleInput}  checked={this.state.newGuest.photoPass} />
+      							<label htmlFor="photoPass">Photo</label>
     						</p>
 						</div>
 					
@@ -164,33 +186,33 @@ class AddGuestForm extends Component {
 						
 						<div className="input-field col s2">
 							<p>
-      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange}/>
-      							<label htmlFor="test1">House List</label>
+      							<input name="houseList" type="radio" id="houseList" onChange={this.toggleInput} checked={this.state.newGuest.houseList} />
+      							<label htmlFor="houseList">House List</label>
     						</p>
 						</div>
 						<div className="input-field col s2">
 							<p>
-      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange}/>
-      							<label htmlFor="test1">Headliner List</label>
+      							<input name="headlinerList" type="radio" id="headlinerList" onChange={this.toggleInput} checked={this.state.newGuest.headlinerList} />
+      							<label htmlFor="headlinerList">Headliner List</label>
     						</p>
 						</div>
 						<div className="input-field col s2">
 							<p>
-      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange} />
-      							<label htmlFor="test1">Support One List</label>
+      							<input name="supportOneList" type="radio" id="supportOneList" onChange={this.toggleInput}  checked={this.state.newGuest.supportOneList} />
+      							<label htmlFor="supportOneList">Support One List</label>
     						</p>
     					</div>
 						<div className="input-field col s2">
 							<p>
-      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange} />
-      							<label htmlFor="test1">Support Two List</label>
+      							<input name="supportTwoList" type="radio" id="supportTwoList" onChange={this.toggleInput}  checked={this.state.newGuest.supportTwoList} />
+      							<label htmlFor="supportTwoList">Support Two List</label>
     						</p>
 						</div>
 
 						<div className="input-field col s2">
 							<p>
-      							<input name="group1" type="radio" id="test1" onChange={this.handleInputChange} />
-      							<label htmlFor="test1">Support Three List</label>
+      							<input name="supportThreeList" type="radio" id="supportThreeList" onChange={this.toggleInput}  checked={this.state.newGuest.supportThreeList} />
+      							<label htmlFor="supportThreeList">Support Three List</label>
     						</p>
 						</div>
 					
@@ -200,13 +222,11 @@ class AddGuestForm extends Component {
 
 							<div className="col s6 right-align" >
 
-								<a className="waves-effect waves-teal  cyan lighten-3 btn-flat center-align"><Link to={'/'}>Cancel</Link></a>
+								<Link  className="waves-effect waves-teal  cyan lighten-3 btn-flat center-align" to={'/'}>Cancel</Link>
 							</div>
 
 							<div className="col s6 left-align" >
-
-								<a className="waves-effect waves-teal btn-flat teal lighten-3 center-align"><Link to={'/'}>Submit</Link></a>
-						
+								<button type="submit" className="waves-effect waves-teal btn-flat teal lighten-3 center-align">Submit</button>
 							</div>
 					</div>
 				

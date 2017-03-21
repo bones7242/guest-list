@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
     // the entry file for the bundle
@@ -22,6 +23,19 @@ module.exports = {
             }
         ]
     },
+
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
+            "Hammer": "hammerjs/hammer",
+            createDayLabel: "jquery",
+            createWeekdayLabel: "jquery",
+            activateOption: "jquery",
+            leftPosition: "jquery"
+        })
+    ],
 
     // start webpack in a watch mode, so webpack will rebuild the bundle on changes
     devtool: "eval-source-map"

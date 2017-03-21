@@ -12,6 +12,7 @@ require("./server/models/user");
 require("./server/models/venue");
 require("./server/models/artist");
 require("./server/models/event");
+require("./server/models/guest");
 
 // Define variable to hold express().
 const app = express();

@@ -29,7 +29,7 @@ const EventTab = ({headliner, changeEvent}) => {
 				<div >
 					{ headliner && <Link onClick={changeEvent} to={'/dash/event'}><h5 className="left truncate artistTab">{headliner}</h5></Link> }
 					<p className="left tabDate">{/*eventDate*/}</p>
-					<Link className="btn-floating btn-small tiny waves-effect waves-light deep-purple accent-2 hoverable right material-icons" style={{ margin:"10"}} to={'/dash/add-guest'}  ><i className="medium material-icons">perm_identity</i></Link>
+					<Link className="btn-floating btn-small tiny waves-effect waves-light deep-purple accent-2 hoverable right material-icons" style={{ margin:"10px"}} to={'/dash/add-guest'}  ><i className="medium material-icons">perm_identity</i></Link>
 
 				</div>
 			</div>
