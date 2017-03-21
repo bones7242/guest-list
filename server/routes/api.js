@@ -16,7 +16,13 @@ api routes that require authentication go below
 router.get("/venue/:userId", (req, res) => {
     console.log("received api/venue/:userid GET request for:", req.params.userId);
     Venue.findOne({owner: req.params.userId}).
-    populate("events").
+    populate({
+            path: "events",
+            populate: {
+                path: "guests"
+            }
+        }
+    ).
     exec((err, venue) => {
         // handle errors 
         if (err) {
@@ -113,8 +119,8 @@ router.post("/guest", (req, res) => {
     const newGuest = new Guest(req.body);
     // save the new guest record 
     newGuest.save((err, doc) => {
-        console.log("err:", err)
-        console.log("doc:", doc)
+        //console.log("err:", err)
+        //console.log("doc:", doc)
         // handle errors with the save.
         if (err) { 
             //check to see if it is a duplicate code
