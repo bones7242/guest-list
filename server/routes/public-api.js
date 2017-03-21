@@ -62,7 +62,7 @@ router.get("/event/:eventId", (req, res) => {
         sort({ date: -1 }).
         populate("guests").
         exec((err, docs) => {
-            // handle errors with the save.
+            // handle errors.
             if (err) { 
                 res.json({message: err})
             // if no errors.
