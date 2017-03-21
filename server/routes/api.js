@@ -112,11 +112,24 @@ router.post("/guest", (req, res) => {
     } else {
         
             //push this guest id to the event as a guest 
-            
+            Event.findOneAndUpdate(
+                {"_id": req.body.eventId},
+                {$push: {"guests": doc._id}},
+                {new:true},
+                function(error, document){
+                    if (error){
+                        res.send(error);
+                    } else {
+                       res.status(200).json({
+                            message: doc
+                         }); 
+                    }
+                 }
+                
 
-            res.status(200).json({
-                message: doc
-            });
+            )
+
+            
         };
     });
     
