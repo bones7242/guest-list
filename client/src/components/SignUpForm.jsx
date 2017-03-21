@@ -1,9 +1,6 @@
 import React, { PropTypes } from "react";
 import { Link } from "react-router";
 
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-
 /*
 This is the signup form that will be rendered inside of our signup page.  
 The form handles showing the fields and getting the user input and checking the input.
@@ -11,118 +8,106 @@ The form handles showing the fields and getting the user input and checking the 
 
 const SignUpForm = ({onSubmit, onChange, errors, user}) => {
     return (
-        <div className="row">
-            <div className="col s3 m3"></div>
-            <div className="col s6 m6 card grey darken-3">
-                <div className="card-title">Sign Up</div>
-                <div className="card-content">
-                    <form action="/" onSubmit={onSubmit}>
+        <div className="container">
+                
+            <h2 className="card-heading  white-text text-darken-2">Sign Up</h2>
+
+            <form action="/" onSubmit={onSubmit}>
+            
+                {errors.summary && <p className="error-message">{errors.summary}</p>}
+
+                <div className="field-line">
+                    <label htmlFor="name" className="white-text">Name: </label>
+                    <p className="error-message">{errors.name}</p>
+                    <input
+                        name="name"                               
+                        onChange={onChange}
+                        value={user.name}
+                    />
                     
-                        {errors.summary && <p className="error-message">{errors.summary}</p>}
-
-                        <div className="">
-                            <label htmlFor="name">Name: </label>
-                            <p className="error-message">{errors.name}</p>
-                            <input
-                                name="name"                               
-                                onChange={onChange}
-                                value={user.name}
-                            />
-                            
-                        </div>
-
-                        <div className="">
-                            <label htmlFor="email">Email: </label>
-                            <p className="error-message">{errors.email}</p>
-                            <input
-                                name="email"                               
-                                onChange={onChange}
-                                value={user.email}
-                            />
-                            
-                        </div>
-
-                        <div className="">
-                            <label htmlFor="password">Password: </label>
-                            <p className="error-message">{errors.password}</p>
-                            <input
-                                type="password"
-                                name="password"                               
-                                onChange={onChange}
-                                value={user.password}
-                            />
-                            
-                        </div>
-
-                        <div className="">
-                            <label htmlFor="role">Role (optional): Owner</label>
-                            {/*<p className="error-message">{errors.role}</p>*/}
-                            {/*<SelectField name="role" onChange={onChange} value={user.role}>
-                                <MenuItem value="none" primaryText="N/A"/>
-                                <MenuItem value="owner" primaryText="Venue Owner"/>
-                                <MenuItem value="support" primaryText="Venue Support"/>
-                                <MenuItem value="artist" primaryText="Artist"/>
-                            </SelectField>*/}
-                            
-                        </div>
-
-                        {/*
-                            display additional questions here, depending on the role selected above
-                        */}
-
-                        <div className="">
-                            <label htmlFor="venueName">Venue Name: </label>
-                            <p className="error-message">{errors.venueName}</p>
-                            <input
-                                name="venueName"
-                                onChange={onChange}
-                                value={user.venueName}
-                            />
-                            
-                        </div>
-
-                        <div className="">
-                            <label htmlFor="venueAddressOne">Address 1: </label>
-                            <p className="error-message">{errors.venueAddressOne}</p>
-                            <input
-                                name="venueAddressOne"
-                                onChange={onChange}
-                                value={user.venueAddressOne}
-                            />
-                            
-                        </div>
-                        <div className="">
-                            <label htmlFor="venueAddressTwo">Address 2: </label>
-                            <p className="error-message">{errors.venueAddressTwo}</p>
-                            <input
-                                name="venueAddressTwo"
-                                onChange={onChange}
-                                value={user.venueAddressTwo}
-                            />
-                            
-                        </div>
-
-                        <div className="">
-                            <label htmlFor="venueZip">Zip Code: </label>
-                            <p className="error-message">{errors.venueZip}</p>
-                            <input
-                                name="venueZip"
-                                onChange={onChange}
-                                value={user.venueZip}
-                            />
-                            
-                        </div>
-
-                        <div className="button-line">
-                            <button type="submit" className="waves-effect waves-light btn">Create New Account</button>
-                        </div>
-
-                        <p>Already have an account? <Link to={"/login"}>Log in</Link></p>
-
-                    </form>
                 </div>
-            </div> 
-            <div className="col s3 m3"></div>
+
+                <div className="">
+                    <label htmlFor="email" className="white-text">Email: </label>
+                    <p className="error-message">{errors.email}</p>
+                    <input
+                        name="email"                               
+                        onChange={onChange}
+                        value={user.email}
+                    />
+                    
+                </div>
+
+                <div className="">
+                    <label htmlFor="password" className="white-text">Password: </label>
+                    <p className="error-message">{errors.password}</p>
+                    <input
+                        type="password"
+                        name="password"                               
+                        onChange={onChange}
+                        value={user.password}
+                    />
+                    
+                </div>
+
+                <div className="input-field col s3">
+                    {/*role selection goes here*/}
+                </div>
+
+                {/*
+                    display additional questions below, depending on the role selected above
+                */}
+
+                <div className="">
+                    <label htmlFor="venueName" className="white-text">Venue Name: </label>
+                    <p className="error-message">{errors.venueName}</p>
+                    <input
+                        name="venueName"
+                        onChange={onChange}
+                        value={user.venueName}
+                    />
+                    
+                </div>
+
+                <div className="">
+                    <label htmlFor="venueAddressOne" className="white-text">Address 1: </label>
+                    <p className="error-message">{errors.venueAddressOne}</p>
+                    <input
+                        name="venueAddressOne"
+                        onChange={onChange}
+                        value={user.venueAddressOne}
+                    />
+                    
+                </div>
+                <div className="">
+                    <label htmlFor="venueAddressTwo" className="white-text">Address 2: </label>
+                    <p className="error-message">{errors.venueAddressTwo}</p>
+                    <input
+                        name="venueAddressTwo"
+                        onChange={onChange}
+                        value={user.venueAddressTwo}
+                    />
+                    
+                </div>
+
+                <div className="">
+                    <label htmlFor="venueZip" className="white-text">Zip Code: </label>
+                    <p className="error-message">{errors.venueZip}</p>
+                    <input
+                        name="venueZip"
+                        onChange={onChange}
+                        value={user.venueZip}
+                    />
+                    
+                </div>
+
+                <div className="button-line">
+                    <button type="submit" className="waves-effect waves-light btn">Create New Account</button>
+                </div>
+
+                <p>Already have an account? <Link to={"/login"}>Log in</Link></p>
+
+            </form>
         </div>
     );
 };
