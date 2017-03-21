@@ -21,6 +21,7 @@ export function fetchVenue(userId, authToken){
 
 }
 
+
 export function fetchEvents(venueId, authToken){
     
     const url = `/api/event/${venueId}`;

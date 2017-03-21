@@ -135,26 +135,27 @@ router.post("/guest", (req, res) => {
     
 }); 
 
-router.get("/guest/:venueId", (req, res) => {
-    console.log("received api/guest GET request:", req.params.venueId);
-    // finding all guest where the venue matches the venueId
-    Guest.find({
-            guest: req.params.guestId
-        }).
-        limit(10).
-        sort({ date: -1 }).
-        exec((err, docs) => {
-            // handle errors with the save.
-            if (err) { 
-                res.json({message: err})
-            // if no errors.
-            } else {
-                res.status(200).json({
-                    message: docs
-                });
-            };
-        });    
-}); 
+// router.get("/event/:eventId", (req, res) => {
+//     console.log("received api/event GET request:", req.params.eventId);
+//     // finding all guest where the venue matches the venueId
+//     Event.find({
+//             _id: req.params.eventId
+//         }).
+//         limit(10).
+//         sort({ date: -1 }).
+//         populate("guests").
+//         exec((err, docs) => {
+//             // handle errors with the save.
+//             if (err) { 
+//                 res.json({message: err})
+//             // if no errors.
+//             } else {
+//                 res.status(200).json({
+//                     message: docs
+//                 });
+//             };
+//         });    
+// }); 
 
 
 module.exports = router;
