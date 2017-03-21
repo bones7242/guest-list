@@ -1,8 +1,6 @@
 
 //will contain newevent.js(form), addguestform.js(form), eventinfo.js(top info bar), and user list
 import React, { PropTypes, Component } from 'react';
-//import './Content.css';
-import Attendee from './Attendee.jsx';
 
 const Content = (children) => {
 	return (
