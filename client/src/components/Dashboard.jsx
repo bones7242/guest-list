@@ -34,11 +34,7 @@ const Dashboard = ({children}) => {
 
                 <div className="row" style={{padding:"0px"}}>
 
-                    <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-                        <DashboardHeader />
-                    </div>
-
-                    {/*this is the content subcomponent, which will show the guests on the guestlist for the selected event  */}
+                    {/*this is the content subcomponent, which will show the add-event form, add-guest form, or event details */}
                     <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
                         <Content children={children} />
                     </div>

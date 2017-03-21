@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchEvents } from "../../actions/index";
 
+import DashboardHeader from "./DashboardHeader.jsx";
+
 class AddEventForm extends Component {
 	// constructor is called whenever a new instance of the class is created
 	constructor(props) {
@@ -85,6 +87,13 @@ class AddEventForm extends Component {
 
 	// render the component 
 	render() {
+		// check to make sure a venue is in the props.
+		if (!this.props.venue){
+			return (
+				<div>A venue needs to be selected before you can start adding events.</div>
+			)
+		}
+		// if a venue is in the props, show add-event form.
 		return (
 			<div className=" row col s12 add-event-form" style={{paddingTop:'25px', borderTopStyle:"solid", borderColor: "black", borderWidth: "3px"}}>
 				<div className="row grey darken-3">
