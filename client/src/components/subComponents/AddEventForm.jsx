@@ -1,8 +1,11 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
+
 import Auth from "../../modules/Auth";
 
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchEvents } from "../../actions/index";
 
 class AddEventForm extends Component {
 	// constructor is called whenever a new instance of the class is created
@@ -66,6 +69,8 @@ class AddEventForm extends Component {
             if (xhr.status === 200) {
 				console.log("success! message:", xhr.response.message)
 				alert("Event was successfully added :)");
+				// update the events in the applicaiton state
+				this.props.fetchEvents(this.props.venue._id, Auth.getToken())
                 // redirect to the dash, and have the dash select the newly created event for display
 
                 	//[ redirect goes here ]
@@ -172,4 +177,8 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps)(AddEventForm); 
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ fetchEvents }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddEventForm); 

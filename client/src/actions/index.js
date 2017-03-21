@@ -4,6 +4,7 @@ export const FETCH_VENUE = "FETCH_VENUE";
 export const FETCH_EVENTS = "FETCH_EVENTS";
 export const EVENT_SELECTED = "EVENT_SELECTED";
 
+// this method gets all data for a venue based on user Id (must be the owner)
 export function fetchVenue(userId, authToken){
     
     const url = `/api/venue/${userId}`;
@@ -21,7 +22,7 @@ export function fetchVenue(userId, authToken){
 
 }
 
-
+// this method gets all event data for a venue based on venue id
 export function fetchEvents(venueId, authToken){
     
     const url = `/api/event/${venueId}`;
@@ -39,6 +40,7 @@ export function fetchEvents(venueId, authToken){
 
 }
 
+// this method changes which of the events is the "active" event 
 export function selectEvent(event) {
     // selectEvent is an ActionCreator, it needs to return an action, which is a plain js object with a type property and a payload (a piece of data).
     return {
