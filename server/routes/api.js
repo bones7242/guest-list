@@ -65,7 +65,7 @@ router.post("/event", (req, res) => {
                         res.send(error);
                     } else {
                         res.status(200).json({
-                            message: doc
+                            newEvent: doc
                         }); 
                     };
                 });
@@ -171,28 +171,6 @@ router.post("/guest", (req, res) => {
     });
     
 }); 
-
-// router.get("/event/:eventId", (req, res) => {
-//     console.log("received api/event GET request:", req.params.eventId);
-//     // finding all events where the id matches the eventId, and populate with all guests 
-//     Event.find({
-//             _id: req.params.eventId
-//         }).
-//         limit(10).
-//         sort({ date: -1 }).
-//         populate("guests").
-//         exec((err, docs) => {
-//             // handle errors with the save.
-//             if (err) { 
-//                 res.json({message: err})
-//             // if no errors.
-//             } else {
-//                 res.status(200).json({
-//                     message: docs
-//                 });
-//             };
-//         });    
-// }); 
 
 
 module.exports = router;
