@@ -3,12 +3,14 @@ This is the dashboard page.  After a user logs in successfully, this page will b
 */
 
 import React, {Component} from "react";
+
 import Auth from "../modules/Auth";
+
 import Dashboard from "../components/Dashboard.jsx";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { fetchVenue, fetchEvents } from "../actions/index";
+import { fetchVenue } from "../actions/index";
 
 class DashboardPage extends Component {
     // class constructor
@@ -21,11 +23,6 @@ class DashboardPage extends Component {
     componentWillMount(){
         //make a request to the server to get venue information related to this user
         this.props.fetchVenue(localStorage.getItem("userId"), Auth.getToken());
-    }
-    
-    componentDidMount(){
-        // make a request to get all the event info 
-        //this.props.fetchEvents(this.props.venue._id, Auth.getToken());
     }
 
     // render the component
@@ -47,7 +44,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ fetchVenue, fetchEvents }, dispatch);
+    return bindActionCreators({ fetchVenue }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);
