@@ -2,10 +2,9 @@ import React, { PropTypes, Component } from 'react';
 //import './Attendee.css';
 
 
-const Guest = ({guest}) => {
+const Guest = ({guest, headliner, supportOne, supportTwo, supportThree}) => {
 	return (
-		<div>{guest.name}</div>
-		/*<tr>
+		<tr>
 			<td>{guest.name}</td>
 			<td>{guest.email}</td>
 			<td>{guest.affiliation}</td>
@@ -18,20 +17,20 @@ const Guest = ({guest}) => {
 				{guest.pressPass}
 			</td>
 			<td>
-				{guest.houseList}
-				{guest.headlinerList}
-				{guest.supportOneList}
-				{guest.supportTwoList}
-				{guest.supportthreeList}
+				{guest.houseList && <p>House</p>}
+				{guest.headlinerList && <p>{headliner}</p>}
+				{guest.supportOneList && <p>{supportOne}</p>}
+				{guest.supportTwoList && <p>{supportTwo}</p>}
+				{guest.supportThreeList && <p>{supportThree}</p>}
 			</td>
 			<td>
-				<input type="radio">Checked In</input>
+				<button>Check In</button>
 			</td>
 			<td>
 				<button>Delete</button>
 				<button>Edit</button>
 			</td>
-		</tr>*/
+		</tr>
 	);
 }
 

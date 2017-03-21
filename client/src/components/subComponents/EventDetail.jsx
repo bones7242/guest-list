@@ -15,7 +15,11 @@ class EventDetail extends Component {
 			return (
 				<Guest 
 					key={index} 
-					guest={guest} 
+					guest={guest}
+					headliner={this.props.activeEvent.headliner} 
+					supportOne={this.props.activeEvent.supportOne} 
+					supportTwo={this.props.activeEvent.supportTwo} 
+					supportThree={this.props.activeEvent.supportThree} 
 				/>
 			)
 		})
@@ -38,9 +42,7 @@ class EventDetail extends Component {
 
 				<div className="row">	
 					<div className="col s12 m12 l12" style={{padding: '0'}}> 
-						{/*render an event tab for each event*/}
-						{this.renderList()}
-						{/*<table>
+						<table>
 							<tbody>
 								<tr>
 									<th>Name</th>
@@ -57,7 +59,7 @@ class EventDetail extends Component {
 								
 								{this.renderList()}
 							</tbody>
-						</table>*/}
+						</table>
 					</div>
 
 				</div>
