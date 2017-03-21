@@ -106,7 +106,7 @@ class AddGuestForm extends Component {
 				// update the specific event in the "events"array in the applicaiton state  
 				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
                 // redirect to the dash, and have the dash select the newly created event for display
-				this.props.router.replace("/dash");
+				this.props.router.replace("/dash/event");
 
             } else {
 				console.log("there was an error in creating the guest. error:", xhr.response.message)
@@ -267,7 +267,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ refreshActiveEvent }, dispatch);
+	return bindActionCreators({ refreshActiveEvent, fetchEvents }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddGuestForm);
