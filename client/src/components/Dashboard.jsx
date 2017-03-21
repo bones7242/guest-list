@@ -9,7 +9,7 @@ import DashboardHeader from "./subComponents/DashboardHeader.jsx";
 import NavBar from "./subComponents/NavBar.jsx";
 import Content from "./subComponents/Content.jsx";
 
-const Dashboard = ({venueInfo, children}) => {
+const Dashboard = ({children}) => {
     //console.log("current event", currentEvent);
     return (
         
@@ -18,9 +18,7 @@ const Dashboard = ({venueInfo, children}) => {
                 
                 <div className="row" style={{padding:"0px"}}>
                     <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-                        <DashboardLogo 
-                            venueInfo={venueInfo}
-                        />
+                        <DashboardLogo />
                     </div>
 
                     <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
@@ -42,10 +40,7 @@ const Dashboard = ({venueInfo, children}) => {
 
                     {/*this is the content subcomponent, which will show the guests on the guestlist for the selected event  */}
                     <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-                        <Content 
-                            children={children}
-                            venueInfo={venueInfo}
-                        />
+                        <Content children={children} />
                     </div>
 
                 </div>
@@ -56,8 +51,7 @@ const Dashboard = ({venueInfo, children}) => {
 }
 
 Dashboard.propTypes = {
-    venueInfo: PropTypes.object.isRequired,
-    //children: PropTypes.object.isRequired,
+    //children: PropTypes.object.isRequired
 };
 
 export default Dashboard;

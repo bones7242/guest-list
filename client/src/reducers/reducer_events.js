@@ -8,7 +8,7 @@ export default function(state = null, action) {
 
     switch (action.type) {
         case FETCH_EVENTS:
-            return [action.payload.data];    
+            return action.payload.data.message;    
     }
 
     return state;

@@ -19,23 +19,19 @@ class DashboardPage extends Component {
             venueInfo: {},
         };
 
-        // pass the "this" context, so we will have access to class members from our event handler methods (createNewEvent, updateEventsList).
-        this.updateEventsList = this.updateEventsList.bind(this);
-
-    }
-
-    updateEventsList(venueId){
-        // Get the events from the mongo database 
-        this.props.fetchEvents(venueId, Auth.getToken());
     }
 
     // lifecycle methods.
     componentWillMount(){
-        //make an AJAX-request to the server to get venue information related to this user and store the data in this component's state 
-        this.props.fetchVenue(localStorage.getItem("userId"), Auth.getToken()).then(console.log("promise test"));
-
-        // Update the events list in state.
-        //this.updateEventsList(xhr.response.venue._id) 
+        //make a request to the server to get venue information related to this user
+        this.props.fetchVenue(localStorage.getItem("userId"), Auth.getToken());
+    }
+    
+    componentDidMount(){
+        // make a request to get all the event info 
+        //this.props.fetchEvents(this.props.venue._id, Auth.getToken());
+        this.props.fetchEvents("58d038c295cda41ce0391d99", Auth.getToken());
+        
     }
 
     // render the component
@@ -43,16 +39,21 @@ class DashboardPage extends Component {
         // e.g. console.log("Test asdf:", this.props.asdf) // -> "Test asdf: 123"
         return (
             <Dashboard 
-                venueInfo={this.state.venueInfo} 
                 children={this.props.children}
             />
         );
     }
 }
 
+function mapStateToProps(state) {
+	// whatever is returned will be mapped to the props of this component
+	return {
+		venue: state.venue
+	};
+}
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({ fetchVenue, fetchEvents }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(DashboardPage);
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);

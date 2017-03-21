@@ -1,6 +1,8 @@
 import React, { PropTypes, Component } from 'react';
-import Auth from "../../modules/Auth";
 import { Link } from 'react-router';
+import Auth from "../../modules/Auth";
+
+import { connect } from "react-redux";
 
 class AddEventForm extends Component {
 	// constructor is called whenever a new instance of the class is created
@@ -20,21 +22,14 @@ class AddEventForm extends Component {
 				headlinerAllotment: 0,
 				supportOneAllotment: 0,
 				supportTwoAllotment: 0,
-				supportThreeAllotment: 0
+				supportThreeAllotment: 0,
 			},
-			venueInfo: {}
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
 		this.processEventForm = this.processEventForm.bind(this);
 		this.createNewEvent = this.createNewEvent.bind(this);
     }
-
-	// lifecycle events
-	componentDidMount(){
-		
-       // get the venue info 
-	}
 
 	// event handler for input elements.  This takes the input and inserts it into the state using the 'name' of the element that triggered it as the key.
 	handleInputChange(event){
@@ -53,14 +48,14 @@ class AddEventForm extends Component {
         event.preventDefault();
 		// do basic front-end checks to make sure form was filled out correctly
 		const newEvent = this.state.newEvent;
-		const venueId = this.state.venueInfo._id;
+		newEvent.venue = this.props.venue._id;
 		//create the event
-		this.createNewEvent(newEvent, venueId);
+		this.createNewEvent(newEvent);
         
     }
 
 	// this custom method will create the event in the database.  if successful, it redirects the user to the dashboard.
-    createNewEvent(newEvent, venueId){
+    createNewEvent(newEvent){
         // add the new event to the mongo database 
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "/api/event");
@@ -156,7 +151,8 @@ class AddEventForm extends Component {
 							</div>
 
 							<div className="col s6 left-align" >
-								<button type="submit" className="waves-effect waves-teal btn-flat center-align" onClick="tabColor()"><Link to={'/'}>Submit</Link></button>						
+								<button type="submit" className="waves-effect waves-teal btn-flat center-align">Submit</button>				
+								{/*<button type="submit" className="waves-effect waves-teal btn-flat center-align" onClick="tabColor()"><Link to={'/'}>Submit</Link></button>						*/}
 
 							</div>
 						</div>
@@ -169,6 +165,11 @@ class AddEventForm extends Component {
 	}
 }
 
+function mapStateToProps(state) {
+	// whatever is returned will be mapped to the props of this component
+	return {
+		venue: state.venue
+	};
+}
 
-
-export default AddEventForm; 
+export default connect(mapStateToProps)(AddEventForm); 

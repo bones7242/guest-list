@@ -2,6 +2,8 @@ import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
 import Auth from "../../modules/Auth"; //added by lou
 
+import { connect } from "react-redux";
+
 class AddGuestForm extends Component {
 	// constructor is called whenever a new instance of the class is created
 	constructor(props) {
@@ -32,37 +34,6 @@ class AddGuestForm extends Component {
 		this.processGuestForm = this.processGuestForm.bind(this);
 		this.createNewGuest = this.createNewGuest.bind(this);
     }
-
-	// lifecycle events
-	componentDidMount(){
-		//set the venueId in this prop's state.  make an AJAX-request to the server to get venue information related to this user and store the data in this component's state. 
-        const xhr = new XMLHttpRequest();
-        const queryUrl = "/api/guest/" + localStorage.getItem("userId");  // the request uses the userId stored in local storage 
-        //console.log("query:", queryUrl);
-        xhr.open("get", queryUrl);
-        xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
-        xhr.responseType = "json";
-        xhr.addEventListener("load", () => {
-            // success case 
-            if (xhr.status === 200) {
-                console.log("get-venue-info ajax response:", xhr.response.venue);
-                // set the venueInfo state
-                this.setState({
-                    guestInfo: xhr.response.venue
-                });
-                // add the info to new newEvent.venue
-				const newGuest = this.state.newGuest;
-				newGuest.venue = xhr.response.venue._id;
-				this.setState({
-					newGuest
-				});
-            //fail case
-            } else {
-                console.log("get-user-info ajax response failed.")
-            }
-        });
-        xhr.send();	
-	}
 
 	// event handler for input elements.  This takes the input and inserts it into the state using the 'name' of the element that triggered it as the key.
 	handleInputChange(event){
@@ -111,9 +82,7 @@ class AddGuestForm extends Component {
         xhr.send(JSON.stringify(newGuest));
     }
 
-
-
-
+	// render the component 
 	render() {
 		return (
 			<div className="row col s12 add-event-form" style={{paddingTop:'15px', borderTopStyle:"solid", borderColor: "black", borderWidth: "3px"}}>
@@ -240,9 +209,6 @@ class AddGuestForm extends Component {
 						
 							</div>
 					</div>
-
-
-
 				
 				</form>
 			</div>
@@ -252,6 +218,11 @@ class AddGuestForm extends Component {
 	}
 }
 
+function mapStateToProps(state) {
+	// whatever is returned will be mapped to the props of this component
+	return {
+		activeEvent: state.activeEvent
+	};
+}
 
-
-export default AddGuestForm;
+export default connect(mapStateToProps)(AddGuestForm);
