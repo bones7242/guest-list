@@ -74,8 +74,8 @@ router.post("/event", (req, res) => {
 }); 
 
 // event route - get all events by venue id 
-router.get("/event/:venueId", (req, res) => {
-    console.log("received api/event GET request:", req.params.venueId);
+router.get("/event/all/:venueId", (req, res) => {
+    console.log("received api/event/all GET request:", req.params.venueId);
     // finding all events where the venue matches the venueId, and populate the guests in the event 
     Event.find({
             venue: req.params.venueId
@@ -90,7 +90,28 @@ router.get("/event/:venueId", (req, res) => {
             // if no errors.
             } else {
                 res.status(200).json({
-                    message: docs
+                    events: docs
+                });
+            };
+        });    
+}); 
+
+// event route - get info for one event by that event's id 
+router.get("/event/one/:eventId", (req, res) => {
+    console.log("received api/event/one GET request:", req.params.eventId);
+    // finding all events where the venue matches the venueId, and populate the guests in the event 
+    Event.findOne({
+            _id: req.params.eventId
+        }).
+        populate("guests").
+        exec((err, docs) => {
+            // handle errors with the save.
+            if (err) { 
+                res.json({message: err})
+            // if no errors.
+            } else {
+                res.status(200).json({
+                    event: docs
                 });
             };
         });    
@@ -100,7 +121,7 @@ router.get("/event/:venueId", (req, res) => {
 //route to get guest info for one guest by id
 router.get("/guest/:guestId", (req, res) => {
     console.log("received api/dashboard/id GET request for:", req.params.guestId);
-    Guest.findOne({id: req.params.guestId}, function(err, guestInfo){
+    Guest.findOne({_id: req.params.guestId}, function(err, guestInfo){
         if (err) {
             res.send(err);
         } else {

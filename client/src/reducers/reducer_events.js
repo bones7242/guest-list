@@ -12,7 +12,7 @@ export default function(state = null, action) {
             return action.payload.data.venue.events;
             break;    
         case FETCH_EVENTS:
-            return action.payload.data.message;
+            return action.payload.data.events;
             break;    
     }
 

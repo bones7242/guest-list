@@ -1,10 +1,11 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
+
 import Auth from "../../modules/Auth"; //added by lou
 
 import { connect } from "react-redux";
-
-import ReactDOM from 'react-dom';
+import { bindActionCreators } from "redux";
+import { refreshActiveEvent } from "../../actions/index";
 
 class AddGuestForm extends Component {
 	// constructor is called whenever a new instance of the class is created
@@ -98,6 +99,10 @@ class AddGuestForm extends Component {
             if (xhr.status === 200) {
 				console.log("success! message:", xhr.response.message)
 				alert("Guest was successfully added :)");
+				// update the "active event"" in the application state
+				this.props.refreshActiveEvent(this.props.activeEvent._id, Auth.getToken());
+				// update the specific event in the "events"array in the applicaiton state  
+				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
                 // redirect to the dash, and have the dash select the newly created event for display
 
                 	//[ redirect goes here ]
@@ -241,8 +246,13 @@ class AddGuestForm extends Component {
 function mapStateToProps(state) {
 	// whatever is returned will be mapped to the props of this component
 	return {
-		activeEvent: state.activeEvent
+		activeEvent: state.activeEvent,
+		venue: state.venue  //note: only really need the venue id 
 	};
 }
 
-export default connect(mapStateToProps)(AddGuestForm);
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ refreshActiveEvent }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddGuestForm);
