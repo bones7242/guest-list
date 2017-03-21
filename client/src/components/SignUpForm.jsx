@@ -16,89 +16,95 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
             
                 {errors.summary && <p className="error-message">{errors.summary}</p>}
 
-                <div className="field-line">
-                    <label htmlFor="name" className="white-text">Name: </label>
-                    <p className="error-message">{errors.name}</p>
-                    <input
-                        name="name"                               
-                        onChange={onChange}
-                        value={user.name}
-                    />
-                    
+                <div className="row">
+                    <div className="col s12 m6 l6">
+                        <label htmlFor="name" className="white-text">Name: </label>
+                        <p className="error-message">{errors.name}</p>
+                        <input
+                            name="name"                               
+                            onChange={onChange}
+                            value={user.name}
+                        />
+                        
+                    </div>
+
+                    <div className="col s12 m6 l6">
+                        <label htmlFor="email" className="white-text">Email: </label>
+                        <p className="error-message">{errors.email}</p>
+                        <input
+                            name="email"                               
+                            onChange={onChange}
+                            value={user.email}
+                        />
+                        
+                    </div>
                 </div>
 
-                <div className="">
-                    <label htmlFor="email" className="white-text">Email: </label>
-                    <p className="error-message">{errors.email}</p>
-                    <input
-                        name="email"                               
-                        onChange={onChange}
-                        value={user.email}
-                    />
-                    
-                </div>
+                <div className="row">
+                    <div className="col s12 m6 l6">
+                        <label htmlFor="password" className="white-text">Password: </label>
+                        <p className="error-message">{errors.password}</p>
+                        <input
+                            type="password"
+                            name="password"                               
+                            onChange={onChange}
+                            value={user.password}
+                        />
+                        
+                    </div>
 
-                <div className="">
-                    <label htmlFor="password" className="white-text">Password: </label>
-                    <p className="error-message">{errors.password}</p>
-                    <input
-                        type="password"
-                        name="password"                               
-                        onChange={onChange}
-                        value={user.password}
-                    />
-                    
-                </div>
-
-                <div className="input-field col s3">
-                    {/*role selection goes here*/}
+                    <div className="col s12 m6 l6">
+                        <label htmlFor="role" className="white-text">Role: </label>
+                        {/*role selection goes here*/}
+                    </div>
                 </div>
 
                 {/*
                     display additional questions below, depending on the role selected above
                 */}
+                <div className="row">
+                    <div className="col s12 m6 l6">
+                        <label htmlFor="venueName" className="white-text">Venue Name: </label>
+                        <p className="error-message">{errors.venueName}</p>
+                        <input
+                            name="venueName"
+                            onChange={onChange}
+                            value={user.venueName}
+                        />
+                        
+                    </div>
 
-                <div className="">
-                    <label htmlFor="venueName" className="white-text">Venue Name: </label>
-                    <p className="error-message">{errors.venueName}</p>
-                    <input
-                        name="venueName"
-                        onChange={onChange}
-                        value={user.venueName}
-                    />
+                    <div className="col s12 m6 l6">
+                        <label htmlFor="venueAddressOne" className="white-text">Address 1: </label>
+                        <p className="error-message">{errors.venueAddressOne}</p>
+                        <input
+                            name="venueAddressOne"
+                            onChange={onChange}
+                            value={user.venueAddressOne}
+                        />
+                        
                     
-                </div>
+                    
+                        <label htmlFor="venueAddressTwo" className="white-text">Address 2: </label>
+                        <p className="error-message">{errors.venueAddressTwo}</p>
+                        <input
+                            name="venueAddressTwo"
+                            onChange={onChange}
+                            value={user.venueAddressTwo}
+                        />
+                        
+                    
 
-                <div className="">
-                    <label htmlFor="venueAddressOne" className="white-text">Address 1: </label>
-                    <p className="error-message">{errors.venueAddressOne}</p>
-                    <input
-                        name="venueAddressOne"
-                        onChange={onChange}
-                        value={user.venueAddressOne}
-                    />
                     
-                </div>
-                <div className="">
-                    <label htmlFor="venueAddressTwo" className="white-text">Address 2: </label>
-                    <p className="error-message">{errors.venueAddressTwo}</p>
-                    <input
-                        name="venueAddressTwo"
-                        onChange={onChange}
-                        value={user.venueAddressTwo}
-                    />
-                    
-                </div>
-
-                <div className="">
-                    <label htmlFor="venueZip" className="white-text">Zip Code: </label>
-                    <p className="error-message">{errors.venueZip}</p>
-                    <input
-                        name="venueZip"
-                        onChange={onChange}
-                        value={user.venueZip}
-                    />
-                    
+                        <label htmlFor="venueZip" className="white-text">Zip Code: </label>
+                        <p className="error-message">{errors.venueZip}</p>
+                        <input
+                            name="venueZip"
+                            onChange={onChange}
+                            value={user.venueZip}
+                        />
+                        
+                    </div>
                 </div>
 
                 <div className="button-line">
