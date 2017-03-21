@@ -5,7 +5,9 @@ import Auth from "../../modules/Auth";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { fetchEvents } from "../../actions/index";
+import { fetchEvents, selectEvent } from "../../actions/index";
+
+import DashboardHeader from "./DashboardHeader.jsx";
 
 class AddEventForm extends Component {
 	// constructor is called whenever a new instance of the class is created
@@ -67,13 +69,14 @@ class AddEventForm extends Component {
         xhr.responseType = "json";
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
-				console.log("success! message:", xhr.response.message)
+				console.log("success! message:", xhr.response.newEvent)
 				alert("Event was successfully added :)");
 				// update the events in the applicaiton state
-				this.props.fetchEvents(this.props.venue._id, Auth.getToken())
+				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
+				// select the newly created event
+				this.props.selectEvent(xhr.response.newEvent);
                 // redirect to the dash, and have the dash select the newly created event for display
-
-                	//[ redirect goes here ]
+				this.props.router.replace("/dash/event");
 
             } else {
 				console.log("there was an error in creating the event. error:", xhr.response.message)
@@ -85,6 +88,13 @@ class AddEventForm extends Component {
 
 	// render the component 
 	render() {
+		// check to make sure a venue is in the props.
+		if (!this.props.venue){
+			return (
+				<div>A venue needs to be selected before you can start adding events.</div>
+			)
+		}
+		// if a venue is in the props, show add-event form.
 		return (
 			<div className=" row col s12 add-event-form" style={{paddingTop:'25px', borderTopStyle:"solid", borderColor: "black", borderWidth: "3px"}}>
 				<div className="row grey darken-3">
@@ -178,7 +188,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ fetchEvents }, dispatch);
+	return bindActionCreators({ fetchEvents, selectEvent }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddEventForm); 

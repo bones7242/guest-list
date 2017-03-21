@@ -5,7 +5,9 @@ import Auth from "../../modules/Auth"; //added by lou
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { refreshActiveEvent } from "../../actions/index";
+import { refreshActiveEvent, fetchEvents } from "../../actions/index";
+
+import DashboardHeader from "./DashboardHeader.jsx";
 
 class AddGuestForm extends Component {
 	// constructor is called whenever a new instance of the class is created
@@ -104,8 +106,7 @@ class AddGuestForm extends Component {
 				// update the specific event in the "events"array in the applicaiton state  
 				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
                 // redirect to the dash, and have the dash select the newly created event for display
-
-                	//[ redirect goes here ]
+				this.props.router.replace("/dash/event");
 
             } else {
 				console.log("there was an error in creating the guest. error:", xhr.response.message)
@@ -117,127 +118,141 @@ class AddGuestForm extends Component {
 
 	// render the component 
 	render() {
+		// check to make sure an event is active
+		if (!this.props.activeEvent){
+			return (
+				<div>Select an event to start adding guests.</div>
+			)
+		}
+		// if an event is active, show add guest form 
 		return (
-			<div className="row col s12 add-event-form" style={{paddingTop:'15px', borderTopStyle:"solid", borderColor: "black", borderWidth: "3px"}}>
-				<div className="row grey darken-3">
-				<form className="col s12" action="/" onSubmit={this.processGuestForm}>
-					<div className="row" style={{paddingTop:"10px"}}>
-							<h3 className="center-align">Add A New Fan To Your List</h3>
+			<div>
+				<div className="row">
+					<div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+						<DashboardHeader />
 					</div>
+				</div>
+				<div className="row col s12 add-event-form" style={{paddingTop:'15px', borderTopStyle:"solid", borderColor: "black", borderWidth: "3px"}}>
+					<div className="row grey darken-3">
+					<form className="col s12" action="/" onSubmit={this.processGuestForm}>
+						<div className="row" style={{paddingTop:"10px"}}>
+								<h3 className="center-align">Add A New Fan To Your List</h3>
+						</div>
 
 
 
-					<div className="row" style={{paddingTop: "20px"}}>
-						
-						<div className="input-field col s6">
+						<div className="row" style={{paddingTop: "20px"}}>
 							
-							<input placeholder="Name" id="AttendeeName"  name="name" type="text" className="validate" onChange={this.handleInputChange}></input>
-							<label htmlFor="name">Name</label>
+							<div className="input-field col s6">
+								
+								<input placeholder="Name" id="AttendeeName"  name="name" type="text" className="validate" onChange={this.handleInputChange}></input>
+								<label htmlFor="name">Name</label>
+								
+							</div>
+							<div className="input-field col s2">
+								<input placeholder="Affiliation" id="Affiliation" name="affiliation" type="text" className="validate" onChange={this.handleInputChange}></input>
+								<label htmlFor="Affiliation">Affiliation</label>
+							</div>
+							<div className="input-field col s2">
+								<input id="email" type="email" name="email" className="validate" onChange={this.handleInputChange}></input>
+								<label htmlFor="email">Email</label>
+							</div>
+							<div className="input-field col s2">
+								<input placeholder="PhoneNumber" id="PhoneNumber" name="phone"  type="text" className="validate" onChange={this.handleInputChange}></input>
+								<label htmlFor="PhoneNumber">PhoneNumber</label>
+							</div>
+						
+						</div>
+
+						<div className="row">
+							<div className="input-field col s12">
+								<input placeholder="0" id="plusOne" name="plusOne"  type="text" className="validate" onChange={this.handleInputChange}></input>
+								<label htmlFor="plusOne">Plus One</label>
+							</div>
+						</div>
+
+						<div className="row" style={{paddingTop: "20px"}}>
 							
-						</div>
-						<div className="input-field col s2">
-							<input placeholder="Affiliation" id="Affiliation" name="affiliation" type="text" className="validate" onChange={this.handleInputChange}></input>
-							<label htmlFor="Affiliation">Affiliation</label>
-						</div>
-						<div className="input-field col s2">
-							<input id="email" type="email" name="email" className="validate" onChange={this.handleInputChange}></input>
-          					<label htmlFor="email">Email</label>
-						</div>
-						<div className="input-field col s2">
-							<input placeholder="PhoneNumber" id="PhoneNumber" name="phone"  type="text" className="validate" onChange={this.handleInputChange}></input>
-							<label htmlFor="PhoneNumber">PhoneNumber</label>
-						</div>
-					
-					</div>
+							<div className="input-field col s3">
 
-					<div className="row">
-						<div className="input-field col s12">
-							<input placeholder="0" id="plusOne" name="plusOne"  type="text" className="validate" onChange={this.handleInputChange}></input>
-							<label htmlFor="plusOne">Plus One</label>
-						</div>
-					 </div>
-
-					<div className="row" style={{paddingTop: "20px"}}>
+								<p>
+									<input name="vip" type="radio" id="vip" onChange={this.toggleInput} checked={this.state.newGuest.vip} />
+									<label htmlFor="vip">VIP</label>
+								</p>
+							</div>
+							<div className="input-field col s3">
+								<p>
+									<input name="allAccess" type="radio" id="allAccess" onChange={this.toggleInput} checked={this.state.newGuest.allAccess}/>
+									<label htmlFor="allAccess">All Access</label>
+								</p>
+							</div>
+							<div className="input-field col s3">
+								<p>
+									<input name="pressPass" type="radio" id="pressPass" onChange={this.toggleInput} checked={this.state.newGuest.pressPass} />
+									<label htmlFor="pressPass">Press</label>
+								</p>
+							</div>
+							<div className="input-field col s3">
+								<p>
+									<input name="photoPass" type="radio" id="photoPass" onChange={this.toggleInput}  checked={this.state.newGuest.photoPass} />
+									<label htmlFor="photoPass">Photo</label>
+								</p>
+							</div>
 						
-						<div className="input-field col s3">
-
-							<p>
-      							<input name="vip" type="radio" id="vip" onChange={this.toggleInput} checked={this.state.newGuest.vip} />
-      							<label htmlFor="vip">VIP</label>
-    						</p>
-						</div>
-						<div className="input-field col s3">
-							<p>
-      							<input name="allAccess" type="radio" id="allAccess" onChange={this.toggleInput} checked={this.state.newGuest.allAccess}/>
-      							<label htmlFor="allAccess">All Access</label>
-    						</p>
-						</div>
-						<div className="input-field col s3">
-							<p>
-      							<input name="pressPass" type="radio" id="pressPass" onChange={this.toggleInput} checked={this.state.newGuest.pressPass} />
-      							<label htmlFor="pressPass">Press</label>
-    						</p>
-    					</div>
-						<div className="input-field col s3">
-							<p>
-      							<input name="photoPass" type="radio" id="photoPass" onChange={this.toggleInput}  checked={this.state.newGuest.photoPass} />
-      							<label htmlFor="photoPass">Photo</label>
-    						</p>
-						</div>
-					
-					</div>
-
-					<div className="row" style={{paddingTop: "20px"}}>
-						
-						<div className="input-field col s2">
-							<p>
-      							<input name="houseList" type="radio" id="houseList" onChange={this.toggleInput} checked={this.state.newGuest.houseList} />
-      							<label htmlFor="houseList">House List</label>
-    						</p>
-						</div>
-						<div className="input-field col s2">
-							<p>
-      							<input name="headlinerList" type="radio" id="headlinerList" onChange={this.toggleInput} checked={this.state.newGuest.headlinerList} />
-      							<label htmlFor="headlinerList">Headliner List</label>
-    						</p>
-						</div>
-						<div className="input-field col s2">
-							<p>
-      							<input name="supportOneList" type="radio" id="supportOneList" onChange={this.toggleInput}  checked={this.state.newGuest.supportOneList} />
-      							<label htmlFor="supportOneList">Support One List</label>
-    						</p>
-    					</div>
-						<div className="input-field col s2">
-							<p>
-      							<input name="supportTwoList" type="radio" id="supportTwoList" onChange={this.toggleInput}  checked={this.state.newGuest.supportTwoList} />
-      							<label htmlFor="supportTwoList">Support Two List</label>
-    						</p>
 						</div>
 
-						<div className="input-field col s2">
-							<p>
-      							<input name="supportThreeList" type="radio" id="supportThreeList" onChange={this.toggleInput}  checked={this.state.newGuest.supportThreeList} />
-      							<label htmlFor="supportThreeList">Support Three List</label>
-    						</p>
-						</div>
-					
-					</div>
-
-					<div className="row valign-wrapper" style={{paddingTop: "25px"}} >
-
-							<div className="col s6 right-align" >
-
-								<Link  className="waves-effect waves-teal  cyan lighten-3 btn-flat center-align" to={'/'}>Cancel</Link>
+						<div className="row" style={{paddingTop: "20px"}}>
+							
+							<div className="input-field col s2">
+								<p>
+									<input name="houseList" type="radio" id="houseList" onChange={this.toggleInput} checked={this.state.newGuest.houseList} />
+									<label htmlFor="houseList">House List</label>
+								</p>
+							</div>
+							<div className="input-field col s2">
+								<p>
+									<input name="headlinerList" type="radio" id="headlinerList" onChange={this.toggleInput} checked={this.state.newGuest.headlinerList} />
+									<label htmlFor="headlinerList">Headliner List</label>
+								</p>
+							</div>
+							<div className="input-field col s2">
+								<p>
+									<input name="supportOneList" type="radio" id="supportOneList" onChange={this.toggleInput}  checked={this.state.newGuest.supportOneList} />
+									<label htmlFor="supportOneList">Support One List</label>
+								</p>
+							</div>
+							<div className="input-field col s2">
+								<p>
+									<input name="supportTwoList" type="radio" id="supportTwoList" onChange={this.toggleInput}  checked={this.state.newGuest.supportTwoList} />
+									<label htmlFor="supportTwoList">Support Two List</label>
+								</p>
 							</div>
 
-							<div className="col s6 left-align" >
-								<button type="submit" className="waves-effect waves-teal btn-flat teal lighten-3 center-align">Submit</button>
+							<div className="input-field col s2">
+								<p>
+									<input name="supportThreeList" type="radio" id="supportThreeList" onChange={this.toggleInput}  checked={this.state.newGuest.supportThreeList} />
+									<label htmlFor="supportThreeList">Support Three List</label>
+								</p>
 							</div>
-					</div>
-				
-				</form>
+						
+						</div>
+
+						<div className="row valign-wrapper" style={{paddingTop: "25px"}} >
+
+								<div className="col s6 right-align" >
+
+									<Link  className="waves-effect waves-teal  cyan lighten-3 btn-flat center-align" to={'/'}>Cancel</Link>
+								</div>
+
+								<div className="col s6 left-align" >
+									<button type="submit" className="waves-effect waves-teal btn-flat teal lighten-3 center-align">Submit</button>
+								</div>
+						</div>
+					
+					</form>
+				</div>
+
 			</div>
-
 		</div>
 		);
 	}
@@ -252,7 +267,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ refreshActiveEvent }, dispatch);
+	return bindActionCreators({ refreshActiveEvent, fetchEvents }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddGuestForm);
