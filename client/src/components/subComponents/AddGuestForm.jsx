@@ -97,7 +97,7 @@ class AddGuestForm extends Component {
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
 				console.log("success! message:", xhr.response.message)
-				alert("Event was successfully added :)");
+				alert("Guest was successfully added :)");
                 // redirect to the dash, and have the dash select the newly created event for display
 
                 	//[ redirect goes here ]

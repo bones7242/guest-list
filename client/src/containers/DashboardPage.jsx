@@ -15,10 +15,6 @@ class DashboardPage extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            venueInfo: {},
-        };
-
     }
 
     // lifecycle methods.
@@ -30,8 +26,6 @@ class DashboardPage extends Component {
     componentDidMount(){
         // make a request to get all the event info 
         //this.props.fetchEvents(this.props.venue._id, Auth.getToken());
-        this.props.fetchEvents("58d038c295cda41ce0391d99", Auth.getToken());
-        
     }
 
     // render the component
