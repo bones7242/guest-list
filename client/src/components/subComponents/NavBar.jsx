@@ -1,12 +1,12 @@
 //EVENTTAB'S GO IN HERE BELOW THE LOGO
 
 import React, { PropTypes, Component } from 'react';
-import EventTab from "./EventTab.jsx";
 
 import { connect } from "react-redux";
 import { selectEvent } from "../../actions/index";
 import { bindActionCreators } from "redux";
 
+import EventTab from "./EventTab.jsx";
 
 class NavBar extends Component {
 	constructor(props){
@@ -20,10 +20,6 @@ class NavBar extends Component {
 					key={index} 
 					headliner={event.headliner} 
 					changeEvent={() => this.props.selectEvent(event)}
-					//date={event.date} 
-					//eventId={event._id}
-					//eventIndex={index}
-					//selectEvent={this.props.selectEvent}
 				/>
 			)
 		})
@@ -33,7 +29,7 @@ class NavBar extends Component {
 		// if events has not populated, render a placeholder 
 		if (!this.props.events){
 			return (
-				<div><p>loading events...</p> </div>
+				<div><p>Create events to get started.</p> </div>
 			)
 		}
 		// otherwise, render the page 
