@@ -1,13 +1,13 @@
 import React, { PropTypes, Component } from 'react';
-//import './Attendee.css';
+
 
 
 const Guest = ({guest, headliner, supportOne, supportTwo, supportThree}) => {
 	return (
 	
 		
-			<tr className="grey darken-4">
-				<td className="white-text text-blue-grey lighten-5 hoverable">{guest.name}</td>
+			<tr className="grey darken-4" style={{borderBottomStyle:"solid", borderColor: "white", borderWidth: "1px"}}>
+				<td className="white-text text-blue-grey lighten-5 hoverable">{guest.name.toUpperCase()}</td>
 				<td className="white-text text-blue-grey lighten-5">{guest.email}</td>
 				<td className="white-text text-blue-grey lighten-5">{guest.affiliation}</td>
 				<td className="white-text text-blue-grey lighten-5">{guest.phone}</td>
@@ -30,9 +30,9 @@ const Guest = ({guest, headliner, supportOne, supportTwo, supportThree}) => {
 				</td>
 				<td>
 					
-	  				<a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{marginRight:"10"}}><i className="material-icons">delete</i></a>
+	  				<a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3"}}><i className="material-icons">delete</i></a>
 					
-	 				 <a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable"><i className="material-icons">shuffle</i></a>
+	 				 <a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3"}}><i className="material-icons">shuffle</i></a>
 				</td>
 				<div class="divider"></div>
 			</tr>

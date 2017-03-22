@@ -32,7 +32,7 @@ class DashboardHeader extends Component {
             <div className="row grey darken-3"> 
           
                 <div className="containerHeader">
-                    <div className="col s12 m3 l3 headlinerHeader">
+                    <div className="col s12 m6 l3 headlinerHeader">
                       { activeEvent.headliner && <h2 className="headlinerText">{activeEvent.headliner}</h2> }
                     </div>
 
