@@ -19,6 +19,7 @@ class NavBar extends Component {
 				<EventTab 
 					key={index} 
 					headliner={event.headliner} 
+					date={event.date} 
 					changeEvent={() => this.props.selectEvent(event)}
 				/>
 			)
