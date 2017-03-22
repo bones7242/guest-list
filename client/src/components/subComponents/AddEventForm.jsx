@@ -18,12 +18,13 @@ class AddEventForm extends Component {
 		// add default values for optional fields, like 'support's, when setting the initial state
         this.state = {
             newEvent: {
-				venue: "loading",
-				supportOne: "none",
-				supportTwo: "none",
-				supportThree: "none",
-				date: "none",
-				time: 2000,
+				venue: "",
+				headliner: "",
+				supportOne: "",
+				supportTwo: "",
+				supportThree: "",
+				date: "",
+				time: 0,
 				headlinerAllotment: 0,
 				supportOneAllotment: 0,
 				supportTwoAllotment: 0,
