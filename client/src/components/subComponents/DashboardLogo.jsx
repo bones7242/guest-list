@@ -19,7 +19,7 @@ class DashboardLogo extends Component {
 						<Link to={'/'}>
 							<h3 className="hoverable center-align">{this.props.venue.name}</h3>
 						</Link>
-						<Link className="waves-effect waves-green btn-flat deep-purple accent-2 center-align" to={'/dash/add-event'} style={{borderBottomStyle:"solid", borderColor:"#424242", borderWidth:"8px"}} ><i className="medium material-icons right">playlist_add</i>New Event</Link>
+						<Link className="waves-effect waves-green btn-flat deep-purple darken-3 center-align" to={'/dash/add-event'} style={{borderBottomStyle:"solid", borderColor:"#424242", borderWidth:"8px"}} ><i className="medium material-icons right">playlist_add</i>New Event</Link>
 					</div>
 				</div>
 			</div>
