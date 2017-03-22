@@ -22,7 +22,7 @@ class AddEventForm extends Component {
 				supportOne: "none",
 				supportTwo: "none",
 				supportThree: "none",
-				date: "04/01/2017",
+				date: "none",
 				time: 2000,
 				headlinerAllotment: 0,
 				supportOneAllotment: 0,
@@ -114,7 +114,7 @@ class AddEventForm extends Component {
 							</div>
 							
 							<div className="input-field col s4">
-								<input type="datetime-local" name="datetime-local" onChange={this.handleInputChange}></input>
+								<input type="datetime-local" name="date" onChange={this.handleInputChange}></input>
 								
 							</div>
 						

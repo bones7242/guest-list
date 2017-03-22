@@ -1,13 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from "react-redux";
+  
 
-var date = "01/13/1986";  // test
-
-var newEventDate = new Date(date);
-var eventMonth = newEventDate.getMonth();
-var eventDay = newEventDate.getDay();
-var eventYear = newEventDate.getFullYear();
-var eventTime = newEventDate.getHours();
 
 class DashboardHeader extends Component {
 
@@ -18,6 +12,22 @@ class DashboardHeader extends Component {
         }
         // otherwise...
         const activeEvent = this.props.activeEvent;
+     
+            
+            Date.prototype.getFormattedTime = function () {
+              var hours = this.getHours() == 0 ? "12" : this.getHours() > 12 ? this.getHours() - 12 : this.getHours();
+              var minutes = (this.getMinutes() < 10 ? "0" : "") + this.getMinutes();
+              var ampm = this.getHours() < 12 ? "AM" : "PM";
+              var formattedTime = hours + ":" + minutes + " " + ampm;
+              return formattedTime;
+            }
+
+            var newEventDate = new Date(activeEvent.date);
+            var eventDate = newEventDate.toDateString();
+            var eventTime = newEventDate.getFormattedTime();
+
+
+       
         return (
             <div className="row grey darken-3"> 
           
@@ -28,13 +38,13 @@ class DashboardHeader extends Component {
 
                     <div className="col s3 m3 l3 supportHeader">
                       { activeEvent.supportOne && <p className="supportHeader">{activeEvent.supportOne} </p> }
-                      { activeEvent.date && <p className="supportHeader">{activeEvent.eventMonth + " " + activeEvent.eventDay + " " + activeEvent.eventYear}</p> }
+                      { activeEvent.date && <p className="supportHeader">{eventDate}</p> }
                     </div>
 
                     <div className="col s3 m3 l3 supportHeader">
                       { activeEvent.supportTwo && <p className="supportHeader">{activeEvent.supportTwo}</p> }
                       
-                      { activeEvent.date && <p className="supportHeader">{activeEvent.eventTime}</p> }
+                      { activeEvent.date && <p className="supportHeader">{eventTime}</p> }
                     </div>
 
                     <div className="col s3 m3 l3 supportHeader">
