@@ -6,7 +6,7 @@ const Guest = ({guest, headliner, supportOne, supportTwo, supportThree}) => {
 	return (
 	
 		
-			<tr className="grey darken-4" style={{borderBottomStyle:"solid", borderColor: "white", borderWidth: "1px"}}>
+			<tr className="grey darken-4" style={{borderBottomStyle:"solid", borderColor: "#4527a0", borderWidth: "1px"}}>
 				<td className="white-text text-blue-grey lighten-5 hoverable">{guest.name.toUpperCase()}</td>
 				<td className="white-text text-blue-grey lighten-5">{guest.email}</td>
 				<td className="white-text text-blue-grey lighten-5">{guest.affiliation}</td>

@@ -45,16 +45,16 @@ class EventDetail extends Component {
 						<table>
 							<tbody>
 								<tr>
-									<th>Name</th>
-									<th>Email</th>
-									<th>Affiliation</th>
-									<th>Phone</th>
-									<th>Plus-One's</th>
-									<th>Access Type</th>
-									<th>List</th>
-									<th>In/Out</th>
+									<th className="blue-grey-text text-lighten-1">Name</th>
+									<th className="blue-grey-text text-lighten-1">Email</th>
+									<th className="blue-grey-text text-lighten-1">Affiliation</th>
+									<th className="blue-grey-text text-lighten-1">Phone</th>
+									<th className="blue-grey-text text-lighten-1">Plus-One</th>
+									<th className="blue-grey-text text-lighten-1">Access Type</th>
+									<th className="blue-grey-text text-lighten-1">List</th>
+									<th className="blue-grey-text text-lighten-1">In/Out</th>
 								
-									<th>Edit</th>
+									<th className="blue-grey-text text-lighten-1">Edit</th>
 								</tr>
 								
 								{this.renderList()}
