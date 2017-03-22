@@ -25,16 +25,18 @@ class DashboardHeader extends Component {
             var newEventDate = new Date(activeEvent.date);
             var eventDate = newEventDate.toDateString();
             var eventTime = newEventDate.getFormattedTime();
-
-
        
         return (
-            <div className="row grey darken-3"> 
+            <div className="row grey darken-3" style={{borderTopStyle:"solid", borderColor: "#4527a0", borderWidth: "1px"}}> 
           
                 <div className="containerHeader">
-                    <div className="col s12 m3 l3 headlinerHeader">
+                <div className="row">
+                    <div className="col s12 m12 l12 headlinerHeader">
                       { activeEvent.headliner && <h2 className="headlinerText">{activeEvent.headliner}</h2> }
                     </div>
+                </div>
+
+                <div className="row">
 
                     <div className="col s3 m3 l3 supportHeader">
                       { activeEvent.supportOne && <p className="supportHeader">{activeEvent.supportOne} </p> }
@@ -53,11 +55,13 @@ class DashboardHeader extends Component {
                       
                     </div>
 
-                    <div className="row checkInHeader">
-                      <div className="col s12 m12 l12 center-align checkInHeader">
-                        <p className="center-align checkInHeader">XX Checked In</p>
-                      </div>
+                    <div className="col s3 m3 l3  supportHeader">
+                        <p className="supportHeader"></p>
+                        <p className="supportHeader">XX Checked In</p>
                     </div>
+
+                  </div>
+                   
                 </div>
                 
             </div>

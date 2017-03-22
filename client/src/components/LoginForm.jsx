@@ -36,7 +36,7 @@ const LoginForm = ({onSubmit, onChange, errors, successMessage, user}) => (
       </div>
 
       <div className="button-line">
-        <button type="submit" className="waves-effect waves-light btn">Log In</button>
+        <button type="submit" className="waves-effect waves-light blue darken-1 btn">Log In</button>
       </div>
 
       <p>Don't have an account? <Link to={'/signup'}>Create one</Link>.</p>

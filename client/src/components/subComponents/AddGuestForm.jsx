@@ -132,7 +132,7 @@ class AddGuestForm extends Component {
 						<DashboardHeader />
 					</div>
 				</div>
-				<div className="row col s12 add-event-form" style={{paddingTop:'15px', borderTopStyle:"solid", borderColor: "black", borderWidth: "3px"}}>
+				<div className="row col s12 add-event-form" style={{paddingTop:'15px', borderTopStyle:"solid", borderColor: "#4527a0", borderWidth: "3px"}}>
 					<div className="row grey darken-3">
 					<form className="col s12" action="/" onSubmit={this.processGuestForm}>
 						<div className="row" style={{paddingTop:"10px"}}>
@@ -241,11 +241,11 @@ class AddGuestForm extends Component {
 
 								<div className="col s6 right-align" >
 
-									<Link  className="waves-effect waves-teal  cyan lighten-3 btn-flat center-align" to={'/'}>Cancel</Link>
+									<Link  className="waves-effect waves-teal  indigo lighten-1 btn-flat center-align" to={'/'}>Cancel</Link>
 								</div>
 
 								<div className="col s6 left-align" >
-									<button type="submit" className="waves-effect waves-teal btn-flat teal lighten-3 center-align">Submit</button>
+									<button type="submit" className="waves-effect waves-teal btn-flat blue lighten-1 center-align">Submit</button>
 								</div>
 						</div>
 					

@@ -96,7 +96,7 @@ class AddEventForm extends Component {
 		}
 		// if a venue is in the props, show add-event form.
 		return (
-			<div className=" row col s12 add-event-form" style={{paddingTop:'25px', borderTopStyle:"solid", borderColor: "black", borderWidth: "3px"}}>
+			<div className=" row col s12 add-event-form" style={{paddingTop:'25px', borderTopStyle:"solid", borderColor: "#4527a0", borderWidth: "3px"}}>
 				<div className="row grey darken-3">
 
 					<div className="row" style={{paddingTop:"10px"}}>
@@ -162,11 +162,11 @@ class AddEventForm extends Component {
 
 						<div className="row valign-wrapper" >
 							<div className="col s6 right-align" >
-								<Link className="waves-effect waves-teal btn-flat center-align" to={'/'}>Cancel</Link>
+								<Link className="waves-effect waves-teal indigo lighten-1 btn-flat center-align" to={'/'}>Cancel</Link>
 							</div>
 
 							<div className="col s6 left-align" >
-								<button type="submit" className="waves-effect waves-teal btn-flat center-align">Submit</button>				
+								<button type="submit" className="waves-effect waves-teal blue lighten-1 btn-flat center-align">Submit</button>				
 								{/*<button type="submit" className="waves-effect waves-teal btn-flat center-align" onClick="tabColor()"><Link to={'/'}>Submit</Link></button>						*/}
 
 							</div>
