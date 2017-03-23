@@ -8,7 +8,7 @@ export default function(state = null, action) {
 
     switch (action.type) {
         case FETCH_VENUE:
-            return action.payload.data.venue;    
+            return action.payload.data.venue;
     }
 
     return state;

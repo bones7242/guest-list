@@ -88,8 +88,10 @@ a:hover {
   color: green;
 }
 
-
-
 #logoContainer {
   height: 20%;
+}
+
+input, p {
+  color: white;
 }

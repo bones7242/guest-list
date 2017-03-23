@@ -145,12 +145,12 @@ class AddGuestForm extends Component {
 							
 							<div className="input-field col s6">
 								
-								<input placeholder="Name" id="AttendeeName"  name="name" type="text" className="validate" onChange={this.handleInputChange}></input>
+								<input id="AttendeeName"  name="name" type="text" className="validate" onChange={this.handleInputChange}></input>
 								<label htmlFor="name">Name</label>
 								
 							</div>
 							<div className="input-field col s2">
-								<input placeholder="Affiliation" id="Affiliation" name="affiliation" type="text" className="validate" onChange={this.handleInputChange}></input>
+								<input  id="Affiliation" name="affiliation" type="text" className="validate" onChange={this.handleInputChange}></input>
 								<label htmlFor="Affiliation">Affiliation</label>
 							</div>
 							<div className="input-field col s2">
@@ -158,7 +158,7 @@ class AddGuestForm extends Component {
 								<label htmlFor="email">Email</label>
 							</div>
 							<div className="input-field col s2">
-								<input placeholder="PhoneNumber" id="PhoneNumber" name="phone"  type="text" className="validate" onChange={this.handleInputChange}></input>
+								<input id="PhoneNumber" name="phone"  type="text" className="validate" onChange={this.handleInputChange}></input>
 								<label htmlFor="PhoneNumber">PhoneNumber</label>
 							</div>
 						
@@ -166,7 +166,7 @@ class AddGuestForm extends Component {
 
 						<div className="row">
 							<div className="input-field col s12">
-								<input placeholder="0" id="plusOne" name="plusOne"  type="text" className="validate" onChange={this.handleInputChange}></input>
+								<input  id="plusOne" name="plusOne"  type="text" className="validate" onChange={this.handleInputChange}></input>
 								<label htmlFor="plusOne">Plus One</label>
 							</div>
 						</div>
