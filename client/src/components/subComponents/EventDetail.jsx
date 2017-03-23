@@ -91,7 +91,7 @@ class EventDetail extends Component {
 		const activeEvent = this.props.activeEvent.headliner;
 		return (
 			<div>
-				<div className="row">
+				<div className="row" style={{paddingRight:"0px", paddingLeft:"0px"}}>
 					<div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
 						<DashboardHeader />
 					</div>
