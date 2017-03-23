@@ -117,7 +117,7 @@ router.get("/event/one/:eventId", (req, res) => {
                 });
             };
         });    
-}); 
+});
 
 // event route - update an event 
 router.put("/event/edit", (req, res) => {
@@ -125,10 +125,7 @@ router.put("/event/edit", (req, res) => {
     // update the event record 
     Event.findOneAndUpdate(
         {"_id": req.body._id},  // find using this filter 
-        {$set: {
-            headliner: req.body.headliner
-            }
-        },  // make this update 
+        {$set: req.body},  // make this update 
         {
             new: true // return updated rather than original 
         },  

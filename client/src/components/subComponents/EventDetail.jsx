@@ -1,17 +1,31 @@
 import React, {PropTypes, Component} from 'react';
 
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchEvents, selectEvent } from "../../actions/index";
+
+import Auth from "../../modules/Auth";
 
 import DashboardHeader from "./DashboardHeader.jsx";
 import Guest from "./Guest.jsx";
 
 
+
 class EventDetail extends Component {
 	constructor(props){
 		super(props);
-		this.state={
-			totalChecked: this.props.activeEvent.totalChecked
+		if (this.props.activeEvent){
+			this.state = {
+				totalChecked: this.props.activeEvent.totalChecked
+			}
+		} else {
+			this.state = {
+				totalChecked: 0
+			}
 		}
+		
+		this.updateTotalChecked = this.updateTotalChecked.bind(this);
+		this.updateEvent = this.updateEvent.bind(this);
 	}
 
 	updateTotalChecked(enteredIn) {
@@ -62,6 +76,7 @@ class EventDetail extends Component {
 					supportTwo={this.props.activeEvent.supportTwo} 
 					supportThree={this.props.activeEvent.supportThree} 
 					updateTotalChecked={this.updateTotalChecked}
+					updateEvent={this.updateEvent}
 				/>
 			)
 		})
@@ -114,8 +129,13 @@ class EventDetail extends Component {
 function mapStateToProps(state) {
 	// whatever is returned will be mapped to the props of this component
 	return {
-		activeEvent: state.activeEvent
+		activeEvent: state.activeEvent,
+		venue: state.venue
 	};
 }
 
-export default connect(mapStateToProps)(EventDetail);
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ fetchEvents, selectEvent }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventDetail);

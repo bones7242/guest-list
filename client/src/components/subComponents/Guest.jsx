@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 
 
 
-const Guest = ({guest, headliner, supportOne, supportTwo, supportThree, updateTotalChecked}) => {
+const Guest = ({guest, headliner, supportOne, supportTwo, supportThree, updateTotalChecked, updateEvent}) => {
 	return (
 	
 		
@@ -26,7 +26,7 @@ const Guest = ({guest, headliner, supportOne, supportTwo, supportThree, updateTo
 					{guest.supportThreeList && <p>{supportThree}</p>}
 				</td>
 				<td>
-					<a className="waves-effect waves-light btn deep-purple darken-3 hoverable" onClick={updateTotalChecked(parsInt(guest.plusOne) + 1)}>ENTERED</a>
+					<a className="waves-effect waves-light btn deep-purple darken-3 hoverable" onClick={() => { updateTotalChecked(guest.plusOne + 1); updateEvent()}}>ENTERED</a>
 				</td>
 				<td>
 					
