@@ -18,20 +18,21 @@ class EditEventForm extends Component {
 		// add default values for optional fields, like 'support's, when setting the initial state
 		if (this.props.activeEvent){
 			this.state = {
-				updatedEvent: {
-					_id: this.props.activeEvent._id,
-					venue: this.props.activeEvent.venue,
-					headliner: this.props.activeEvent.headliner,
-					supportOne: this.props.activeEvent.supportOne,
-					supportTwo: this.props.activeEvent.supportTwo,
-					supportThree: this.props.activeEvent.supportThree,
-					date: this.props.activeEvent.date,
-					time: this.props.activeEvent.time,
-					headlinerAllotment: this.props.activeEvent.headlinerAllotment,
-					supportOneAllotment: this.props.activeEvent.supportOneAllotment,
-					supportTwoAllotment: this.props.activeEvent.supportTwoAllotment,
-					supportThreeAllotment: this.props.activeEvent.supportThreeAllotment
-				}
+				updatedEvent: this.props.activeEvent
+				// updatedEvent: {
+				// 	_id: this.props.activeEvent._id,
+				// 	venue: this.props.activeEvent.venue,
+				// 	headliner: this.props.activeEvent.headliner,
+				// 	supportOne: this.props.activeEvent.supportOne,
+				// 	supportTwo: this.props.activeEvent.supportTwo,
+				// 	supportThree: this.props.activeEvent.supportThree,
+				// 	date: this.props.activeEvent.date,
+				// 	time: this.props.activeEvent.time,
+				// 	headlinerAllotment: this.props.activeEvent.headlinerAllotment,
+				// 	supportOneAllotment: this.props.activeEvent.supportOneAllotment,
+				// 	supportTwoAllotment: this.props.activeEvent.supportTwoAllotment,
+				// 	supportThreeAllotment: this.props.activeEvent.supportThreeAllotment
+				// }
 			};
 		}
         

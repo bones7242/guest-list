@@ -29,16 +29,21 @@ class EventDetail extends Component {
 	}
 
 	updateTotalChecked(enteredIn) {
+		console.log("updateTotal called. entered in:", enteredIn);
 		const checkedSoFar = this.state.totalChecked
-		const entered = parseInt(enteredIn) + checkedSoFar;
+		const entered = parseInt(enteredIn) + parseInt(checkedSoFar);
 		
-		this.setState={
+		this.setState = {
 			totalChecked: entered
 		}
+
+		this.updateEvent({totalChecked: this.state.totalChecked});
+
 	}
 
-	// this custom method will create the event in the database.  if successful, it redirects the user to the dashboard.
-    updateEvent(updatedEvent){
+	// this custom method will update the event in the database.  if successfull, it tells redux to fetch the newest data.  The user stays on this event page .
+    updateEvent(eventUpdates){
+		console.log("update event called. event update:", eventUpdates);
         // add the new event to the mongo database 
         const xhr = new XMLHttpRequest();
         xhr.open("PUT", "/api/event/edit");
@@ -51,17 +56,14 @@ class EventDetail extends Component {
 				alert("Event was successfully updated");
 				// update the events in the applicaiton state
 				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
-				// select the activeEvent in the application state 
+				// select the updated activeEvent in the application state 
 				this.props.selectEvent(xhr.response.updatedEvent);
-                // redirect to the dash, and have the dash select the newly created event for display
-				this.props.router.replace("/dash/event");
-
             } else {
 				console.log("there was an error in creating the event. error:", xhr.response.message)
 				alert("Event could not be added.  Check the console logs");
 			};
         });
-        xhr.send(JSON.stringify(updatedEvent));
+        xhr.send(JSON.stringify(eventUpdates));
     }
 
 
@@ -88,7 +90,7 @@ class EventDetail extends Component {
 			return <div> Select an event to get started.</div>;
 		}
 		// otherwise... 
-		const activeEvent = this.props.activeEvent.headliner;
+		const activeEvent = this.props.activeEvent.headliner;  //NOte: dead code?
 		return (
 			<div>
 				<div className="row" style={{paddingRight:"0px", paddingLeft:"0px"}}>
@@ -103,9 +105,7 @@ class EventDetail extends Component {
 							<tbody>
 								<tr>
 									<th className="blue-grey-text text-lighten-1">Name</th>
-									<th className="blue-grey-text text-lighten-1">Email</th>
 									<th className="blue-grey-text text-lighten-1">Affiliation</th>
-									<th className="blue-grey-text text-lighten-1">Phone</th>
 									<th className="blue-grey-text text-lighten-1">Plus-One</th>
 									<th className="blue-grey-text text-lighten-1">Access Type</th>
 									<th className="blue-grey-text text-lighten-1">List</th>

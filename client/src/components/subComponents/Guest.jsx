@@ -1,43 +1,48 @@
 import React, { PropTypes, Component } from 'react';
 
+class Guest extends Component {
+	constructor(props){
+		super(props);
 
+		this.updateCheckins = this.updateCheckins.bind(this);
 
-const Guest = ({guest, headliner, supportOne, supportTwo, supportThree, updateTotalChecked, updateEvent}) => {
-	return (
-	
-		
-			<tr className="grey darken-4" style={{borderBottomStyle:"solid", borderColor: "#4527a0", borderWidth: "1px"}}>
-				<td className="white-text text-blue-grey lighten-5 hoverable">{guest.name.toUpperCase()}</td>
-				<td className="white-text text-blue-grey lighten-5">{guest.email}</td>
-				<td className="white-text text-blue-grey lighten-5">{guest.affiliation}</td>
-				<td className="white-text text-blue-grey lighten-5">{guest.phone}</td>
-				<td className="white-text text-blue-grey lighten-5">{guest.plusOne}</td>
+	}
+
+	updateCheckins() { 
+		this.props.updateTotalChecked(this.props.guest.plusOne + 1); 
+	}
+
+	render(){
+		return (
+			<tr className="grey darken-4 bordered">
+				<td className="white-text text-blue-grey lighten-5 hoverable">{this.props.guest.name.toUpperCase()}</td>
+				<td className="white-text text-blue-grey lighten-5">{this.props.guest.affiliation}</td>
+				<td className="white-text text-blue-grey lighten-5">{this.props.guest.plusOne}</td>
 				<td>
-					{guest.vip}
-					{guest.allAccess}
-					{guest.photoPass}
-					{guest.pressPass}
+					{this.props.guest.vip}
+					{this.props.guest.allAccess}
+					{this.props.guest.photoPass}
+					{this.props.guest.pressPass}
 				</td>
 				<td>
-					{guest.houseList && <p>House</p>}
-					{guest.headlinerList && <p>{headliner}</p>}
-					{guest.supportOneList && <p>{supportOne}</p>}
-					{guest.supportTwoList && <p>{supportTwo}</p>}
-					{guest.supportThreeList && <p>{supportThree}</p>}
+					{this.props.guest.houseList && <p>House</p>}
+					{this.props.guest.headlinerList && <p>{this.props.headliner}</p>}
+					{this.props.guest.supportOneList && <p>{this.props.supportOne}</p>}
+					{this.props.guest.supportTwoList && <p>{this.props.supportTwo}</p>}
+					{this.props.guest.supportThreeList && <p>{this.props.supportThree}</p>}
 				</td>
 				<td>
-					<a className="waves-effect waves-light btn deep-purple darken-3 hoverable" onClick={() => { updateTotalChecked(guest.plusOne + 1); updateEvent()}}>ENTERED</a>
+					<a className="waves-effect waves-light btn deep-purple darken-3 hoverable" onClick={this.updateCheckins}>ENTERED</a>
 				</td>
 				<td>
 					
-	  				<a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3"}}><i className="material-icons">delete</i></a>
+					<a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3px"}}><i className="material-icons">delete</i></a>
 					
-	 				<a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3"}}><i className="material-icons">shuffle</i></a>
+					<a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3px"}}><i className="material-icons">shuffle</i></a>
 				</td>
-				<div class="divider"></div>
 			</tr>
-			
-	);
+		);
+	}		
 }
 
 
