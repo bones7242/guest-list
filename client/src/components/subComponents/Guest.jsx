@@ -13,6 +13,10 @@ class Guest extends Component {
 	}
 
 	render(){
+		if (!this.props.guest){
+			return (<div> guest loading...</div>);
+		}
+		//otherwise...
 		return (
 			<tr className="grey darken-4 bordered">
 				<td className="white-text text-blue-grey lighten-5 hoverable">{this.props.guest.name.toUpperCase()}</td>

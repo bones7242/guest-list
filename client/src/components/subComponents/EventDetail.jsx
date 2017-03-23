@@ -37,7 +37,10 @@ class EventDetail extends Component {
 			totalChecked: entered
 		}
 
-		this.updateEvent({totalChecked: this.state.totalChecked});
+		this.updateEvent({
+			_id: this.props.activeEvent._id, 
+			totalChecked: this.state.totalChecked
+		});
 
 	}
 
