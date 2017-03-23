@@ -1,25 +1,26 @@
-import React, {PropTypes, Component} from 'react';
+import React, { PropTypes, Component } from 'react';
 
 import { connect } from "react-redux";
 
 import DashboardHeader from "./DashboardHeader.jsx";
-import Guest from "./Guest.jsx"
+import Guest from "./Guest.jsx";
+import SearchBar from "./SearchBar.jsx";
 
 class EventDetail extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 	}
 
 	renderList() {
 		return this.props.activeEvent.guests.map((guest, index) => {
 			return (
-				<Guest 
-					key={index} 
+				<Guest
+					key={index}
 					guest={guest}
-					headliner={this.props.activeEvent.headliner} 
-					supportOne={this.props.activeEvent.supportOne} 
-					supportTwo={this.props.activeEvent.supportTwo} 
-					supportThree={this.props.activeEvent.supportThree} 
+					headliner={this.props.activeEvent.headliner}
+					supportOne={this.props.activeEvent.supportOne}
+					supportTwo={this.props.activeEvent.supportTwo}
+					supportThree={this.props.activeEvent.supportThree}
 				/>
 			)
 		})
@@ -35,13 +36,13 @@ class EventDetail extends Component {
 		return (
 			<div>
 				<div className="row">
-					<div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+					<div className="col s12 m12 l12" style={{ paddingRight: "0px", paddingLeft: "0px" }}>
 						<DashboardHeader />
 					</div>
 				</div>
 
-				<div className="row">	
-					<div className="col s12 m12 l12" style={{padding: '0'}}> 
+				<div className="row">
+					<div className="col s12 m12 l12" style={{ padding: '0' }}>
 						<table>
 							<tbody>
 								<tr>
@@ -53,10 +54,10 @@ class EventDetail extends Component {
 									<th>Access Type</th>
 									<th>List</th>
 									<th>In/Out</th>
-								
+
 									<th>Edit</th>
 								</tr>
-								
+
 								{this.renderList()}
 							</tbody>
 						</table>
