@@ -51,6 +51,7 @@ router.post("/event", (req, res) => {
             if (err.code === 11000){
                 res.status(500).json({message: "that Event is already in the database"})
             } else {
+                console.log("error:", err)
                 res.status(500).json({message: err})
             };
         // if no errors.
@@ -68,7 +69,8 @@ router.post("/event", (req, res) => {
                             newEvent: doc
                         }); 
                     };
-                });
+                }
+            );
         };
     });    
 }); 
@@ -117,6 +119,31 @@ router.get("/event/one/:eventId", (req, res) => {
         });    
 }); 
 
+// event route - update an event 
+router.put("/event/edit", (req, res) => {
+    console.log("received api/event PUT request", req.body);
+    // update the event record 
+    Event.findOneAndUpdate(
+        {"_id": req.body._id},  // find using this filter 
+        {$set: {
+            headliner: req.body.headliner
+            }
+        },  // make this update 
+        {
+            new: true // return updated rather than original 
+        },  
+        function(error, doc){
+            if (error){
+                res.send(error);
+            } else {
+                console.log("response from db", doc);
+                res.status(200).json({
+                    updatedEvent: doc
+                }); 
+            };
+        }
+    );
+}); 
 
 //route to get guest info for one guest by id
 router.get("/guest/:guestId", (req, res) => {
@@ -165,7 +192,7 @@ router.post("/guest", (req, res) => {
                             message: doc
                          }); 
                     }
-                 }
+                }
             )
         };
     });

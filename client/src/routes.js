@@ -12,6 +12,7 @@ import DashboardPage from "./containers/DashboardPage.jsx";
 
 import AddGuestForm from "./components/subComponents/AddGuestForm.jsx";
 import AddEventForm from "./components/subComponents/AddEventForm.jsx";
+import EditEventForm from "./components/subComponents/EditEventForm.jsx";
 import EventDetail from "./components/subComponents/EventDetail.jsx";
 
 import { Provider } from 'react-redux';
@@ -44,6 +45,8 @@ const myRoutes = (
                     <Route path="add-guest" component={AddGuestForm} />  
                     {/* add event*/}
                     <Route path="add-event" component={AddEventForm} /> 
+                    {/* edit an event */}
+                    <Route path="edit-event" component={EditEventForm} /> 
                     {/* view event*/} 
                     <Route path= "event" component={EventDetail} />
                     

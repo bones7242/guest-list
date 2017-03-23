@@ -1,5 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from "react-redux";
+import { Link } from 'react-router';
+
   
 
 
@@ -58,6 +60,7 @@ class DashboardHeader extends Component {
                     <div className="col s3 m3 l3  supportHeader">
                         <p className="supportHeader"></p>
                         <p className="supportHeader">XX Checked In</p>
+                        <Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" to="/dash/edit-event" style={{margin:"3px"}}><i className="material-icons">shuffle</i></Link>
                     </div>
 
                   </div>
