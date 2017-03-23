@@ -5,7 +5,7 @@ import Auth from "../../modules/Auth";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { fetchEvents } from "../../actions/index";
+import { fetchEvents, selectEvent } from "../../actions/index";
 
 import DashboardHeader from "./DashboardHeader.jsx";
 
@@ -67,7 +67,7 @@ class EditEventForm extends Component {
     updateEvent(updatedEvent){
         // add the new event to the mongo database 
         const xhr = new XMLHttpRequest();
-        xhr.open("PUT", "/api/event");
+        xhr.open("PUT", "/api/event/edit");
         xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.responseType = "json";
@@ -77,6 +77,8 @@ class EditEventForm extends Component {
 				alert("Event was successfully updated");
 				// update the events in the applicaiton state
 				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
+				// select the activeEvent in the application state 
+				this.props.selectEvent(xhr.response.updatedEvent);
                 // redirect to the dash, and have the dash select the newly created event for display
 				this.props.router.replace("/dash/event");
 
@@ -102,7 +104,7 @@ class EditEventForm extends Component {
 				<div className="row grey darken-3">
 
 					<div className="row" style={{paddingTop:"10px"}}>
-							<h3 className="center-align">Add A New Event</h3>
+							<h3 className="center-align">Edit Event</h3>
 					</div>
 
 					<form action="/" onSubmit={this.processEventForm}>
@@ -193,7 +195,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ fetchEvents}, dispatch);
+	return bindActionCreators({ fetchEvents, selectEvent }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditEventForm); 

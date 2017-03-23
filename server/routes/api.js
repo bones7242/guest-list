@@ -120,19 +120,23 @@ router.get("/event/one/:eventId", (req, res) => {
 }); 
 
 // event route - update an event 
-router.put("/event", (req, res) => {
-    console.log("received api/event PUT request");
+router.put("/event/edit", (req, res) => {
+    console.log("received api/event PUT request", req.body);
     // update the event record 
-    Venue.findOneAndUpdate(
+    Event.findOneAndUpdate(
         {"_id": req.body._id},  // find using this filter 
-        req.body,  // make this update 
+        {$set: {
+            headliner: req.body.headliner
+            }
+        },  // make this update 
         {
-            returnNewDocument: true // return updated rather than original 
+            new: true // return updated rather than original 
         },  
         function(error, doc){
             if (error){
                 res.send(error);
             } else {
+                console.log("response from db", doc);
                 res.status(200).json({
                     updatedEvent: doc
                 }); 

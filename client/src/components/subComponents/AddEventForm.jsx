@@ -74,7 +74,7 @@ class AddEventForm extends Component {
 				alert("Event was successfully added :)");
 				// update the events in the applicaiton state
 				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
-				// select the newly created event
+				// select the activeEvent in the application state 
 				this.props.selectEvent(xhr.response.newEvent);
                 // redirect to the dash, and have the dash select the newly created event for display
 				this.props.router.replace("/dash/event");

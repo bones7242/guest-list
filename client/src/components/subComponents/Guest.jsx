@@ -32,7 +32,7 @@ const Guest = ({guest, headliner, supportOne, supportTwo, supportThree}) => {
 					
 	  				<a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3"}}><i className="material-icons">delete</i></a>
 					
-	 				 <a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3"}}><i className="material-icons">shuffle</i></a>
+	 				<a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3"}}><i className="material-icons">shuffle</i></a>
 				</td>
 				<div class="divider"></div>
 			</tr>
