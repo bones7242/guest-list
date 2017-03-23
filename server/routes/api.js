@@ -179,12 +179,18 @@ router.post("/guest", (req, res) => {
             };
         // if no errors.
     } else {
+            const guestsToAdd = parseInt(req.body.plusOne) + 1;
+            console.log(guestsToAdd + "guests to add");
             //push this guest id to the event as a guest 
             Event.findOneAndUpdate(
                 {"_id": req.body.eventId},
-                {$push: {"guests": doc._id}},
+                {
+                    $push: {"guests": doc._id},
+                    $inc: {"totalGuest": guestsToAdd}
+                },
                 {new:true},
                 function(error, document){
+                    console.log(document + "guests eventsdoc");
                     if (error){
                         res.send(error);
                     } else {

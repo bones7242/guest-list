@@ -53,13 +53,13 @@ class DashboardHeader extends Component {
 
                     <div className="col s3 m3 l3 supportHeader">
                     { activeEvent.supportThree && <p className="supportHeader">{activeEvent.supportThree}</p> }
-                      <p className="supportHeader">Total: XX</p>
+                      {activeEvent.totalGuest && <p className="supportHeader">Total: {activeEvent.totalGuest}</p>}
                       
                     </div>
 
                     <div className="col s3 m3 l3  supportHeader">
                         <p className="supportHeader"></p>
-                        <p className="supportHeader">XX Checked In</p>
+                        {activeEvent.totalChecked && <p className="supportHeader">{activeEvent.totalChecked} Checked In</p>}
                         <Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" to="/dash/edit-event" style={{margin:"3px"}}><i className="material-icons">shuffle</i></Link>
                     </div>
 
