@@ -142,6 +142,32 @@ router.put("/event/edit", (req, res) => {
     );
 }); 
 
+// event route - increment check-in counter 
+router.put("/event/counter/increment", (req, res) => {
+    console.log("received api/event PUT request", req.body);
+    // decide how much to incremenet 
+    const guestsToCheckIn = parseInt(req.body.plusOne) + 1;
+    console.log("guests to check in:", guestsToCheckIn);
+    // update the event record 
+    Event.findOneAndUpdate(
+        {"_id": req.body.eventId},
+        {
+            $inc: {"totalChecked": guestsToCheckIn}
+        },
+        { new: true},
+        function(error, doc){
+            console.log("inc count return doc", doc);
+            if (error){
+                res.send(error);
+            } else {
+                res.status(200).json({
+                    updatedEvent: doc
+                }); 
+            }
+        }
+    )
+}); 
+
 //route to get guest info for one guest by id
 router.get("/guest/:guestId", (req, res) => {
     console.log("received api/dashboard/id GET request for:", req.params.guestId);

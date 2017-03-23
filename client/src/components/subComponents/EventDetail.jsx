@@ -36,33 +36,25 @@ class EventDetail extends Component {
 		// otherwise... 
 		const activeEvent = this.props.activeEvent.headliner;  //NOte: dead code?
 		return (
-			<div>
-				<div className="row" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-					<div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-						<DashboardHeader />
-					</div>
-				</div>
-
-				<div className="row">	
-					<div className="col s12 m12 l12" style={{padding: '0'}}> 
-						<table>
-							<tbody>
-								<tr>
-									<th className="blue-grey-text text-lighten-1">Name</th>
-									<th className="blue-grey-text text-lighten-1">Affiliation</th>
-									<th className="blue-grey-text text-lighten-1">Plus-One</th>
-									<th className="blue-grey-text text-lighten-1">Access Type</th>
-									<th className="blue-grey-text text-lighten-1">List</th>
-									<th className="blue-grey-text text-lighten-1">In/Out</th>
-								
-									<th className="blue-grey-text text-lighten-1">Edit</th>
-								</tr>
-								
-								{this.renderList()}
-							</tbody>
-						</table>
-					</div>
-
+			<div className="row">
+				<div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+					<DashboardHeader />
+					<table>
+						<tbody>
+							<tr>
+								<th className="blue-grey-text text-lighten-1">Name</th>
+								<th className="blue-grey-text text-lighten-1">Affiliation</th>
+								<th className="blue-grey-text text-lighten-1">Plus-One</th>
+								<th className="blue-grey-text text-lighten-1">Access Type</th>
+								<th className="blue-grey-text text-lighten-1">List</th>
+								<th className="blue-grey-text text-lighten-1">In/Out</th>
+							
+								<th className="blue-grey-text text-lighten-1">Edit</th>
+							</tr>
+							
+							{this.renderList()}
+						</tbody>
+					</table>
 				</div>
 			</div>
 		);

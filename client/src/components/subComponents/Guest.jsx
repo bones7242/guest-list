@@ -2,68 +2,60 @@ import React, { PropTypes, Component } from 'react';
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { fetchEvents, selectEvent } from "../../actions/index";
+import { refreshActiveEvent, fetchEvents } from "../../actions/index";
 
 import Auth from "../../modules/Auth";
+
+const Promise = require("bluebird");
 
 class Guest extends Component {
 	constructor(props){
 		// get parent props 
 		super(props);
 		// bind this to functions in this component 
-		this.updateCheckIns = this.updateCheckIns.bind(this);
-		this.updateEvent = this.updateEvent.bind(this);
+		this.checkInGuest = this.checkInGuest.bind(this);
 	}
-
-	updateCheckIns() { 
-		// figure out how many people to check in 
-		const newTotalCheckIns = parseInt(this.props.activeEvent.totalChecked) + 1 + parseInt(this.props.guest.plusOne); 
-		console.log("new checkin total", this.props.activeEvent.totalChecked, this.props.guest.plusOne, newTotalCheckIns);
-		// make sure total checked is not null
-		if (typeof newTotalCheckIns != "number"){
-			console.log("ERROR: newTotalCheckIns must be a number");
-			return;
-		}
-		// initiate update of the database & app state
-		this.updateEvent({
-			_id: this.props.activeEvent._id, 
-			totalChecked: newTotalCheckIns
-		});
-	}
-
 	// helper method to update the event in the database.  if successfull, it tells redux to fetch the newest events list and activeEvent.  The user stays on this event page.
-    updateEvent(eventUpdates){
-		console.log("update event called. event updates:", eventUpdates);
+    checkInGuest(event){
+		// Prevent default action.  in this case, action is the form submission event.
+        event.preventDefault();
+		// create the update object 
+		const checkInObject = {
+			eventId: this.props.guest.eventId,
+			plusOne: this.props.guest.plusOne,
+		}
+		console.log("checkInGuest called:", checkInObject);
         // add the new event to the mongo database 
         const xhr = new XMLHttpRequest();
-        xhr.open("PUT", "/api/event/edit");
+        xhr.open("PUT", "/api/event/counter/increment");
         xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.responseType = "json";
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
 				console.log("success! response:", xhr.response)
-				alert("Event was successfully updated");
-				// update the events in the applicaiton state
-				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
-				// select the updated activeEvent in the application state 
-				this.props.selectEvent(xhr.response.updatedEvent);
+				alert("Guest was successfully checked in.");
+				// update the "active event"" in the application state
+				this.props.refreshActiveEvent(this.props.activeEvent._id, Auth.getToken());
+				// update the specific event in the "events"array in the applicaiton state  
+				this.props.fetchEvents(this.props.activeEvent.venue, Auth.getToken());
+				// diable this button
+
+
             } else {
 				console.log("there was an error in creating the event. error message:", xhr.response.message)
 				alert("Event could not be added.  Check the console logs");
 			};
         });
-        xhr.send(JSON.stringify(eventUpdates));
+        xhr.send(JSON.stringify(checkInObject)); //note: stringify an issue for numbers?
     }
 
 	render(){
-		if (!this.props.guest){
-			return (<div> guest loading...</div>);
-		}
+		
 		//otherwise...
 		return (
 			<tr className="grey darken-4 bordered">
-				<td className="white-text text-blue-grey lighten-5 hoverable">{this.props.guest.name.toUpperCase()}</td>
+				<td className="white-text text-blue-grey lighten-5 hoverable">{this.props.guest.name}</td>
 				<td className="white-text text-blue-grey lighten-5">{this.props.guest.affiliation}</td>
 				<td className="white-text text-blue-grey lighten-5">{this.props.guest.plusOne}</td>
 				<td>
@@ -80,7 +72,7 @@ class Guest extends Component {
 					{this.props.guest.supportThreeList && <p>{this.props.activeEvent.supportThree}</p>}
 				</td>
 				<td>
-					<a className="waves-effect waves-light btn deep-purple darken-3 hoverable" onClick={this.updateCheckIns}>ENTERED</a>
+					<button className="waves-effect waves-light btn deep-purple darken-3 hoverable" onClick={this.checkInGuest}>ENTERED</button>
 				</td>
 				<td>
 					
@@ -97,12 +89,11 @@ function mapStateToProps(state) {
 	// whatever is returned will be mapped to the props of this component
 	return {
 		activeEvent: state.activeEvent,
-		venue: state.venue
 	};
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ fetchEvents, selectEvent }, dispatch);
+	return bindActionCreators({ refreshActiveEvent, fetchEvents }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Guest);

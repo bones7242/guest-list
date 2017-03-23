@@ -14,36 +14,20 @@ class EditEventForm extends Component {
 	constructor(props) {
 		// super is calling the parent's method "props" (i think to pass them down)
         super(props); 
-		//console.log("props:", props);
 		// add default values for optional fields, like 'support's, when setting the initial state
 		if (this.props.activeEvent){
 			this.state = {
 				updatedEvent: this.props.activeEvent
-				// updatedEvent: {
-				// 	_id: this.props.activeEvent._id,
-				// 	venue: this.props.activeEvent.venue,
-				// 	headliner: this.props.activeEvent.headliner,
-				// 	supportOne: this.props.activeEvent.supportOne,
-				// 	supportTwo: this.props.activeEvent.supportTwo,
-				// 	supportThree: this.props.activeEvent.supportThree,
-				// 	date: this.props.activeEvent.date,
-				// 	time: this.props.activeEvent.time,
-				// 	headlinerAllotment: this.props.activeEvent.headlinerAllotment,
-				// 	supportOneAllotment: this.props.activeEvent.supportOneAllotment,
-				// 	supportTwoAllotment: this.props.activeEvent.supportTwoAllotment,
-				// 	supportThreeAllotment: this.props.activeEvent.supportThreeAllotment
-				// }
-			};
+			}
 		}
-        
-
+        // bind 'this' to all helper functions
         this.handleInputChange = this.handleInputChange.bind(this);
 		this.processEventForm = this.processEventForm.bind(this);
 		this.updateEvent = this.updateEvent.bind(this);
     }
 
 	// event handler for input elements.  This takes the input and inserts it into the state using the 'name' of the element that triggered it as the key.
-	handleInputChange(event){
+	handleInputChange(event) {
 		//console.log(event.target.value);
 		const field = event.target.name;
         const updatedEvent = this.state.updatedEvent;
@@ -101,67 +85,61 @@ class EditEventForm extends Component {
 		}
 		// if a venue is in the props, show add-event form.
 		return (
-			<div className=" row col s12 add-event-form" style={{paddingTop:'25px', borderTopStyle:"solid", borderColor: "#4527a0", borderWidth: "3px"}}>
-				<div className="row grey darken-3">
-
-					<div className="row" style={{paddingTop:"10px"}}>
-							<h3 className="center-align">Edit Event</h3>
-					</div>
+			<div className="row">				
+				<div className="col s12">
+					<h3 className="center-align">Edit Event</h3>
 
 					<form action="/" onSubmit={this.processEventForm}>
 
-						<div className="row" style={{paddingTop: "20px"}}>
-							
-							<div className="input-field col s8">
-								<label htmlFor="headliner">Headliner*</label>
-								<input  name="headliner"  type="text" className="validate" 
-								placeholder={this.state.updatedEvent.headliner}
-								value={this.state.updatedEvent.headliner} onChange={this.handleInputChange}></input>
-								
-							</div>
-							
-							<div className="input-field col s4">
-								<input type="datetime-local" name="date" value={this.state.updatedEvent.date} onChange={this.handleInputChange}></input>
-								
-							</div>
-						
-						</div>
+						<div className="row" style={{paddingTop: "20px"}}>	
 
+							<div className="col s8">
+								<label htmlFor="headliner">Headliner</label>
+								<input name="headliner" onChange={this.handleInputChange} value={this.state.updatedEvent.headliner} type="text" className="validate">
+								</input>								
+							</div>							
+
+							<div className="col s4">
+								<label htmlFor="date">Date</label>
+								<input type="datetime-local" name="date" value={this.state.updatedEvent.date} onChange={this.handleInputChange}></input>								
+							</div>						
+
+						</div>
 						
-						<div className="row" style={{paddingTop: "20px"}}>
+						<div className="row">
 							
-							<div className="input-field col s4">
+							<div className=" col s4">
 								<label htmlFor="supportOne">First Support</label>
 								<input name="supportOne" type="text" className="validate" value={this.state.updatedEvent.supportOne} onChange={this.handleInputChange}></input>
 							</div>
 
-							<div className="input-field col s4">
+							<div className=" col s4">
 								<label htmlFor="supportTwo">Second Support</label>
 								<input name="supportTwo"  type="text" className="validate" value={this.state.updatedEvent.supportTwo} onChange={this.handleInputChange}></input>
 							</div>
 
-							<div className="input-field col s4">
+							<div className=" col s4">
 								<label htmlFor="supportThree">Third Support</label>
 								<input name="supportThree"  type="text" className="validate" value={this.state.updatedEvent.supportThree} onChange={this.handleInputChange}></input>
 							</div>
 
 						</div>
 
-						<div className="row" style={{paddingTop: "20px"}}>
+						<div className="row">
 							
-							<div className="input-field col s3">
+							<div className=" col s3">
 								<label htmlFor="headlinerAllotment">Headliner Allotment</label>
 								<input name="headlinerAllotment"  type="text" className="validate" value={this.state.updatedEvent.headlinerAllotment} onChange={this.handleInputChange}></input>
 							</div>
-							<div className="input-field col s3">
+							<div className=" col s3">
 								<label htmlFor="supportOneAllotment">First Support Allotment</label>
 								<input name="supportOneAllotment"  type="text" className="validate" value={this.state.updatedEvent.supportOneAllotment} onChange={this.handleInputChange}></input>
 							</div>
-							<div className="input-field col s3">
+							<div className=" col s3">
 								<label htmlFor="supportTwoAllotment">Second Support Allotment</label>								
 								<input name="supportTwoAllotment"  type="text" className="validate" value={this.state.updatedEvent.supportTwoAllotment} onChange={this.handleInputChange}></input>
 							</div>
-							<div className="input-field col s3">
+							<div className=" col s3">
 								<label htmlFor="supportThreeAllotment">Third Support Allotment</label>
 								<input name="supportThreeAllotment"  type="text" className="validate" value={this.state.updatedEvent.supportThreeAllotment} onChange={this.handleInputChange}></input>
 							</div>
@@ -174,8 +152,6 @@ class EditEventForm extends Component {
 
 							<div className="col s6 left-align" >
 								<button type="submit" className="waves-effect waves-teal blue lighten-1 btn-flat center-align">Submit</button>				
-								{/*<button type="submit" className="waves-effect waves-teal btn-flat center-align" onClick="tabColor()"><Link to={'/'}>Submit</Link></button>						*/}
-
 							</div>
 						</div>
 						
