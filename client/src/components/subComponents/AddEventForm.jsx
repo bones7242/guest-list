@@ -29,6 +29,8 @@ class AddEventForm extends Component {
 				supportOneAllotment: 0,
 				supportTwoAllotment: 0,
 				supportThreeAllotment: 0,
+				totalGuest:0,
+				totalChecked:0
 			}
         };
 
