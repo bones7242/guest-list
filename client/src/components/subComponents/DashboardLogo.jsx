@@ -5,13 +5,14 @@ import { connect } from "react-redux";
 class DashboardLogo extends Component {
 	render() {
 
-		var setGrey = () => {
-              var newColor="#607d8b";
-            }
+			//round 2 implimentation
+		// var setGrey = () => {
+  //             var newColor="#607d8b";
+  //           }
 
-            var setBlue = () => {
-              var newColor="#42a5f5"
-            }
+  //           var setBlue = () => {
+  //             var newColor="#42a5f5"
+  //           }
 		// if venue is not in the props, render a placeholder
 		if (!this.props.venue){
 			return (
@@ -27,9 +28,9 @@ class DashboardLogo extends Component {
 						<Link to={'/'}>
 							<h3 className="hoverable center-align">{this.props.venue.name}</h3>
 						</Link>
-						<Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3px"}} onClick={setGrey()}>G</Link>
+						
 						<Link className="waves-effect waves-green btn-flat deep-purple darken-3 blue-text text-lighten-5 center-align hoverable" to={'/dash/add-event'} style={{borderBottomStyle:"solid", borderColor:"#424242", borderWidth:"8px", fontColor:"white"}} ><i className="medium material-icons right">playlist_add</i>New Event</Link>
-						<Link className="btn-floating btn-small waves-effect waves-light blue lighten-2 hoverable" style={{margin:"3px"}} onClick={setBlue()}>B</Link>
+						
 					</div>
 				</div>
 			</div>
