@@ -100,8 +100,6 @@ class AddEventForm extends Component {
 		// if a venue is in the props, show add-event form.
 		return (
 			<div className=" row col s12 add-event-form" style={{paddingTop:'25px'}}>
-				
-				<DashboardHeader />
 
 				<h3 className="center-align">Add A New Event</h3>
 				

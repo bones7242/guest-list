@@ -6,6 +6,7 @@ import React, { PropTypes } from "react";
 
 import DashboardLogo from "./subComponents/DashboardLogo.jsx";
 import DashboardHeader from "./subComponents/DashboardHeader.jsx";
+import NavBarSeparator from "./subComponents/NavBarSeparator.jsx";
 import NavBar from "./subComponents/NavBar.jsx";
 import Content from "./subComponents/Content.jsx";
 
@@ -18,10 +19,10 @@ const Dashboard = ({children}) => {
                 
                 <div className="row grey darken-3" style={{padding:"0px"}}>
                     <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+                        {/*display the venue logo */}
                         <DashboardLogo />
-                    </div>
-
-                    <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+                        {/*separator*/}
+                        <NavBarSeparator />
                         {/*this is our nav bar subcomponent, which will show the logo and all the upcoming events*/}
                         <NavBar />
                     </div>

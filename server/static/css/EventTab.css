@@ -8,12 +8,16 @@ p, h5 {
 	color: #fafafa;
 }
 
-.tabDate {
-	padding-left: 10px;
-	
+.tab-event {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.tab-artist {
+	padding: 0px;
+	margin: 0px;
+	display: block;
 }
 
-.artistTab {
-	padding-left: 10px;
-	display: block;
+.tab-date {
+	margin: 0px;
 }

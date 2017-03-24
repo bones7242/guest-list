@@ -16,7 +16,7 @@ class DashboardLogo extends Component {
 		// if venue is not in the props, render a placeholder
 		if (!this.props.venue){
 			return (
-				<div><p>loading venue name...</p></div>
+				<div><p>loading venue name...</p></div> 
 			)
 		}
 		// otherwise render the full component

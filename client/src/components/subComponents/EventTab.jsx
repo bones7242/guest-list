@@ -29,17 +29,21 @@ const EventTab = ({headliner, date, changeEvent}) => {
 	}
 
 	return (
-		<div className="row">
+		<div className="row tab-event hoverable" id="eventStyle" style={{width:"100%", overflow: "auto"}}>
 
-			<div className="hoverable col s12 event-tab" id="eventStyle" style={{borderTop: "1px solid white", width:"100%", overflow: "auto"}}>
-				<div style={{overflow:"auto"}}>
-					{ headliner && <Link onClick={changeEvent} to={'/dash/event'}><h5 className="left truncate artistTab">{headliner.toUpperCase()}</h5></Link> }
-					{ eventDate && <p className="left tabDate">{eventDate}</p>}
-					<Link className="btn-floating btn-small tiny waves-effect waves-light deep-purple darken-3 hoverable right material-icons" style={{ margin:"10px"}} onClick={changeEvent} to={'/dash/add-guest'} ><i className="medium material-icons">perm_identity</i></Link>
+			<div className="col s10">
+				<div className="row">
 
-
+					{ headliner && <Link onClick={changeEvent} to={'/dash/event'}><h5 className="truncate tab-artist" >{headliner.toUpperCase()}</h5></Link> }
 
 				</div>
+				<div className="row">
+					{ eventDate && <p className="tab-date">{eventDate}</p>}
+				</div>
+			</div>
+			
+			<div className="col s2">
+				<Link className="btn-floating btn-small tiny waves-effect waves-light deep-purple darken-3 hoverable material-icons right" style={{ margin:"3px"}} onClick={changeEvent} to={'/dash/add-guest'}><i className="medium material-icons">perm_identity</i></Link>
 			</div>
 		</div>
 	);
