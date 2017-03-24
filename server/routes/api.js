@@ -154,9 +154,35 @@ router.put("/event/edit", (req, res) => {
 
 // event route - increment check-in counter 
 router.put("/event/counter/increment", (req, res) => {
-    console.log("received api/event PUT request", req.body);
+    console.log("received api/event/counter/increment PUT request", req.body);
     // decide how much to incremenet 
     const guestsToCheckIn = parseInt(req.body.plusOne) + 1;
+    console.log("guests to check in:", guestsToCheckIn);
+    // update the event record 
+    Event.findOneAndUpdate(
+        {"_id": req.body.eventId},
+        {
+            $inc: {"totalChecked": guestsToCheckIn}
+        },
+        { new: true},
+        function(error, doc){
+            console.log("inc count return doc", doc);
+            if (error){
+                res.send(error);
+            } else {
+                res.status(200).json({
+                    updatedEvent: doc
+                }); 
+            }
+        }
+    )
+});
+
+// event route - decrement check-in counter 
+router.put("/event/counter/decrement", (req, res) => {
+    console.log("received api/event/counter/decrement PUT request", req.body);
+    // decide how much to incremenet 
+    const guestsToCheckIn = -1 * (parseInt(req.body.plusOne) + 1);
     console.log("guests to check in:", guestsToCheckIn);
     // update the event record 
     Event.findOneAndUpdate(

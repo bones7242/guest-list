@@ -134,7 +134,7 @@ class AddGuestForm extends Component {
 	
 					<h3 className="center-align">Add A New Guest To Your List</h3>
 
-					<form className="col s12 grey darken-2" action="/" onSubmit={this.processGuestForm}>
+					<form className="col s12 grey darken-2" name="newGuestForm" id="newGuestForm" action="/" onSubmit={this.processGuestForm}>
 						{/*top row*/}
 						<div className="row" style={{paddingTop: "20px"}}>					
 							<div className="input-field col s6">
@@ -216,7 +216,7 @@ class AddGuestForm extends Component {
 									<Link  className="waves-effect waves-teal  indigo lighten-1 btn-flat center-align" to={'/'}>Cancel</Link>
 								</div>
 								<div className="col s6 left-align" >
-									<button type="submit" className="waves-effect waves-teal btn-flat blue lighten-1 center-align">Submit</button>
+									<button type="submit" form="newGuestForm" className="waves-effect waves-teal btn-flat blue lighten-1 center-align">Submit</button>
 								</div>
 						</div>	
 
