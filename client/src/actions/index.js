@@ -4,6 +4,7 @@ export const FETCH_VENUE = "FETCH_VENUE";
 export const FETCH_EVENTS = "FETCH_EVENTS";
 export const EVENT_SELECTED = "EVENT_SELECTED";
 export const REFRESH_ACTIVE_EVENT = "REFRESH_ACTIVE_EVENT";
+export const ON_CHANGE_SEARCH_TERM = "ON_CHANGE_SEARCH_TERM";
 
 // this method gets all data for a venue based on user Id (must be the owner)
 export function fetchVenue(userId, authToken){
@@ -66,4 +67,13 @@ export function selectEvent(event) {
         type: EVENT_SELECTED,
         payload: event
     };
+}
+
+export function onChangeSearchTerm(term) {
+    return {
+        type: ON_CHANGE_SEARCH_TERM,
+        payload: {
+            term: term
+        }
+    }
 }

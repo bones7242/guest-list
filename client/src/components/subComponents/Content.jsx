@@ -4,6 +4,7 @@ import React, { PropTypes, Component } from 'react';
 
 const Content = (children) => {
 	return (
+
 		<div className="row content" style={{paddingRight:"0px", marginRight:"0px"}}>
 			<div className="content" >
 			

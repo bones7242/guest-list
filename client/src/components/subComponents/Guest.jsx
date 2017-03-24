@@ -10,6 +10,7 @@ const Promise = require("bluebird");
 
 class Guest extends Component {
 	constructor(props){
+		console.log("asdfasdfasdfasdf", props);
 		// get parent props 
 		super(props);
 		// bind this to functions in this component 

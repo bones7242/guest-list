@@ -127,28 +127,19 @@ class AddGuestForm extends Component {
 		}
 		// if an event is active, show add guest form 
 		return (
-			<div>
-				<div className="row">
-					<div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
-						<DashboardHeader />
-					</div>
-				</div>
-				<div className="row col s12 add-event-form" style={{paddingTop:'15px'}}>
-					<div className="row grey darken-3">
-					<form className="col s12" action="/" onSubmit={this.processGuestForm}>
-						<div className="row" style={{paddingTop:"10px"}}>
-								<h3 className="center-align">Add A New Fan To Your List</h3>
-						</div>
+			<div className="row">
+				<div className="col s12 m12 l12" style={{paddingRight:"20px"}}>
 
+					<DashboardHeader />
+	
+					<h3 className="center-align">Add A New Guest To Your List</h3>
 
-
-						<div className="row" style={{paddingTop: "20px"}}>
-							
+					<form className="col s12 grey darken-2" action="/" onSubmit={this.processGuestForm}>
+						{/*top row*/}
+						<div className="row" style={{paddingTop: "20px"}}>					
 							<div className="input-field col s6">
-								
 								<input id="AttendeeName"  name="name" type="text" className="validate" onChange={this.handleInputChange}></input>
 								<label htmlFor="name">Name</label>
-								
 							</div>
 							<div className="input-field col s2">
 								<input  id="Affiliation" name="affiliation" type="text" className="validate" onChange={this.handleInputChange}></input>
@@ -162,99 +153,76 @@ class AddGuestForm extends Component {
 								<input id="PhoneNumber" name="phone"  type="text" className="validate" onChange={this.handleInputChange}></input>
 								<label htmlFor="PhoneNumber">PhoneNumber</label>
 							</div>
-						
 						</div>
-
 						<div className="row">
-							<div className="input-field col s12">
+							<div className="input-field col s4">
 								<input  id="plusOne" name="plusOne"  type="text" className="validate" onChange={this.handleInputChange}></input>
-								<label htmlFor="plusOne">Plus One</label>
+								<label htmlFor="plusOne">Plus One(s)</label>
 							</div>
-						</div>
-
-						<div className="row" style={{paddingTop: "20px"}}>
+					
+							<div className="input-field col s2">
 							
-							<div className="input-field col s3">
-
-								<p>
 									<input name="vip" type="radio" id="vip" onChange={this.toggleInput} checked={this.state.newGuest.vip} />
 									<label htmlFor="vip">VIP</label>
-								</p>
+								
 							</div>
-							<div className="input-field col s3">
-								<p>
+							<div className="input-field col s2">
+								
 									<input name="allAccess" type="radio" id="allAccess" onChange={this.toggleInput} checked={this.state.newGuest.allAccess}/>
 									<label htmlFor="allAccess">All Access</label>
-								</p>
+							
 							</div>
-							<div className="input-field col s3">
-								<p>
+							<div className="input-field col s2">
+							
 									<input name="pressPass" type="radio" id="pressPass" onChange={this.toggleInput} checked={this.state.newGuest.pressPass} />
 									<label htmlFor="pressPass">Press</label>
-								</p>
+								
 							</div>
-							<div className="input-field col s3">
-								<p>
+							<div className="input-field col s2">
+								
 									<input name="photoPass" type="radio" id="photoPass" onChange={this.toggleInput}  checked={this.state.newGuest.photoPass} />
 									<label htmlFor="photoPass">Photo</label>
-								</p>
-							</div>
-						
-						</div>
-
-						<div className="row" style={{paddingTop: "20px"}}>
 							
-							<div className="input-field col s2">
-								<p>
-									<input name="houseList" type="radio" id="houseList" onChange={this.toggleInput} checked={this.state.newGuest.houseList} />
+							</div>						
+						</div>
+						{/*bottom row*/}
+						<div className="row" style={{paddingTop: "20px", paddingBottom: "40px"}}>					
+								<div className="guest-list-radio input-field col s2">
+									<input className="list-radios" name="houseList" type="radio" id="houseList" onChange={this.toggleInput} checked={this.state.newGuest.houseList} />
 									<label htmlFor="houseList">House List</label>
-								</p>
-							</div>
-							<div className="input-field col s2">
-								<p>
+								</div>
+								<div className="guest-list-radio input-field col s2">
 									<input name="headlinerList" type="radio" id="headlinerList" onChange={this.toggleInput} checked={this.state.newGuest.headlinerList} />
 									<label htmlFor="headlinerList">Headliner List</label>
-								</p>
-							</div>
-							<div className="input-field col s2">
-								<p>
+								</div>
+								<div className="guest-list-radio input-field col s2">
 									<input name="supportOneList" type="radio" id="supportOneList" onChange={this.toggleInput}  checked={this.state.newGuest.supportOneList} />
 									<label htmlFor="supportOneList">Support One List</label>
-								</p>
-							</div>
-							<div className="input-field col s2">
-								<p>
+								</div>
+								<div className="guest-list-radio input-field col s2">
 									<input name="supportTwoList" type="radio" id="supportTwoList" onChange={this.toggleInput}  checked={this.state.newGuest.supportTwoList} />
 									<label htmlFor="supportTwoList">Support Two List</label>
-								</p>
-							</div>
-
-							<div className="input-field col s2">
-								<p>
+								</div>
+								<div className="guest-list-radio input-field col s2">
 									<input name="supportThreeList" type="radio" id="supportThreeList" onChange={this.toggleInput}  checked={this.state.newGuest.supportThreeList} />
 									<label htmlFor="supportThreeList">Support Three List</label>
-								</p>
+								</div>
 							</div>
-						
-						</div>
+					</form>
 
+					{/*buttons */}
 						<div className="row valign-wrapper" style={{paddingTop: "25px"}} >
-
 								<div className="col s6 right-align" >
-
 									<Link  className="waves-effect waves-teal  indigo lighten-1 btn-flat center-align" to={'/'}>Cancel</Link>
 								</div>
-
 								<div className="col s6 left-align" >
 									<button type="submit" className="waves-effect waves-teal btn-flat blue lighten-1 center-align">Submit</button>
 								</div>
-						</div>
-					
-					</form>
+						</div>	
+
 				</div>
 
 			</div>
-		</div>
 		);
 	}
 }
