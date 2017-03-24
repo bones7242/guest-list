@@ -16,6 +16,7 @@ class EventDetail extends Component {
 		super(props);
 	}
 
+	// render guest helper function 
 	renderList(term) {
 		if (!term || term === '') { 
 			return this.props.activeEvent.guests.map((guest, index) => {
@@ -47,7 +48,6 @@ class EventDetail extends Component {
 				)
 			})
 		}
-		
 	}
 
 	render() {
@@ -61,26 +61,27 @@ class EventDetail extends Component {
 			<div className="row">
 
 				<div className="col s12 m12 l12" style={{padding:"20px"}}>
-					<DashboardHeader onChangeSearchTerm={this.props.onChangeSearchTerm} />
-				</div>
 
-				<table>
-					<tbody>
-						<tr>
-							<th className="blue-grey-text text-lighten-1">Name</th>
-							<th className="blue-grey-text text-lighten-1">Affiliation</th>
-							<th className="blue-grey-text text-lighten-1">Plus-One</th>
-							<th className="blue-grey-text text-lighten-1">Access Type</th>
-							<th className="blue-grey-text text-lighten-1">List</th>
-							<th className="blue-grey-text text-lighten-1">In/Out</th>
-						
-							<th className="blue-grey-text text-lighten-1">Edit</th>
-						</tr>
-						
-						{this.renderList(this.props.searchTerm)}
-					</tbody>
-				</table>
-				
+					<DashboardHeader onChangeSearchTerm={this.props.onChangeSearchTerm} />
+
+					<table>
+						<tbody>
+							<tr>
+								<th className="blue-grey-text text-lighten-1">Name</th>
+								<th className="blue-grey-text text-lighten-1">Affiliation</th>
+								<th className="blue-grey-text text-lighten-1">Plus-One</th>
+								<th className="blue-grey-text text-lighten-1">Access Type</th>
+								<th className="blue-grey-text text-lighten-1">List</th>
+								<th className="blue-grey-text text-lighten-1">In/Out</th>
+							
+								<th className="blue-grey-text text-lighten-1">Edit</th>
+							</tr>
+							
+							{this.renderList(this.props.searchTerm)}
+						</tbody>
+					</table>
+
+				</div>
 			</div>
 		);
 	}

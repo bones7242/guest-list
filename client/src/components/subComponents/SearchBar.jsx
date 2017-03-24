@@ -13,12 +13,14 @@ class SearchBar extends Component {
     //   guest: this.props
     // };
   }    
+
   updateSearch(event) {
     //max characters is 20
     // this.setState({ search: event.target.value.substr(0, 20) });
     // console.log("inside update search", event);
     return this.props.onChangeSearchTerm(event.target.value);
   }
+
   render() {
     //  console.log("+++++++++++", this.state.guest);
     // let guestNames = this.props.guestNames.filter(
@@ -28,8 +30,10 @@ class SearchBar extends Component {
     return (
       
       <div>
-        <input type="text"
+        <input 
+          type="text"
           onChange={this.updateSearch.bind(this)}
+          placeholder="Search for a guest by name..."
         />
       </div>
     );
