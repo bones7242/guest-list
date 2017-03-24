@@ -7,6 +7,10 @@ const TopNav = () => {
         <div>
             <div className="top-bar blue-grey darken-4" style={{marginBottom:"0"}}>
 
+                <div className="top-bar-left">
+                    {/*AppName.com here*/}
+                </div>
+
                 {/*conditional statement to decide which links to render*/}
                 {Auth.isUserAuthenticated() ? (
                     <div className="top-bar-right">

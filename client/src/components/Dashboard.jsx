@@ -21,8 +21,6 @@ const Dashboard = ({children}) => {
                     <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
                         {/*display the venue logo */}
                         <DashboardLogo />
-                        {/*separator*/}
-                        <NavBarSeparator />
                         {/*this is our nav bar subcomponent, which will show the logo and all the upcoming events*/}
                         <NavBar />
                     </div>
