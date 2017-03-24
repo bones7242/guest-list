@@ -60,7 +60,7 @@ class EventDetail extends Component {
 		return (
 			<div className="row">
 
-				<div className="col s12 m12 l12" style={{padding:"20px"}}>
+				<div className="col s12 m12 l12">
 
 					<DashboardHeader onChangeSearchTerm={this.props.onChangeSearchTerm} />
 

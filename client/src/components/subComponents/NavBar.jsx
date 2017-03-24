@@ -25,7 +25,7 @@ class NavBar extends Component {
 						changeEvent={() => this.props.selectEvent(event)}
 					/>
 
-					<NavBarSeparator />
+					<NavBarSeparator key={index + 1} />
 				</div>
 			)
 		})
@@ -46,7 +46,7 @@ class NavBar extends Component {
 				
 					<div className="col s12 m12 l12 nav-bar-inner" style={{padding: '0'}}> 
 
-						<NavBarSeparator />
+						<NavBarSeparator key={0} />
 
 						{/*render an event tab for each event*/}
 						{this.renderList()}

@@ -29,7 +29,7 @@ const EventTab = ({headliner, date, changeEvent}) => {
 	}
 
 	return (
-		<div className="row tab-event hoverable" id="eventStyle" style={{width:"100%", overflow: "auto"}}>
+		<div className="row tab-event" id="eventStyle" style={{width:"100%", overflow: "auto"}}>
 
 			<div className="col s10">
 				<div className="row">

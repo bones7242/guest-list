@@ -5,7 +5,7 @@ import React, { PropTypes, Component } from 'react';
 const Content = (children) => {
 	return (
 
-		<div className="row content" style={{paddingRight:"0px", marginRight:"0px"}}>
+		<div className="row content">
 			<div className="content" >
 			
 				<div className="col s12 m12 l12 valign-wrapper" style={{padding: '0'}} >
