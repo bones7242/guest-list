@@ -37,7 +37,7 @@ class EventDetail extends Component {
 		const activeEvent = this.props.activeEvent.headliner;  //NOte: dead code?
 		return (
 			<div className="row">
-				<div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
+				<div className="col s12 m12 l12" style={{padding:"20px"}}>
 					<DashboardHeader />
 					<table>
 						<tbody>

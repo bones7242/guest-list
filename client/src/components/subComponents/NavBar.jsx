@@ -35,16 +35,17 @@ class NavBar extends Component {
 		}
 		// otherwise, render the page 
 		return (			
-			<div className="row event-tab-row" style={{paddingRight:"0px", paddingTop:"0px", marginRight:"0px", marginTop:"0px", borderRightStyle:"solid", borderColor:"#4527a0", borderWidth:"3px"}}>
-			<div className="nav-bar grey darken-3" >
+			<div className="row event-tab-row" style={{paddingRight:"0px", paddingTop:"0px", marginRight:"0px", marginTop:"0px"}}>
+
+				<div className="nav-bar">
 				
-					<div className="col s12 m12 l12" style={{padding: '0'}}> 
-						
+					<div className="col s12 m12 l12 nav-bar-inner" style={{padding: '0'}}> 
 						{/*render an event tab for each event*/}
 						{this.renderList()}
 
 					</div>
 				</div>
+
 			</div>
 		); 
 	}

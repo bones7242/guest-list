@@ -83,7 +83,7 @@ class AddEventForm extends Component {
 
             } else {
 				console.log("there was an error in creating the event. error:", xhr.response.message)
-				alert("Event could not be added.  Check the console logs :(");
+				alert("Event could not be added.  Check the console logs");
 			};
         });
         xhr.send(JSON.stringify(newEvent));
@@ -99,8 +99,8 @@ class AddEventForm extends Component {
 		}
 		// if a venue is in the props, show add-event form.
 		return (
-			<div className=" row col s12 add-event-form" style={{paddingTop:'25px', borderTopStyle:"solid", borderColor: "#4527a0", borderWidth: "3px"}}>
-				<div className="row grey darken-3">
+			<div className=" row col s12 add-event-form" style={{paddingTop:'25px'}}>
+				<div className="row">
 
 					<div className="row" style={{paddingTop:"10px"}}>
 							<h3 className="center-align">Add A New Event</h3>

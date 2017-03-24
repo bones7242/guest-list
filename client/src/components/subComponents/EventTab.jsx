@@ -31,7 +31,7 @@ const EventTab = ({headliner, date, changeEvent}) => {
 	return (
 		<div className="row">
 
-			<div className="hoverable  newColor blue-grey col s12 event-tab" id="eventStyle" style={{padding: "0", width:"100%", borderBottomStyle:"solid", borderLeftStyle:"solid", borderColor: "#5e35b1", borderWidth: "1px", overflow: "auto"}}>
+			<div className="hoverable col s12 event-tab" id="eventStyle" style={{borderTop: "1px solid white", width:"100%", overflow: "auto"}}>
 				<div style={{overflow:"auto"}}>
 					{ headliner && <Link onClick={changeEvent} to={'/dash/event'}><h5 className="left truncate artistTab">{headliner.toUpperCase()}</h5></Link> }
 					{ eventDate && <p className="left tabDate">{eventDate}</p>}

@@ -54,7 +54,7 @@ class Guest extends Component {
 		
 		//otherwise...
 		return (
-			<tr className="grey darken-4 bordered">
+			<tr className="bordered">
 				<td className="white-text text-blue-grey lighten-5 hoverable">{this.props.guest.name}</td>
 				<td className="white-text text-blue-grey lighten-5">{this.props.guest.affiliation}</td>
 				<td className="white-text text-blue-grey lighten-5">{this.props.guest.plusOne}</td>

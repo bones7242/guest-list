@@ -26,32 +26,42 @@ class DashboardHeader extends Component {
         var eventTime = newEventDate.getFormattedTime();
        
         return (
-            <div className="row grey darken-3" style={{borderTopStyle:"solid", borderColor: "#4527a0", borderWidth: "1px"}}> 
+            <div className="row" style={{}}> 
                 <div className="containerHeader">
                     <div className="row">
-                        <div className="col s4 m4 l4 headlinerHeader">
-                            { this.props.activeEvent.headliner && <h2 className="headlinerText">{this.props.activeEvent.headliner}</h2> }
+                        <div className="col s4 m4 l4 headlinerHeader" style={{padding:"0px"}}>
+                            { this.props.activeEvent.headliner && <h2 className="headlinerText" style={{marginTop: "0"}}>{this.props.activeEvent.headliner}</h2> }
                             
                             { this.props.activeEvent.date && <p>{eventDate}</p> }
                             
                             { this.props.activeEvent.date && <p>{eventTime}</p> }
+
                         </div>
 
                         <div className="col s4 m4 l3 supportHeader">
-                            { this.props.activeEvent.supportOne && <p>{this.props.activeEvent.supportOne} </p> }
-                            { this.props.activeEvent.supportTwo && <p>{this.props.activeEvent.supportTwo}</p> }
-                            { this.props.activeEvent.supportThree && <p>{this.props.activeEvent.supportThree}</p> }
+
+                            { this.props.activeEvent.supportOne && <h5 style={{color:"#888", marginTop: "0"}} >{this.props.activeEvent.supportOne} </h5> }
+                            { this.props.activeEvent.supportTwo && <h5 style={{color:"#888"}}>{this.props.activeEvent.supportTwo}</h5> }
+                            { this.props.activeEvent.supportThree && <h5 style={{color:"#888"}}>{this.props.activeEvent.supportThree}</h5> }
+
                         </div>
 
                         <div className="col s3 m3 l3 supportHeader">
-                            <p>Total guests:</p>
-                            {this.props.activeEvent.totalGuest && <p>{this.props.activeEvent.totalGuest}</p>}
+
+                            <p style={{marginTop: "0"}}>Total guests:</p>
+                            {this.props.activeEvent.totalGuest && <p >{this.props.activeEvent.totalGuest}</p>}
+
                             <p>Total checked in:</p>
                             {this.props.activeEvent.totalChecked && <p>{this.props.activeEvent.totalChecked}</p>}
+
                         </div>
 
-                        <div className="col s1 m1 l1">
-                            <Link className=" right-align btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" to="/dash/edit-event"><i className="material-icons">shuffle</i></Link>
+                        <div className="col s2 m2 l2">
+
+                            <Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin: "3px"}}><i className="material-icons">delete</i></Link>
+
+                            <Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin: "3px"}} to="/dash/edit-event"><i className="material-icons">shuffle</i></Link>
+
                         </div>
 
                     </div>

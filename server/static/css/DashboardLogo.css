@@ -1,5 +1,5 @@
 .row {
-	    margin-bottom: 0px;
+	margin-bottom: 0px;
     padding-bottom: 0px;
     background: black; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(black, #bdbdbd); /* For Safari 5.1 to 6.0 */
@@ -7,4 +7,8 @@
     background: -moz-linear-gradient(black, #bdbdbd); /* For Firefox 3.6 to 15 */
     background: linear-gradient(black, #bdbdbd); /* Standard syntax */
     
+}
+
+#logo-box {
+
 }

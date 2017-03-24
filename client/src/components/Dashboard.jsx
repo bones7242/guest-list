@@ -13,10 +13,10 @@ const Dashboard = ({children}) => {
     //console.log("current event", currentEvent);
     return (
         
-        <div className="row" style={{backgroundColor:"#424242"}}>
+        <div className="row dashboard">
             <div className="col s3 m3 l3" style={{padding:"0px"}}>
                 
-                <div className="row" style={{padding:"0px"}}>
+                <div className="row grey darken-3" style={{padding:"0px"}}>
                     <div className="col s12 m12 l12" style={{paddingRight:"0px", paddingLeft:"0px"}}>
                         <DashboardLogo />
                     </div>
