@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { selectEvent } from "../../actions/index";
 import { bindActionCreators } from "redux";
 
+import NavBarSeparator from "./NavBarSeparator.jsx";
 import EventTab from "./EventTab.jsx";
 
 class NavBar extends Component {
@@ -16,12 +17,16 @@ class NavBar extends Component {
 	renderList() {
 		return this.props.events.map((event, index) => {
 			return (
-				<EventTab 
-					key={index} 
-					headliner={event.headliner} 
-					date={event.date} 
-					changeEvent={() => this.props.selectEvent(event)}
-				/>
+				<div>
+					<EventTab 
+						key={index} 
+						headliner={event.headliner} 
+						date={event.date} 
+						changeEvent={() => this.props.selectEvent(event)}
+					/>
+
+					<NavBarSeparator />
+				</div>
 			)
 		})
 	}
@@ -40,6 +45,9 @@ class NavBar extends Component {
 				<div className="nav-bar">
 				
 					<div className="col s12 m12 l12 nav-bar-inner" style={{padding: '0'}}> 
+
+						<NavBarSeparator />
+
 						{/*render an event tab for each event*/}
 						{this.renderList()}
 
