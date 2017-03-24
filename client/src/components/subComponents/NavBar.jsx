@@ -17,15 +17,15 @@ class NavBar extends Component {
 	renderList() {
 		return this.props.events.map((event, index) => {
 			return (
-				<div>
+				<div key={index}>
 					<EventTab 
-						key={index} 
+						key={"tab" + index} 
 						headliner={event.headliner} 
 						date={event.date} 
 						changeEvent={() => this.props.selectEvent(event)}
 					/>
 
-					<NavBarSeparator />
+					<NavBarSeparator key={index} />
 				</div>
 			)
 		})
