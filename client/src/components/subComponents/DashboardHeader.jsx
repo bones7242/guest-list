@@ -2,17 +2,14 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router';
 
+import SearchBar from './SearchBar.jsx';
   
-
-
 class DashboardHeader extends Component {
-
     render(){
         // if this.props.book is null, return early
         if (!this.props.activeEvent) {
           return <div> Select an event to get started.</div>;
         }
-
         // otherwise...
         Date.prototype.getFormattedTime = function () {
             var hours = this.getHours() == 0 ? "12" : this.getHours() > 12 ? this.getHours() - 12 : this.getHours();
@@ -37,7 +34,6 @@ class DashboardHeader extends Component {
                             { this.props.activeEvent.date && <p>{eventTime}</p> }
 
                         </div>
-
                         <div className="col s4 m4 l3 supportHeader">
 
                             { this.props.activeEvent.supportOne && <h5 style={{color:"#888", marginTop: "0"}} >{this.props.activeEvent.supportOne} </h5> }
@@ -45,7 +41,6 @@ class DashboardHeader extends Component {
                             { this.props.activeEvent.supportThree && <h5 style={{color:"#888"}}>{this.props.activeEvent.supportThree}</h5> }
 
                         </div>
-
                         <div className="col s3 m3 l3 supportHeader">
 
                             <p style={{marginTop: "0"}}>Total guests:</p>
@@ -63,7 +58,9 @@ class DashboardHeader extends Component {
                             <Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin: "3px"}} to="/dash/edit-event"><i className="material-icons">shuffle</i></Link>
 
                         </div>
-
+                        <div>
+                          <SearchBar onChangeSearchTerm={this.props.onChangeSearchTerm} />
+                        </div>
                     </div>
                    
                 </div>
@@ -73,7 +70,10 @@ class DashboardHeader extends Component {
     }
 }
 
+
+
 function mapStateToProps(state) {
+
 	// whatever is returned will be mapped to the props of this component
 	return {
 		activeEvent: state.activeEvent
