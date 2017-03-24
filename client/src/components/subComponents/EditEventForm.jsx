@@ -147,7 +147,7 @@ class EditEventForm extends Component {
 
 						<div className="row valign-wrapper" >
 							<div className="col s6 right-align" >
-								<Link className="waves-effect waves-teal indigo lighten-1 btn-flat center-align" to={'/'}>Cancel</Link>
+								<Link className="waves-effect waves-teal indigo lighten-1 btn-flat center-align" to={'/dash/event'}>Cancel</Link>
 							</div>
 
 							<div className="col s6 left-align" >
