@@ -6,7 +6,7 @@ import Auth from "../../modules/Auth";
 
 import DashboardHeader from "./DashboardHeader.jsx";
 import Guest from "./Guest.jsx";
-import SearchBar from "./SearchBar.jsx";
+import SearchBar from "./SearchBar.jsx"; 
 
 import { onChangeSearchTerm } from '../../actions';
 
@@ -62,7 +62,11 @@ class EventDetail extends Component {
 
 				<div className="col s12 m12 l12">
 
-					<DashboardHeader onChangeSearchTerm={this.props.onChangeSearchTerm} />
+					<DashboardHeader onChangeSearchTerm />
+
+					<div>
+						<SearchBar onChangeSearchTerm={this.props.onChangeSearchTerm} />
+					</div>
 
 					<table>
 						<tbody>

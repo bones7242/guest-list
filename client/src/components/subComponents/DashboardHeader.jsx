@@ -1,8 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router';
-
-import SearchBar from './SearchBar.jsx';
   
 class DashboardHeader extends Component {
     render(){
@@ -58,9 +56,7 @@ class DashboardHeader extends Component {
                             <Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin: "3px"}} to="/dash/edit-event"><i className="material-icons">shuffle</i></Link>
 
                         </div>
-                        <div>
-                          <SearchBar onChangeSearchTerm={this.props.onChangeSearchTerm} />
-                        </div>
+                        
                     </div>
                    
                 </div>
