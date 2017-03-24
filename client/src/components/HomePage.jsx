@@ -6,7 +6,7 @@ This is the home page.  It is displayed when a user arrives at the site before t
 
 const HomePage = () => {
     return (
-        <div className="center-align" >
+        <div className="center-align grey-text text-lighten-5" >
             <h2 >Welcome to On The List</h2>
             <h3 >The premiere cloud-based guest-list solution</h3>
         </div>

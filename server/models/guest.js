@@ -1,8 +1,8 @@
 //new attendee log in info from new guest account form
-
 //Added houseList - SupportThreeList Boolean values - Lou
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+
+console.log("loading Event schema");
 
 // define the User model schema
 const GuestSchema = new mongoose.Schema({
@@ -32,17 +32,9 @@ const GuestSchema = new mongoose.Schema({
     supportThreeList: Boolean,
     dateAdded: Date,
     timeEntered: Date,
+    isCheckedIn: Boolean
     
 });
- 
-/*
-Create a schema method that we can use to compare the passed password with the passowrd in the database.
-@param {string} password
-@returns {object} callback
-*/
-
-
-// The pre-save hook method. this will hash the user's password and will be executed before the user's info is saved to the db.
 
 
 //module.exports = mongoose.model("User", UserSchema);

@@ -5,19 +5,21 @@ import Guest from './Guest.jsx';
 //=========================Search Bar Component=============================== 
 class SearchBar extends Component {
   constructor(props) {
+    console.log("props in Search", props);
     super(props);
-    this.state = {
-      search: "",
-      guest: this.props.Guest
-    };
+    // this.state = {
+    //   search: "",
+    //   guest: this.props
+    // };
   }    
   updateSearch(event) {
     //max characters is 20
-    this.setState({ search: event.target.value.substr(0, 20) });
-    
+    // this.setState({ search: event.target.value.substr(0, 20) });
+    // console.log("inside update search", event);
+    return this.props.onChangeSearchTerm(event.target.value);
   }
   render() {
-     console.log("+++++++++++", this.state.guest);
+    //  console.log("+++++++++++", this.state.guest);
     // let guestNames = this.props.guestNames.filter(
     //   (guestName) => {
     //     return guestName.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
@@ -25,7 +27,7 @@ class SearchBar extends Component {
     return (
       
       <div>
-        <input type="text" value={this.state.search}
+        <input type="text"
           onChange={this.updateSearch.bind(this)}
         />
       </div>

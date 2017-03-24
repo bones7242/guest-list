@@ -4,6 +4,7 @@ export const FETCH_VENUE = "FETCH_VENUE";
 export const FETCH_EVENTS = "FETCH_EVENTS";
 export const EVENT_SELECTED = "EVENT_SELECTED";
 export const REFRESH_ACTIVE_EVENT = "REFRESH_ACTIVE_EVENT";
+export const ON_CHANGE_SEARCH_TERM = "ON_CHANGE_SEARCH_TERM";
 
 // this method gets all data for a venue based on user Id (must be the owner)
 export function fetchVenue(userId, authToken){
@@ -14,7 +15,7 @@ export function fetchVenue(userId, authToken){
     };
     const request = axios.get(url, config);
 
-    console.log("fetchVenue request:", url, config)
+    //console.log("fetchVenue request:", url, config)
 
     return {
         type: FETCH_VENUE,
@@ -32,7 +33,7 @@ export function fetchEvents(venueId, authToken){
     };
     const request = axios.get(url, config);
 
-    console.log("fetchEvents request:", url, config)
+    //console.log("fetchEvents request:", url, config)
 
     return {
         type: FETCH_EVENTS,
@@ -50,7 +51,7 @@ export function refreshActiveEvent(eventId, authToken){
     };
     const request = axios.get(url, config);
 
-    console.log("refreshActiveEvent request:", url, config)
+    //console.log("refreshActiveEvent request:", url, config)
 
     return {
         type: REFRESH_ACTIVE_EVENT,
@@ -66,4 +67,13 @@ export function selectEvent(event) {
         type: EVENT_SELECTED,
         payload: event
     };
+}
+
+export function onChangeSearchTerm(term) {
+    return {
+        type: ON_CHANGE_SEARCH_TERM,
+        payload: {
+            term: term
+        }
+    }
 }

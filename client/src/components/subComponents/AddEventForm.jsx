@@ -18,16 +18,19 @@ class AddEventForm extends Component {
 		// add default values for optional fields, like 'support's, when setting the initial state
         this.state = {
             newEvent: {
-				venue: "loading",
-				supportOne: "none",
-				supportTwo: "none",
-				supportThree: "none",
-				date: "04/01/2017",
-				time: 2000,
+				venue: "",
+				headliner: "",
+				supportOne: "",
+				supportTwo: "",
+				supportThree: "",
+				date: "",
+				time: 0,
 				headlinerAllotment: 0,
 				supportOneAllotment: 0,
 				supportTwoAllotment: 0,
 				supportThreeAllotment: 0,
+				totalGuest:0,
+				totalChecked:0
 			}
         };
 
@@ -73,7 +76,7 @@ class AddEventForm extends Component {
 				alert("Event was successfully added :)");
 				// update the events in the applicaiton state
 				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
-				// select the newly created event
+				// select the activeEvent in the application state 
 				this.props.selectEvent(xhr.response.newEvent);
                 // redirect to the dash, and have the dash select the newly created event for display
 				this.props.router.replace("/dash/event");
@@ -96,7 +99,7 @@ class AddEventForm extends Component {
 		}
 		// if a venue is in the props, show add-event form.
 		return (
-			<div className=" row col s12 add-event-form" style={{paddingTop:'25px', borderTopStyle:"solid", borderColor: "black", borderWidth: "3px"}}>
+			<div className=" row col s12 add-event-form" style={{paddingTop:'25px', borderTopStyle:"solid", borderColor: "#4527a0", borderWidth: "3px"}}>
 				<div className="row grey darken-3">
 
 					<div className="row" style={{paddingTop:"10px"}}>
@@ -114,7 +117,7 @@ class AddEventForm extends Component {
 							</div>
 							
 							<div className="input-field col s4">
-								<input type="datetime-local" name="datetime-local" onChange={this.handleInputChange}></input>
+								<input type="datetime-local" name="date" onChange={this.handleInputChange}></input>
 								
 							</div>
 						
@@ -162,11 +165,11 @@ class AddEventForm extends Component {
 
 						<div className="row valign-wrapper" >
 							<div className="col s6 right-align" >
-								<Link className="waves-effect waves-teal btn-flat center-align" to={'/'}>Cancel</Link>
+								<Link className="waves-effect waves-teal indigo lighten-1 btn-flat center-align" to={'/'}>Cancel</Link>
 							</div>
 
 							<div className="col s6 left-align" >
-								<button type="submit" className="waves-effect waves-teal btn-flat center-align">Submit</button>				
+								<button type="submit" className="waves-effect waves-teal blue lighten-1 btn-flat center-align">Submit</button>				
 								{/*<button type="submit" className="waves-effect waves-teal btn-flat center-align" onClick="tabColor()"><Link to={'/'}>Submit</Link></button>						*/}
 
 							</div>

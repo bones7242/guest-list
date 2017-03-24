@@ -108,7 +108,7 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
                 </div>
 
                 <div className="button-line">
-                    <button type="submit" className="waves-effect waves-light btn">Create New Account</button>
+                    <button type="submit" className="waves-effect waves-light blue darken-1 btn">Create New Account</button>
                 </div>
 
                 <p>Already have an account? <Link to={"/login"}>Log in</Link></p>
