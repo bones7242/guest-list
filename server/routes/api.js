@@ -191,7 +191,7 @@ router.post("/guest", (req, res) => {
     // save the new guest record 
     newGuest.save((err, doc) => {
         //console.log("err:", err)
-        //console.log("doc:", doc)
+        console.log("doc saved:", doc)
         // handle errors with the save.
         if (err) { 
             //check to see if it is a duplicate code
