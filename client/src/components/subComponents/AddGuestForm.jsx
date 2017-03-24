@@ -133,7 +133,7 @@ class AddGuestForm extends Component {
 						<DashboardHeader />
 					</div>
 				</div>
-				<div className="row col s12 add-event-form" style={{paddingTop:'15px', borderTopStyle:"solid", borderColor: "#4527a0", borderWidth: "3px"}}>
+				<div className="row col s12 add-event-form" style={{paddingTop:'15px'}}>
 					<div className="row grey darken-3">
 					<form className="col s12" action="/" onSubmit={this.processGuestForm}>
 						<div className="row" style={{paddingTop:"10px"}}>

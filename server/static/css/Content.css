@@ -1,7 +1,9 @@
 
 
 .content {
-    background-color: #424242;
+    /*background-color: green;*/ 
+    padding-left: 10px;
+    padding-top: 10px;
     height: 100vh;
     
 }
