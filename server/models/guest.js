@@ -33,7 +33,6 @@ const GuestSchema = new mongoose.Schema({
     dateAdded: Date,
     timeEntered: Date,
     isCheckedIn: Boolean
-    
 });
 
 
