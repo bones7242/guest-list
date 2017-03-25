@@ -77,8 +77,7 @@ class EventDetail extends Component {
 								<th className="blue-grey-text text-lighten-1">Plus-One</th>
 								<th className="blue-grey-text text-lighten-1">Access Type</th>
 								<th className="blue-grey-text text-lighten-1">List</th>
-								<th className="blue-grey-text text-lighten-1">In/Out</th>
-							
+								<th className="blue-grey-text text-lighten-1">In/Out</th>					
 								<th className="blue-grey-text text-lighten-1">Edit</th>
 							</tr>
 							
