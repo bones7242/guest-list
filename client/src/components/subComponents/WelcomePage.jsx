@@ -4,8 +4,8 @@ const WelcomePage = () => {
 	return (
 		<div className="row">
 			<div className="col s12" style={{color: "white"}}>
-				<h2 className="center" >Welcome to showmate</h2>
-                <h3>Add and event, or select an exiting event, to get started.</h3>
+				<h2 className="center" >Welcome to <i>showmate</i></h2>
+                <h3>Select an exiting event, or create a new one, to get started.</h3>
 			</div>
 		</div>
 	);
