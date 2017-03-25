@@ -15,8 +15,6 @@ module.exports = new PassportLocalStrategy(
     }, 
     // callback.
     (req, email, password, done) => {
-        
-        console.log("Initiating the passport local-login strategy.")
 
         // build user data object.
         const userData = {
@@ -61,8 +59,7 @@ module.exports = new PassportLocalStrategy(
                     name: user.name,
                     id: user._id
                 };
-                // return 
-                console.log("User and password are a match.")
+                
                 return done(null, token, data);
             });
         });

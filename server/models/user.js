@@ -22,9 +22,6 @@ Create a schema method that we can use to compare the passed password with the p
 */
 
 UserSchema.methods.comparePassword = function comparePassword(password, callback) {
-    console.log ("executing user.comparePassword()");
-    console.log ("input password:", password);
-    console.log ("hashed password:", this.password);
     bcrypt.compare(password, this.password, callback);
 };
 

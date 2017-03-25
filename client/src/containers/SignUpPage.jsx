@@ -43,7 +43,7 @@ class SignUpPage extends Component {
         const email = encodeURIComponent(this.state.user.email);
         const password = encodeURIComponent(this.state.user.password);
         const role = encodeURIComponent(this.state.user.role);
-        console.log("role:", role);
+        
         let formData = `name=${name}&email=${email}&password=${password}&role=${role}`;
         if (role.toLowerCase() === "owner") { 
             const venueName = encodeURIComponent(this.state.user.venueName);
@@ -52,7 +52,7 @@ class SignUpPage extends Component {
             const venueZip = encodeURIComponent(this.state.user.venueZip);
             formData = `name=${name}&email=${email}&password=${password}&role=${role}&venueName=${venueName}&venueAddressOne=${venueAddressOne}&venueAddressTwo=${venueAddressTwo}&venueZip=${venueZip}`;
         };
-        console.log("formData:", formData);
+        
 
         // Create an ajax request, which will change the component state depending on the HTTP response code status received.
         const xhr = new XMLHttpRequest();
@@ -108,12 +108,12 @@ class SignUpPage extends Component {
 
     // Define lifecycle methods.
     componentWillMount(){
-        console.log("componentWillMount is finished.");
+        //console.log("componentWillMount is finished.");
     }
 
     componentDidMount(){
         //$('select').material_select();
-        console.log("componentDidMount is finished.");
+        //console.log("componentDidMount is finished.");
     }
 
     // Render the component.
