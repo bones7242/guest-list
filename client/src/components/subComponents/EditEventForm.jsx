@@ -61,7 +61,7 @@ class EditEventForm extends Component {
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
 				console.log("success! message:", xhr.response.updatedEvent)
-				alert("Event was successfully updated");
+				//alert("Event was successfully updated");
 				// update the events in the applicaiton state
 				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
 				// select the activeEvent in the application state 
@@ -71,7 +71,7 @@ class EditEventForm extends Component {
 
             } else {
 				console.log("there was an error in creating the event. error:", xhr.response.message)
-				alert("Event could not be added.  Check the console logs");
+				//alert("Event could not be added.  Check the console logs");
 			};
         });
         xhr.send(JSON.stringify(updatedEvent));

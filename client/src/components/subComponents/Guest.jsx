@@ -59,7 +59,7 @@ class Guest extends Component {
 
             } else {
 				console.log("there was an error in updating the event. error message:", xhr.response.message)
-				alert("Event could not be updated.  Check the console logs.");
+				//alert("Event could not be updated.  Check the console logs.");
 			};
         });
         xhr.send(JSON.stringify(checkInObject)); //note: stringify an issue for numbers?

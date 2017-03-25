@@ -20,10 +20,10 @@ class DashboardHeader extends Component {
         //     var formattedTime = hours + ":" + minutes + " " + ampm;
         //     return formattedTime;
         // }
-         var newEventDate = new Date(this.props.activeEvent.date);
-        // var eventDate = newEventDate.toDateString();
+        var newEventDate = new Date(this.props.activeEvent.date);
+        var eventDate = newEventDate.toDateString();
         // var eventTime = newEventDate.getFormattedTime();
-        var eventDate = moment(newEventDate).format("dddd MMM Do YY");
+        //var eventDate = moment(newEventDate).format("dddd MMM Do YY");
         var eventTime = moment(newEventDate).format("h:mm a");
        
         return (

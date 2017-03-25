@@ -102,7 +102,7 @@ class AddGuestForm extends Component {
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
 				console.log("success! message:", xhr.response.message)
-				alert("Guest was successfully added :)");
+				//alert("Guest was successfully added :)");
 				// update the "active event"" in the application state
 				this.props.refreshActiveEvent(this.props.activeEvent._id, Auth.getToken());
 				// update the specific event in the "events"array in the applicaiton state  
@@ -112,7 +112,7 @@ class AddGuestForm extends Component {
 
             } else {
 				console.log("there was an error in creating the guest. error:", xhr.response.message)
-				alert("Guest could not be added.  Check the console logs :(");
+				//alert("Guest could not be added.  Check the console logs :(");
 			};
         });
         xhr.send(JSON.stringify(newGuest));
