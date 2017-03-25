@@ -3,17 +3,18 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-var tabColor =()=> {
-	var colours = new Array();
-	colours[0] = "black";
-	colours[1] = "blue";
-	colours[2] = "green";
-	colours[3] = "orange";
-	colours[4] = "pink";
+//FUTURE DEV 
+// var tabColor =()=> {
+// 	var colours = new Array();
+// 	colours[0] = "black";
+// 	colours[1] = "blue";
+// 	colours[2] = "green";
+// 	colours[3] = "orange";
+// 	colours[4] = "pink";
 
-	var newColor = Math.floor(Math.random()*colours.length);
-	document.getElementById("eventStyle").style.backgroundColor=colours[newColor];
-}
+// 	var newColor = Math.floor(Math.random()*colours.length);
+// 	document.getElementById("eventStyle").style.backgroundColor=colours[newColor];
+// }
 
 const EventTab = ({headliner, date, changeEvent}) => {
 	
