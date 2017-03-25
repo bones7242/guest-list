@@ -10,7 +10,7 @@ const router = new express.Router();
 // public routes.  UNSECURE.  for development and testing only
 
 router.post("/venue", (req, res) => {
-    //console.log("received /public-api/venue POST request");
+    console.log("received /public-api/venue POST request");
 }); 
 
 // route for creating a new artist in the database 
@@ -36,9 +36,6 @@ router.post("/artist", (req, res) => {
     });
 }); 
 
-// router.post("/event", (req, res) => 
-//     console.log("received /public-api/event POST request");
-// 
 
 
 router.get("/event/:eventId", (req, res) => {

@@ -15,7 +15,6 @@ class AddGuestForm extends Component {
 	constructor(props) {
 		// super is calling the parent's method "props" (i think to pass them down)
         super(props); 
-		//console.log("props:", props);
 		// add default values for optional fields, like 'support's, when setting the initial state
         this.state = {
             newGuest: {
@@ -46,9 +45,7 @@ class AddGuestForm extends Component {
 
 	// event handler for input elements.  This takes the input and inserts it into the state using the 'name' of the element that triggered it as the key.
 	handleInputChange(event){
-		//console.log("event value", event.target.value);
-		//console.log("event name", event.target.name);
-		//console.log("event id", event.target.id);
+
 		const field = event.target.name;
         const newGuest = this.state.newGuest;
         newGuest[field] = event.target.value;
@@ -59,20 +56,16 @@ class AddGuestForm extends Component {
 
 	toggleInput(event){
 		
-		//console.log("event name", event.target.name);
-		//console.log("event id", event.target.id);
-		
 		const field = event.target.name;
         const newGuest = this.state.newGuest;
 
-		//console.log("value", newGuest[field]);
 		// toggle the state for the particular field 
 		if (newGuest[field] === true){
 			newGuest[field] = false;
 		} else if (newGuest[field] === false){
 			newGuest[field] = true;
 		}
-		console.log("value", newGuest[field]);
+		
 		// reset the state 
         this.setState({
             newGuest
@@ -101,7 +94,6 @@ class AddGuestForm extends Component {
         xhr.responseType = "json";
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
-				console.log("success! message:", xhr.response.message)
 				//alert("Guest was successfully added :)");
 				// update the "active event"" in the application state
 				this.props.refreshActiveEvent(this.props.activeEvent._id, Auth.getToken());
@@ -112,7 +104,6 @@ class AddGuestForm extends Component {
 
             } else {
 				console.log("there was an error in creating the guest. error:", xhr.response.message)
-				//alert("Guest could not be added.  Check the console logs :(");
 			};
         });
         xhr.send(JSON.stringify(newGuest));

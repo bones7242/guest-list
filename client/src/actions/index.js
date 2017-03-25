@@ -15,8 +15,6 @@ export function fetchVenue(userId, authToken){
     };
     const request = axios.get(url, config);
 
-    //console.log("fetchVenue request:", url, config)
-
     return {
         type: FETCH_VENUE,
         payload: request
@@ -33,8 +31,6 @@ export function fetchEvents(venueId, authToken){
     };
     const request = axios.get(url, config);
 
-    //console.log("fetchEvents request:", url, config)
-
     return {
         type: FETCH_EVENTS,
         payload: request
@@ -50,8 +46,6 @@ export function refreshActiveEvent(eventId, authToken){
         headers: {"Authorization": `bearer ${authToken}`}
     };
     const request = axios.get(url, config);
-
-    //console.log("refreshActiveEvent request:", url, config)
 
     return {
         type: REFRESH_ACTIVE_EVENT,

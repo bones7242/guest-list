@@ -10,10 +10,9 @@ const Promise = require("bluebird");
 
 class Guest extends Component {
 	constructor(props){
-		console.log("asdfasdfasdfasdf", props);
 		// get parent props 
 		super(props);
-
+		// set the state 
 		this.state = {
 			checkedIn: this.props.guest.isCheckedIn
 		}
@@ -33,7 +32,6 @@ class Guest extends Component {
 			eventId: this.props.guest.eventId,
 			plusOne: this.props.guest.plusOne,
 		}
-		console.log("checkInGuest called:", checkInObject);
 
 		// decide wheter to increment or decriment guests 
 		let queryUrl = "";
@@ -51,7 +49,6 @@ class Guest extends Component {
         xhr.responseType = "json";
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
-				console.log("success! response:", xhr.response)
 				// update the "active"eventin the application state
 				this.props.refreshActiveEvent(this.props.activeEvent._id, Auth.getToken());
 				// update the specific event in the "events"array in the applicaiton state  

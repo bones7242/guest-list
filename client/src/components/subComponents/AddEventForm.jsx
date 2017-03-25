@@ -15,7 +15,7 @@ class AddEventForm extends Component {
 	constructor(props) {
 		// super is calling the parent's method "props" (i think to pass them down)
         super(props); 
-		//console.log("props:", props);
+		
 		// add default values for optional fields, like 'support's, when setting the initial state
         this.state = {
             newEvent: {
@@ -42,7 +42,7 @@ class AddEventForm extends Component {
 
 	// event handler for input elements.  This takes the input and inserts it into the state using the 'name' of the element that triggered it as the key.
 	handleInputChange(event){
-		//console.log(event.target.value);
+		
 		const field = event.target.name;
         const newEvent = this.state.newEvent;
         newEvent[field] = event.target.value;
@@ -73,8 +73,6 @@ class AddEventForm extends Component {
         xhr.responseType = "json";
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
-				console.log("success! message:", xhr.response.newEvent)
-				//alert("Event was successfully added :)");
 				// update the events in the applicaiton state
 				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
 				// select the activeEvent in the application state 
@@ -82,9 +80,8 @@ class AddEventForm extends Component {
                 // redirect to the dash, and have the dash select the newly created event for display
 				this.props.router.replace("/dash/event");
 
-            } else {
-				console.log("there was an error in creating the event. error:", xhr.response.message)
-				//alert("Event could not be added.  Check the console logs");
+            } else {				
+				console.log("Event could not be added.  Check the console logs");
 			};
         });
         xhr.send(JSON.stringify(newEvent));

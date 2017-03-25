@@ -11,7 +11,7 @@ import NavBar from "./subComponents/NavBar.jsx";
 import Content from "./subComponents/Content.jsx";
 
 const Dashboard = ({children}) => {
-    //console.log("current event", currentEvent);
+    
     return (
         
         <div className="row dashboard">

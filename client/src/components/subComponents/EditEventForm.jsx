@@ -30,7 +30,7 @@ class EditEventForm extends Component {
 
 	// event handler for input elements.  This takes the input and inserts it into the state using the 'name' of the element that triggered it as the key.
 	handleInputChange(event) {
-		//console.log(event.target.value);
+		
 		const field = event.target.name;
         const updatedEvent = this.state.updatedEvent;
         updatedEvent[field] = event.target.value;
@@ -60,8 +60,6 @@ class EditEventForm extends Component {
         xhr.responseType = "json";
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
-				console.log("success! message:", xhr.response.updatedEvent)
-				//alert("Event was successfully updated");
 				// update the events in the applicaiton state
 				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
 				// select the activeEvent in the application state 
@@ -71,7 +69,6 @@ class EditEventForm extends Component {
 
             } else {
 				console.log("there was an error in creating the event. error:", xhr.response.message)
-				//alert("Event could not be added.  Check the console logs");
 			};
         });
         xhr.send(JSON.stringify(updatedEvent));

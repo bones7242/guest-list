@@ -66,8 +66,6 @@ class SignUpPage extends Component {
                 this.setState({
                     errors: {}
                 });
-                
-                //console.log("The form is valid");
 
                 // set a message 
                 localStorage.setItem("successMessage", xhr.response.message);
@@ -95,25 +93,15 @@ class SignUpPage extends Component {
         This will change the component state by taking the name attribute of an input element as the key. The value for this key will be taken from the user’s input into the element.  It then updates the this.state.user with the new information.
     */
     changeUser(event) {
-        //console.log("event", event);
+        
         const field = event.target.name;
-        //console.log("field", field);
+        
         const user = this.state.user;
         user[field] = event.target.value;
 
         this.setState({
             user
         });
-    }
-
-    // Define lifecycle methods.
-    componentWillMount(){
-        //console.log("componentWillMount is finished.");
-    }
-
-    componentDidMount(){
-        //$('select').material_select();
-        //console.log("componentDidMount is finished.");
     }
 
     // Render the component.
