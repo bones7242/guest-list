@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router';
+import moment from 'moment';
 
 import DefaultSplash from "./DefaultSplash.jsx";
   
@@ -12,16 +13,18 @@ class DashboardHeader extends Component {
         }
         
         // otherwise...
-        Date.prototype.getFormattedTime = function () {
-            var hours = this.getHours() == 0 ? "12" : this.getHours() > 12 ? this.getHours() - 12 : this.getHours();
-            var minutes = (this.getMinutes() < 10 ? "0" : "") + this.getMinutes();
-            var ampm = this.getHours() < 12 ? "AM" : "PM";
-            var formattedTime = hours + ":" + minutes + " " + ampm;
-            return formattedTime;
-        }
-        var newEventDate = new Date(this.props.activeEvent.date);
-        var eventDate = newEventDate.toDateString();
-        var eventTime = newEventDate.getFormattedTime();
+        // Date.prototype.getFormattedTime = function () {
+        //     var hours = this.getHours() == 0 ? "12" : this.getHours() > 12 ? this.getHours() - 12 : this.getHours();
+        //     var minutes = (this.getMinutes() < 10 ? "0" : "") + this.getMinutes();
+        //     var ampm = this.getHours() < 12 ? "AM" : "PM";
+        //     var formattedTime = hours + ":" + minutes + " " + ampm;
+        //     return formattedTime;
+        // }
+         var newEventDate = new Date(this.props.activeEvent.date);
+        // var eventDate = newEventDate.toDateString();
+        // var eventTime = newEventDate.getFormattedTime();
+        var eventDate = moment(newEventDate).format("dddd MMM Do YY");
+        var eventTime = moment(newEventDate).format("h:mm a");
        
         return (
             <div className="row" style={{}}> 
