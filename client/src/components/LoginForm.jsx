@@ -11,8 +11,8 @@ const LoginForm = ({onSubmit, onChange, errors, successMessage, user}) => (
     <form action="/" onSubmit={onSubmit}>
       <h2 className="card-heading  white-text text-darken-2">Login</h2>
 
-      {successMessage && <p className="success-message">{successMessage}</p>}
-      {errors.summary && <p className="error-message">{errors.summary}</p>}
+      {successMessage && <p className="success-message login-p">{successMessage}</p>}
+      {errors.summary && <p className="error-message login-p">{errors.summary}</p>}
 
       <div className="field-line">
         <label htmlFor="email" className="white-text">Email</label>
@@ -21,7 +21,7 @@ const LoginForm = ({onSubmit, onChange, errors, successMessage, user}) => (
           onChange={onChange}
           value={user.email}
         />
-        <p className="error-message">{errors.email}</p>
+        <p className="error-message login-p">{errors.email}</p>
       </div>
 
       <div className="field-line">
@@ -32,14 +32,14 @@ const LoginForm = ({onSubmit, onChange, errors, successMessage, user}) => (
           onChange={onChange}
           value={user.password}
         />
-        <p className="error-message">{errors.password}</p>
+        <p className="error-message login-p">{errors.password}</p>
       </div>
 
       <div className="button-line">
-        <button type="submit" className="waves-effect waves-light blue darken-1 btn">Log In</button>
+        <button type="submit" className="waves-effect waves-light grey darken-1 btn">Log In</button>
       </div>
 
-      <p>Don't have an account? <Link to={'/signup'}>Create one</Link>.</p>
+      <p className="login-p">Don't have an account? <Link to={'/signup'}>Create one</Link>.</p>
     </form>
   </div>
 );

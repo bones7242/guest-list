@@ -90,7 +90,7 @@ a:hover {
 
 .success-message {
   padding: 0 16px;
-  color: green;
+  color: White;
 }
 
 #logoContainer {
@@ -99,6 +99,10 @@ a:hover {
 
 input, p {
   color: white;
+}
+
+.login-p {
+  text-align: center;
 }
 
 
