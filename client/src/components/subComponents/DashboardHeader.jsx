@@ -1,13 +1,16 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router';
+
+import DefaultSplash from "./DefaultSplash.jsx";
   
 class DashboardHeader extends Component {
     render(){
         // if this.props.book is null, return early
         if (!this.props.activeEvent) {
-          return <div> Select an event to get started.</div>;
+          return <DefaultSplash message="Select an event to get started" />;
         }
+        
         // otherwise...
         Date.prototype.getFormattedTime = function () {
             var hours = this.getHours() == 0 ? "12" : this.getHours() > 12 ? this.getHours() - 12 : this.getHours();

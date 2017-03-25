@@ -7,6 +7,7 @@ import Auth from "../../modules/Auth";
 import DashboardHeader from "./DashboardHeader.jsx";
 import Guest from "./Guest.jsx";
 import SearchBar from "./SearchBar.jsx"; 
+import DefaultSplash from "./DefaultSplash.jsx";
 
 import { onChangeSearchTerm } from '../../actions';
 
@@ -53,7 +54,7 @@ class EventDetail extends Component {
 	render() {
 		// if this.props.book is null, return early
 		if (!this.props.activeEvent) {
-			return <div> Select an event to get started.</div>;
+			return <DefaultSplash message="Select an event to get started" />;
 		}
 		// otherwise... 
 		const activeEvent = this.props.activeEvent.headliner;  //NOte: dead code?

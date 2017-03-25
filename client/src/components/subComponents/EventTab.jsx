@@ -15,12 +15,6 @@ var tabColor =()=> {
 	document.getElementById("eventStyle").style.backgroundColor=colours[newColor];
 }
 
-
-
-
-
-
-
 const EventTab = ({headliner, date, changeEvent}) => {
 	
 	if (date){
