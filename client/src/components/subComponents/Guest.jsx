@@ -13,34 +13,13 @@ class Guest extends Component {
 		console.log("asdfasdfasdfasdf", props);
 		// get parent props 
 		super(props);
-		// set initial state
+
 		this.state = {
-			active: null
+			checkedIn: this.props.guest.isCheckedIn
 		}
+		
 		// bind this to functions in this component 
 		this.checkInGuest = this.checkInGuest.bind(this);
-	}
-	// helper method for toggling button state
-	toggle(position){
-		if (this.state.active === position){
-			this.setState({active: null})
-		} else {
-			this.setState({active: position})
-		}
-	}
-	myColor(position){
-		if (this.state.active === position) {
-			return "grey";
-		} 
-		//otherwise...
-		return "#4527a0";
-	}
-	myBtnText(position){
-		if (this.state.active === position) {
-			return "UNDO";
-		} 
-		//otherwise...
-		return "ENTERED";
 	}
 
 	// helper method to update the event in the database.  if successfull, it tells redux to fetch the newest events list and activeEvent.  The user stays on this event page.
@@ -50,6 +29,7 @@ class Guest extends Component {
 		
 		// create the update object 
 		const checkInObject = {
+			guestId: this.props.guest._id,
 			eventId: this.props.guest.eventId,
 			plusOne: this.props.guest.plusOne,
 		}
@@ -57,7 +37,7 @@ class Guest extends Component {
 
 		// decide wheter to increment or decriment guests 
 		let queryUrl = "";
-		if (this.state.active === null){
+		if (this.props.guest.isCheckedIn === false){
 			queryUrl = "/api/event/counter/increment";
 		} else {
 			queryUrl = "/api/event/counter/decrement";
@@ -72,12 +52,10 @@ class Guest extends Component {
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
 				console.log("success! response:", xhr.response)
-				// update the "active event"" in the application state
+				// update the "active"eventin the application state
 				this.props.refreshActiveEvent(this.props.activeEvent._id, Auth.getToken());
 				// update the specific event in the "events"array in the applicaiton state  
 				this.props.fetchEvents(this.props.activeEvent.venue, Auth.getToken());
-				// diable this button
-				this.toggle(0);
 
             } else {
 				console.log("there was an error in updating the event. error message:", xhr.response.message)
@@ -86,6 +64,22 @@ class Guest extends Component {
         });
         xhr.send(JSON.stringify(checkInObject)); //note: stringify an issue for numbers?
     }
+
+	myColor(){
+		if (this.props.guest.isCheckedIn === true) { 
+			return "grey";
+		} else { 
+			return "#4527a0";
+		}
+	}
+
+	myText() {
+		if (this.props.guest.isCheckedIn === true) { 
+			return "UNDO";
+		} else { 
+			return "CHECK IN";
+		}
+	}
 
 	render(){
 		
@@ -109,7 +103,7 @@ class Guest extends Component {
 					{this.props.guest.supportThreeList && <p>{this.props.activeEvent.supportThree}</p>}
 				</td>
 				<td>
-					<button className="waves-effect waves-light btn hoverable" style={{backgroundColor: this.myColor(0)}} onClick={this.checkInGuest}>{this.myBtnText(0)}</button>
+					<button className="waves-effect waves-light btn hoverable" style={{backgroundColor: this.myColor()}} onClick={this.checkInGuest}>{this.myText()}</button>
 				</td>
 				<td>
 					

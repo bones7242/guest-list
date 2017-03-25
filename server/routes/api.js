@@ -108,6 +108,7 @@ router.get("/event/all/:venueId", (req, res) => {
         });    
 }); 
 
+// 'EVENT' CRUD ROUTES 
 // event route - get info for one event by that event's id 
 router.get("/event/one/:eventId", (req, res) => {
     console.log("received api/event/one GET request:", req.params.eventId);
@@ -162,17 +163,33 @@ router.put("/event/counter/increment", (req, res) => {
     Event.findOneAndUpdate(
         {"_id": req.body.eventId},
         {
-            $inc: {"totalChecked": guestsToCheckIn}
+            $inc: {"totalChecked": guestsToCheckIn},
         },
-        { new: true},
-        function(error, doc){
-            console.log("inc count return doc", doc);
-            if (error){
-                res.send(error);
+        { new: true },
+        function(eventError, eventDoc){
+            console.log("inc count return doc", eventDoc);
+            // handle errors 
+            if (eventError){
+                res.send(eventError);
+            // if successfull check in the guest 
             } else {
-                res.status(200).json({
-                    updatedEvent: doc
-                }); 
+                Guest.findOneAndUpdate(
+                    {"_id": req.body.guestId},
+                    {
+                        $set: {"isCheckedIn": true}
+                    },
+                    { new: true},
+                    function(checkinError, checkinDoc){
+                        console.log("checkin doc", checkinDoc);
+                        if (checkinError){
+                            res.send(checkinError);
+                        } else {
+                            res.status(200).json({
+                                updatedEvent: eventDoc
+                            }); 
+                        }
+                    }
+                )
             }
         }
     )
@@ -188,37 +205,39 @@ router.put("/event/counter/decrement", (req, res) => {
     Event.findOneAndUpdate(
         {"_id": req.body.eventId},
         {
-            $inc: {"totalChecked": guestsToCheckIn}
+            $inc: {"totalChecked": guestsToCheckIn},
         },
         { new: true},
-        function(error, doc){
-            console.log("inc count return doc", doc);
-            if (error){
-                res.send(error);
+        function(eventError, eventDoc){
+            console.log("inc count return doc", eventDoc);
+            // handle errors 
+            if (eventError){
+                res.send(eventError);
+            // if successfull check in the guest 
             } else {
-                res.status(200).json({
-                    updatedEvent: doc
-                }); 
+                Guest.findOneAndUpdate(
+                    {"_id": req.body.guestId},
+                    {
+                        $set: {"isCheckedIn": false}
+                    },
+                    { new: true},
+                    function(checkinError, checkinDoc){
+                        console.log("checkin doc", checkinDoc);
+                        if (checkinError){
+                            res.send(checkinError);
+                        } else {
+                            res.status(200).json({
+                                updatedEvent: eventDoc
+                            }); 
+                        }
+                    }
+                )
             }
         }
     )
 });
 
-//route to get guest info for one guest by id
-router.get("/guest/:guestId", (req, res) => {
-    console.log("received api/dashboard/id GET request for:", req.params.guestId);
-    Guest.findOne({_id: req.params.guestId}, function(err, guestInfo){
-        if (err) {
-            res.send(err);
-        } else {
-            res.status(200).json({
-                guest: guestInfo
-            });
-        };
-    })
-    
-}); 
-
+// 'GUEST' CRUD ROUTES
 // route to create a new guest
 router.post("/guest", (req, res) => {
     console.log("received api/guest POST request:", req.body);
@@ -283,6 +302,21 @@ router.post("/guest", (req, res) => {
     });
     
 }); 
+
+// //route to get guest info for one guest by id
+// router.get("/guest/:guestId", (req, res) => {
+//     console.log("received api/dashboard/id GET request for:", req.params.guestId);
+//     Guest.findOne({_id: req.params.guestId}, function(err, guestInfo){
+//         if (err) {
+//             res.send(err);
+//         } else {
+//             res.status(200).json({
+//                 guest: guestInfo
+//             });
+//         };
+//     })
+    
+// }); 
 
 
 module.exports = router;
