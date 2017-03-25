@@ -17,7 +17,7 @@ class NavBar extends Component {
 	renderList() {
 		return this.props.events.map((event, index) => {
 			return (
-				<div key={index}>
+				<div key={index} className="hover">
 					<EventTab 
 						key={"tab" + index} 
 						headliner={event.headliner} 
@@ -25,7 +25,7 @@ class NavBar extends Component {
 						changeEvent={() => this.props.selectEvent(event)}
 					/>
 
-					<NavBarSeparator key={index} />
+					
 				</div>
 			)
 		})
