@@ -1,24 +1,32 @@
 
-@keyframes textShadow{
-	0% {text-shadow: 0px 0px 0px #111;}
-	75% {text-shadow: 1px 2px 3px #111; color: #4527a0;}
-	100% {text-shadow: 2px 3px 10px #111; color: white;}
-}
 
 .row {
 	width: 100%;
 	margin-left: 0px;
 	margin-right: 0px;
+
 }
 
 p, h5 {
 	color: #fafafa;
 }
 
+
 .tab-event {
 	padding-top: 10px;
 	padding-bottom: 10px;
+	border-bottom: solid 1px #bdbdbd;
+
 }
+
+.tab-event:hover {
+	
+	border-bottom: solid 1px #b3e5fc;
+	
+}
+
+
+
 .tab-artist {
 	padding: 0px;
 	margin: 0px;
@@ -30,8 +38,3 @@ p, h5 {
 	margin: 0px;
 }
 
-.tab-artist:hover {
-	animation-name: textShadow;
-	animation-duration: 0.2s;
-	animation-fill-mode: forwards;
-}

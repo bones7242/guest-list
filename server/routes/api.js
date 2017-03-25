@@ -92,7 +92,7 @@ router.get("/event/all/:venueId", (req, res) => {
     Event.find({
             venue: req.params.venueId
         }).
-        limit(10).
+        limit(100).
         sort({ date: -1 }).
         populate("guests").
         exec((err, docs) => {
