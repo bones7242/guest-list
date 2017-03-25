@@ -14,12 +14,12 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
 
             <form action="/" onSubmit={onSubmit}>
             
-                {errors.summary && <p className="error-message">{errors.summary}</p>}
+                {errors.summary && <p className="error-message login-p">{errors.summary}</p>}
 
                 <div className="row">
                     <div className="col s12 m6 l6">
                         <label htmlFor="name" className="white-text">Name: </label>
-                        <p className="error-message">{errors.name}</p>
+                        <p className="error-message login-p">{errors.name}</p>
                         <input
                             name="name"                               
                             onChange={onChange}
@@ -30,7 +30,7 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
 
                     <div className="col s12 m6 l6">
                         <label htmlFor="email" className="white-text">Email: </label>
-                        <p className="error-message">{errors.email}</p>
+                        <p className="error-message login-p" >{errors.email}</p>
                         <input
                             name="email"                               
                             onChange={onChange}
@@ -43,7 +43,7 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
                 <div className="row">
                     <div className="col s12 m6 l6">
                         <label htmlFor="password" className="white-text">Password: </label>
-                        <p className="error-message">{errors.password}</p>
+                        <p className="error-message login-p">{errors.password}</p>
                         <input
                             type="password"
                             name="password"                               
@@ -54,8 +54,15 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
                     </div>
 
                     <div className="col s12 m6 l6">
-                        <label htmlFor="role" className="white-text">Role: </label>
+                        {/*<label htmlFor="role" className="white-text">Role: </label>*/}
                         {/*role selection goes here*/}
+                        <label htmlFor="venueName" className="white-text">Venue Name: </label>
+                        <p className="error-message login-p">{errors.venueName}</p>
+                        <input
+                            name="venueName"
+                            onChange={onChange}
+                            value={user.venueName}
+                        />
                     </div>
                 </div>
 
@@ -64,19 +71,13 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
                 */}
                 <div className="row">
                     <div className="col s12 m6 l6">
-                        <label htmlFor="venueName" className="white-text">Venue Name: </label>
-                        <p className="error-message">{errors.venueName}</p>
-                        <input
-                            name="venueName"
-                            onChange={onChange}
-                            value={user.venueName}
-                        />
+                       {/*move venue name back here*/}
                         
                     </div>
 
                     <div className="col s12 m6 l6">
                         <label htmlFor="venueAddressOne" className="white-text">Address 1: </label>
-                        <p className="error-message">{errors.venueAddressOne}</p>
+                        <p className="error-message login-p">{errors.venueAddressOne}</p>
                         <input
                             name="venueAddressOne"
                             onChange={onChange}
@@ -86,7 +87,7 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
                     
                     
                         <label htmlFor="venueAddressTwo" className="white-text">Address 2: </label>
-                        <p className="error-message">{errors.venueAddressTwo}</p>
+                        <p className="error-message login-p">{errors.venueAddressTwo}</p>
                         <input
                             name="venueAddressTwo"
                             onChange={onChange}
@@ -97,7 +98,7 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
 
                     
                         <label htmlFor="venueZip" className="white-text">Zip Code: </label>
-                        <p className="error-message">{errors.venueZip}</p>
+                        <p className="error-message login-p">{errors.venueZip}</p>
                         <input
                             name="venueZip"
                             onChange={onChange}
@@ -108,10 +109,10 @@ const SignUpForm = ({onSubmit, onChange, errors, user}) => {
                 </div>
 
                 <div className="button-line">
-                    <button type="submit" className="waves-effect waves-light blue darken-1 btn">Create New Account</button>
+                    <button type="submit" className="waves-effect waves-light grey darken-1 btn">Create New Account</button>
                 </div>
 
-                <p>Already have an account? <Link to={"/login"}>Log in</Link></p>
+                <p className="login-p">Already have an account? <Link to={"/login"}>Log in</Link></p>
 
             </form>
         </div>
