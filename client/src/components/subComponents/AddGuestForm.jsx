@@ -8,6 +8,7 @@ import { bindActionCreators } from "redux";
 import { refreshActiveEvent, fetchEvents } from "../../actions/index";
 
 import DashboardHeader from "./DashboardHeader.jsx";
+import DefaultSplash from "./DefaultSplash.jsx";
 
 class AddGuestForm extends Component {
 	// constructor is called whenever a new instance of the class is created
@@ -122,7 +123,7 @@ class AddGuestForm extends Component {
 		// check to make sure an event is active
 		if (!this.props.activeEvent){
 			return (
-				<div>Select an event to start adding guests.</div>
+				<DefaultSplash message="Select an event to start adding guests" />
 			)
 		}
 		// if an event is active, show add guest form 

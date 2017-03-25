@@ -8,6 +8,7 @@ import { bindActionCreators } from "redux";
 import { fetchEvents, selectEvent } from "../../actions/index";
 
 import DashboardHeader from "./DashboardHeader.jsx";
+import DefaultSplash from "./DefaultSplash.jsx";
 
 class AddEventForm extends Component {
 	// constructor is called whenever a new instance of the class is created
@@ -94,7 +95,7 @@ class AddEventForm extends Component {
 		// check to make sure a venue is in the props.
 		if (!this.props.venue){
 			return (
-				<div>A venue needs to be selected before you can start adding events.</div>
+				<DefaultSplash message="A venue must be selected before you can start adding events" />
 			)
 		}
 		// if a venue is in the props, show add-event form.

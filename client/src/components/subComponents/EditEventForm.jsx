@@ -9,6 +9,8 @@ import { fetchEvents, selectEvent } from "../../actions/index";
 
 import DashboardHeader from "./DashboardHeader.jsx";
 
+import DefaultSplash from "./DefaultSplash.jsx";
+
 class EditEventForm extends Component {
 	// constructor is called whenever a new instance of the class is created
 	constructor(props) {
@@ -80,7 +82,7 @@ class EditEventForm extends Component {
 		// check to make sure a venue is in the props.
 		if (!this.props.activeEvent){
 			return (
-				<div>Select an event to edit it.</div>
+				<DefaultSplash message="Select an event to edit it" />
 			)
 		}
 		// if a venue is in the props, show add-event form.

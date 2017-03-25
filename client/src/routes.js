@@ -10,6 +10,7 @@ import LoginPage from "./containers/LoginPage.jsx";
 import SignUpPage from "./containers/SignUpPage.jsx";
 import DashboardPage from "./containers/DashboardPage.jsx";
 
+import WelcomePage from "./components/subComponents/WelcomePage.jsx";
 import AddGuestForm from "./components/subComponents/AddGuestForm.jsx";
 import AddEventForm from "./components/subComponents/AddEventForm.jsx";
 import EditEventForm from "./components/subComponents/EditEventForm.jsx";
@@ -40,7 +41,7 @@ const myRoutes = (
                         };
                     }
                 }>
-            
+                    <IndexRoute component={WelcomePage} />
                     {/* add a new guest */}
                     <Route path="add-guest" component={AddGuestForm} />  
                     {/* add event*/}
