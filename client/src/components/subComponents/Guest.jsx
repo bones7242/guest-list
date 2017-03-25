@@ -104,9 +104,9 @@ class Guest extends Component {
 				</td>
 				<td>
 					
-					<a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3px"}}> <i class="material-icons">delete</i></a>
+					<a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3px"}}> <i className="material-icons">delete</i></a>
 					
-					<a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3px"}}> <i class="material-icons">mode_edit</i></a>
+					<a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3px"}}> <i className="material-icons">mode_edit</i></a>
 				</td>
 			</tr>
 		);
