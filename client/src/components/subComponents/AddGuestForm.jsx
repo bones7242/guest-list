@@ -33,7 +33,7 @@ class AddGuestForm extends Component {
 				supportOneList: false,
 				supportTwoList: false,
 				supportThreeList: false,
-				isCheckIn: false
+				isCheckedIn: false
 			}
         };
 
