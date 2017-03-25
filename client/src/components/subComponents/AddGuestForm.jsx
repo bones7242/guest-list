@@ -167,12 +167,13 @@ class AddGuestForm extends Component {
 									<label htmlFor="vip">VIP</label>
 								
 							</div>
+							
 							<div className="input-field col s2">
 								
 									<input name="allAccess" type="radio" id="allAccess" onChange={this.toggleInput} checked={this.state.newGuest.allAccess}/>
 									<label htmlFor="allAccess">All Access</label>
 							
-							</div>
+							</div> 
 							<div className="input-field col s2">
 							
 									<input name="pressPass" type="radio" id="pressPass" onChange={this.toggleInput} checked={this.state.newGuest.pressPass} />
@@ -188,27 +189,35 @@ class AddGuestForm extends Component {
 						</div>
 						{/*bottom row*/}
 						<div className="row" style={{paddingTop: "20px", paddingBottom: "40px"}}>					
-								<div className="guest-list-radio input-field col s2">
-									<input className="list-radios" name="houseList" type="radio" id="houseList" onChange={this.toggleInput} checked={this.state.newGuest.houseList} />
-									<label htmlFor="houseList">House List</label>
-								</div>
-								<div className="guest-list-radio input-field col s2">
-									<input name="headlinerList" type="radio" id="headlinerList" onChange={this.toggleInput} checked={this.state.newGuest.headlinerList} />
-									<label htmlFor="headlinerList">Headliner List</label>
-								</div>
-								<div className="guest-list-radio input-field col s2">
-									<input name="supportOneList" type="radio" id="supportOneList" onChange={this.toggleInput}  checked={this.state.newGuest.supportOneList} />
-									<label htmlFor="supportOneList">Support One List</label>
-								</div>
-								<div className="guest-list-radio input-field col s2">
-									<input name="supportTwoList" type="radio" id="supportTwoList" onChange={this.toggleInput}  checked={this.state.newGuest.supportTwoList} />
-									<label htmlFor="supportTwoList">Support Two List</label>
-								</div>
-								<div className="guest-list-radio input-field col s2">
-									<input name="supportThreeList" type="radio" id="supportThreeList" onChange={this.toggleInput}  checked={this.state.newGuest.supportThreeList} />
-									<label htmlFor="supportThreeList">Support Three List</label>
-								</div>
+							<div className="guest-list-radio input-field col s2">
+								<input className="list-radios" name="houseList" type="radio" id="houseList" onChange={this.toggleInput} checked={this.state.newGuest.houseList} />
+								<label htmlFor="houseList">House List</label>
 							</div>
+
+							{(this.props.activeEvent.headliner != "") && 
+							<div className="guest-list-radio input-field col s2">
+								<input name="headlinerList" type="radio" id="headlinerList" onChange={this.toggleInput} checked={this.state.newGuest.headlinerList} />
+								<label htmlFor="headlinerList">{this.props.activeEvent.headliner} List</label>
+							</div> }
+
+							{(this.props.activeEvent.supportOne != "") && 
+							<div className="guest-list-radio input-field col s2">
+								<input name="supportOneList" type="radio" id="supportOneList" onChange={this.toggleInput}  checked={this.state.newGuest.supportOneList} />
+								<label htmlFor="supportOneList">{this.props.activeEvent.supportOne} List</label>
+							</div> }
+
+							{(this.props.activeEvent.supportTwo != "") && 
+							<div className="guest-list-radio input-field col s2">
+								<input name="supportTwoList" type="radio" id="supportTwoList" onChange={this.toggleInput}  checked={this.state.newGuest.supportTwoList} />
+								<label htmlFor="supportTwoList">{this.props.activeEvent.supportTwo} List</label>
+							</div> }
+
+							{(this.props.activeEvent.supportThree != "") && 
+							<div className="guest-list-radio input-field col s2">
+								<input name="supportThreeList" type="radio" id="supportThreeList" onChange={this.toggleInput}  checked={this.state.newGuest.supportThreeList} />
+								<label htmlFor="supportThreeList">{this.props.activeEvent.supportThree} List</label>
+							</div> }
+						</div>
 					</form>
 
 					{/*buttons */}

@@ -90,10 +90,10 @@ class Guest extends Component {
 				<td className="white-text text-blue-grey lighten-5">{this.props.guest.affiliation}</td>
 				<td className="white-text text-blue-grey lighten-5">{this.props.guest.plusOne}</td>
 				<td>
-					{this.props.guest.vip}
-					{this.props.guest.allAccess}
-					{this.props.guest.photoPass}
-					{this.props.guest.pressPass}
+					{this.props.guest.vip && <p>VIP</p>}
+					{this.props.guest.allAccess && <p>All Access</p>}
+					{this.props.guest.photoPass && <p>Photo Pass</p>}
+					{this.props.guest.pressPass && <p>Press Pass</p>}
 				</td>
 				<td>
 					{this.props.guest.houseList && <p>House</p>}
