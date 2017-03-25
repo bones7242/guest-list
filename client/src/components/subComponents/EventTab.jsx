@@ -38,7 +38,7 @@ const EventTab = ({headliner, date, changeEvent}) => {
 			</div>
 			
 			<div className="col s2">
-				<Link className="btn-floating btn-small tiny waves-effect waves-light deep-purple darken-3 hoverable material-icons right" style={{ margin:"3px"}} onClick={changeEvent} to={'/dash/add-guest'}>+</Link>
+				<Link className="btn-floating btn-small tiny waves-effect waves-light deep-purple darken-3 hoverable material-icons right" style={{ margin:"3px"}} onClick={changeEvent} to={'/dash/add-guest'}>add</Link>
 			</div>
 		</div>
 	);
