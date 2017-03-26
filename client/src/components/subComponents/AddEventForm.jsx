@@ -99,11 +99,10 @@ class AddEventForm extends Component {
 		return (
 			<div className="row"> 
 				<div className=" col s12 m12 l12 add-event-form">
-
-					<h3 className="center-align">Add A New Event</h3>
-					
-
+				
 					<form action="/" className="grey darken-2" id="new-event-form" onSubmit={this.processEventForm}>
+
+						<h3 className="center-align">Add A New Event</h3>
 
 						<div className="row" style={{paddingTop: "20px"}}>
 							<div className="input-field col s8">
