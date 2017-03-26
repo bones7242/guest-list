@@ -214,7 +214,7 @@ class AddGuestForm extends Component {
 					{/*buttons */}
 					<div className="row valign-wrapper" style={{paddingTop: "30px", paddingBottom: "30px"}} >
 							<div className="col s6 right-align" >
-								<Link  className="waves-effect waves-teal  indigo lighten-1 btn-flat center-align" to={'/'}>Cancel</Link>
+								<Link  className="waves-effect waves-teal  indigo lighten-1 btn-flat center-align" to={'/dash/event'}>Cancel</Link>
 							</div>
 							<div className="col s6 left-align" >
 								<button type="submit" form="newGuestForm" className="waves-effect waves-teal btn-flat blue lighten-1 center-align">Submit</button>

@@ -12,14 +12,6 @@ class DashboardHeader extends Component {
           return <DefaultSplash message="Select an event to get started" />;
         }
         
-        // otherwise...
-        // Date.prototype.getFormattedTime = function () {
-        //     var hours = this.getHours() == 0 ? "12" : this.getHours() > 12 ? this.getHours() - 12 : this.getHours();
-        //     var minutes = (this.getMinutes() < 10 ? "0" : "") + this.getMinutes();
-        //     var ampm = this.getHours() < 12 ? "AM" : "PM";
-        //     var formattedTime = hours + ":" + minutes + " " + ampm;
-        //     return formattedTime;
-        // }
         var newEventDate = new Date(this.props.activeEvent.date);
         var eventDate = newEventDate.toDateString();
         // var eventTime = newEventDate.getFormattedTime();
@@ -27,44 +19,52 @@ class DashboardHeader extends Component {
         var eventTime = moment(newEventDate).format("h:mm a");
        
         return (
-            <div className="row" style={{}}> 
-                <div className="containerHeader">
-                    <div className="row">
-                        <div className="col s4 m4 l4 headlinerHeader" style={{padding:"0px"}}>
-                            { this.props.activeEvent.headliner && <h2 className="headlinerText" style={{marginTop: "0"}}>{this.props.activeEvent.headliner}</h2> }
-                            
-                            { this.props.activeEvent.date && <p>{eventDate}</p> }
-                            
-                            { this.props.activeEvent.date && <p>{eventTime}</p> }
+            <div className="row">
 
-                        </div>
-                        <div className="col s4 m4 l3 supportHeader">
+                <div className="col s4 m4 l4 header--headliner">
+                    { this.props.activeEvent.headliner && <h2 className="headliner-text">
+                        {this.props.activeEvent.headliner}
+                    </h2> }
+                    { this.props.activeEvent.date && <p>
+                        {eventDate}
+                    </p> }
+                    { this.props.activeEvent.date && <p>
+                        {eventTime}
+                    </p> }
+                </div>
 
-                            { this.props.activeEvent.supportOne && <h5 style={{color:"#888", marginTop: "0"}} >{this.props.activeEvent.supportOne} </h5> }
-                            { this.props.activeEvent.supportTwo && <h5 style={{color:"#888"}}>{this.props.activeEvent.supportTwo}</h5> }
-                            { this.props.activeEvent.supportThree && <h5 style={{color:"#888"}}>{this.props.activeEvent.supportThree}</h5> }
+                <div className="col s4 m4 l3 header--support">
+                    { this.props.activeEvent.supportOne && 
+                        <div><p className="support-text"><i>with</i></p>
+                        <h5>{this.props.activeEvent.supportOne}</h5> </div>}
+                    { this.props.activeEvent.supportTwo && 
+                        <h5>{this.props.activeEvent.supportTwo}</h5> }
+                    { this.props.activeEvent.supportThree && 
+                        <h5>{this.props.activeEvent.supportThree}</h5> }
+                </div>
 
-                        </div>
-                        <div className="col s3 m3 l3 supportHeader">
+                <div className="col s3 m3 l3 header--event-stats">
+                    <p className="event-stats-text">
+                        Total guests:
+                    </p>
+                    {this.props.activeEvent.totalGuest && <p>
+                        {this.props.activeEvent.totalGuest}
+                    </p>}
+                    <p>
+                        Total checked in:
+                    </p>
+                    {this.props.activeEvent.totalChecked && <p>
+                        {this.props.activeEvent.totalChecked}
+                    </p>}
+                </div>
 
-                            <p style={{marginTop: "0"}}>Total guests:</p>
-                            {this.props.activeEvent.totalGuest && <p >{this.props.activeEvent.totalGuest}</p>}
-
-                            <p>Total checked in:</p>
-                            {this.props.activeEvent.totalChecked && <p>{this.props.activeEvent.totalChecked}</p>}
-
-                        </div>
-
-                        <div className="col s2 m2 l2">
-
-                            <Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin: "3px"}}><i className="material-icons">delete</i></Link>
-
-                            <Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin: "3px"}} to="/dash/edit-event"><i className="material-icons">mode_edit</i></Link>
-
-                        </div>
-                        
-                    </div>
-                   
+                <div className="col s2 m2 l2">
+                    <Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable right">
+                        <i className="material-icons">delete</i>
+                    </Link>
+                    <Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable right" to="/dash/edit-event">
+                        <i className="material-icons">mode_edit</i>
+                    </Link>
                 </div>
                 
             </div>

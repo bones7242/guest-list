@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-
+import { Link } from "react-router";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { refreshActiveEvent, fetchEvents } from "../../actions/index";
@@ -82,32 +82,48 @@ class Guest extends Component {
 		
 		//otherwise...
 		return (
-			<tr className="bordered">
-				<td className="white-text text-blue-grey lighten-5 hoverable">{this.props.guest.name}</td>
-				<td className="white-text text-blue-grey lighten-5">{this.props.guest.affiliation}</td>
-				<td className="white-text text-blue-grey lighten-5">{this.props.guest.plusOne}</td>
-				<td>
+			<tr className="bordered ">
+
+				<td className="guest--td white-text">
+					{this.props.guest.name}
+				</td>
+
+				<td className="guest--td">
+					{this.props.guest.affiliation}
+				</td>
+
+				<td className="guest--td">
+					{this.props.guest.plusOne}
+				</td>
+
+				<td className="guest--td">
 					{this.props.guest.vip && <p>VIP</p>}
 					{this.props.guest.allAccess && <p>All Access</p>}
 					{this.props.guest.photoPass && <p>Photo Pass</p>}
 					{this.props.guest.pressPass && <p>Press Pass</p>}
 				</td>
-				<td>
+
+				<td className="guest--td">
 					{this.props.guest.houseList && <p>House</p>}
 					{this.props.guest.headlinerList && <p>{this.props.activeEvent.headliner}</p>}
 					{this.props.guest.supportOneList && <p>{this.props.activeEvent.supportOne}</p>}
 					{this.props.guest.supportTwoList && <p>{this.props.activeEvent.supportTwo}</p>}
 					{this.props.guest.supportThreeList && <p>{this.props.activeEvent.supportThree}</p>}
 				</td>
-				<td>
+
+				<td className="guest--td">
 					<button className="waves-effect waves-light btn hoverable" style={{backgroundColor: this.myColor()}} onClick={this.checkInGuest}>{this.myText()}</button>
 				</td>
-				<td>
-					
-					<a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3px"}}> <i className="material-icons">delete</i></a>
-					
-					<a className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable" style={{margin:"3px"}}> <i className="material-icons">mode_edit</i></a>
+
+				<td className="guest--td right-align">
+					<Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable"> 
+						<i className="material-icons">delete</i>
+					</Link>
+					<Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable"> 
+						<i className="material-icons">mode_edit</i>
+					</Link>
 				</td>
+
 			</tr>
 		);
 	}		
