@@ -23,13 +23,13 @@ class DashboardLogo extends Component {
 		return (
 			
 			<div id="logo-box" style={{margin: "20px"}}>
-				<div className="row logo-bar" >
+				<div className="row" >
 					<div className="col s12 m12 l12 center-align" >
 						<Link to={'/'}>
-							<h3 className="hoverable center-align">{this.props.venue.name}</h3>
+							<h3>{this.props.venue.name}</h3>
 						</Link>
 						
-						<Link className="waves-effect waves-green btn-flat deep-purple darken-3 blue-text text-lighten-5 center-align hoverable" to={'/dash/add-event'} style={{fontColor:"white"}}>ADD EVENT</Link>
+						<Link className="white-text waves-effect waves-light btn deep-purple darken-3 hoverable" to={'/dash/add-event'}>ADD EVENT</Link>
 						
 					</div>
 				</div>

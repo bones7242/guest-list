@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
-
 import { connect } from "react-redux";
+import { Link } from "react-router";
 
 import Auth from "../../modules/Auth";
 
@@ -52,38 +52,67 @@ class EventDetail extends Component {
 	}
 
 	render() {
-		// if this.props.book is null, return early
+		// if no event is selected, return early with a prompt to select an event 
 		if (!this.props.activeEvent) {
 			return <DefaultSplash message="Select an event to get started" />;
 		}
-		// otherwise... 
-		const activeEvent = this.props.activeEvent.headliner;  //NOte: dead code?
+		// if no guests have been added, prompt user to add guests 
+		if (this.props.activeEvent.guests.length === 0){
+			return (
+				<div className="row">
+					<div className="col s12 m12 l12">
+						{/*event details header*/}
+						<DashboardHeader onChangeSearchTerm />
+						{/*end of event details header*/}
+						{/*prompt to add guests*/}
+						{(this.props.activeEvent.guests.length === 0) && <div className="row">
+							<div className="col s12 m12 l12">
+								<h5 className="blue-grey-text">This event doesn't have any guests yet. </h5>
+								<h5>
+									<Link to="dash/add-guest" className="blue-grey-text"> Add a guest </Link>
+									<Link to="dash/add-guest" className="btn-floating btn-small  waves-effect waves-light deep-purple darken-3 hoverable"><i className="material-icons">playlist_add</i></Link>
+								</h5>
+							</div>
+						</div>}
+						{/*end of prompt to add guests*/}
+					</div>
+				</div>
+			)
+		}
+		// otherwise render full page... 
 		return (
 			<div className="row">
-
 				<div className="col s12 m12 l12">
-
+					
+					{/*event details header*/}
 					<DashboardHeader onChangeSearchTerm />
+					{/*end of event details header*/}
 
-					<div>
-						<SearchBar onChangeSearchTerm={this.props.onChangeSearchTerm} />
+					{/*search bar*/}
+					<SearchBar onChangeSearchTerm={this.props.onChangeSearchTerm} />
+					{/*end of search bar*/}
+
+					{/*guest details*/}
+					<div className="row">
+						<div className="col s12 m12 l12">
+							<table className="guest-table">
+								<tbody>
+									<tr>
+										<th className="blue-grey-text text-lighten-1">Name</th>
+										<th className="blue-grey-text text-lighten-1">Affiliation</th>
+										<th className="blue-grey-text text-lighten-1">Plus-One</th>
+										<th className="blue-grey-text text-lighten-1">Access Type</th>
+										<th className="blue-grey-text text-lighten-1">List</th>
+										<th className="blue-grey-text text-lighten-1">In/Out</th>					
+										<th className="blue-grey-text text-lighten-1 right-align">Edit</th>
+									</tr>
+									
+									{this.renderList(this.props.searchTerm)}
+								</tbody>
+							</table>
+						</div>
 					</div>
-
-					<table>
-						<tbody>
-							<tr>
-								<th className="blue-grey-text text-lighten-1">Name</th>
-								<th className="blue-grey-text text-lighten-1">Affiliation</th>
-								<th className="blue-grey-text text-lighten-1">Plus-One</th>
-								<th className="blue-grey-text text-lighten-1">Access Type</th>
-								<th className="blue-grey-text text-lighten-1">List</th>
-								<th className="blue-grey-text text-lighten-1">In/Out</th>					
-								<th className="blue-grey-text text-lighten-1">Edit</th>
-							</tr>
-							
-							{this.renderList(this.props.searchTerm)}
-						</tbody>
-					</table>
+					{/*end of guest details*/}
 
 				</div>
 			</div>

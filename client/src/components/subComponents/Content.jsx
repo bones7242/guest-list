@@ -4,16 +4,15 @@ import React, { PropTypes, Component } from 'react';
 
 const Content = (children) => {
 	return (
+		<div className="content" >
+			<div className="row">
 
-		<div className="row content">
-			<div className="content" >
-			
-				<div className="col s12 m12 l12 valign-wrapper" style={{padding: '0'}} >
-				
-				{children.children}
-				{/*<Attendee />*/}
+				<div className="col s12 m12 l12">
+
+					{children.children}
 
 				</div>
+				
 			</div>
 		</div>
 	);

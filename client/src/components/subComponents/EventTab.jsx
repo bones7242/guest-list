@@ -3,19 +3,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-//FUTURE DEV 
-// var tabColor =()=> {
-// 	var colours = new Array();
-// 	colours[0] = "black";
-// 	colours[1] = "blue";
-// 	colours[2] = "green";
-// 	colours[3] = "orange";
-// 	colours[4] = "pink";
-
-// 	var newColor = Math.floor(Math.random()*colours.length);
-// 	document.getElementById("eventStyle").style.backgroundColor=colours[newColor];
-// }
-
 const EventTab = ({headliner, date, changeEvent}) => {
 	
 	if (date){
@@ -24,31 +11,29 @@ const EventTab = ({headliner, date, changeEvent}) => {
 	}
 
 	return (
-		<div className="row tab-event" id="eventStyle" style={{width:"100%", overflow: "auto"}}>
-
-			<div className="col s10">
-				<div className="row">
-
-					{ headliner && <Link onClick={changeEvent} to={'/dash/event'}><h5 className="truncate tab-artist" >{headliner.toUpperCase()}</h5></Link> }
-
+		<div className="tab-event">
+			<div className="row">
+				<div className="col s10">
+					<div className="row">
+						{ headliner && <Link onClick={changeEvent} to={'/dash/event'}><h5 className="truncate tab-artist" >{headliner.toUpperCase()}</h5></Link> }
+					</div>
+					<div className="row">
+						{ eventDate && <p className="tab-date">{eventDate}</p>}
+					</div>
 				</div>
-				<div className="row">
-					{ eventDate && <p className="tab-date">{eventDate}</p>}
+				
+				<div className="col s2">
+					<Link className="btn-floating btn-small waves-effect waves-light deep-purple darken-3 hoverable right-align" onClick={changeEvent} to={'/dash/add-guest'}><i className="material-icons">playlist_add</i></Link>
 				</div>
-			</div>
-			
-			<div className="col s2">
-				<Link className="btn-floating btn-small tiny waves-effect waves-light deep-purple darken-3 hoverable material-icons right" style={{ margin:"3px"}} onClick={changeEvent} to={'/dash/add-guest'}><i className="large material-icons">playlist_add</i></Link>
 			</div>
 		</div>
 	);
 }
 
 EventTab.propTypes = {
-    //headliner: PropTypes.string.isRequired,
-    //date: PropTypes.string.isRequired,
-	//eventId: PropTypes.string.isRequired,
-	//selectEvent: PropTypes.func.isRequired
+    headliner: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+	changeEvent: PropTypes.func.isRequired
 };
 
 export default EventTab;

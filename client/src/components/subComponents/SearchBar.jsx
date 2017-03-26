@@ -19,13 +19,15 @@ class SearchBar extends Component {
   render() {
 
     return (
-      
-      <div>
-        <input 
-          type="text"
-          onChange={this.updateSearch.bind(this)}
-          placeholder="Search for a guest by name..."
-        />
+      <div className="row">
+        <div className="col s12 m6 l4">
+          <input 
+            className="guest-search"
+            type="text"
+            onChange={this.updateSearch.bind(this)}
+            placeholder="Type here to search by guest name..."
+          />
+        </div>
       </div>
     );
   }

@@ -3,28 +3,28 @@
 	
 }
 
-.supportHeader {
-	padding-top: 15px;
-	padding-bottom: 0px;
-	margin-bottom: 0px;
-	padding-left: 5px;
+.header--headliner {
+	color: white;
 }
 
-.headlinerHeader {
-	padding-top: -5px;
-	padding-bottom: 0px;
-	margin-bottom: 0px;
+.header--support {
+	color: #888;
 }
 
-.checkInHeader {
-	padding-top: 0px;
+.header--event-stats {
+	color: white;
+}
+
+.headliner-text {
 	margin-top: 0px;
 }
 
-.containerHeader {
-	padding-left: 0px;
+.support-text, .event-stats-text {
+	margin-top: 10px;
 }
 
-.headlinerText {
-	color: #e3f2fd;
+.support-text {
+	font-size: small;
+	line-height: 1;
 }
+
