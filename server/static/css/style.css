@@ -16,7 +16,6 @@ html {
 body {
   margin: 0;
   font-size: 16px;
-  
   background: linear-gradient(132deg, #ec5218, #1665c1);
   background-size: 1000% 1000%;
   animation: BackgroundGradient 30s ease infinite;
@@ -38,6 +37,10 @@ input {
 
 .btn-small {
   margin: 3px;
+}
+
+h1, h2, h3, h4, h5 {
+  color: white;
 }
 
 a {

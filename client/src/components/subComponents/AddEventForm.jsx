@@ -97,70 +97,72 @@ class AddEventForm extends Component {
 		}
 		// if a venue is in the props, show add-event form.
 		return (
-			<div className=" row col s12 add-event-form" style={{paddingTop:'25px'}}>
+			<div className="row"> 
+				<div className=" col s12 m12 l12 add-event-form">
 
-				<h3 className="center-align">Add A New Event</h3>
-				
-
-				<form action="/" className="col s12 grey darken-2" id="newEventForm" onSubmit={this.processEventForm}>
-
-					<div className="row" style={{paddingTop: "20px"}}>
-						<div className="input-field col s8">
-							<label htmlFor="headliner">Headliner*</label>
-							<input  name="headliner"  type="text" className="validate" onChange={this.handleInputChange}></input>							
-						</div>						
-						<div className="input-field col s4">
-							<input type="datetime-local" name="date" onChange={this.handleInputChange}></input>							
-						</div>					
-					</div>
+					<h3 className="center-align">Add A New Event</h3>
 					
-					<div className="row" style={{paddingTop: "20px"}}>						
-						<div className="input-field col s4">
-							<label htmlFor="supportOne">First Support</label>
-							<input name="supportOne" type="text" className="validate" onChange={this.handleInputChange}></input>
-						</div>
-						<div className="input-field col s4">
-							<label htmlFor="supportTwo">Second Support</label>
-							<input name="supportTwo"  type="text" className="validate" onChange={this.handleInputChange}></input>
-						</div>
-						<div className="input-field col s4">
-							<label htmlFor="supportThree">Third Support</label>
-							<input name="supportThree"  type="text" className="validate" onChange={this.handleInputChange}></input>
-						</div>
-					</div>
 
-					<div className="row" style={{paddingTop: "20px"}}>						
-						<div className="input-field col s3">
-							<label htmlFor="headlinerAllotment">Headliner Allotment</label>
-							<input name="headlinerAllotment"  type="text" className="validate" onChange={this.handleInputChange}></input>
+					<form action="/" className="grey darken-2" id="new-event-form" onSubmit={this.processEventForm}>
+
+						<div className="row" style={{paddingTop: "20px"}}>
+							<div className="input-field col s8">
+								<label htmlFor="headliner">Headliner*</label>
+								<input  name="headliner"  type="text" className="validate" onChange={this.handleInputChange}></input>							
+							</div>						
+							<div className="input-field col s4">
+								<input type="datetime-local" name="date" onChange={this.handleInputChange}></input>							
+							</div>					
 						</div>
-						<div className="input-field col s3">
-							<label htmlFor="supportOneAllotment">First Support Allotment</label>
-							<input name="supportOneAllotment"  type="text" className="validate" onChange={this.handleInputChange}></input>
+						
+						<div className="row" style={{paddingTop: "20px"}}>						
+							<div className="input-field col s4">
+								<label htmlFor="supportOne">First Support</label>
+								<input name="supportOne" type="text" className="validate" onChange={this.handleInputChange}></input>
+							</div>
+							<div className="input-field col s4">
+								<label htmlFor="supportTwo">Second Support</label>
+								<input name="supportTwo"  type="text" className="validate" onChange={this.handleInputChange}></input>
+							</div>
+							<div className="input-field col s4">
+								<label htmlFor="supportThree">Third Support</label>
+								<input name="supportThree"  type="text" className="validate" onChange={this.handleInputChange}></input>
+							</div>
 						</div>
-						<div className="input-field col s3">
-							<label htmlFor="supportTwoAllotment">Second Support Allotment</label>								
-							<input name="supportTwoAllotment"  type="text" className="validate" onChange={this.handleInputChange}></input>
+
+						<div className="row" style={{paddingTop: "20px"}}>						
+							<div className="input-field col s3">
+								<label htmlFor="headlinerAllotment">Headliner Allotment</label>
+								<input name="headlinerAllotment"  type="text" className="validate" onChange={this.handleInputChange}></input>
+							</div>
+							<div className="input-field col s3">
+								<label htmlFor="supportOneAllotment">First Support Allotment</label>
+								<input name="supportOneAllotment"  type="text" className="validate" onChange={this.handleInputChange}></input>
+							</div>
+							<div className="input-field col s3">
+								<label htmlFor="supportTwoAllotment">Second Support Allotment</label>								
+								<input name="supportTwoAllotment"  type="text" className="validate" onChange={this.handleInputChange}></input>
+							</div>
+							<div className="input-field col s3">
+								<label htmlFor="supportThreeAllotment">Third Support Allotment</label>
+								<input name="supportThreeAllotment"  type="text" className="validate" onChange={this.handleInputChange}></input>
+							</div>
 						</div>
-						<div className="input-field col s3">
-							<label htmlFor="supportThreeAllotment">Third Support Allotment</label>
-							<input name="supportThreeAllotment"  type="text" className="validate" onChange={this.handleInputChange}></input>
-						</div>
-					</div>
+						
+					</form>
 					
-				</form>
-				{/*buttons*/}
-				<div className="row valign-wrapper" style={{paddingTop: "30px", paddingBottom: "30px"}} >
-					<div className="col s6 right-align" >
-						<Link className="waves-effect waves-teal indigo lighten-1 btn-flat center-align" to={'/'}>Cancel</Link>
-					</div>
+					{/*buttons*/}
+					<div className="row">
+						<div className="col s6 right-align" >
+							<Link className="waves-effect waves-teal indigo lighten-1 btn-flat center" to={'/'}>Cancel</Link>
+						</div>
 
-					<div className="col s6 left-align" >
-						<button type="submit" className="waves-effect waves-teal blue lighten-1 btn-flat center-align" form="newEventForm">Submit</button>				
+						<div className="col s6 left-align" >
+							<button type="submit" className="waves-effect waves-teal blue lighten-1 btn-flat center" form="newEventForm">Submit</button>				
 
+						</div>
 					</div>
 				</div>
-
 			</div>
 		);
 	}
