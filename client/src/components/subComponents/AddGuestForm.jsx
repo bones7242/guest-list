@@ -120,15 +120,16 @@ class AddGuestForm extends Component {
 		// if an event is active, show add guest form 
 		return (
 			<div className="row">
-				<div className="col s12 m12 l12" style={{paddingRight:"20px"}}>
+				<div className="col s12 m12 l12">
 
 					<DashboardHeader />
-	
-					<h3 className="center-align">Add A New Guest To Your List</h3>
 
-					<form className="col s12 grey darken-2" name="newGuestForm" id="newGuestForm" action="/" onSubmit={this.processGuestForm}>
+					<form className="col s12 grey darken-2" name="newGuestForm" id="new-guest-form" action="/" onSubmit={this.processGuestForm}>
+						
+						<h3 className="center-align">Add A New Guest To Your List</h3>
+						
 						{/*top row*/}
-						<div className="row" style={{paddingTop: "20px"}}>					
+						<div className="row">					
 							<div className="input-field col s6">
 								<input id="AttendeeName"  name="name" type="text" className="validate" onChange={this.handleInputChange}></input>
 								<label htmlFor="name">Name</label>
@@ -179,32 +180,32 @@ class AddGuestForm extends Component {
 							</div>						
 						</div>
 						{/*bottom row*/}
-						<div className="row" style={{paddingTop: "20px", paddingBottom: "40px"}}>					
-							<div className="guest-list-radio input-field col s2">
+						<div className="row">					
+							<div className=" input-field col s2">
 								<input className="list-radios" name="houseList" type="radio" id="houseList" onChange={this.toggleInput} checked={this.state.newGuest.houseList} />
 								<label htmlFor="houseList">House List</label>
 							</div>
 
 							{(this.props.activeEvent.headliner != "") && 
-							<div className="guest-list-radio input-field col s2">
+							<div className=" input-field col s2">
 								<input name="headlinerList" type="radio" id="headlinerList" onChange={this.toggleInput} checked={this.state.newGuest.headlinerList} />
 								<label htmlFor="headlinerList">{this.props.activeEvent.headliner} List</label>
 							</div> }
 
 							{(this.props.activeEvent.supportOne != "") && 
-							<div className="guest-list-radio input-field col s2">
+							<div className=" input-field col s2">
 								<input name="supportOneList" type="radio" id="supportOneList" onChange={this.toggleInput}  checked={this.state.newGuest.supportOneList} />
 								<label htmlFor="supportOneList">{this.props.activeEvent.supportOne} List</label>
 							</div> }
 
 							{(this.props.activeEvent.supportTwo != "") && 
-							<div className="guest-list-radio input-field col s2">
+							<div className=" input-field col s2">
 								<input name="supportTwoList" type="radio" id="supportTwoList" onChange={this.toggleInput}  checked={this.state.newGuest.supportTwoList} />
 								<label htmlFor="supportTwoList">{this.props.activeEvent.supportTwo} List</label>
 							</div> }
 
 							{(this.props.activeEvent.supportThree != "") && 
-							<div className="guest-list-radio input-field col s2">
+							<div className=" input-field col s2">
 								<input name="supportThreeList" type="radio" id="supportThreeList" onChange={this.toggleInput}  checked={this.state.newGuest.supportThreeList} />
 								<label htmlFor="supportThreeList">{this.props.activeEvent.supportThree} List</label>
 							</div> }
@@ -212,12 +213,12 @@ class AddGuestForm extends Component {
 					</form>
 
 					{/*buttons */}
-					<div className="row valign-wrapper" style={{paddingTop: "30px", paddingBottom: "30px"}} >
+					<div className="row">
 							<div className="col s6 right-align" >
-								<Link  className="waves-effect waves-teal  indigo lighten-1 btn-flat center-align" to={'/dash/event'}>Cancel</Link>
+								<Link  className="waves-effect waves-teal  indigo lighten-1 btn-flat center" to={'/dash/event'}>Cancel</Link>
 							</div>
 							<div className="col s6 left-align" >
-								<button type="submit" form="newGuestForm" className="waves-effect waves-teal btn-flat blue lighten-1 center-align">Submit</button>
+								<button type="submit" form="newGuestForm" className="waves-effect waves-teal btn-flat blue lighten-1 center">Submit</button>
 							</div>
 					</div>	
 

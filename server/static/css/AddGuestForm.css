@@ -1,3 +1,6 @@
-.guest-list-radios {
-    /*margin: 0px 100px 0px 0px;*/
+#new-guest-form {
+    margin: 30px 0px 30px 0px;
+    padding: 20px;
+    border-radius: 5px;
 }
+
