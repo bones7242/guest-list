@@ -124,7 +124,7 @@ class AddGuestForm extends Component {
 
 					<DashboardHeader />
 
-					<form className="col s12 grey darken-2" name="newGuestForm" id="new-guest-form" action="/" onSubmit={this.processGuestForm}>
+					<form className="col s12" name="newGuestForm" id="new-guest-form" action="/" onSubmit={this.processGuestForm}>
 						
 						<h3 className="center-align">Add A New Guest To Your List</h3>
 						
@@ -211,17 +211,17 @@ class AddGuestForm extends Component {
 							</div> }
 						</div>
 
-						{/*buttons */}
-						<div className="row">
-								<div className="col s6 right-align" >
-									<Link  className="indigo lighten-1 white-text waves-effect waves-teal btn-flat center" to={'/dash/event'}>Cancel</Link>
-								</div>
-								<div className="col s6 left-align" >
-									<button type="submit" form="newGuestForm" className="blue lighten-1 white-text waves-effect waves-teal btn-flat center">Submit</button>
-								</div>
-						</div>	
+					</form>		
 
-					</form>					
+					{/*buttons */}
+					<div className="row">
+						<div className="col s6 right-align" >
+							<Link  className="grey darken-2 white-text waves-effect waves-teal btn center" to={'/dash/event'}>Cancel</Link>
+						</div>
+						<div className="col s6 left-align" >
+							<button type="submit" form="newGuestForm" className="indigo lighten-1 white-text waves-effect waves-teal btn center">Submit</button>
+						</div>
+					</div>				
 
 				</div>
 

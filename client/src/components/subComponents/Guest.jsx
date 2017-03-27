@@ -66,7 +66,7 @@ class Guest extends Component {
 		if (this.props.guest.isCheckedIn === true) { 
 			return "grey darken-2";
 		} else { 
-			return "blue lighten-1";
+			return "indigo lighten-1";
 		}
 	}
 

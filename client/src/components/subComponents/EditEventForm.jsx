@@ -143,18 +143,18 @@ class EditEventForm extends Component {
 								<input name="supportThreeAllotment"  type="text" className="validate" value={this.state.updatedEvent.supportThreeAllotment} onChange={this.handleInputChange}></input>
 							</div>
 						</div>
+						
+					</form>
 
-						<div className="row valign-wrapper" >
+					<div className="row valign-wrapper" >
 							<div className="col s6 right-align" >
-								<Link className="indigo lighten-1 white-text waves-effect waves-light btn-flat center-align" to={'/dash/event'}>Cancel</Link>
+								<Link className="grey darken-2 white-text waves-effect waves-light btn-flat center-align" to={'/dash/event'}>Cancel</Link>
 							</div>
 
 							<div className="col s6 left-align" >
-								<button type="submit" className="blue lighten-1  white-text waves-effect waves-light btn-flat center-align">Submit</button>				
+								<button type="submit" className="indigo lighten-1  white-text waves-effect waves-light btn-flat center-align">Submit</button>				
 							</div>
 						</div>
-						
-					</form>
 
 				</div>
 			</div>
