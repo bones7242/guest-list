@@ -11,28 +11,28 @@ const EventTab = ({headliner, date, changeEvent}) => {
 	}
 
 	return (
-		<div className="tab-event">
-			<div className="row">
-				<div className="col s10">
-					<div className="row">
-						{ headliner && <Link onClick={changeEvent} to={'/dash/event'}><h5 className="truncate tab-artist" >{headliner.toUpperCase()}</h5></Link> }
-					</div>
-					<div className="row">
-						{ eventDate && <p className="tab-date">{eventDate}</p>}
-					</div>
+		
+		<div className="row tab-event">
+			<div className="col s10">
+				<div className="row">
+					{ headliner && <h5 className="truncate tab-artist" ><Link onClick={changeEvent} to={'/dash/event'}>{headliner.toUpperCase()}</Link></h5> }
 				</div>
-				
-				<div className="col s2">
-					<Link className="btn-floating btn-small waves-effect waves-light deep-purple darken-3 hoverable right-align" onClick={changeEvent} to={'/dash/add-guest'}><i className="material-icons">playlist_add</i></Link>
+				<div className="row">
+					{ eventDate && <p className="tab-date">{eventDate}</p>}
 				</div>
 			</div>
+			
+			<div className="col s2 event-btns">
+				<Link className="btn-floating btn-small waves-effect waves-light grey darken-2 hoverable" onClick={changeEvent} to={'/dash/add-guest'}><i className="material-icons">playlist_add</i></Link>
+			</div>
 		</div>
+		
 	);
 }
 
 EventTab.propTypes = {
     headliner: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
+    //date: PropTypes.string.isRequired,
 	changeEvent: PropTypes.func.isRequired
 };
 

@@ -64,9 +64,9 @@ class Guest extends Component {
 
 	myColor(){
 		if (this.props.guest.isCheckedIn === true) { 
-			return "grey";
+			return "gl-btn-tertiary";
 		} else { 
-			return "#4527a0";
+			return "gl-btn-primary";
 		}
 	}
 
@@ -112,15 +112,15 @@ class Guest extends Component {
 				</td>
 
 				<td className="guest--td">
-					<button className="waves-effect waves-light btn hoverable" style={{backgroundColor: this.myColor()}} onClick={this.checkInGuest}>{this.myText()}</button>
+					<button className={"waves-effect waves-light btn hoverable " + this.myColor()} onClick={this.checkInGuest}>{this.myText()}</button>
 				</td>
 
 				<td className="guest--td right-align">
-					<Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable"> 
-						<i className="material-icons">delete</i>
-					</Link>
-					<Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable"> 
+					<Link className="gl-btn-tertiary btn-floating btn-small waves-effect waves-light hoverable"> 
 						<i className="material-icons">mode_edit</i>
+					</Link>
+					<Link className="gl-btn-tertiary btn-floating btn-small waves-effect waves-light hoverable"> 
+						<i className="material-icons">delete</i>
 					</Link>
 				</td>
 

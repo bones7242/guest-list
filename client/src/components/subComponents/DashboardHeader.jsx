@@ -58,11 +58,11 @@ class DashboardHeader extends Component {
                     </p>}
                 </div>
 
-                <div className="col s2 m2 l2">
-                    <Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable right">
+                <div className="col s2 m2 l2 right-align">
+                    <Link className="gl-btn-tertiary btn-floating btn-small waves-effect waves-light hoverable">
                         <i className="material-icons">delete</i>
                     </Link>
-                    <Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable right" to="/dash/edit-event">
+                    <Link className="gl-btn-tertiary btn-floating btn-small waves-effect waves-light hoverable" to="/dash/edit-event">
                         <i className="material-icons">mode_edit</i>
                     </Link>
                 </div>

@@ -153,11 +153,11 @@ class AddEventForm extends Component {
 					{/*buttons*/}
 					<div className="row">
 						<div className="col s6 right-align" >
-							<Link className="waves-effect waves-teal indigo lighten-1 btn-flat center" to={'/'}>Cancel</Link>
+							<Link className="gl-btn-secondary waves-effect waves-light  btn-flat" to={'/'}>Cancel</Link>
 						</div>
 
 						<div className="col s6 left-align" >
-							<button type="submit" className="waves-effect waves-teal blue lighten-1 btn-flat center" form="newEventForm">Submit</button>				
+							<button type="submit" className="gl-btn-primary waves-effect waves-light btn-flat" form="newEventForm">Submit</button>				
 
 						</div>
 					</div>

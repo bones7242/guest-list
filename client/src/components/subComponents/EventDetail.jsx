@@ -67,10 +67,11 @@ class EventDetail extends Component {
 						{/*prompt to add guests*/}
 						{(this.props.activeEvent.guests.length === 0) && <div className="row">
 							<div className="col s12 m12 l12">
-								<h5 className="blue-grey-text">This event doesn't have any guests yet. </h5>
-								<h5>
-									<Link to="dash/add-guest" className="blue-grey-text"> Add a guest </Link>
-									<Link to="dash/add-guest" className="btn-floating btn-small  waves-effect waves-light deep-purple darken-3 hoverable"><i className="material-icons">playlist_add</i></Link>
+								<h5 className="grey-text"> 
+									<Link to="dash/add-guest" className="gl-btn-primary btn-floating btn-small  waves-effect waves-light hoverable">
+										<i className="material-icons">playlist_add</i>
+									</Link>
+									<Link className="grey-text"to="dash/add-guest"> This event doesn't have any guests yet.  Add a guest.</Link>
 								</h5>
 							</div>
 						</div>}
