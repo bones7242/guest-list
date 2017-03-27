@@ -210,17 +210,18 @@ class AddGuestForm extends Component {
 								<label htmlFor="supportThreeList">{this.props.activeEvent.supportThree} List</label>
 							</div> }
 						</div>
-					</form>
 
-					{/*buttons */}
-					<div className="row">
-							<div className="col s6 right-align" >
-								<Link  className="waves-effect waves-teal  indigo lighten-1 btn-flat center" to={'/dash/event'}>Cancel</Link>
-							</div>
-							<div className="col s6 left-align" >
-								<button type="submit" form="newGuestForm" className="waves-effect waves-teal btn-flat blue lighten-1 center">Submit</button>
-							</div>
-					</div>	
+						{/*buttons */}
+						<div className="row">
+								<div className="col s6 right-align" >
+									<Link  className="indigo lighten-1 white-text waves-effect waves-teal btn-flat center" to={'/dash/event'}>Cancel</Link>
+								</div>
+								<div className="col s6 left-align" >
+									<button type="submit" form="newGuestForm" className="blue lighten-1 white-text waves-effect waves-teal btn-flat center">Submit</button>
+								</div>
+						</div>	
+
+					</form>					
 
 				</div>
 

@@ -147,20 +147,21 @@ class AddEventForm extends Component {
 								<input name="supportThreeAllotment"  type="text" className="validate" onChange={this.handleInputChange}></input>
 							</div>
 						</div>
+
+						{/*buttons*/}
+						<div className="row">
+							<div className="col s6 right-align" >
+								<Link className="indigo lighten-1 white-text waves-effect waves-light  btn-flat" to={'/'}>Cancel</Link>
+							</div>
+
+							<div className="col s6 left-align" >
+								<button type="submit" form="newEventForm" className="blue lighten-1 white-text waves-effect waves-teal btn-flat center">Submit</button>			
+
+							</div>
+						</div>
 						
 					</form>
 					
-					{/*buttons*/}
-					<div className="row">
-						<div className="col s6 right-align" >
-							<Link className="gl-btn-secondary waves-effect waves-light  btn-flat" to={'/'}>Cancel</Link>
-						</div>
-
-						<div className="col s6 left-align" >
-							<button type="submit" className="gl-btn-primary waves-effect waves-light btn-flat" form="newEventForm">Submit</button>				
-
-						</div>
-					</div>
 				</div>
 			</div>
 		);
