@@ -53,6 +53,7 @@ class AddEventForm extends Component {
 
 	// this custom method will trigger when the submit button is clicked.  it will check the inputs for errors and then initiate the create event method to actually create the event.
 	processEventForm(event) {
+		console.log("processing form");
         // Prevent default action.  in this case, action is the form submission event.
         event.preventDefault();
 		// do basic front-end checks to make sure form was filled out correctly
@@ -153,12 +154,10 @@ class AddEventForm extends Component {
 					{/*buttons*/}
 					<div className="row">
 						<div className="col s6 right-align" >
-							<Link className="grey darken-2 white-text waves-effect waves-light btn" to={'/'}>Cancel</Link>
+							<Link className="grey darken-2 waves-effect waves-light btn hoverable" to={'/'}>Cancel</Link>
 						</div>
-
 						<div className="col s6 left-align" >
-							<button type="submit" form="newEventForm" className="indigo lighten-1 white-text waves-effect waves-light btn center">Submit</button>			
-
+							<button type="submit" form="new-event-form" className="indigo lighten-1 waves-effect waves-light btn hoverable center">Submit</button>			
 						</div>
 					</div>
 					

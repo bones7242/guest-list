@@ -88,7 +88,7 @@ class EditEventForm extends Component {
 				<div className="col s12">
 					<h3 className="center-align">Edit Event</h3>
 
-					<form action="/" onSubmit={this.processEventForm}>
+					<form action="/" onSubmit={this.processEventForm} id="edit-event-form">
 
 						<div className="row" style={{paddingTop: "20px"}}>	
 
@@ -148,11 +148,11 @@ class EditEventForm extends Component {
 
 					<div className="row valign-wrapper" >
 							<div className="col s6 right-align" >
-								<Link className="grey darken-2 white-text waves-effect waves-light btn-flat center-align" to={'/dash/event'}>Cancel</Link>
+								<Link className="grey darken-2 waves-effect waves-light btn center-align hoverable" to={'/dash/event'}>Cancel</Link>
 							</div>
 
 							<div className="col s6 left-align" >
-								<button type="submit" className="indigo lighten-1  white-text waves-effect waves-light btn-flat center-align">Submit</button>				
+								<button type="submit" form="edit-event-form" className="indigo lighten-1 waves-effect waves-light btn hoverable center-align">Submit</button>				
 							</div>
 						</div>
 

@@ -216,10 +216,10 @@ class AddGuestForm extends Component {
 					{/*buttons */}
 					<div className="row">
 						<div className="col s6 right-align" >
-							<Link  className="grey darken-2 white-text waves-effect waves-teal btn center" to={'/dash/event'}>Cancel</Link>
+							<Link  className="grey darken-2 waves-effect waves-teal btn hoverable center" to={'/dash/event'}>Cancel</Link>
 						</div>
 						<div className="col s6 left-align" >
-							<button type="submit" form="newGuestForm" className="indigo lighten-1 white-text waves-effect waves-teal btn center">Submit</button>
+							<button type="submit" form="new-guest-form" className="indigo lighten-1 waves-effect waves-teal btn hoverable center">Submit</button>
 						</div>
 					</div>				
 
