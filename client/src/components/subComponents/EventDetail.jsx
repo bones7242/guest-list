@@ -62,7 +62,7 @@ class EventDetail extends Component {
 				<div className="row">
 					<div className="col s12 m12 l12">
 						{/*event details header*/}
-						<DashboardHeader onChangeSearchTerm />
+						<DashboardHeader onChangeSearchTerm router={this.props.router}/>
 						{/*end of event details header*/}
 						{/*prompt to add guests*/}
 						{(this.props.activeEvent.guests.length === 0) && <div className="row">

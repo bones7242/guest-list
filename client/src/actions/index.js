@@ -4,6 +4,7 @@ export const FETCH_VENUE = "FETCH_VENUE";
 export const FETCH_EVENTS = "FETCH_EVENTS";
 export const EVENT_SELECTED = "EVENT_SELECTED";
 export const REFRESH_ACTIVE_EVENT = "REFRESH_ACTIVE_EVENT";
+export const CLEAR_ACTIVE_EVENT = "CLEAR_ACTIVE_EVENT";
 export const ON_CHANGE_SEARCH_TERM = "ON_CHANGE_SEARCH_TERM";
 
 // this method gets all data for a venue based on user Id (must be the owner)
@@ -50,6 +51,15 @@ export function refreshActiveEvent(eventId, authToken){
     return {
         type: REFRESH_ACTIVE_EVENT,
         payload: request
+    }
+}
+
+// this method gets all data for an event based on an event id
+export function clearActiveEvent(){
+
+    return {
+        type: CLEAR_ACTIVE_EVENT,
+        payload: null
     }
 
 }
