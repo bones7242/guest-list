@@ -1,0 +1,32 @@
+/*login and signup page styles*/
+
+.form--front-page {
+    padding-top: 60px;
+}
+
+.field-line, .button-line {
+    padding: 16px;
+}
+
+.label--front-page {
+    color: white;
+}
+
+.error-message, .success-message, .help-message {
+    text-align: center;
+    padding: 0 16px;
+    font-weight: bold;
+
+}
+.error-message {
+    color: palevioletred;
+}
+
+.success-message {
+    color: palegreen;
+}
+
+.help-message {
+    color: white;
+}
+
