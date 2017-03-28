@@ -53,7 +53,6 @@ class AddEventForm extends Component {
 
 	// this custom method will trigger when the submit button is clicked.  it will check the inputs for errors and then initiate the create event method to actually create the event.
 	processEventForm(event) {
-		console.log("processing form");
         // Prevent default action.  in this case, action is the form submission event.
         event.preventDefault();
 		// do basic front-end checks to make sure form was filled out correctly

@@ -33,8 +33,8 @@ class DashboardHeader extends Component {
 				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
 				// select the activeEvent in the application state 
 				this.props.clearActiveEvent();
-                // redirect to the dash, and have the dash select the newly created event for display
-				this.props.router.replace("/dash");
+                // redirect to the dash
+				//this.props.router.replace("/dash");
 
             } else {				
 				console.log("Event could not be deleted.  Check the server console logs");
