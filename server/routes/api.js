@@ -190,7 +190,7 @@ router.put("/event/counter/increment", (req, res) => {
                         }
                     }
                 )
-            }
+            };
         }
     )
 });
@@ -236,6 +236,22 @@ router.put("/event/counter/decrement", (req, res) => {
         }
     )
 });
+
+// event route - delete an event by that event's id 
+router.delete("/event/:eventId", (req, res) => {
+    console.log("received api/event/one GET request:", req.params.eventId);
+    // finding all events where the venue matches the venueId, and populate the guests in the event 
+        // Use the Beer model to find a specific beer and remove it
+    Event.findByIdAndRemove(req.params.eventId, (err) => {
+        // handle errors with the save.
+        if (err) { 
+            res.status(200).json({message: err})
+        // if no errors.
+        } else {
+            res.status(200).json({message: "event " + req.params.eventId + " successfully deleted."});
+        };
+    });    
+}); 
 
 // 'GUEST' CRUD ROUTES
 // route to create a new guest

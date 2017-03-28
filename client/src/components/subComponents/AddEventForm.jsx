@@ -1,13 +1,13 @@
+// react
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
-
-import Auth from "../../modules/Auth";
-
+// redux 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchEvents, selectEvent } from "../../actions/index";
-
-import DashboardHeader from "./DashboardHeader.jsx";
+// methods 
+import Auth from "../../modules/Auth";
+// components
 import DefaultSplash from "./DefaultSplash.jsx";
 
 class AddEventForm extends Component {
@@ -104,7 +104,7 @@ class AddEventForm extends Component {
 
 						<h3 className="center-align">Add A New Event</h3>
 
-						<div className="row" style={{paddingTop: "20px"}}>
+						<div className="row">
 							<div className="input-field col s8">
 								<label htmlFor="headliner">Headliner*</label>
 								<input  name="headliner"  type="text" className="validate" onChange={this.handleInputChange}></input>							
@@ -114,7 +114,7 @@ class AddEventForm extends Component {
 							</div>					
 						</div>
 						
-						<div className="row" style={{paddingTop: "20px"}}>						
+						<div className="row" >						
 							<div className="input-field col s4">
 								<label htmlFor="supportOne">First Support</label>
 								<input name="supportOne" type="text" className="validate" onChange={this.handleInputChange}></input>
@@ -129,7 +129,7 @@ class AddEventForm extends Component {
 							</div>
 						</div>
 
-						<div className="row" style={{paddingTop: "20px"}}>						
+						<div className="row" >						
 							<div className="input-field col s3">
 								<label htmlFor="headlinerAllotment">Headliner Allotment</label>
 								<input name="headlinerAllotment"  type="text" className="validate" onChange={this.handleInputChange}></input>

@@ -1,9 +1,11 @@
+// react
 import React, { PropTypes, Component } from 'react';
 import { Link } from "react-router";
+// redux 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { refreshActiveEvent, fetchEvents } from "../../actions/index";
-
+// methods 
 import Auth from "../../modules/Auth";
 
 const Promise = require("bluebird");
