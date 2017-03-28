@@ -45,13 +45,12 @@ h1, h2, h3, h4, h5 {
 
 a {
   color: #e1f5fe;
-  font-weight: bold;
   text-decoration: none;
-  transition: color 0.4s;
+  transition: color 0.2s;
 }
 
 a:hover {
-  color: mediumslateblue;
+  color: #5c6bc0;  /* indigo lighten-1 */
 }
 
 
@@ -83,24 +82,4 @@ a:hover {
 .top-bar a,
 .nav a {
   margin: 0 8px;
-}
-
-/*login and signup styles*/
-
-.field-line, .button-line {
-  padding: 16px;
-}
-
-.error-message {
-  padding: 0 16px;
-  color: tomato;
-}
-
-.success-message {
-  padding: 0 16px;
-  color: White;
-}
-
-.login-p {
-  text-align: center;
 }

@@ -100,7 +100,7 @@ class AddEventForm extends Component {
 			<div className="row"> 
 				<div className=" col s12 m12 l12 add-event-form">
 				
-					<form action="/" className="grey darken-2" id="new-event-form" onSubmit={this.processEventForm}>
+					<form action="/" id="new-event-form" onSubmit={this.processEventForm}>
 
 						<h3 className="center-align">Add A New Event</h3>
 
@@ -149,18 +149,19 @@ class AddEventForm extends Component {
 						</div>
 						
 					</form>
-					
+
 					{/*buttons*/}
 					<div className="row">
 						<div className="col s6 right-align" >
-							<Link className="waves-effect waves-teal indigo lighten-1 btn-flat center" to={'/'}>Cancel</Link>
+							<Link className="grey darken-2 white-text waves-effect waves-light btn" to={'/'}>Cancel</Link>
 						</div>
 
 						<div className="col s6 left-align" >
-							<button type="submit" className="waves-effect waves-teal blue lighten-1 btn-flat center" form="newEventForm">Submit</button>				
+							<button type="submit" form="newEventForm" className="indigo lighten-1 white-text waves-effect waves-light btn center">Submit</button>			
 
 						</div>
 					</div>
+					
 				</div>
 			</div>
 		);

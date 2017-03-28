@@ -29,7 +29,7 @@ class DashboardLogo extends Component {
 							<h3>{this.props.venue.name}</h3>
 						</Link>
 						
-						<Link className="white-text waves-effect waves-light btn deep-purple darken-3 hoverable" to={'/dash/add-event'}>ADD EVENT</Link>
+						<Link className="indigo lighten-1 btn white-text waves-effect waves-light hoverable" to={'/dash/add-event'}>ADD EVENT</Link>
 						
 					</div>
 				</div>

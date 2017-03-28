@@ -28,10 +28,10 @@ const myRoutes = (
     <Provider store={createStoreWithMiddleware(reducers)}>
 
         <Router history={hashHistory}>
-
+            {/* main route */}
             <Route path="/" component={App}>
 
-                {/*one of the below routes will be passed to App as children*/}
+                {/* route if logged in.  One of the below routes will be passed to App as children*/}
                 <Route path="dash" 
                     getComponent={(location, callback) => {
                         if (Auth.isUserAuthenticated()) {  
@@ -49,15 +49,16 @@ const myRoutes = (
                     {/* edit an event */}
                     <Route path="edit-event" component={EditEventForm} /> 
                     {/* view event*/} 
-                    <Route path= "event" component={EventDetail} />
-                    
-            
+                    <Route path= "event" component={EventDetail} />                            
                 </Route>
-            
+                
+                {/* login route */}
                 <Route path="login" component={LoginPage}/>
-            
+                
+                {/* signup route */}
                 <Route path="signup" component={SignUpPage}/>
-            
+                
+                {/* log out route */}
                 <Route path="logout" 
                     onEnter={(nextState, replace) => {
                         // de-authenticate the user
@@ -66,12 +67,14 @@ const myRoutes = (
                         replace("/");
                     }
                 } />
-            
-            <IndexRoute 
-                onEnter={(nextState, replace) => {
-                    // redirect the user to the index page
-                    replace("/dash");
-                }}/>
+                
+                {/* default route */}
+                <IndexRoute 
+                    onEnter={(nextState, replace) => {
+                        // redirect the user to the index page
+                        replace("/dash");
+                    }}/>
+
             </Route>
         
         </Router>

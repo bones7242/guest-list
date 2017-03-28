@@ -21,3 +21,6 @@
 	color: #999;
 }
 
+.tab-event > .event-btns {
+	padding: 0px;
+}

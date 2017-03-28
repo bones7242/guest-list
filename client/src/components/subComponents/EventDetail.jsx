@@ -45,7 +45,7 @@ class EventDetail extends Component {
 						supportOne={this.props.activeEvent.supportOne}
 						supportTwo={this.props.activeEvent.supportTwo}
 						supportThree={this.props.activeEvent.supportThree}
-					/>
+					/> 
 				)
 			})
 		}
@@ -67,10 +67,11 @@ class EventDetail extends Component {
 						{/*prompt to add guests*/}
 						{(this.props.activeEvent.guests.length === 0) && <div className="row">
 							<div className="col s12 m12 l12">
-								<h5 className="blue-grey-text">This event doesn't have any guests yet. </h5>
-								<h5>
-									<Link to="dash/add-guest" className="blue-grey-text"> Add a guest </Link>
-									<Link to="dash/add-guest" className="btn-floating btn-small  waves-effect waves-light deep-purple darken-3 hoverable"><i className="material-icons">playlist_add</i></Link>
+								<h5 className="grey-text"> 
+									<Link to="dash/add-guest" className="indigo lighten-1 btn-floating btn-small  waves-effect waves-light hoverable">
+										<i className="material-icons">playlist_add</i>
+									</Link>
+									<Link className="grey-text"to="dash/add-guest"> This event doesn't have any guests yet.  Add a guest.</Link>
 								</h5>
 							</div>
 						</div>}
@@ -97,14 +98,14 @@ class EventDetail extends Component {
 						<div className="col s12 m12 l12">
 							<table className="guest-table">
 								<tbody>
-									<tr>
-										<th className="blue-grey-text text-lighten-1">Name</th>
-										<th className="blue-grey-text text-lighten-1">Affiliation</th>
-										<th className="blue-grey-text text-lighten-1">Plus-One</th>
-										<th className="blue-grey-text text-lighten-1">Access Type</th>
-										<th className="blue-grey-text text-lighten-1">List</th>
-										<th className="blue-grey-text text-lighten-1">In/Out</th>					
-										<th className="blue-grey-text text-lighten-1 right-align">Edit</th>
+									<tr className="grey-text">
+										<th >Name</th>
+										<th >Affiliation</th>
+										<th >Plus-One</th>
+										<th >Access Type</th>
+										<th >List</th>
+										<th className="center-align">In/Out</th>					
+										<th className="right-align">Edit</th>
 									</tr>
 									
 									{this.renderList(this.props.searchTerm)}

@@ -64,9 +64,9 @@ class Guest extends Component {
 
 	myColor(){
 		if (this.props.guest.isCheckedIn === true) { 
-			return "grey";
+			return "grey darken-2";
 		} else { 
-			return "#4527a0";
+			return "indigo lighten-1";
 		}
 	}
 
@@ -84,7 +84,7 @@ class Guest extends Component {
 		return (
 			<tr className="bordered ">
 
-				<td className="guest--td white-text">
+				<td className="guest--td">
 					{this.props.guest.name}
 				</td>
 
@@ -111,16 +111,16 @@ class Guest extends Component {
 					{this.props.guest.supportThreeList && <p>{this.props.activeEvent.supportThree}</p>}
 				</td>
 
-				<td className="guest--td">
-					<button className="waves-effect waves-light btn hoverable" style={{backgroundColor: this.myColor()}} onClick={this.checkInGuest}>{this.myText()}</button>
+				<td className="guest--td center-align">
+					<button className={"waves-effect waves-light btn small hoverable " + this.myColor()} onClick={this.checkInGuest}>{this.myText()}</button>
 				</td>
 
 				<td className="guest--td right-align">
-					<Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable"> 
-						<i className="material-icons">delete</i>
-					</Link>
-					<Link className="btn-floating btn-small waves-effect waves-light blue-grey lighten-2 hoverable"> 
+					<Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable"> 
 						<i className="material-icons">mode_edit</i>
+					</Link>
+					<Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable"> 
+						<i className="material-icons">delete</i>
 					</Link>
 				</td>
 
