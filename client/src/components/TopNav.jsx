@@ -2,35 +2,28 @@ import React, { PropTypes } from "react";
 import { Link, IndexLink } from "react-router";
 import Auth from "../modules/Auth";
 
+// materialize-ui
+import AppBar from "material-ui/AppBar";
+import FlatButton from "material-ui/FlatButton";
+
 const TopNav = () => {
     return (
-        <div>
-            <div className="top-bar blue-grey darken-4" style={{marginBottom:"0"}}>
-
-                <div className="top-bar-left">
-                    {/*AppName.com here*/}
-                </div>
-
-                {/*conditional statement to decide which links to render*/}
-                {Auth.isUserAuthenticated() ? (
-                    <div className="top-bar-right">
-                        
-                        <Link to="/logout">Log out</Link>
-
-                    </div>
-                    
-
+        <AppBar
+            title="theGuestList.io"
+            showMenuIconButton={false}
+            //onTitleTouchTap={}
+            iconElementRight={
+                // conditional statement to decide which links to render
+                Auth.isUserAuthenticated() ? (
+                    <FlatButton href="/logout" label="Log out"/>
                 ) : (
-                    <div className="top-bar-right">
-                        <Link to="/login">Log in</Link>
-                        <Link to="/signup">Sign up</Link>
+                    <div>
+                        <FlatButton href="/login" label="Log in" />
+                        <FlatButton href="/signup" label="Sign up" />
                     </div>
-                )}                
-
-            </div>
-
-        </div>
-                
+                )
+            }
+        />                
     );
 };
 

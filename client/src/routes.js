@@ -1,6 +1,6 @@
 
 import React, { PropTypes } from "react";
-import {Route, Router, hashHistory, IndexRoute, Redirect} from "react-router";
+import {Route, Router, IndexRoute, Redirect} from "react-router";
 
 import Auth from "./modules/Auth";
 
@@ -16,23 +16,10 @@ import AddEventForm from "./components/subComponents/AddEventForm.jsx";
 import EditEventForm from "./components/subComponents/EditEventForm.jsx";
 import EventDetail from "./components/subComponents/EventDetail.jsx";
 
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from "redux";
-import reducers from "./reducers"
-import ReduxPromise from "redux-promise";
-
-const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
-
 const myRoutes = (
-    
-    <Provider store={createStoreWithMiddleware(reducers)}>
-
-        <Router history={hashHistory}>
-            {/* main route */}
             <Route path="/" component={App}>
-
                 {/* route if logged in.  One of the below routes will be passed to App as children*/}
-                <Route path="dash" 
+                <Route path="/dash" 
                     getComponent={(location, callback) => {
                         if (Auth.isUserAuthenticated()) {  
                             callback(null, DashboardPage);
@@ -43,23 +30,23 @@ const myRoutes = (
                 }>
                     <IndexRoute component={WelcomePage} />
                     {/* add a new guest */}
-                    <Route path="add-guest" component={AddGuestForm} />  
+                    <Route path="/add-guest" component={AddGuestForm} />  
                     {/* add event*/}
-                    <Route path="add-event" component={AddEventForm} /> 
+                    <Route path="/add-event" component={AddEventForm} /> 
                     {/* edit an event */}
-                    <Route path="edit-event" component={EditEventForm} /> 
+                    <Route path="/edit-event" component={EditEventForm} /> 
                     {/* view event*/} 
-                    <Route path= "event" component={EventDetail} />                            
+                    <Route path= "/event" component={EventDetail} />                            
                 </Route>
                 
                 {/* login route */}
-                <Route path="login" component={LoginPage}/>
+                <Route path="/login" component={LoginPage}/>
                 
                 {/* signup route */}
-                <Route path="signup" component={SignUpPage}/>
+                <Route path="/signup" component={SignUpPage}/>
                 
                 {/* log out route */}
-                <Route path="logout" 
+                <Route path="/logout" 
                     onEnter={(nextState, replace) => {
                         // de-authenticate the user
                         Auth.deauthenticateUser();
@@ -76,11 +63,6 @@ const myRoutes = (
                     }}/>
 
             </Route>
-        
-        </Router>
-
-    </Provider>
-
 );
 
 export default myRoutes;

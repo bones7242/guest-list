@@ -9,13 +9,11 @@
 
 /*application-wide default styles*/
 
-html {
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
 body {
+  font-family: 'Roboto', sans-serif;
+  font-size: large;
+  
   margin: 0;
-  font-size: 16px;
   background: linear-gradient(132deg, #ec5218, #1665c1);
   background-size: 1000% 1000%;
   animation: BackgroundGradient 30s ease infinite;

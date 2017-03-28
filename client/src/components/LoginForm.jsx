@@ -1,5 +1,9 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+// material-ui components
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from "material-ui/Card";
+import RaisedButton from "material-ui/RaisedButton";
+
 
 /* 
 This is the login form.
@@ -7,17 +11,12 @@ This is the "dumb" component that will get the information from the user and wil
 */
 
 const LoginForm = ({onSubmit, onChange, errors, successMessage, user}) => (
-  <div className="row">
+ 
+    <Card>
 
-    <div className="col s2 m3 l4">
-      {/*left side spacer*/}
-    </div>
-    
-    <div className="col s8 m6 l4 center-align">
+      <CardHeader title="Login" />
 
       <form action="/" onSubmit={onSubmit} className="form--front-page">
-
-        <h2 className="card-heading  white-text text-darken-2">Login</h2>
 
         {successMessage && <p className="success-message ">{successMessage}</p>}
         {errors.summary && <p className="error-message ">{errors.summary}</p>}
@@ -49,8 +48,8 @@ const LoginForm = ({onSubmit, onChange, errors, successMessage, user}) => (
 
         <p className="help-message">Don't have an account? <Link to={'/signup'}>Create one</Link>.</p>
       </form>
-    </div>
-  </div>
+    
+  </Card>
 );
 
 LoginForm.propTypes = {
