@@ -45,7 +45,7 @@ class EventDetail extends Component {
 						supportOne={this.props.activeEvent.supportOne}
 						supportTwo={this.props.activeEvent.supportTwo}
 						supportThree={this.props.activeEvent.supportThree}
-					/>
+					/> 
 				)
 			})
 		}
@@ -98,14 +98,14 @@ class EventDetail extends Component {
 						<div className="col s12 m12 l12">
 							<table className="guest-table">
 								<tbody>
-									<tr>
-										<th className="blue-grey-text text-lighten-1">Name</th>
-										<th className="blue-grey-text text-lighten-1">Affiliation</th>
-										<th className="blue-grey-text text-lighten-1">Plus-One</th>
-										<th className="blue-grey-text text-lighten-1">Access Type</th>
-										<th className="blue-grey-text text-lighten-1">List</th>
-										<th className="blue-grey-text text-lighten-1">In/Out</th>					
-										<th className="blue-grey-text text-lighten-1 right-align">Edit</th>
+									<tr className="grey-text">
+										<th >Name</th>
+										<th >Affiliation</th>
+										<th >Plus-One</th>
+										<th >Access Type</th>
+										<th >List</th>
+										<th className="center-align">In/Out</th>					
+										<th className="right-align">Edit</th>
 									</tr>
 									
 									{this.renderList(this.props.searchTerm)}
