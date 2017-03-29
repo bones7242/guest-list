@@ -82,8 +82,11 @@ class Guest extends Component {
 	}
 
 	editGuest(){
+		console.log("editing guest")
 		//refresh the active event 
 		this.props.refreshActiveGuest(this.props.guest._id, Auth.getToken())
+		// redirect to the edit-guest page
+		//this.props.router.replace("/dash/edit-guest");
 	}
 
 	render(){
@@ -124,7 +127,7 @@ class Guest extends Component {
 				</td>
 
 				<td className="guest--td right-align">
-					<Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" onClick={this.editGuest} to=""> 
+					<Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" onClick={this.editGuest} to="/dash/edit-guest"> 
 						<i className="material-icons">mode_edit</i>
 					</Link>
 					<Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable"> 

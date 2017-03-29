@@ -18,11 +18,11 @@ class AddGuestForm extends Component {
 		// add default values for optional fields, like 'support's, when setting the initial state
         this.state = {
             newGuest: {
-				eventId: "loading",
-				name: "none",
-				email: "none",
-				affiliation: "none",
-				phone: "none",
+				eventId: "",
+				name: "",
+				email: "",
+				affiliation: "",
+				phone: "",
 				plusOne: 0,
 				vip: false,
 				allAccess: false,
