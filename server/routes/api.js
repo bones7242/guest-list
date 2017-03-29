@@ -227,7 +227,7 @@ router.put("/event/counter/decrement", (req, res) => {
 router.delete("/event/:eventId", (req, res) => {
     console.log("received api/event/one GET request:", req.params.eventId);
     // finding all events where the venue matches the venueId, and populate the guests in the event 
-        // Use the Beer model to find a specific beer and remove it
+    // Use the Beer model to find a specific beer and remove it
     Event.findByIdAndRemove(req.params.eventId, (err) => {
         // handle errors with the save.
         if (err) { 
@@ -335,5 +335,21 @@ router.put("/guest/one", (req, res) => {
         }
     );
 }); 
+
+//route to update a guest by guest id
+router.delete("/guest/one/:guest_id", (req, res) => {
+    console.log("received api/guest/one DELETE request.");
+    // update the guest record 
+    Guest.findByIdAndRemove(req.params.guest_id, (err, updatedGuestInfo) => {
+        // handle errors with the save.
+        if (err) { 
+            res.status(200).json({message: err})
+        // if no errors.
+        } else {
+            res.status(200).json({message: "event " + req.params.eventId + " successfully deleted."});
+        };
+    }); 
+}); 
+
 
 module.exports = router;
