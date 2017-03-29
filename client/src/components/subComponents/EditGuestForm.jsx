@@ -113,9 +113,9 @@ class EditGuestForm extends Component {
 
 					<DashboardHeader />
 
-					<form className="col s12" id="update-guest-form" action="/"  className="dashboard-form" onSubmit={this.processGuestForm}>
-						
-						<h3 className="center-align">Edit Guest</h3>
+					<h3 className="center-align">Edit Guest</h3>
+
+					<form className="col s12 dashboard-form" id="update-guest-form" action="/" onSubmit={this.processGuestForm}>
 						
 						{/*top row*/}
 						<div className="row">					

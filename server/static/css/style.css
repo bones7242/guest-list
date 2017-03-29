@@ -58,8 +58,8 @@ a:hover {
 }
 
 .dashboard-form {
-  margin: 30px 0px 30px 0px;
-  padding: 20px;
+  margin: 0px 0px 30px 0px;
+  padding: 20px 20px 40px 20px;
   border-radius: 5px;
 }
 

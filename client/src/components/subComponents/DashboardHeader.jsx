@@ -56,7 +56,7 @@ class DashboardHeader extends Component {
         var eventTime = moment(newEventDate).format("h:mm a");
        
         return (
-            <div className="row">
+            <div className="row dashboard-header">
 
                 <div className="col s4 m4 l4 header--headliner">
                     { this.props.activeEvent.headliner && <h2 className="headliner-text">

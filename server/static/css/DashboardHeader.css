@@ -1,6 +1,8 @@
-.row {
-	margin-right: 0px;
-	
+
+
+.dashboard-header {
+	border-bottom: solid #666 1px;
+	padding-bottom: 10px;
 }
 
 .header--headliner {
