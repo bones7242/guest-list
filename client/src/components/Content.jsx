@@ -1,5 +1,5 @@
 
-//will contain newevent.js(form), addguestform.js(form), eventinfo.js(top info bar), and user list
+//will contain newevent.js(form), AddGuest.js(form), eventinfo.js(top info bar), and user list
 import React, { PropTypes, Component } from 'react';
 
 const Content = (children) => {

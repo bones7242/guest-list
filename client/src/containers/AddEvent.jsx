@@ -10,7 +10,7 @@ import Auth from "../modules/Auth";
 // components
 import DefaultSplash from "../components/DefaultSplash.jsx";
 
-class AddEventForm extends Component {
+class AddEvent extends Component {
 	// constructor is called whenever a new instance of the class is created
 	constructor(props) {
 		// super is calling the parent's method "props" (i think to pass them down)
@@ -187,4 +187,4 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ fetchEvents, selectEvent }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddEventForm); 
+export default connect(mapStateToProps, mapDispatchToProps)(AddEvent); 

@@ -11,10 +11,10 @@ import SignUpPage from "./containers/SignUpPage.jsx";
 import DashboardPage from "./containers/DashboardPage.jsx";
 
 import WelcomePage from "./components/WelcomePage.jsx";
-import AddGuestForm from "./containers/AddGuestForm.jsx";
-import AddEventForm from "./containers/AddEventForm.jsx";
-import EditEventForm from "./containers/EditEventForm.jsx";
-import EditGuestForm from "./containers/EditGuestForm.jsx";
+import AddGuest from "./containers/AddGuest.jsx";
+import AddEvent from "./containers/AddEvent.jsx";
+import EditEvent from "./containers/EditEvent.jsx";
+import EditGuest from "./containers/EditGuest.jsx";
 import EventDetail from "./containers/EventDetail.jsx";
 
 import { Provider } from 'react-redux';
@@ -44,13 +44,13 @@ const myRoutes = (
                 }>
                     <IndexRoute component={WelcomePage} />
                     {/* add a new guest */}
-                    <Route path="add-guest" component={AddGuestForm} />  
+                    <Route path="add-guest" component={AddGuest} />  
                     {/* add event*/}
-                    <Route path="add-event" component={AddEventForm} /> 
+                    <Route path="add-event" component={AddEvent} /> 
                     {/* edit an event */}
-                    <Route path="edit-event" component={EditEventForm} /> 
+                    <Route path="edit-event" component={EditEvent} /> 
                     {/* edit a guest */}
-                    <Route path="edit-guest" component={EditGuestForm} /> 
+                    <Route path="edit-guest" component={EditGuest} /> 
                     {/* view event*/} 
                     <Route path= "event" component={EventDetail} />                            
                 </Route>

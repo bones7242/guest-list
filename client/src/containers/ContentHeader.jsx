@@ -12,7 +12,7 @@ import Auth from "../modules/Auth";
 // components 
 import DefaultSplash from "../components/DefaultSplash.jsx";
   
-class DashboardHeader extends Component {
+class ContentHeader extends Component {
     constructor(props){
 		// get parent props 
 		super(props);
@@ -119,4 +119,4 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ fetchEvents, clearActiveEvent }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardHeader);
+export default connect(mapStateToProps, mapDispatchToProps)(ContentHeader);

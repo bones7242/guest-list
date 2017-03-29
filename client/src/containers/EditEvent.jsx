@@ -7,11 +7,11 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchEvents, selectEvent } from "../actions/index";
 
-import DashboardHeader from "./DashboardHeader.jsx";
+import ContentHeader from "./ContentHeader.jsx";
 
 import DefaultSplash from "../components/DefaultSplash.jsx";
 
-class EditEventForm extends Component {
+class EditEvent extends Component {
 	// constructor is called whenever a new instance of the class is created
 	constructor(props) {
 		// super is calling the parent's method "props" (i think to pass them down)
@@ -183,4 +183,4 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ fetchEvents, selectEvent }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditEventForm); 
+export default connect(mapStateToProps, mapDispatchToProps)(EditEvent); 

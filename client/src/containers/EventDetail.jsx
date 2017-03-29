@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 import Auth from "../modules/Auth";
 
-import DashboardHeader from "./DashboardHeader.jsx";
+import ContentHeader from "./ContentHeader.jsx";
 import Guest from "./Guest.jsx";
 import SearchBar from "../components/SearchBar.jsx"; 
 import DefaultSplash from "../components/DefaultSplash.jsx";
@@ -62,7 +62,7 @@ class EventDetail extends Component {
 				<div className="row">
 					<div className="col s12 m12 l12">
 						{/*event details header*/}
-						<DashboardHeader onChangeSearchTerm/>
+						<ContentHeader onChangeSearchTerm/>
 						{/*end of event details header*/}
 						{/*prompt to add guests*/}
 						{(this.props.activeEvent.guests.length === 0) && <div className="row">
@@ -86,7 +86,7 @@ class EventDetail extends Component {
 				<div className="col s12 m12 l12">
 					
 					{/*event details header*/}
-					<DashboardHeader onChangeSearchTerm />
+					<ContentHeader onChangeSearchTerm />
 					{/*end of event details header*/}
 
 					{/*search bar*/}

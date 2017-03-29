@@ -7,10 +7,10 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { clearActiveGuest, refreshActiveEvent } from "../actions/index";
 
-import DashboardHeader from "./DashboardHeader.jsx";
+import ContentHeader from "./ContentHeader.jsx";
 import DefaultSplash from "../components/DefaultSplash.jsx";
 
-class EditGuestForm extends Component {
+class EditGuest extends Component {
 	// constructor is called whenever a new instance of the class is created
 	constructor(props) {
 		// super is calling the parent's method "props" (i think to pass them down)
@@ -111,7 +111,7 @@ class EditGuestForm extends Component {
 			<div className="row">
 				<div className="col s12 m12 l12">
 
-					<DashboardHeader />
+					<ContentHeader />
 
 					<h3 className="center-align">Edit Guest</h3>
 
@@ -224,4 +224,4 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ clearActiveGuest, refreshActiveEvent }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditGuestForm);
+export default connect(mapStateToProps, mapDispatchToProps)(EditGuest);
