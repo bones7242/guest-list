@@ -1,7 +1,7 @@
 import React from "react";
 
 /*
-This is the home page.  It is displayed when a user arrives at the site before the user logs in.
+This is the home page.  It is displayed when a user arrives at the site before the user logs in or signs up.
 */
 
 const HomePage = () => {

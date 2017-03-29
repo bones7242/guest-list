@@ -31,8 +31,6 @@ const EventTab = ({headliner, date, changeEvent}) => {
 }
 
 EventTab.propTypes = {
-    headliner: PropTypes.string.isRequired,
-    //date: PropTypes.string.isRequired,
 	changeEvent: PropTypes.func.isRequired
 };
 

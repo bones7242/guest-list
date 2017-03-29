@@ -6,8 +6,9 @@ import { connect } from "react-redux";
 import { selectEvent } from "../../actions/index";
 import { bindActionCreators } from "redux";
 
-import NavBarSeparator from "./NavBarSeparator.jsx";
-import EventTab from "./EventTab.jsx";
+import NavBarHeader from "./components/NavBarHeader";
+import NavBarSeparator from "./components/NavBarSeparator.jsx";
+import EventTab from "./components/EventTab.jsx";
 
 class NavBar extends Component {
 	constructor(props){
@@ -46,6 +47,8 @@ class NavBar extends Component {
 				
 					<div className="col s12 m12 l12 nav-bar-inner" style={{padding: '0'}}> 
 
+						<NavBarHeader venue={this.props.venue.name}/>
+
 						<NavBarSeparator />
 
 						{/*render an event tab for each event*/}
@@ -68,7 +71,8 @@ function mapStateToProps(state) {
     // whatever gets returned from this method will show up as props inside of this component
     // this function is the glue between react and redux.
     return {
-        events: state.events    
+		venue: state.venue,
+        events: state.events  
     };
 }
 

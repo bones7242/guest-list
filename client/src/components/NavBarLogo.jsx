@@ -1,28 +1,23 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
-import { connect } from "react-redux";
 
-class DashboardLogo extends Component {
+class NavBarLogo extends Component {
+
+	constructor(props) {
+		// super is calling the parent's method "props" (i think to pass them down)
+        super(props); 
+	}
+
 	render() {
-
-			//round 2 implimentation
-		// var setGrey = () => {
-  //             var newColor="#607d8b";
-  //           }
-
-  //           var setBlue = () => {
-  //             var newColor="#42a5f5"
-  //           }
 		// if venue is not in the props, render a placeholder
-		if (!this.props.venue){
+		if (!this.props.venue.name){
 			return (
 				<div><p>loading venue name...</p></div> 
 			)
 		}
 		// otherwise render the full component
 		return (
-			
-			<div id="logo-box" style={{margin: "20px"}}>
+			<div id="logo-box">
 				<div className="row" >
 					<div className="col s12 m12 l12 center-align" >
 						<Link to={'/'}>
@@ -38,11 +33,4 @@ class DashboardLogo extends Component {
 	}
 }
 
-// whatever is returned will be mapped to the props of this component 
-function mapStateToProps(state) {
-	return {
-		venue: state.venue
-	};
-}
-
-export default connect(mapStateToProps)(DashboardLogo);
+export default NavBarLogo;
