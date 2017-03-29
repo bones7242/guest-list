@@ -283,14 +283,14 @@ router.post("/guest", (req, res) => {
             // console.log message 
             console.log(mailOptions);
             // sending the message using smtpTransport
-            smtpTransport.sendMail(mailOptions, function(error, response){
-                if(error){
-                    console.log(error);
-                    res.end("error");
-                }else{
-                    console.log("Message sent : " + response.message);
-                }
-            });
+            // smtpTransport.sendMail(mailOptions, function(error, response){
+            //     if(error){
+            //         console.log(error);
+            //         res.end("error");
+            //     }else{
+            //         console.log("Message sent : " + response.message);
+            //     }
+            // });
 
             // decide how many guests to add to the total 
             const guestsToAdd = parseInt(req.body.plusOne) + 1;
@@ -319,20 +319,18 @@ router.post("/guest", (req, res) => {
     
 }); 
 
-// //route to get guest info for one guest by id
-// router.get("/guest/:guestId", (req, res) => {
-//     console.log("received api/dashboard/id GET request for:", req.params.guestId);
-//     Guest.findOne({_id: req.params.guestId}, function(err, guestInfo){
-//         if (err) {
-//             res.send(err);
-//         } else {
-//             res.status(200).json({
-//                 guest: guestInfo
-//             });
-//         };
-//     })
+//route to get guest info for one guest by id
+router.get("/guest/one/:guest_id", (req, res) => {
+    console.log("received api/guest/one/:guest_id GET request for:", req.params.guest_id);
+    Guest.findOne({_id: req.params.guest_id}, function(err, guestInfo){
+        if (err) {
+            res.send(err);
+        } else {
+            res.status(200).json(guestInfo);
+        };
+    })
     
-// }); 
+}); 
 
 
 module.exports = router;

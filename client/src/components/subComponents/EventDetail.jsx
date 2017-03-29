@@ -133,6 +133,7 @@ function mapStateToProps(state) {
 	// whatever is returned will be mapped to the props of this component
 	return {
 		activeEvent: state.activeEvent,
+		activeGuest: state.activeGuest,
 		searchTerm: state.activeEvent ? state.activeEvent.searchTerm : null
 	};
 }
