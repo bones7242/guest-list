@@ -23,31 +23,23 @@ const LoginForm = ({onSubmit, onChange, errors, successMessage, user}) => (
         {errors.summary && <p className="error-message ">{errors.summary}</p>}
 
         <div className="field-line">
-          <label htmlFor="email" className="white-text">Email</label>
-          <input
-            name="email"
-            onChange={onChange}
-            value={user.email}
-          />
+          <label htmlFor="email" className="label--front-page">Email</label>
+          <input name="email" onChange={onChange} value={user.email} />
           <p className="error-message ">{errors.email}</p>
         </div>
 
         <div className="field-line">
-          <label htmlFor="password" className="white-text">Password</label>
-          <input
-            type="password"
-            name="password"
-            onChange={onChange}
-            value={user.password}
-          />
-          <p className="error-message ">{errors.password}</p>
+          <label htmlFor="password" className="label--front-page">Password</label>
+          <input type="password" name="password" onChange={onChange} value={user.password} />
+          <p className="error-message">{errors.password}</p>
         </div>
 
         <div className="button-line">
           <button type="submit" className="grey darken-1 waves-effect waves-light btn hoverable">Log In</button>
         </div>
 
-        <p className="help-message">Don't have an account? <Link to={'/signup'}>Create one</Link>.</p>
+        <p className="help-message">Don't have an account? <Link to={'/signup'}>Create one.</Link></p>
+
       </form>
     </div>
   </div>

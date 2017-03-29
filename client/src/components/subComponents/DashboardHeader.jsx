@@ -33,9 +33,6 @@ class DashboardHeader extends Component {
 				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
 				// select the activeEvent in the application state 
 				this.props.clearActiveEvent();
-                // redirect to the dash, and have the dash select the newly created event for display
-				this.props.router.replace("/dash");
-
             } else {				
 				console.log("Event could not be deleted.  Check the server console logs");
 			};
@@ -56,7 +53,7 @@ class DashboardHeader extends Component {
         var eventTime = moment(newEventDate).format("h:mm a");
        
         return (
-            <div className="row">
+            <div className="row dashboard-header">
 
                 <div className="col s4 m4 l4 header--headliner">
                     { this.props.activeEvent.headliner && <h2 className="headliner-text">
@@ -96,11 +93,11 @@ class DashboardHeader extends Component {
                 </div>
 
                 <div className="col s2 m2 l2 right-align">
-                    <Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" onClick={this.deleteEvent}>
-                        <i className="material-icons">delete</i>
-                    </Link>
                     <Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" to="/dash/edit-event">
                         <i className="material-icons">mode_edit</i>
+                    </Link>
+                    <Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" onClick={this.deleteEvent}>
+                        <i className="material-icons">delete</i>
                     </Link>
                 </div>
                 

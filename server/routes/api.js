@@ -39,9 +39,7 @@ router.get("/venue/:userId", (req, res) => {
             res.json({message: err});
         // if no errors 
         } else {
-            res.status(200).json({
-                venue: venue
-            });
+            res.status(200).json({venue: venue});
         };
     });
 }); 
@@ -75,9 +73,7 @@ router.post("/event", (req, res) => {
                     if (error){
                         res.send(error);
                     } else {
-                        res.status(200).json({
-                            newEvent: doc
-                        }); 
+                        res.status(200).json({ newEvent: doc }); 
                     };
                 }
             );
@@ -98,12 +94,10 @@ router.get("/event/all/:venueId", (req, res) => {
         exec((err, docs) => {
             // handle errors with the save.
             if (err) { 
-                res.json({message: err})
+                res.json({ message: err })
             // if no errors.
             } else {
-                res.status(200).json({
-                    events: docs
-                });
+                res.status(200).json({ events: docs });
             };
         });    
 }); 
@@ -123,9 +117,7 @@ router.get("/event/one/:eventId", (req, res) => {
                 res.json({message: err})
             // if no errors.
             } else {
-                res.status(200).json({
-                    event: docs
-                });
+                res.status(200).json({event: docs});
             };
         });    
 }); 
@@ -145,9 +137,7 @@ router.put("/event/edit", (req, res) => {
                 res.send(error);
             } else {
                 console.log("response from db", doc);
-                res.status(200).json({
-                    updatedEvent: doc
-                }); 
+                res.status(200).json({updatedEvent: doc}); 
             };
         }
     );
@@ -184,9 +174,7 @@ router.put("/event/counter/increment", (req, res) => {
                         if (checkinError){
                             res.send(checkinError);
                         } else {
-                            res.status(200).json({
-                                updatedEvent: eventDoc
-                            }); 
+                            res.status(200).json({updatedEvent: eventDoc}); 
                         }
                     }
                 )
@@ -226,9 +214,7 @@ router.put("/event/counter/decrement", (req, res) => {
                         if (checkinError){
                             res.send(checkinError);
                         } else {
-                            res.status(200).json({
-                                updatedEvent: eventDoc
-                            }); 
+                            res.status(200).json({ updatedEvent: eventDoc }); 
                         }
                     }
                 )
@@ -241,7 +227,7 @@ router.put("/event/counter/decrement", (req, res) => {
 router.delete("/event/:eventId", (req, res) => {
     console.log("received api/event/one GET request:", req.params.eventId);
     // finding all events where the venue matches the venueId, and populate the guests in the event 
-        // Use the Beer model to find a specific beer and remove it
+    // Use the Beer model to find a specific beer and remove it
     Event.findByIdAndRemove(req.params.eventId, (err) => {
         // handle errors with the save.
         if (err) { 
@@ -283,14 +269,14 @@ router.post("/guest", (req, res) => {
             // console.log message 
             console.log(mailOptions);
             // sending the message using smtpTransport
-            smtpTransport.sendMail(mailOptions, function(error, response){
-                if(error){
-                    console.log(error);
-                    res.end("error");
-                }else{
-                    console.log("Message sent : " + response.message);
-                }
-            });
+            // smtpTransport.sendMail(mailOptions, function(error, response){
+            //     if(error){
+            //         console.log(error);
+            //         res.end("error");
+            //     }else{
+            //         console.log("Message sent : " + response.message);
+            //     }
+            // });
 
             // decide how many guests to add to the total 
             const guestsToAdd = parseInt(req.body.plusOne) + 1;
@@ -308,9 +294,7 @@ router.post("/guest", (req, res) => {
                     if (error){
                         res.send(error);
                     } else {
-                       res.status(200).json({
-                            message: doc
-                         }); 
+                       res.status(200).json({ message: doc }); 
                     }
                 }
             )
@@ -319,20 +303,53 @@ router.post("/guest", (req, res) => {
     
 }); 
 
-// //route to get guest info for one guest by id
-// router.get("/guest/:guestId", (req, res) => {
-//     console.log("received api/dashboard/id GET request for:", req.params.guestId);
-//     Guest.findOne({_id: req.params.guestId}, function(err, guestInfo){
-//         if (err) {
-//             res.send(err);
-//         } else {
-//             res.status(200).json({
-//                 guest: guestInfo
-//             });
-//         };
-//     })
+//route to get guest info for one guest by id
+router.get("/guest/one/:guest_id", (req, res) => {
+    console.log("received api/guest/one/:guest_id GET request for:", req.params.guest_id);
+    Guest.findOne({_id: req.params.guest_id}, function(err, guestInfo){
+        if (err) {
+            res.send(err);
+        } else {
+            res.status(200).json(guestInfo);
+        };
+    })
     
-// }); 
+}); 
+
+//route to update a guest by guest id
+router.put("/guest/one", (req, res) => {
+    console.log("received api/guest/one PUT request.");
+    // update the guest record 
+    Guest.findOneAndUpdate(
+        {"_id": req.body._id},
+        {$set: req.body},  // make this update 
+        {
+            new: true // return updated rather than original 
+        }, 
+        function(err, updatedGuestInfo){
+            if (err) {
+                res.send(err);
+            } else {
+                res.status(200).json(updatedGuestInfo);
+            };
+        }
+    );
+}); 
+
+//route to update a guest by guest id
+router.delete("/guest/one/:guest_id", (req, res) => {
+    console.log("received api/guest/one DELETE request.");
+    // update the guest record 
+    Guest.findByIdAndRemove(req.params.guest_id, (err, updatedGuestInfo) => {
+        // handle errors with the save.
+        if (err) { 
+            res.status(200).json({message: err})
+        // if no errors.
+        } else {
+            res.status(200).json({message: "event " + req.params.eventId + " successfully deleted."});
+        };
+    }); 
+}); 
 
 
 module.exports = router;

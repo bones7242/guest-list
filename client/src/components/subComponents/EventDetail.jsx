@@ -62,7 +62,7 @@ class EventDetail extends Component {
 				<div className="row">
 					<div className="col s12 m12 l12">
 						{/*event details header*/}
-						<DashboardHeader onChangeSearchTerm router={this.props.router}/>
+						<DashboardHeader onChangeSearchTerm/>
 						{/*end of event details header*/}
 						{/*prompt to add guests*/}
 						{(this.props.activeEvent.guests.length === 0) && <div className="row">
@@ -133,6 +133,7 @@ function mapStateToProps(state) {
 	// whatever is returned will be mapped to the props of this component
 	return {
 		activeEvent: state.activeEvent,
+		activeGuest: state.activeGuest,
 		searchTerm: state.activeEvent ? state.activeEvent.searchTerm : null
 	};
 }

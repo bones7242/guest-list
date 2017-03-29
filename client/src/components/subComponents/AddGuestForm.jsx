@@ -18,11 +18,11 @@ class AddGuestForm extends Component {
 		// add default values for optional fields, like 'support's, when setting the initial state
         this.state = {
             newGuest: {
-				eventId: "loading",
-				name: "none",
-				email: "none",
-				affiliation: "none",
-				phone: "none",
+				eventId: "",
+				name: "",
+				email: "",
+				affiliation: "",
+				phone: "",
 				plusOne: 0,
 				vip: false,
 				allAccess: false,
@@ -124,9 +124,9 @@ class AddGuestForm extends Component {
 
 					<DashboardHeader />
 
-					<form className="col s12" name="newGuestForm" id="new-guest-form" action="/" onSubmit={this.processGuestForm}>
-						
-						<h3 className="center-align">Add A New Guest To Your List</h3>
+					<h3 className="center-align">Add A New Guest To Your List</h3>
+
+					<form className="col s12 dashboard-form" id="new-guest-form" action="/" onSubmit={this.processGuestForm}>
 						
 						{/*top row*/}
 						<div className="row">					
@@ -216,10 +216,10 @@ class AddGuestForm extends Component {
 					{/*buttons */}
 					<div className="row">
 						<div className="col s6 right-align" >
-							<Link  className="grey darken-2 white-text waves-effect waves-teal btn center" to={'/dash/event'}>Cancel</Link>
+							<Link  className="grey darken-2 waves-effect waves-teal btn hoverable center" to={'/dash/event'}>Cancel</Link>
 						</div>
 						<div className="col s6 left-align" >
-							<button type="submit" form="newGuestForm" className="indigo lighten-1 white-text waves-effect waves-teal btn center">Submit</button>
+							<button type="submit" form="new-guest-form" className="indigo lighten-1 waves-effect waves-teal btn hoverable center">Submit</button>
 						</div>
 					</div>				
 

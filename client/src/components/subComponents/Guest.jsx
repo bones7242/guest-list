@@ -4,7 +4,7 @@ import { Link } from "react-router";
 // redux 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { refreshActiveEvent, fetchEvents } from "../../actions/index";
+import { refreshActiveEvent, fetchEvents, refreshActiveGuest } from "../../actions/index";
 // methods 
 import Auth from "../../modules/Auth";
 
@@ -21,6 +21,8 @@ class Guest extends Component {
 		
 		// bind this to functions in this component 
 		this.checkInGuest = this.checkInGuest.bind(this);
+		this.editGuest = this.editGuest.bind(this);
+		this.deleteGuest = this.deleteGuest.bind(this);
 	}
 
 	// helper method to update the event in the database.  if successfull, it tells redux to fetch the newest events list and activeEvent.  The user stays on this event page.
@@ -51,11 +53,10 @@ class Guest extends Component {
         xhr.responseType = "json";
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
-				// update the "active"eventin the application state
+				// update the "active"event in the application state
 				this.props.refreshActiveEvent(this.props.activeEvent._id, Auth.getToken());
-				// update the specific event in the "events"array in the applicaiton state  
+				// update the specific event in the "events"array in the application state
 				this.props.fetchEvents(this.props.activeEvent.venue, Auth.getToken());
-
             } else {
 				console.log("there was an error in updating the event. error message:", xhr.response.message)
 				//alert("Event could not be updated.  Check the console logs.");
@@ -63,6 +64,30 @@ class Guest extends Component {
         });
         xhr.send(JSON.stringify(checkInObject)); //note: stringify an issue for numbers?
     }
+
+	editGuest(){
+		//refresh the active event 
+		this.props.refreshActiveGuest(this.props.guest._id, Auth.getToken())
+	}
+
+	deleteGuest(){
+		const xhr = new XMLHttpRequest();
+        xhr.open("DELETE", "/api/guest/one/" + this.props.guest._id);
+        xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.responseType = "json";
+        xhr.addEventListener("load", () => {
+            if (xhr.status === 200) {
+				// update the "active" event in the application state
+				this.props.refreshActiveEvent(this.props.activeEvent._id, Auth.getToken());
+				// update the specific event in the "events"array in the application state
+				this.props.fetchEvents(this.props.activeEvent.venue, Auth.getToken());
+            } else {				
+				console.log("Guest could not be deleted.  Check the server console logs");
+			};
+        });
+        xhr.send();
+	}
 
 	myColor(){
 		if (this.props.guest.isCheckedIn === true) { 
@@ -118,10 +143,10 @@ class Guest extends Component {
 				</td>
 
 				<td className="guest--td right-align">
-					<Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable"> 
+					<Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" onClick={this.editGuest} to="/dash/edit-guest"> 
 						<i className="material-icons">mode_edit</i>
 					</Link>
-					<Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable"> 
+					<Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" onClick={this.deleteGuest}> 
 						<i className="material-icons">delete</i>
 					</Link>
 				</td>
@@ -139,7 +164,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ refreshActiveEvent, fetchEvents }, dispatch);
+	return bindActionCreators({ refreshActiveEvent, fetchEvents, refreshActiveGuest }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Guest);
