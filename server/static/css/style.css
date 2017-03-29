@@ -1,6 +1,6 @@
 /*animation for welcome screen*/
 @keyframes BackgroundGradient {
-  0%{background-position: 15% 50%;}
+  0%{background-position: 15% 25%;}
   
   50%{background-position: 50% 70%;}
   
@@ -16,7 +16,7 @@ html {
 body {
   margin: 0;
   font-size: 16px;
-  background: linear-gradient(132deg, #ec5218, #1665c1);
+  background: linear-gradient(132deg, #111, #999);
   background-size: 1000% 1000%;
   animation: BackgroundGradient 30s ease infinite;
 
@@ -46,11 +46,11 @@ h1, h2, h3, h4, h5 {
 a {
   color: #e1f5fe;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.1s;
 }
 
 a:hover {
-  color: #5c6bc0;  /* indigo lighten-1 */
+  color: #999; 
 }
 
 .text-center {
@@ -77,7 +77,6 @@ a:hover {
 
 .top-bar-left {
   float: left;
-  font-size: 1.5em;
 }
 
 .top-bar-right {
