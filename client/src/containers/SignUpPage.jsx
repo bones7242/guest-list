@@ -17,16 +17,21 @@ class SignUpPage extends Component {
                 email: "",
                 name: "",
                 password: "",
-                role: "owner",
+                role: "",
                 venueName: "",
                 venueAddressOne: "",
                 venueAddressTwo: "",
                 venueZip: "",
+            },
+            roleSelect: {
+                owner: false,
+                artist: false,
             }
         };
         // bind "this" to the methods we define below 
         this.processForm = this.processForm.bind(this);
         this.changeUser = this.changeUser.bind(this);
+        this.toggleRole = this.toggleRole.bind(this);
     }
 
     // Define the a 'process form' method.
@@ -93,7 +98,7 @@ class SignUpPage extends Component {
         This will change the component state by taking the name attribute of an input element as the key. The value for this key will be taken from the user’s input into the element.  It then updates the this.state.user with the new information.
     */
     changeUser(event) {
-        
+        console.log("event", event);
         const field = event.target.name;
         
         const user = this.state.user;
@@ -103,6 +108,26 @@ class SignUpPage extends Component {
             user
         });
     }
+
+    toggleRole(event){
+		const field = event.target.name; // will be: owner or artist 
+        let roleSelect = {};
+        const user = this.state.user;
+		// toggle the state for the particular field 
+		if (field === "owner") {
+            roleSelect = {owner: true, artist: false};
+            user.role = "owner";
+        } else if (field === "artist") {
+            roleSelect = {owner: false, artist: true};
+            user.role = "artist";
+        }
+		
+		// reset the state 
+        this.setState({
+            roleSelect,
+            user
+        });
+	}
 
     // Render the component.
     /*
@@ -115,6 +140,8 @@ class SignUpPage extends Component {
                 onChange={this.changeUser}
                 errors={this.state.errors}
                 user={this.state.user}
+                toggleRole={this.toggleRole}
+                roleSelect={this.state.roleSelect}
             />
         );
     }
