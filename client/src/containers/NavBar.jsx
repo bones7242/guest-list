@@ -3,12 +3,12 @@
 import React, { PropTypes, Component } from 'react';
 
 import { connect } from "react-redux";
-import { selectEvent } from "../../actions/index";
+import { selectEvent } from "../actions/index";
 import { bindActionCreators } from "redux";
 
-import NavBarHeader from "./components/NavBarHeader";
-import NavBarSeparator from "./components/NavBarSeparator.jsx";
-import EventTab from "./components/EventTab.jsx";
+import NavBarHeader from "../components/NavBarHeader.jsx";
+import NavBarSeparator from "../components/NavBarSeparator.jsx";
+import EventTab from "../components/EventTab.jsx";
 
 class NavBar extends Component {
 	constructor(props){
@@ -47,7 +47,7 @@ class NavBar extends Component {
 				
 					<div className="col s12 m12 l12 nav-bar-inner" style={{padding: '0'}}> 
 
-						<NavBarHeader venue={this.props.venue.name}/>
+						<NavBarHeader venueName={this.props.venue.name}/>
 
 						<NavBarSeparator />
 

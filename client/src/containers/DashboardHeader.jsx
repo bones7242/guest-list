@@ -4,13 +4,13 @@ import { Link } from 'react-router';
 // redux
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { fetchEvents, clearActiveEvent } from "../../actions/index";
+import { fetchEvents, clearActiveEvent } from "../actions/index";
 // other dependences 
 import moment from 'moment';
 // methods 
-import Auth from "../../modules/Auth";
+import Auth from "../modules/Auth";
 // components 
-import DefaultSplash from "./DefaultSplash.jsx";
+import DefaultSplash from "../components/DefaultSplash.jsx";
   
 class DashboardHeader extends Component {
     constructor(props){
@@ -48,7 +48,7 @@ class DashboardHeader extends Component {
         
         var newEventDate = new Date(this.props.activeEvent.date);
         var eventDate = newEventDate.toDateString();
-        // var eventTime = newEventDate.getFormattedTime();
+        //var eventTime = newEventDate.getFormattedTime();
         //var eventDate = moment(newEventDate).format("dddd MMM Do YY");
         //var eventTime = moment(newEventDate).format("h:mm a");
        

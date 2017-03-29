@@ -4,11 +4,11 @@ import { Link } from 'react-router';
 // redux 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { fetchEvents, selectEvent } from "../../actions/index";
+import { fetchEvents, selectEvent } from "../actions/index";
 // methods 
-import Auth from "../../modules/Auth";
+import Auth from "../modules/Auth";
 // components
-import DefaultSplash from "./DefaultSplash.jsx";
+import DefaultSplash from "../components/DefaultSplash.jsx";
 
 class AddEventForm extends Component {
 	// constructor is called whenever a new instance of the class is created

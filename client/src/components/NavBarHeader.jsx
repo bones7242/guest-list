@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
 
-class NavBarLogo extends Component {
+class NavBarHeader extends Component {
 
 	constructor(props) {
 		// super is calling the parent's method "props" (i think to pass them down)
@@ -10,7 +10,7 @@ class NavBarLogo extends Component {
 
 	render() {
 		// if venue is not in the props, render a placeholder
-		if (!this.props.venue.name){
+		if (!this.props.venueName){
 			return (
 				<div><p>loading venue name...</p></div> 
 			)
@@ -21,7 +21,7 @@ class NavBarLogo extends Component {
 				<div className="row" >
 					<div className="col s12 m12 l12 center-align" >
 						<Link to={'/'}>
-							<h3>{this.props.venue.name}</h3>
+							<h3>{this.props.venueName}</h3>
 						</Link>
 						
 						<Link className="indigo lighten-1 btn white-text waves-effect waves-light hoverable" to={'/dash/add-event'}>ADD EVENT</Link>
@@ -33,4 +33,4 @@ class NavBarLogo extends Component {
 	}
 }
 
-export default NavBarLogo;
+export default NavBarHeader;

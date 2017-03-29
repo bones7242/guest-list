@@ -27,7 +27,6 @@ class DashboardPage extends Component {
 
     // render the component
     render() {
-        
         return (
             <Dashboard 
                 children={this.props.children}

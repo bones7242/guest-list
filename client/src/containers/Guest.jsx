@@ -4,9 +4,9 @@ import { Link } from "react-router";
 // redux 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { refreshActiveEvent, fetchEvents, refreshActiveGuest } from "../../actions/index";
+import { refreshActiveEvent, fetchEvents, refreshActiveGuest } from "../actions/index";
 // methods 
-import Auth from "../../modules/Auth";
+import Auth from "../modules/Auth";
 
 const Promise = require("bluebird");
 

@@ -2,14 +2,14 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from "react-router";
 
-import Auth from "../../modules/Auth";
+import Auth from "../modules/Auth";
 
 import DashboardHeader from "./DashboardHeader.jsx";
 import Guest from "./Guest.jsx";
-import SearchBar from "./SearchBar.jsx"; 
-import DefaultSplash from "./DefaultSplash.jsx";
+import SearchBar from "../components/SearchBar.jsx"; 
+import DefaultSplash from "../components/DefaultSplash.jsx";
 
-import { onChangeSearchTerm } from '../../actions';
+import { onChangeSearchTerm } from '../actions';
 
 class EventDetail extends Component {
 	constructor(props){

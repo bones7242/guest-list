@@ -10,12 +10,12 @@ import LoginPage from "./containers/LoginPage.jsx";
 import SignUpPage from "./containers/SignUpPage.jsx";
 import DashboardPage from "./containers/DashboardPage.jsx";
 
-import WelcomePage from "./components/subComponents/WelcomePage.jsx";
-import AddGuestForm from "./components/subComponents/AddGuestForm.jsx";
-import AddEventForm from "./components/subComponents/AddEventForm.jsx";
-import EditEventForm from "./components/subComponents/EditEventForm.jsx";
-import EditGuestForm from "./components/subComponents/EditGuestForm.jsx";
-import EventDetail from "./components/subComponents/EventDetail.jsx";
+import WelcomePage from "./components/WelcomePage.jsx";
+import AddGuestForm from "./containers/AddGuestForm.jsx";
+import AddEventForm from "./containers/AddEventForm.jsx";
+import EditEventForm from "./containers/EditEventForm.jsx";
+import EditGuestForm from "./containers/EditGuestForm.jsx";
+import EventDetail from "./containers/EventDetail.jsx";
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from "redux";

@@ -1,14 +1,14 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
 
-import Auth from "../../modules/Auth"; //added by lou
+import Auth from "../modules/Auth"; //added by lou
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { refreshActiveEvent, fetchEvents } from "../../actions/index";
+import { refreshActiveEvent, fetchEvents } from "../actions/index";
 
 import DashboardHeader from "./DashboardHeader.jsx";
-import DefaultSplash from "./DefaultSplash.jsx";
+import DefaultSplash from "../components/DefaultSplash.jsx";
 
 class AddGuestForm extends Component {
 	// constructor is called whenever a new instance of the class is created
