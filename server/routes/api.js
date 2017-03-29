@@ -39,9 +39,7 @@ router.get("/venue/:userId", (req, res) => {
             res.json({message: err});
         // if no errors 
         } else {
-            res.status(200).json({
-                venue: venue
-            });
+            res.status(200).json({venue: venue});
         };
     });
 }); 
@@ -75,9 +73,7 @@ router.post("/event", (req, res) => {
                     if (error){
                         res.send(error);
                     } else {
-                        res.status(200).json({
-                            newEvent: doc
-                        }); 
+                        res.status(200).json({ newEvent: doc }); 
                     };
                 }
             );
@@ -98,12 +94,10 @@ router.get("/event/all/:venueId", (req, res) => {
         exec((err, docs) => {
             // handle errors with the save.
             if (err) { 
-                res.json({message: err})
+                res.json({ message: err })
             // if no errors.
             } else {
-                res.status(200).json({
-                    events: docs
-                });
+                res.status(200).json({ events: docs });
             };
         });    
 }); 
@@ -123,9 +117,7 @@ router.get("/event/one/:eventId", (req, res) => {
                 res.json({message: err})
             // if no errors.
             } else {
-                res.status(200).json({
-                    event: docs
-                });
+                res.status(200).json({event: docs});
             };
         });    
 }); 
@@ -145,9 +137,7 @@ router.put("/event/edit", (req, res) => {
                 res.send(error);
             } else {
                 console.log("response from db", doc);
-                res.status(200).json({
-                    updatedEvent: doc
-                }); 
+                res.status(200).json({updatedEvent: doc}); 
             };
         }
     );
@@ -184,9 +174,7 @@ router.put("/event/counter/increment", (req, res) => {
                         if (checkinError){
                             res.send(checkinError);
                         } else {
-                            res.status(200).json({
-                                updatedEvent: eventDoc
-                            }); 
+                            res.status(200).json({updatedEvent: eventDoc}); 
                         }
                     }
                 )
@@ -226,9 +214,7 @@ router.put("/event/counter/decrement", (req, res) => {
                         if (checkinError){
                             res.send(checkinError);
                         } else {
-                            res.status(200).json({
-                                updatedEvent: eventDoc
-                            }); 
+                            res.status(200).json({ updatedEvent: eventDoc }); 
                         }
                     }
                 )
@@ -308,9 +294,7 @@ router.post("/guest", (req, res) => {
                     if (error){
                         res.send(error);
                     } else {
-                       res.status(200).json({
-                            message: doc
-                         }); 
+                       res.status(200).json({ message: doc }); 
                     }
                 }
             )
@@ -332,5 +316,24 @@ router.get("/guest/one/:guest_id", (req, res) => {
     
 }); 
 
+//route to update a guest by guest id
+router.put("/guest/one", (req, res) => {
+    console.log("received api/guest/one PUT request.");
+    // update the guest record 
+    Guest.findOneAndUpdate(
+        {"_id": req.body._id},
+        {$set: req.body},  // make this update 
+        {
+            new: true // return updated rather than original 
+        }, 
+        function(err, updatedGuestInfo){
+            if (err) {
+                res.send(err);
+            } else {
+                res.status(200).json(updatedGuestInfo);
+            };
+        }
+    );
+}); 
 
 module.exports = router;

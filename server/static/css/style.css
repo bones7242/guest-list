@@ -53,9 +53,14 @@ a:hover {
   color: #5c6bc0;  /* indigo lighten-1 */
 }
 
-
 .text-center {
   text-align: center;
+}
+
+.dashboard-form {
+  margin: 30px 0px 30px 0px;
+  padding: 20px;
+  border-radius: 5px;
 }
 
 /*top bar styles*/

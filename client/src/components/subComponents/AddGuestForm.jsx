@@ -124,7 +124,7 @@ class AddGuestForm extends Component {
 
 					<DashboardHeader />
 
-					<form className="col s12" name="newGuestForm" id="new-guest-form" action="/" onSubmit={this.processGuestForm}>
+					<form className="col s12" className="dashboard-form" id="new-guest-form" action="/" onSubmit={this.processGuestForm}>
 						
 						<h3 className="center-align">Add A New Guest To Your List</h3>
 						

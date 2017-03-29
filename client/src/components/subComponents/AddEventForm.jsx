@@ -100,7 +100,7 @@ class AddEventForm extends Component {
 			<div className="row"> 
 				<div className=" col s12 m12 l12 add-event-form">
 				
-					<form action="/" id="new-event-form" onSubmit={this.processEventForm}>
+					<form action="/" className="dashboard-form" id="new-event-form" onSubmit={this.processEventForm}>
 
 						<h3 className="center-align">Add A New Event</h3>
 

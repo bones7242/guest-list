@@ -88,7 +88,7 @@ class EditEventForm extends Component {
 				<div className="col s12">
 					<h3 className="center-align">Edit Event</h3>
 
-					<form action="/" onSubmit={this.processEventForm} id="edit-event-form">
+					<form action="/" onSubmit={this.processEventForm} className="dashboard-form" id="edit-event-form">
 
 						<div className="row" style={{paddingTop: "20px"}}>	
 

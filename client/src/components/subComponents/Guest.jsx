@@ -82,11 +82,8 @@ class Guest extends Component {
 	}
 
 	editGuest(){
-		console.log("editing guest")
 		//refresh the active event 
 		this.props.refreshActiveGuest(this.props.guest._id, Auth.getToken())
-		// redirect to the edit-guest page
-		//this.props.router.replace("/dash/edit-guest");
 	}
 
 	render(){
