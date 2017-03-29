@@ -1,10 +1,10 @@
 /*animation for welcome screen*/
 @keyframes BackgroundGradient {
-  0%{background-position: 15% 25%;}
+  0%{background-position: 25% 25%;}
   
-  50%{background-position: 50% 70%;}
+  50%{background-position: 75% 75%;}
   
-  100%{background-position: 15% 25%;}
+  100%{background-position: 25% 25%;}
 }
 
 /*application-wide default styles*/
@@ -17,7 +17,7 @@ body {
   margin: 0;
   font-size: 16px;
   background: linear-gradient(132deg, #111, #999);
-  background-size: 1000% 1000%;
+  background-size: 500% 500%;
   animation: BackgroundGradient 30s ease infinite;
 
 }
