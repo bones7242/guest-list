@@ -112,7 +112,7 @@ class Guest extends Component {
 			<tr className="bordered ">
 
 				<td className="guest--td">
-					{this.props.guest.name}
+					{this.props.guest.name.toUpperCase()}
 				</td>
 
 				<td className="guest--td">

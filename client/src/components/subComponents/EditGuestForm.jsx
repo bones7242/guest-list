@@ -137,7 +137,7 @@ class EditGuestForm extends Component {
 							</div>
 						</div>
 						<div className="row">
-							<div className="input-field col s4">
+							<div className="col s4">
 								<label htmlFor="plusOne">Plus One(s)</label>
 								<input  id="plusOne" name="plusOne"  type="text" value={this.state.updatedGuest.plusOne} onChange={this.handleInputChange}></input>								
 							</div>					

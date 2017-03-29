@@ -20,12 +20,13 @@ class AddEventForm extends Component {
         this.state = {
             newEvent: {
 				venue: "",
-				headliner: "",
+				headliner: "Headliner Name",
 				supportOne: "",
 				supportTwo: "",
 				supportThree: "",
-				date: "",
-				time: 0,
+				date: "MM/DD/YYYY",
+				time: "00:00",
+				am_pm: "PM",
 				headlinerAllotment: 0,
 				supportOneAllotment: 0,
 				supportTwoAllotment: 0,
@@ -105,13 +106,22 @@ class AddEventForm extends Component {
 					<form action="/" className="dashboard-form" id="new-event-form" onSubmit={this.processEventForm}>
 
 						<div className="row">
-							<div className="input-field col s8">
-								<label htmlFor="headliner">Headliner*</label>
-								<input  name="headliner"  type="text" className="validate" onChange={this.handleInputChange}></input>							
+							<div className="col s6">
+								<label htmlFor="headliner">Headliner *</label>
+								<input  name="headliner"  type="text" value={this.state.newEvent.headliner} onChange={this.handleInputChange}></input>			
 							</div>						
-							<div className="input-field col s4">
-								<input type="datetime-local" name="date" onChange={this.handleInputChange}></input>							
+							<div className="col s3">
+								<label htmlFor="date">Date *</label>
+								<input type="text" name="date" value={this.state.newEvent.date} onChange={this.handleInputChange}></input>	
 							</div>					
+							<div className="col s2">
+								<label>Time *</label>
+								<input type="text" name="time" value={this.state.newEvent.time} onChange={this.handleInputChange}></input>
+							</div>	
+							<div className="col s1">
+								<label>AM/PM *</label>
+								<input type="text" name="am_pm" value={this.state.newEvent.am_pm} onChange={this.handleInputChange}></input>
+							</div>	
 						</div>
 						
 						<div className="row" >						

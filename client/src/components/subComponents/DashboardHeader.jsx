@@ -50,20 +50,20 @@ class DashboardHeader extends Component {
         var eventDate = newEventDate.toDateString();
         // var eventTime = newEventDate.getFormattedTime();
         //var eventDate = moment(newEventDate).format("dddd MMM Do YY");
-        var eventTime = moment(newEventDate).format("h:mm a");
+        //var eventTime = moment(newEventDate).format("h:mm a");
        
         return (
             <div className="row dashboard-header">
 
                 <div className="col s4 m4 l4 header--headliner">
                     { this.props.activeEvent.headliner && <h2 className="headliner-text">
-                        {this.props.activeEvent.headliner}
+                        {this.props.activeEvent.headliner.toUpperCase()}
                     </h2> }
-                    { this.props.activeEvent.date && <p>
+                    { this.props.activeEvent && <p>
                         {eventDate}
                     </p> }
-                    { this.props.activeEvent.date && <p>
-                        {eventTime}
+                    { this.props.activeEvent && <p>
+                        {this.props.activeEvent.time + " " + this.props.activeEvent.am_pm}
                     </p> }
                 </div>
 

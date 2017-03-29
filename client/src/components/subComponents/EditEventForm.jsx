@@ -93,16 +93,24 @@ class EditEventForm extends Component {
 
 						<div className="row" style={{paddingTop: "20px"}}>	
 
-							<div className="col s8">
-								<label htmlFor="headliner">Headliner</label>
+							<div className="col s6">
+								<label htmlFor="headliner">Headliner *</label>
 								<input name="headliner" onChange={this.handleInputChange} value={this.state.updatedEvent.headliner} type="text" className="validate">
 								</input>								
 							</div>							
 
-							<div className="col s4">
-								<label htmlFor="date">Date</label>
-								<input type="datetime-local" name="date" value={this.state.updatedEvent.date} onChange={this.handleInputChange}></input>								
-							</div>						
+							<div className="col s3">
+								<label htmlFor="date">Date *</label>
+								<input type="text" name="date" value={this.state.updatedEvent.date} onChange={this.handleInputChange}></input>	
+							</div>					
+							<div className="col s2">
+								<label>Time *</label>
+								<input type="text" name="time" value={this.state.updatedEvent.time} onChange={this.handleInputChange}></input>
+							</div>	
+							<div className="col s1">
+								<label>AM/PM *</label>
+								<input type="text" name="am_pm" value={this.state.updatedEvent.am_pm} onChange={this.handleInputChange}></input>
+							</div>					
 
 						</div>
 						
