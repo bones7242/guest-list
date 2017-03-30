@@ -1,5 +1,6 @@
 import { EVENT_SELECTED } from "../actions/index";
 import { REFRESH_ACTIVE_EVENT } from "../actions/index";
+import { CLEAR_ACTIVE_EVENT } from "../actions/index";
 import { ON_CHANGE_SEARCH_TERM } from "../actions/index";
 
 const initialState = {
@@ -15,6 +16,9 @@ export default function(state = null, action) {
             break;
         case REFRESH_ACTIVE_EVENT:
             return action.payload.data.event;
+            break;
+        case CLEAR_ACTIVE_EVENT:
+            return action.payload;
             break;
         case ON_CHANGE_SEARCH_TERM:
             return Object.assign(

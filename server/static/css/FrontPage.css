@@ -1,0 +1,40 @@
+/*login and signup page styles*/
+
+.form--front-page {
+    padding-top: 60px;
+}
+
+.role-selection {
+    border: 1px solid #999;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#owner, #artist {
+    color:white;
+}
+
+.field-line, .button-line {
+    padding: 16px;
+}
+
+.label--front-page {
+    color: white;
+    font-size: 15px;
+}
+
+.error-message, .success-message, .help-message {
+    text-align: center;
+    padding: 0 16px;
+    font-size: 15px;
+
+}
+.error-message {
+    color: palevioletred;
+}
+
+.success-message, .help-message  {
+    color: white;
+}
+

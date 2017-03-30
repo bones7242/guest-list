@@ -1,10 +1,13 @@
+/*animation for welcome screen*/
 @keyframes BackgroundGradient {
-  0%{background-position: 15% 50%;}
+  0%{background-position: 25% 25%;}
   
-  50%{background-position: 50% 70%;}
+  50%{background-position: 75% 75%;}
   
-  100%{background-position: 15% 25%;}
+  100%{background-position: 25% 25%;}
 }
+
+/*application-wide default styles*/
 
 html {
     font-family: Arial, Helvetica, sans-serif;
@@ -13,37 +16,54 @@ html {
 body {
   margin: 0;
   font-size: 16px;
-  
-  background: linear-gradient(132deg, #ec5218, #1665c1);
-  background-size: 1000% 1000%;
+  background: linear-gradient(132deg, #111, #999);
+  background-size: 500% 500%;
   animation: BackgroundGradient 30s ease infinite;
 
 }
 
-a {
-  color: #e1f5fe;
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 0.4s;
-}
-
-a:hover {
-  color: #1976d2;
+th, td {
+  padding: 2px 0px 2px 0px;
 }
 
 .row {
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin: 0px;
+  padding: 2px 0px 2px 0px;
 }
 
-.logo {
-  font-style: #bbdefb;
+input {
+  color: white;
 }
 
+.btn-small {
+  margin: 3px;
+}
+
+h1, h2, h3, h4, h5 {
+  color: white;
+}
+
+a {
+  color: #e1f5fe;
+  text-decoration: none;
+  transition: color 0.1s;
+}
+
+a:hover {
+  color: #999; 
+}
 
 .text-center {
   text-align: center;
 }
+
+.dashboard-form {
+  margin: 0px 0px 30px 0px;
+  padding: 20px 20px 40px 20px;
+  border-radius: 5px;
+}
+
+/*top bar styles*/
 
 .top-bar {
   padding: 10px 15px;
@@ -57,7 +77,6 @@ a:hover {
 
 .top-bar-left {
   float: left;
-  font-size: 1.5em;
 }
 
 .top-bar-right {
@@ -67,47 +86,4 @@ a:hover {
 .top-bar a,
 .nav a {
   margin: 0 8px;
-}
-
-.container {
-  margin: 0 auto;
-  text-align: center;
-  width: 700px;
-}
-
-.card-heading {
-  padding: 16px;
-}
-
-.field-line, .button-line {
-  padding: 16px;
-}
-
-.error-message {
-  padding: 0 16px;
-  color: tomato;
-}
-
-.success-message {
-  padding: 0 16px;
-  color: White;
-}
-
-#logoContainer {
-  height: 20%;
-}
-
-input, p {
-  color: white;
-}
-
-.login-p {
-  text-align: center;
-}
-
-
-td{
-  padding-top: 2px;
-  padding-left: 0px;
-  padding-bottom: 2px;
 }

@@ -1,0 +1,32 @@
+
+
+.dashboard-header {
+	border-bottom: solid #666 1px;
+	padding-bottom: 10px;
+}
+
+.header--headliner {
+	color: white;
+}
+
+.header--support {
+	color: #888;
+}
+
+.header--event-stats {
+	color: white;
+}
+
+.headliner-text {
+	margin-top: 0px;
+}
+
+.support-text, .event-stats-text {
+	margin-top: 10px;
+}
+
+.support-text {
+	font-size: small;
+	line-height: 1;
+}
+

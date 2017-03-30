@@ -6,115 +6,86 @@ This is the signup form that will be rendered inside of our signup page.
 The form handles showing the fields and getting the user input and checking the input.
 */
 
-const SignUpForm = ({onSubmit, onChange, errors, user}) => {
+const SignUpForm = ({onSubmit, onChange, errors, user, toggleRole, roleSelect}) => {
     return (
-        <div className="container">
-                
-            <h2 className="card-heading  white-text text-darken-2">Sign Up</h2>
-
-            <form action="/" onSubmit={onSubmit}>
+        <div className="row">
+            <div className="col s1 m3 l4">
+                {/*spacer*/}
+            </div>
             
-                {errors.summary && <p className="error-message login-p">{errors.summary}</p>}
+            <div className="col s8 m6 l4 center-align">                            
 
-                <div className="row">
-                    <div className="col s12 m6 l6">
-                        <label htmlFor="name" className="white-text">Name: </label>
-                        <p className="error-message login-p">{errors.name}</p>
-                        <input
-                            name="name"                               
-                            onChange={onChange}
-                            value={user.name}
-                        />
-                        
+                <form action="/" onSubmit={onSubmit} className="form--front-page">
+
+                    <h2>Sign Up</h2>
+                
+                    {errors.summary && <p className="error-message ">{errors.summary}</p>}
+
+                   <div>
+                        <label htmlFor="name" className="label--front-page">Name: </label>
+                        <p className="error-message ">{errors.name}</p>
+                        <input name="name" onChange={onChange} value={user.name} />
+                    </div>
+                    <div>
+                        <label htmlFor="email"  className="label--front-page">Email: </label>
+                        <p className="error-message " >{errors.email}</p>
+                        <input name="email" onChange={onChange} value={user.email} />
+                    </div>
+                    <div>
+                        <label htmlFor="password" className="label--front-page">Password: </label>
+                        <p className="error-message">{errors.password}</p>
+                        <input type="password" name="password" onChange={onChange} value={user.password} />
                     </div>
 
-                    <div className="col s12 m6 l6">
-                        <label htmlFor="email" className="white-text">Email: </label>
-                        <p className="error-message login-p" >{errors.email}</p>
-                        <input
-                            name="email"                               
-                            onChange={onChange}
-                            value={user.email}
-                        />
-                        
+                    <div className="row role-selection">                           
+                        <div className="col s12 m6">
+                            <input className="list-radios" name="owner" type="radio" id="owner" onChange={toggleRole} checked={roleSelect.owner} />
+                            <label htmlFor="owner">Venue</label>
+                        </div>
+                        <div className="col s12 m6">
+                            <input className="list-radios" name="artist" type="radio" id="artist" onChange={toggleRole} checked={roleSelect.artist} />
+                            <label htmlFor="artist">Artist (coming soon)</label>
+                        </div>                            
                     </div>
-                </div>
-
-                <div className="row">
-                    <div className="col s12 m6 l6">
-                        <label htmlFor="password" className="white-text">Password: </label>
-                        <p className="error-message login-p">{errors.password}</p>
-                        <input
-                            type="password"
-                            name="password"                               
-                            onChange={onChange}
-                            value={user.password}
-                        />
-                        
-                    </div>
-
-                    <div className="col s12 m6 l6">
-                        {/*<label htmlFor="role" className="white-text">Role: </label>*/}
-                        {/*role selection goes here*/}
-                        <label htmlFor="venueName" className="white-text">Venue Name: </label>
-                        <p className="error-message login-p">{errors.venueName}</p>
-                        <input
-                            name="venueName"
-                            onChange={onChange}
-                            value={user.venueName}
-                        />
-                    </div>
-                </div>
-
-                {/*
-                    display additional questions below, depending on the role selected above
-                */}
-                <div className="row">
-                    <div className="col s12 m6 l6">
-                       {/*move venue name back here*/}
-                        
-                    </div>
-
-                    <div className="col s12 m6 l6">
-                        <label htmlFor="venueAddressOne" className="white-text">Address 1: </label>
-                        <p className="error-message login-p">{errors.venueAddressOne}</p>
-                        <input
-                            name="venueAddressOne"
-                            onChange={onChange}
-                            value={user.venueAddressOne}
-                        />
-                        
                     
-                    
-                        <label htmlFor="venueAddressTwo" className="white-text">Address 2: </label>
-                        <p className="error-message login-p">{errors.venueAddressTwo}</p>
-                        <input
-                            name="venueAddressTwo"
-                            onChange={onChange}
-                            value={user.venueAddressTwo}
-                        />
-                        
-                    
+                    {/* display additional questions below, depending on the role selected above */}
+                    {(user.role === "artist") && <div>
+                        <div>
+                            <p className="error-message">The "Artist" role isn't quite ready yet. Please check back soon.</p>
+                        </div>
+                    </div> }
+                    {(user.role === "owner") && <div>
+                        <div>
+                            <label htmlFor="venueName" className="label--front-page">Venue Name: </label>
+                            <p className="error-message ">{errors.venueName}</p>
+                            <input name="venueName" onChange={onChange} value={user.venueName} />                                
+                        </div>
+                        <div>
+                            <label htmlFor="venueAddressOne" className="label--front-page" >Address 1:</label>
+                            <p className="error-message ">{errors.venueAddressOne}</p>
+                            <input name="venueAddressOne" onChange={onChange} value={user.venueAddressOne} />
+                        </div>
+                        <div>
+                            <label htmlFor="venueAddressTwo" className="label--front-page">Address 2: </label>
+                            <p className="error-message ">{errors.venueAddressTwo}</p>
+                            <input name="venueAddressTwo" onChange={onChange} value={user.venueAddressTwo} />
+                        </div>
+                        <div>
+                            <label htmlFor="venueZip" className="label--front-page">Zip Code: </label>
+                            <p className="error-message ">{errors.venueZip}</p>
+                            <input name="venueZip" onChange={onChange} value={user.venueZip} />
+                        </div>
+                        <div className="button-line">
+                            <button type="submit" className="grey darken-1 waves-effect waves-light btn hoverable">Create New Account</button>
+                        </div>
+                    </div> }
 
-                    
-                        <label htmlFor="venueZip" className="white-text">Zip Code: </label>
-                        <p className="error-message login-p">{errors.venueZip}</p>
-                        <input
-                            name="venueZip"
-                            onChange={onChange}
-                            value={user.venueZip}
-                        />
-                        
-                    </div>
-                </div>
+                    <p className="help-message">Already have an account? <Link to={"/login"}>Log in</Link></p>
 
-                <div className="button-line">
-                    <button type="submit" className="waves-effect waves-light grey darken-1 btn">Create New Account</button>
-                </div>
-
-                <p className="login-p">Already have an account? <Link to={"/login"}>Log in</Link></p>
-
-            </form>
+                </form>
+            
+            </div>
+        
         </div>
     );
 };

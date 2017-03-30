@@ -1,8 +1,8 @@
 import { FETCH_VENUE } from "../actions/index";
 import { FETCH_EVENTS } from "../actions/index";
 
-// This function the producers the value of our state.
-// in our case the value of our state will be an array of events.
+// This function produces the value of our state.
+// in this case the value of our state will be an array of events.
 
 export default function(state = null, action) {
 
