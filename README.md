@@ -9,7 +9,7 @@ Guestmate is written in React, utilizing Materialize for front end styling, Redu
 
 [Application overiew - powerpoint presentation](https://docs.google.com/presentation/d/16AuuNiVx-6C_qLy8eopBgdTxHk44lBssERGpnRnCYJc/edit?usp=sharing)
 
-[Live application](https://pacific-mountain-48488.herokuapp.com/)
+[Live application](http://www.guestmate.io)
 
 ### Authors: 
 @billbitt
