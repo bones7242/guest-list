@@ -41,7 +41,7 @@ Guestmate is written in React, utilizing Materialize for front end styling, Redu
 ++ edit an existing event 
 ++ edit a guest's information
 + When a guest is added to the guest list, the venue has the option to send them an automated email or text message that includes the event details (current in development)
-++ this provides a marketing opportunity to the guest
+++ this provides a marketing opportunity to the guest, which can be improved by utlizing guest analytics
 + At the time of the event, the venue owner can navigate to the event page and check in guests off the guest list as they arrive at the venue
 + After the event, the venue owner can view analytics regarding their guests
 
@@ -65,6 +65,6 @@ This wireframe is a peak into our development process.  In order to efficiently 
 + passport
 
 ### Screen Shots
-![Login]()
+![Login](http://i.imgur.com/qIqqwMN.png)
 
-![dashboard](http://i.imgur.com/Ydi7XD0.png)
+![dashboard](http://i.imgur.com/zPxG0rH.png)
