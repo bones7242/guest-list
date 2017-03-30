@@ -68,7 +68,7 @@ class EventDetail extends Component {
 						{(this.props.activeEvent.guests.length === 0) && <div className="row">
 							<div className="col s12 m12 l12">
 								<h5 className="grey-text"> 
-									<Link to="dash/add-guest" className="indigo lighten-1 btn-floating btn-small  waves-effect waves-light hoverable">
+									<Link to="dash/add-guest" className="red lighten-2 btn-floating btn-small  waves-effect waves-light hoverable">
 										<i className="material-icons">playlist_add</i>
 									</Link>
 									<Link className="grey-text"to="dash/add-guest"> This event doesn't have any guests yet.  Add a guest.</Link>

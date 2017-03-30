@@ -7,7 +7,6 @@ import { selectEvent } from "../actions/index";
 import { bindActionCreators } from "redux";
 
 import NavBarHeader from "../components/NavBarHeader.jsx";
-import NavBarSeparator from "../components/NavBarSeparator.jsx";
 import EventTab from "../components/EventTab.jsx";
 
 class NavBar extends Component {
@@ -48,8 +47,6 @@ class NavBar extends Component {
 					<div className="col s12 m12 l12 nav-bar-inner" style={{padding: '0'}}> 
 
 						<NavBarHeader venueName={this.props.venue.name}/>
-
-						<NavBarSeparator />
 
 						{/*render an event tab for each event*/}
 						{this.renderList()}

@@ -6,7 +6,7 @@
 }
 
 .tab-event:hover {
-	border-bottom: solid 1px #b3e5fc;
+	background-color: #555;
 }
 
 .tab-artist {
