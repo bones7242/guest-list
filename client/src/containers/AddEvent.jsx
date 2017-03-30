@@ -166,7 +166,7 @@ class AddEvent extends Component {
 							<Link className="grey darken-2 waves-effect waves-light btn hoverable" to={'/'}>Cancel</Link>
 						</div>
 						<div className="col s6 left-align" >
-							<button type="submit" form="new-event-form" className="indigo lighten-1 waves-effect waves-light btn hoverable center">Submit</button>			
+							<button type="submit" form="new-event-form" className="blue accent-2 waves-effect waves-light btn hoverable center">Submit</button>			
 						</div>
 					</div>
 					

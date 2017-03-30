@@ -37,7 +37,7 @@ class SearchBar extends Component {
             </div>
 
             <div className="col s1 m1 l1 right-align">
-              <Link to="dash/add-guest" className="indigo lighten-1 btn-floating btn-small  waves-effect waves-light hoverable"><i className="material-icons">playlist_add</i></Link>
+              <Link to="dash/add-guest" className="grey darken-2 btn-floating btn-small  waves-effect waves-light hoverable"><i className="material-icons">playlist_add</i></Link>
             </div>        
 
         </div>

@@ -17,15 +17,15 @@ class NavBarHeader extends Component {
 		}
 		// otherwise render the full component
 		return (
-			<div id="logo-box">
-				<div className="row" >
-					<div className="col s12 m12 l12 center-align" >
+			<div className="row" id="nav-bar-header">
+				<div className="col s12 m12 l12">
+					<div className="row center-align"  id="logo-box">
 						<Link to={'/'}>
 							<h3>{this.props.venueName}</h3>
 						</Link>
-						
-						<Link className="indigo lighten-1 btn white-text waves-effect waves-light hoverable" to={'/dash/add-event'}>ADD EVENT</Link>
-						
+					</div>
+					<div className="row center-align">
+						<Link className="red lighten-2 btn waves-effect white-text waves-light hoverable" to={'/dash/add-event'}>ADD EVENT</Link>
 					</div>
 				</div>
 			</div>

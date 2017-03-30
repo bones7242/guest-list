@@ -76,7 +76,7 @@ const SignUpForm = ({onSubmit, onChange, errors, user, toggleRole, roleSelect}) 
                             <input name="venueZip" onChange={onChange} value={user.venueZip} />
                         </div>
                         <div className="button-line">
-                            <button type="submit" className="grey darken-1 waves-effect waves-light btn hoverable">Create New Account</button>
+                            <button type="submit" className="blue accent-2 waves-effect waves-light btn hoverable">Create New Account</button>
                         </div>
                     </div> }
 

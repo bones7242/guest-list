@@ -161,7 +161,7 @@ class EditEvent extends Component {
 							</div>
 
 							<div className="col s6 left-align" >
-								<button type="submit" form="edit-event-form" className="indigo lighten-1 waves-effect waves-light btn hoverable center-align">Submit</button>				
+								<button type="submit" form="edit-event-form" className="blue accent-2 waves-effect waves-light btn hoverable center-align">Submit</button>				
 							</div>
 						</div>
 
