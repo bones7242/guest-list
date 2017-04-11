@@ -58,7 +58,7 @@ class Guest extends Component {
 				// update the specific event in the "events"array in the application state
 				this.props.fetchEvents(this.props.activeEvent.venue, Auth.getToken());
             } else {
-				console.log("there was an error in updating the event. error message:", xhr.response.message)
+				console.log("there was an error in updating the event. error message:", xhr.response)
 				//alert("Event could not be updated.  Check the console logs.");
 			};
         });

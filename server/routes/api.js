@@ -146,75 +146,38 @@ router.put("/event/edit", (req, res) => {
 // event route - check in a guest 
 router.put("/guest/checkin", (req, res) => {
     console.log("received api/guest/checkin PUT request", req.body);
-    // decide how much to incremenet 
-    const guestsToCheckIn = parseInt(req.body.plusOne) + 1;
-    console.log("guests to check in:", guestsToCheckIn);
-    // update the event record 
-    Event.findOneAndUpdate(
-        {"_id": req.body.eventId},
+    Guest.findOneAndUpdate(
+        {"_id": req.body.guestId},
         {
-            $inc: {"totalChecked": guestsToCheckIn},
+            $set: {"isCheckedIn": true}
         },
-        { new: true },
-        function(eventError, eventDoc){
-            console.log("guest/checkin return doc", eventDoc);
-            if (eventError){
-                res.send(eventError);
-            // if successfull check in the guest 
+        { new: true},
+        function(checkinError, checkinDoc){
+            console.log("checkin doc", checkinDoc);
+            if (checkinError){
+                res.status(500).json(checkinError);
             } else {
-                Guest.findOneAndUpdate(
-                    {"_id": req.body.guestId},
-                    {
-                        $set: {"isCheckedIn": true}
-                    },
-                    { new: true},
-                    function(checkinError, checkinDoc){
-                        console.log("checkin doc", checkinDoc);
-                        if (checkinError){
-                            res.send(checkinError);
-                        } else {
-                            res.status(200).json({updatedEvent: eventDoc}); 
-                        }
-                    }
-                )
-            };
+                res.status(200).json({updatedGuest: checkinDoc}); 
+            }
         }
     )
 });
 
 // event route - check out a guest 
 router.put("/guest/checkout", (req, res) => {
-    console.log("received api/guest/checkout PUT request", req.body);
-    
-    // decide how much many guests to check in 
-    const guestsToCheckIn = -1 * (parseInt(req.body.plusOne) + 1);
-    console.log("guests to check in:", guestsToCheckIn);
-    
-    Event.findOneAndUpdate(  // step 1: update the event record 
-        {"_id": req.body.eventId},
+    console.log("received api/guest/checkout PUT request", req.body);          
+    Guest.findOneAndUpdate(  // check in the guest 
+        {"_id": req.body.guestId},
         {
-            $inc: {"totalChecked": guestsToCheckIn},
+            $set: {"isCheckedIn": false}
         },
         { new: true},
-        function(eventError, eventDoc){  // callback 1...
-            if (eventError){  // handle errors 
-                res.send(eventError);
-            } else {  // if successfull                
-                Guest.findOneAndUpdate(  // step 2: check in the guest 
-                    {"_id": req.body.guestId},
-                    {
-                        $set: {"isCheckedIn": false}
-                    },
-                    { new: true},
-                    function(checkinError, checkinDoc){  // callback 2...
-                        console.log("checkin doc", checkinDoc);
-                        if (checkinError){  // handle errors 
-                            res.send(checkinError);
-                        } else { // if sucessfull, send response 
-                            res.status(200).json({ updatedEvent: eventDoc }); 
-                        }
-                    }
-                )
+        function(checkoutError, checkoutDoc){  // callback
+            console.log("checkout doc", checkoutDoc);
+            if (checkoutError){  // handle errors 
+                res.status(500).json(checkoutError);
+            } else { // if sucessfull, send response 
+                res.status(200).json({ updatedGuest: checkoutDoc }); 
             }
         }
     )
