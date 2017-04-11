@@ -105,11 +105,19 @@ class Guest extends Component {
 		}
 	}
 
+	backgroundColor(){
+		if (this.props.guest.isCheckedIn === true) {
+			return "#494949";
+		} else {
+			return "grey darken-3"
+		}
+	}
+
 	render(){
 		
 		//otherwise...
 		return (
-			<tr className="bordered ">
+			<tr className={"bordered " + this.backgroundColor()}>
 
 				<td className="guest--td">
 					{this.props.guest.name.toUpperCase()}

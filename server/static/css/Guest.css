@@ -5,3 +5,11 @@
 .guest--td > p {
   line-height: 0;
 }
+
+.bordered {
+	border-bottom: 1px solid white;
+}
+
+.bordered:hover {
+	border-bottom: 1px solid #80d8ff ;
+}

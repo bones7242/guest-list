@@ -54,8 +54,8 @@ class ContentHeader extends Component {
        
         return (
             <div className="row dashboard-header">
-
-                <div className="col s4 m4 l4 header--headliner">
+                
+                <div className="col s4 m4 l4 header--headliner ">
                     { this.props.activeEvent.headliner && <h2 className="headliner-text">
                         {this.props.activeEvent.headliner.toUpperCase()}
                     </h2> }
