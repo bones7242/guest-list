@@ -5,3 +5,7 @@
 .guest--td > p {
   line-height: 0;
 }
+
+.bordered {
+	border-bottom: 1px solid white;
+}
