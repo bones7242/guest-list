@@ -21,9 +21,9 @@ class DashboardHeader extends Component {
         //     return formattedTime;
         // }
          var newEventDate = new Date(this.props.activeEvent.date);
-        // var eventDate = newEventDate.toDateString();
+         var eventDate = newEventDate.toDateString();
         // var eventTime = newEventDate.getFormattedTime();
-        var eventDate = moment(newEventDate).format("dddd MMM Do YY");
+        //var eventDate = moment(newEventDate).format("MMM Do YY");
         var eventTime = moment(newEventDate).format("h:mm a");
        
         return (
