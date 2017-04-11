@@ -219,34 +219,30 @@ router.post("/guest", (req, res) => {
             };
         // if no errors.
         } else {
+            /* send an email message. note: put in its own route  
             // sending automatic email with nodemailer for a created guest
-            //creating the message 
+            // creating the message 
             const mailOptions={
                 to: doc.email,
                 subject: " You have been invited to event ",
                 text: " This the Text of your invite this should have all the information reguarding the show "
             }
-            // console.log message 
-            console.log(mailOptions);
-            // sending the message using smtpTransport
-            // smtpTransport.sendMail(mailOptions, function(error, response){
-            //     if(error){
-            //         console.log(error);
-            //         res.end("error");
-            //     }else{
-            //         console.log("Message sent : " + response.message);
-            //     }
-            // });
+            //sending the message using smtpTransport
+            smtpTransport.sendMail(mailOptions, function(error, response){
+                if(error){
+                    console.log(error);
+                    res.end("error");
+                }else{
+                    console.log("Message sent : " + response.message);
+                }
+            });
+            */
 
-            // decide how many guests to add to the total 
-            const guestsToAdd = parseInt(req.body.plusOne) + 1;
-            console.log(guestsToAdd + "guests to add");
             //push this guest id to the event as a guest 
             Event.findOneAndUpdate(
                 {"_id": req.body.eventId},
                 {
-                    $push: {"guests": doc._id},
-                    $inc: {"totalGuest": guestsToAdd}
+                    $push: {"guests": doc._id}
                 },
                 {new:true},
                 function(error, document){
