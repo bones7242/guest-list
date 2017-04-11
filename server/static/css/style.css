@@ -16,7 +16,7 @@ html {
 body {
   margin: 0;
   font-size: 16px;
-  background: linear-gradient(132deg, #333, #999);  /*red lighten-2  blue accent-2 */
+  background: linear-gradient(132deg, #461deb, #26b534);  /*red lighten-2  blue accent-2 */
   background-size: 1000% 1000%;
   animation: BackgroundGradient 30s ease infinite;
 
