@@ -7,40 +7,41 @@ This is the "dumb" component that will get the information from the user and wil
 */
 
 const LoginForm = ({onSubmit, onChange, errors, successMessage, user}) => (
-  <div className="container">
-    <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading  white-text text-darken-2">Login</h2>
+  <div className="row">
 
-      {successMessage && <p className="success-message login-p">{successMessage}</p>}
-      {errors.summary && <p className="error-message login-p">{errors.summary}</p>}
+    <div className="col s2 m3 l4">
+      {/*left side spacer*/}
+    </div>
+    
+    <div className="col s8 m6 l4 center-align">
 
-      <div className="field-line">
-        <label htmlFor="email" className="white-text">Email</label>
-        <input
-          name="email"
-          onChange={onChange}
-          value={user.email}
-        />
-        <p className="error-message login-p">{errors.email}</p>
-      </div>
+      <form action="/" onSubmit={onSubmit} className="form--front-page">
 
-      <div className="field-line">
-        <label htmlFor="password" className="white-text">Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={onChange}
-          value={user.password}
-        />
-        <p className="error-message login-p">{errors.password}</p>
-      </div>
+        <h2 className="card-heading  white-text text-darken-2">Login</h2>
 
-      <div className="button-line">
-        <button type="submit" className="waves-effect waves-light grey darken-1 btn">Log In</button>
-      </div>
+        {successMessage && <p className="success-message ">{successMessage}</p>}
+        {errors.summary && <p className="error-message ">{errors.summary}</p>}
 
-      <p className="login-p">Don't have an account? <Link to={'/signup'}>Create one</Link>.</p>
-    </form>
+        <div className="field-line">
+          <label htmlFor="email" className="label--front-page">Email</label>
+          <input name="email" onChange={onChange} value={user.email} />
+          <p className="error-message ">{errors.email}</p>
+        </div>
+
+        <div className="field-line">
+          <label htmlFor="password" className="label--front-page">Password</label>
+          <input type="password" name="password" onChange={onChange} value={user.password} />
+          <p className="error-message">{errors.password}</p>
+        </div>
+
+        <div className="button-line">
+          <button type="submit" className="blue accent-2 darken-1 waves-effect waves-light btn hoverable">Log In</button>
+        </div>
+
+        <p className="help-message">Don't have an account? <Link to={'/signup'}>Create one.</Link></p>
+
+      </form>
+    </div>
   </div>
 );
 

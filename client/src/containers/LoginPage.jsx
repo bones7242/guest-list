@@ -49,7 +49,7 @@ class LoginPage extends Component {
         const password = encodeURIComponent(this.state.user.password);
         const formData = `email=${email}&password=${password}`;
 
-        console.log("login - processing form. formData:", formData);
+        
 
         // Create an AJAX request 
         const xhr = new XMLHttpRequest();
@@ -61,7 +61,7 @@ class LoginPage extends Component {
             if (xhr.status === 200) {
                 /*if we reach this point, the user has entered a correct email and password, so we want to save the token and redirect to the dashboard. */
                 // change the componenet-container state.
-                console.log("The username and password came back as a match.")
+                
                 this.setState({
                     errors: {}
                 });

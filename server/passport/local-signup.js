@@ -15,7 +15,7 @@ module.exports = new PassportLocalStrategy(
     }, 
     // the second argument is the callback 
     (req, email, password, done) => {
-        console.log("request body ->", req.body);
+        
         // define an object that contains all the user data  
         const userData = {
             email: email.trim(),

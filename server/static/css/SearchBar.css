@@ -1,0 +1,22 @@
+.search-row {
+    border-bottom: solid #666 1px;
+    margin: 0px 0px 20px 0px;
+}
+
+input.guest-search {
+    color: #666;
+    border: 0px;
+    padding: 0px 6px 0px 6px;
+    margin: 0px;
+}
+
+.search-icon {
+    color: white;
+}
+
+input.guest-search:focus {
+    color: white;
+    background-color: #444;
+    border: 0px;
+}
+

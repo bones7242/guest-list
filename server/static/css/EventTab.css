@@ -1,31 +1,13 @@
 
-
-.row {
-	width: 100%;
-	margin-left: 0px;
-	margin-right: 0px;
-
-}
-
-p, h5 {
-	color: #fafafa;
-}
-
-
 .tab-event {
 	padding-top: 10px;
 	padding-bottom: 10px;
-	border-bottom: solid 1px #bdbdbd;
-
+	border-bottom: solid 1px #999;
 }
 
 .tab-event:hover {
-	
-	border-bottom: solid 1px #b3e5fc;
-	
+	background-color: #555;
 }
-
-
 
 .tab-artist {
 	padding: 0px;
@@ -36,5 +18,9 @@ p, h5 {
 
 .tab-date {
 	margin: 0px;
+	color: #999;
 }
 
+.tab-event > .event-btns {
+	padding: 0px;
+}

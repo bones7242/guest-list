@@ -17,16 +17,21 @@ class SignUpPage extends Component {
                 email: "",
                 name: "",
                 password: "",
-                role: "owner",
+                role: "",
                 venueName: "",
                 venueAddressOne: "",
                 venueAddressTwo: "",
                 venueZip: "",
+            },
+            roleSelect: {
+                owner: false,
+                artist: false,
             }
         };
         // bind "this" to the methods we define below 
         this.processForm = this.processForm.bind(this);
         this.changeUser = this.changeUser.bind(this);
+        this.toggleRole = this.toggleRole.bind(this);
     }
 
     // Define the a 'process form' method.
@@ -43,7 +48,7 @@ class SignUpPage extends Component {
         const email = encodeURIComponent(this.state.user.email);
         const password = encodeURIComponent(this.state.user.password);
         const role = encodeURIComponent(this.state.user.role);
-        console.log("role:", role);
+        
         let formData = `name=${name}&email=${email}&password=${password}&role=${role}`;
         if (role.toLowerCase() === "owner") { 
             const venueName = encodeURIComponent(this.state.user.venueName);
@@ -52,7 +57,7 @@ class SignUpPage extends Component {
             const venueZip = encodeURIComponent(this.state.user.venueZip);
             formData = `name=${name}&email=${email}&password=${password}&role=${role}&venueName=${venueName}&venueAddressOne=${venueAddressOne}&venueAddressTwo=${venueAddressTwo}&venueZip=${venueZip}`;
         };
-        console.log("formData:", formData);
+        
 
         // Create an ajax request, which will change the component state depending on the HTTP response code status received.
         const xhr = new XMLHttpRequest();
@@ -66,8 +71,6 @@ class SignUpPage extends Component {
                 this.setState({
                     errors: {}
                 });
-                
-                //console.log("The form is valid");
 
                 // set a message 
                 localStorage.setItem("successMessage", xhr.response.message);
@@ -95,9 +98,9 @@ class SignUpPage extends Component {
         This will change the component state by taking the name attribute of an input element as the key. The value for this key will be taken from the user’s input into the element.  It then updates the this.state.user with the new information.
     */
     changeUser(event) {
-        //console.log("event", event);
+        console.log("event", event);
         const field = event.target.name;
-        //console.log("field", field);
+        
         const user = this.state.user;
         user[field] = event.target.value;
 
@@ -106,15 +109,25 @@ class SignUpPage extends Component {
         });
     }
 
-    // Define lifecycle methods.
-    componentWillMount(){
-        console.log("componentWillMount is finished.");
-    }
-
-    componentDidMount(){
-        //$('select').material_select();
-        console.log("componentDidMount is finished.");
-    }
+    toggleRole(event){
+		const field = event.target.name; // will be: owner or artist 
+        let roleSelect = {};
+        const user = this.state.user;
+		// toggle the state for the particular field 
+		if (field === "owner") {
+            roleSelect = {owner: true, artist: false};
+            user.role = "owner";
+        } else if (field === "artist") {
+            roleSelect = {owner: false, artist: true};
+            user.role = "artist";
+        }
+		
+		// reset the state 
+        this.setState({
+            roleSelect,
+            user
+        });
+	}
 
     // Render the component.
     /*
@@ -127,6 +140,8 @@ class SignUpPage extends Component {
                 onChange={this.changeUser}
                 errors={this.state.errors}
                 user={this.state.user}
+                toggleRole={this.toggleRole}
+                roleSelect={this.state.roleSelect}
             />
         );
     }

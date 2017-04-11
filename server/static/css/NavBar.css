@@ -5,11 +5,11 @@
     padding-right:20px;
 }
 
+.nav-bar {
+    margin: 0px;
+}
+
 .event-tab-row {
 	padding: 0;
 	
-}
-
-.hover:hover .seperator{
-	 background-color: #4527a0;
 }

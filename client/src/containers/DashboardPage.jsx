@@ -27,7 +27,6 @@ class DashboardPage extends Component {
 
     // render the component
     render() {
-        // e.g. console.log("Test asdf:", this.props.asdf) // -> "Test asdf: 123"
         return (
             <Dashboard 
                 children={this.props.children}

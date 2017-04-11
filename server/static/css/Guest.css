@@ -1,0 +1,7 @@
+.guest--td{
+  color: white;
+}
+
+.guest--td > p {
+  line-height: 0;
+}
