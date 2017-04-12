@@ -19,6 +19,29 @@ const smtpTransport = nodemailer.createTransport({
     }
 });
 
+// email route 
+// sending automatic email with nodemailer for a created guest
+router.post("/email", (req, res) => {  // send an email message.
+    // creating the message 
+    let mailOptions={
+        to: req.body.to,
+        subject: req.body.subject,
+        text: req.body.text
+    }
+    console.log("received api/email POST request. Mail options:", mailOptions);
+    
+    //sending the message using smtpTransport
+    smtpTransport.sendMail(mailOptions, (error, response) => {
+        if(error){
+            console.log(error);
+            res.status(500).json({error: error});
+        }else{
+            console.log("email sent.", response);
+            res.status(200).json({message: "email successfully sent", details: response});
+        }
+    });
+});
+
 // 'VENUE' CRUD ROUTES 
 // venue route - get all info on a venue by owner (user) id 
 router.get("/venue/:user_id", (req, res) => {
@@ -191,25 +214,6 @@ router.post("/guest", (req, res) => {
             };
         // if no errors.
         } else {
-            /* send an email message. note: put in its own route  
-            // sending automatic email with nodemailer for a created guest
-            // creating the message 
-            const mailOptions={
-                to: doc.email,
-                subject: " You have been invited to event ",
-                text: " This the Text of your invite this should have all the information reguarding the show "
-            }
-            //sending the message using smtpTransport
-            smtpTransport.sendMail(mailOptions, function(error, response){
-                if(error){
-                    console.log(error);
-                    res.end("error");
-                }else{
-                    console.log("Message sent : " + response.message);
-                }
-            });
-            */
-
             //push this guest id to the event as a guest 
             Event.findOneAndUpdate(
                 {"_id": req.body.eventId},
@@ -218,7 +222,6 @@ router.post("/guest", (req, res) => {
                 },
                 {new:true},
                 function(error, document){
-                    console.log(document + "guests events doc");
                     if (error){
                         res.send(error);
                     } else {
