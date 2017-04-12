@@ -149,7 +149,7 @@ class AddGuest extends Component {
 		if (guest.supportThreeList) { 
 			text += "\n    - " + this.props.activeEvent.supportThree;
 		};
-		text += "\n\nThanks, and enjoy the show!\n\n - The Guestmate Team.";
+		text += "\n\nThanks, and enjoy the show!\n\n - The Guestmate Team";
 		// email the guest to tell them they are on the list 
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "/api/email");
