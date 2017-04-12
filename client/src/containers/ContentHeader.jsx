@@ -102,14 +102,12 @@ class ContentHeader extends Component {
                         Total guests:
                     </p>
                     {this.props.activeEvent.guests && <p>
-                        {/*{this.props.activeEvent.totalGuest} */}
                         {this.findTotalGuests()}
                     </p>}
                     <p>
                         Total checked in:
                     </p>
                     {this.props.activeEvent.guests && <p>
-                        {/*{this.props.activeEvent.totalChecked} */}
                         {this.findCheckedInGuests()}
                     </p>}
                 </div>
