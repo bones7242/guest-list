@@ -25,7 +25,7 @@ class NavBarHeader extends Component {
 						</Link>
 					</div>
 					<div className="row center-align">
-						<Link className="blue darken-1 btn waves-effect white-text waves-light hoverable" to={'/dash/add-event'}>ADD EVENT</Link>
+						<Link className="grey darken-1 btn waves-effect white-text waves-light hoverable" to={'/dash/add-event'}>ADD EVENT</Link>
 					</div>
 				</div>
 			</div>

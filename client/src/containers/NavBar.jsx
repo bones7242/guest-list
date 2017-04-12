@@ -24,8 +24,6 @@ class NavBar extends Component {
 						date={event.date} 
 						changeEvent={() => this.props.selectEvent(event)}
 					/>
-
-					
 				</div>
 			)
 		})

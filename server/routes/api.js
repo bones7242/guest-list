@@ -18,14 +18,12 @@ const smtpTransport = nodemailer.createTransport({
         pass:"CreateCreate"
     }
 });
-/* 
-api routes that require authentication go below
-*/
 
+// 'VENUE' CRUD ROUTES 
 // venue route - get all info on a venue by owner (user) id 
-router.get("/venue/:userId", (req, res) => {
-    console.log("received api/venue/:userid GET request for:", req.params.userId);
-    Venue.findOne({owner: req.params.userId}).
+router.get("/venue/:user_id", (req, res) => {
+    console.log("received api/venue/:user_id GET request for:", req.params.user_id);
+    Venue.findOne({owner: req.params.user_id}).
     populate({
             path: "events",
             populate: {
@@ -33,17 +31,38 @@ router.get("/venue/:userId", (req, res) => {
             }
         }
     ).
-    exec((err, venue) => {
+    exec((err, doc) => {
         // handle errors 
         if (err) {
-            res.json({message: err});
+            res.status(500).json({message: err});
         // if no errors 
         } else {
-            res.status(200).json({venue: venue});
+            res.status(200).json({venue: doc});
         };
     });
 }); 
+// venue route - update a venue  
+router.put("/venue", (req, res) => {
+    console.log("received api/venue PUT request", req.body);
+    // update the event record 
+    Venue.findOneAndUpdate(
+        {"_id": req.body._id},  // find using this filter 
+        {$set: req.body},  // make this update 
+        {
+            new: true // return updated rather than original doc 
+        },  
+        function(error, doc){
+            if (error){
+                res.status(500).json({message: error});
+            } else {
+                console.log("response from db", doc);
+                res.status(200).json({updatedEvent: doc}); 
+            };
+        }
+    );
+}); 
 
+// 'EVENT' CRUD ROUTES 
 // event route - create an event 
 router.post("/event", (req, res) => {
     console.log("received api/event POST request:", req.body);
@@ -51,8 +70,6 @@ router.post("/event", (req, res) => {
     const newEvent = new Event(req.body);
     // save the new event record 
     newEvent.save((err, doc) => {
-        //console.log("err:", err)
-        //console.log("doc:", doc)
         // handle errors with the save.
         if (err) { 
             //check to see if it is a duplicate code
@@ -80,8 +97,25 @@ router.post("/event", (req, res) => {
         };
     });    
 }); 
-
-// event route - get all events by venue id 
+// event route - read info for one event by that event's id 
+router.get("/event/one/:eventId", (req, res) => {
+    console.log("received api/event/one GET request:", req.params.eventId);
+    // finding all events where the venue matches the venueId, and populate the guests in the event 
+    Event.findOne({
+            _id: req.params.eventId
+        }).
+        populate("guests").
+        exec((err, docs) => {
+            // handle errors with the save.
+            if (err) { 
+                res.json({message: err})
+            // if no errors.
+            } else {
+                res.status(200).json({event: docs});
+            };
+        });    
+}); 
+// event route - read all events by venue id 
 router.get("/event/all/:venueId", (req, res) => {
     console.log("received api/event/all GET request:", req.params.venueId);
     // finding all events where the venue matches the venueId, and populate the guests in the event 
@@ -101,27 +135,6 @@ router.get("/event/all/:venueId", (req, res) => {
             };
         });    
 }); 
-
-// 'EVENT' CRUD ROUTES 
-// event route - get info for one event by that event's id 
-router.get("/event/one/:eventId", (req, res) => {
-    console.log("received api/event/one GET request:", req.params.eventId);
-    // finding all events where the venue matches the venueId, and populate the guests in the event 
-    Event.findOne({
-            _id: req.params.eventId
-        }).
-        populate("guests").
-        exec((err, docs) => {
-            // handle errors with the save.
-            if (err) { 
-                res.json({message: err})
-            // if no errors.
-            } else {
-                res.status(200).json({event: docs});
-            };
-        });    
-}); 
-
 // event route - update an event 
 router.put("/event/edit", (req, res) => {
     console.log("received api/event PUT request", req.body);
@@ -142,87 +155,6 @@ router.put("/event/edit", (req, res) => {
         }
     );
 }); 
-
-// event route - increment check-in counter 
-router.put("/event/counter/increment", (req, res) => {
-    console.log("received api/event/counter/increment PUT request", req.body);
-    // decide how much to incremenet 
-    const guestsToCheckIn = parseInt(req.body.plusOne) + 1;
-    console.log("guests to check in:", guestsToCheckIn);
-    // update the event record 
-    Event.findOneAndUpdate(
-        {"_id": req.body.eventId},
-        {
-            $inc: {"totalChecked": guestsToCheckIn},
-        },
-        { new: true },
-        function(eventError, eventDoc){
-            console.log("inc count return doc", eventDoc);
-            // handle errors 
-            if (eventError){
-                res.send(eventError);
-            // if successfull check in the guest 
-            } else {
-                Guest.findOneAndUpdate(
-                    {"_id": req.body.guestId},
-                    {
-                        $set: {"isCheckedIn": true}
-                    },
-                    { new: true},
-                    function(checkinError, checkinDoc){
-                        console.log("checkin doc", checkinDoc);
-                        if (checkinError){
-                            res.send(checkinError);
-                        } else {
-                            res.status(200).json({updatedEvent: eventDoc}); 
-                        }
-                    }
-                )
-            };
-        }
-    )
-});
-
-// event route - decrement check-in counter 
-router.put("/event/counter/decrement", (req, res) => {
-    console.log("received api/event/counter/decrement PUT request", req.body);
-    // decide how much to incremenet 
-    const guestsToCheckIn = -1 * (parseInt(req.body.plusOne) + 1);
-    console.log("guests to check in:", guestsToCheckIn);
-    // update the event record 
-    Event.findOneAndUpdate(
-        {"_id": req.body.eventId},
-        {
-            $inc: {"totalChecked": guestsToCheckIn},
-        },
-        { new: true},
-        function(eventError, eventDoc){
-            console.log("inc count return doc", eventDoc);
-            // handle errors 
-            if (eventError){
-                res.send(eventError);
-            // if successfull check in the guest 
-            } else {
-                Guest.findOneAndUpdate(
-                    {"_id": req.body.guestId},
-                    {
-                        $set: {"isCheckedIn": false}
-                    },
-                    { new: true},
-                    function(checkinError, checkinDoc){
-                        console.log("checkin doc", checkinDoc);
-                        if (checkinError){
-                            res.send(checkinError);
-                        } else {
-                            res.status(200).json({ updatedEvent: eventDoc }); 
-                        }
-                    }
-                )
-            }
-        }
-    )
-});
-
 // event route - delete an event by that event's id 
 router.delete("/event/:eventId", (req, res) => {
     console.log("received api/event/one GET request:", req.params.eventId);
@@ -259,34 +191,30 @@ router.post("/guest", (req, res) => {
             };
         // if no errors.
         } else {
+            /* send an email message. note: put in its own route  
             // sending automatic email with nodemailer for a created guest
-            //creating the message 
+            // creating the message 
             const mailOptions={
                 to: doc.email,
                 subject: " You have been invited to event ",
                 text: " This the Text of your invite this should have all the information reguarding the show "
             }
-            // console.log message 
-            console.log(mailOptions);
-            // sending the message using smtpTransport
-            // smtpTransport.sendMail(mailOptions, function(error, response){
-            //     if(error){
-            //         console.log(error);
-            //         res.end("error");
-            //     }else{
-            //         console.log("Message sent : " + response.message);
-            //     }
-            // });
+            //sending the message using smtpTransport
+            smtpTransport.sendMail(mailOptions, function(error, response){
+                if(error){
+                    console.log(error);
+                    res.end("error");
+                }else{
+                    console.log("Message sent : " + response.message);
+                }
+            });
+            */
 
-            // decide how many guests to add to the total 
-            const guestsToAdd = parseInt(req.body.plusOne) + 1;
-            console.log(guestsToAdd + "guests to add");
             //push this guest id to the event as a guest 
             Event.findOneAndUpdate(
                 {"_id": req.body.eventId},
                 {
-                    $push: {"guests": doc._id},
-                    $inc: {"totalGuest": guestsToAdd}
+                    $push: {"guests": doc._id}
                 },
                 {new:true},
                 function(error, document){
@@ -300,10 +228,8 @@ router.post("/guest", (req, res) => {
             )
         };
     });
-    
 }); 
-
-//route to get guest info for one guest by id
+//guest route - get guest info for one guest by id
 router.get("/guest/one/:guest_id", (req, res) => {
     console.log("received api/guest/one/:guest_id GET request for:", req.params.guest_id);
     Guest.findOne({_id: req.params.guest_id}, function(err, guestInfo){
@@ -313,10 +239,46 @@ router.get("/guest/one/:guest_id", (req, res) => {
             res.status(200).json(guestInfo);
         };
     })
-    
 }); 
-
-//route to update a guest by guest id
+// guest route - check in a guest 
+router.put("/guest/checkin", (req, res) => {
+    console.log("received api/guest/checkin PUT request", req.body);
+    Guest.findOneAndUpdate(
+        {"_id": req.body.guestId},
+        {
+            $set: {"isCheckedIn": true}
+        },
+        { new: true},
+        function(checkinError, checkinDoc){
+            console.log("checkin doc", checkinDoc);
+            if (checkinError){
+                res.status(500).json(checkinError);
+            } else {
+                res.status(200).json({updatedGuest: checkinDoc}); 
+            }
+        }
+    )
+});
+// guest route - check out a guest 
+router.put("/guest/checkout", (req, res) => {
+    console.log("received api/guest/checkout PUT request", req.body);          
+    Guest.findOneAndUpdate(  // check in the guest 
+        {"_id": req.body.guestId},
+        {
+            $set: {"isCheckedIn": false}
+        },
+        { new: true},
+        function(checkoutError, checkoutDoc){  // callback
+            console.log("checkout doc", checkoutDoc);
+            if (checkoutError){  // handle errors 
+                res.status(500).json(checkoutError);
+            } else { // if sucessfull, send response 
+                res.status(200).json({ updatedGuest: checkoutDoc }); 
+            }
+        }
+    )
+});
+//guest route - update a guest by guest id
 router.put("/guest/one", (req, res) => {
     console.log("received api/guest/one PUT request.");
     // update the guest record 
@@ -335,18 +297,15 @@ router.put("/guest/one", (req, res) => {
         }
     );
 }); 
-
-//route to update a guest by guest id
-router.delete("/guest/one/:guest_id", (req, res) => {
-    console.log("received api/guest/one DELETE request.");
-    // update the guest record 
+// guest route - delete a guest by guest id
+router.delete("/guest/one/:guest_id", function(req, res) {
+    console.log("received api/guest/one/:guest_id DELETE request.");
+    // remove the guest record 
     Guest.findByIdAndRemove(req.params.guest_id, (err, updatedGuestInfo) => {
-        // handle errors with the save.
-        if (err) { 
+        if (err) { // handle errors
             res.status(200).json({message: err})
-        // if no errors.
-        } else {
-            res.status(200).json({message: "event " + req.params.eventId + " successfully deleted."});
+        } else {  // if no errors.
+            res.status(200).json({message: "guest " + req.params.guest_id + " successfully deleted."});
         };
     }); 
 }); 

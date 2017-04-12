@@ -20,9 +20,6 @@ const EventSchema = new mongoose.Schema({
     supportOneAllotment: Number,
     supportTwoAllotment: Number,
     supportThreeAllotment: Number,
-    totalGuestOnList: Number,
-    totalGuest:Number,
-    totalChecked: Number,
     guests: [
         {
             type: mongoose.Schema.Types.ObjectId,

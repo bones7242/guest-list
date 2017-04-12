@@ -18,6 +18,8 @@ class ContentHeader extends Component {
 		super(props);
 		// bind this to functions in this component 
 		this.deleteEvent = this.deleteEvent.bind(this);
+        this.findTotalGuests = this.findTotalGuests.bind(this);
+        this.findCheckedInGuests = this.findCheckedInGuests.bind(this);
 	}
 
 	// helper method to delete the currently selected event.  if successful, it redirects the user to the dashboard.
@@ -39,6 +41,27 @@ class ContentHeader extends Component {
         });
         xhr.send();
     }
+    // helper function to tally all the guests and plus-ones for the event 
+    findTotalGuests(){
+        let guestsArray = this.props.activeEvent.guests;
+        let totalGuests = 0;
+        for (var i = 0; i < guestsArray.length; i++){
+            totalGuests += 1 + guestsArray[i].plusOne;
+        };
+        return totalGuests;
+    }
+    // helper function to tally all the guests and plus-ones for the event that have checked in 
+    findCheckedInGuests(){
+        let guestsArray = this.props.activeEvent.guests;
+        let totalCheckedInGuests = 0;
+        for (var i = 0; i < guestsArray.length; i++){
+            if (guestsArray[i].isCheckedIn === true){
+                totalCheckedInGuests += 1 + guestsArray[i].plusOne;
+            }
+        }
+        return totalCheckedInGuests;
+    }
+
     // render component.
     render(){
         // if this.props.book is null, return early
@@ -48,9 +71,6 @@ class ContentHeader extends Component {
         
         var newEventDate = new Date(this.props.activeEvent.date);
         var eventDate = newEventDate.toDateString();
-        //var eventTime = newEventDate.getFormattedTime();
-        //var eventDate = moment(newEventDate).format("dddd MMM Do YY");
-        //var eventTime = moment(newEventDate).format("h:mm a");
        
         return (
             <div className="row dashboard-header">
@@ -81,14 +101,14 @@ class ContentHeader extends Component {
                     <p className="event-stats-text">
                         Total guests:
                     </p>
-                    {this.props.activeEvent.totalGuest && <p>
-                        {this.props.activeEvent.totalGuest}
+                    {this.props.activeEvent.guests && <p>
+                        {this.findTotalGuests()}
                     </p>}
                     <p>
                         Total checked in:
                     </p>
-                    {this.props.activeEvent.totalChecked && <p>
-                        {this.props.activeEvent.totalChecked}
+                    {this.props.activeEvent.guests && <p>
+                        {this.findCheckedInGuests()}
                     </p>}
                 </div>
 
@@ -107,9 +127,7 @@ class ContentHeader extends Component {
 }
 
 function mapStateToProps(state) {
-
-	// whatever is returned will be mapped to the props of this component
-	return {
+	return {  // whatever is returned will be mapped to the props of this component
         venue: state.venue,
 		activeEvent: state.activeEvent
 	};

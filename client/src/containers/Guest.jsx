@@ -27,7 +27,7 @@ class Guest extends Component {
 
 	// helper method to update the event in the database.  if successfull, it tells redux to fetch the newest events list and activeEvent.  The user stays on this event page.
     checkInGuest(event){
-		// Prevent default action.  in this case, action is the form submission event.
+		// Prevent the default action (which is the form submission event)
         event.preventDefault();
 		
 		// create the update object 
@@ -40,9 +40,9 @@ class Guest extends Component {
 		// decide wheter to increment or decriment guests 
 		let queryUrl = "";
 		if (this.props.guest.isCheckedIn === false){
-			queryUrl = "/api/event/counter/increment";
+			queryUrl = "/api/guest/checkin";
 		} else {
-			queryUrl = "/api/event/counter/decrement";
+			queryUrl = "/api/guest/checkout";
 		}
 
         // add the new event to the mongo database 
@@ -58,7 +58,7 @@ class Guest extends Component {
 				// update the specific event in the "events"array in the application state
 				this.props.fetchEvents(this.props.activeEvent.venue, Auth.getToken());
             } else {
-				console.log("there was an error in updating the event. error message:", xhr.response.message)
+				console.log("there was an error in updating the event. error message:", xhr.response)
 				//alert("Event could not be updated.  Check the console logs.");
 			};
         });

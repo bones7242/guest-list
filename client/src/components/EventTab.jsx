@@ -15,7 +15,7 @@ const EventTab = ({headliner, date, changeEvent}) => {
 		<div className="row tab-event">
 			<div className="col s10">
 				<div className="row">
-					{ headliner && <h5 className="truncate tab-artist" ><Link onClick={changeEvent} to={'/dash/event'}>{headliner.toUpperCase()}</Link></h5> }
+					{ headliner && <h5 className="truncate tab-artist card-action" ><Link onClick={changeEvent} to={'/dash/event'}>{headliner.toUpperCase()}</Link></h5> }
 				</div>
 				<div className="row">
 					{ eventDate && <p className="tab-date">{eventDate}</p>}
