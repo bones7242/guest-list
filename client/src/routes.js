@@ -1,6 +1,6 @@
 
 import React, { PropTypes } from "react";
-import {Route, Router, hashHistory, IndexRoute, Redirect} from "react-router";
+import {Route, Router, browserHistory, IndexRoute, Redirect} from "react-router";
 
 import Auth from "./modules/Auth";
 
@@ -29,7 +29,7 @@ const myRoutes = (
     
     <Provider store={createStoreWithMiddleware(reducers)}>
 
-        <Router history={hashHistory}>
+        <Router history={browserHistory}>
             {/* main route */}
             <Route path="/" component={App}>
 

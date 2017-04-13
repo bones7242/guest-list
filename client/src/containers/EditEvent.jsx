@@ -65,7 +65,7 @@ class EditEvent extends Component {
 				// select the activeEvent in the application state 
 				this.props.selectEvent(xhr.response.updatedEvent);
                 // redirect to the dash, and have the dash select the newly created event for display
-				this.props.router.replace("/dash/event");
+				this.props.router.push("/dash/event");
 
             } else {
 				console.log("there was an error in creating the event. error:", xhr.response.message)
