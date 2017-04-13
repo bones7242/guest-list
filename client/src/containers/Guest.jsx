@@ -137,7 +137,7 @@ class Guest extends Component {
             if (xhr.status === 200) {
 				alert(this.props.guest.name + " has been emailed");
             } else {
-				console.log("there was an error in emailing the guest. error:", xhr.response.message, xhr.response.details)
+				console.log("there was an error in emailing the guest. error:", xhr.response)
 			};
         });
         xhr.send(JSON.stringify({
@@ -172,8 +172,6 @@ class Guest extends Component {
 	}
 
 	render(){
-		
-		//otherwise...
 		return (
 			<tr className={"bordered " + this.backgroundColor()}>
 

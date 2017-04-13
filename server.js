@@ -28,8 +28,7 @@ app.use(bodyParser.json());
 // Pass the passport middleware.
 
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || "development";
-
+var env = process.env.NODE_ENV || "development";
 
 
 app.use(passport.initialize());
