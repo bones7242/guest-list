@@ -41,6 +41,7 @@ class AddGuest extends Component {
 		this.processGuestForm = this.processGuestForm.bind(this);
 		this.toggleInput = this.toggleInput.bind(this);
 		this.createNewGuest = this.createNewGuest.bind(this);
+		this.emailGuest = this.emailGuest.bind(this);
     }
 
 	// event handler for input elements.  This takes the input and inserts it into the state using the 'name' of the element that triggered it as the key.
@@ -77,6 +78,10 @@ class AddGuest extends Component {
         // Prevent default action.  in this case, action is the form submission event.
         event.preventDefault();
 		// do basic front-end checks to make sure form was filled out correctly
+		if (this.state.newGuest.email === ""){
+			alert("No email provided.  This guest will not be notified that they are on the guest list for this show.")
+		};
+		// create a newGuest object out of the state & add the activeEvent id
 		const newGuest = this.state.newGuest;
 		newGuest.eventId = this.props.activeEvent._id;
 		//create the event
@@ -94,20 +99,76 @@ class AddGuest extends Component {
         xhr.responseType = "json";
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
-				//alert("Guest was successfully added :)");
+				// send email to the new gues
+				this.emailGuest(newGuest);
 				// update the "active event"" in the application state
 				this.props.refreshActiveEvent(this.props.activeEvent._id, Auth.getToken());
-				// update the specific event in the "events"array in the applicaiton state  
+				// update the specific event in the "events" array in the application state  
 				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
                 // redirect to the dash, and have the dash select the newly created event for display
 				this.props.router.replace("/dash/event");
-
             } else {
 				console.log("there was an error in creating the guest. error:", xhr.response.message)
 			};
         });
         xhr.send(JSON.stringify(newGuest));
     }
+
+	emailGuest(guest){
+		// exit the function if no email address was provided 
+		if (guest.email === ""){
+			return;
+		};
+		// create the email message components 
+		let to = guest.email;
+		let subject = "You're on the list for " + this.props.activeEvent.headliner + " at " + this.props.venue.name;
+		let text = "Hi " + guest.name + "!  \n\n" + this.props.venue.name + " has added you to the guest list for the " + this.props.activeEvent.headliner + " show on " + this.props.activeEvent.date + " at " + this.props.activeEvent.time + " " + this.props.activeEvent.am_pm + "\n\nYour details are as follows:";
+		text += "\n + Name: " + guest.name;
+		if (guest.affiliation !== "") {
+			text += "\n + Affiliation: " + guest.affiliation;
+		};
+		text += "\n + Plus Ones: " + guest.plusOne;
+		text += "\n + Credential(s): ";
+		if (guest.vip) { text += "\n    - VIP"};
+		if (guest.allAccess) { text += "\n    - All Access"};
+		if (guest.press) { text += "\n    - Press"};
+		if (guest.photo) { text += "\n    - Photo"};
+		text += "\n + Guest List(s): ";
+		if (guest.houseList) { 
+			text += "\n    - House List";
+		};
+		if (guest.headlinerList) { 
+			text += "\n    - " + this.props.activeEvent.headliner;
+		};
+		if (guest.supportOneList) { 
+			text += "\n    - " + this.props.activeEvent.supportOne;
+		};
+		if (guest.supportTwoList) { 
+			text += "\n    - " + this.props.activeEvent.supportTwo;
+		};
+		if (guest.supportThreeList) { 
+			text += "\n    - " + this.props.activeEvent.supportThree;
+		};
+		text += "\n\nThanks, and enjoy the show!\n\n - The Guestmate Team";
+		// email the guest to tell them they are on the list 
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/email");
+        xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.responseType = "json";
+        xhr.addEventListener("load", () => {
+            if (xhr.status === 200) {
+				console.log(guest.name + " has been emailed")
+            } else {
+				console.log("there was an error in emailing the guest. error:", xhr.response.message, xhr.response.details)
+			};
+        });
+        xhr.send(JSON.stringify({
+			to: to,
+			subject: subject,
+			text: text
+		}));
+	}
 
 	// render the component 
 	render() {

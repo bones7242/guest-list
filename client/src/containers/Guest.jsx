@@ -23,6 +23,7 @@ class Guest extends Component {
 		this.checkInGuest = this.checkInGuest.bind(this);
 		this.editGuest = this.editGuest.bind(this);
 		this.deleteGuest = this.deleteGuest.bind(this);
+		this.emailGuest = this.emailGuest.bind(this);
 	}
 
 	// helper method to update the event in the database.  if successfull, it tells redux to fetch the newest events list and activeEvent.  The user stays on this event page.
@@ -89,6 +90,63 @@ class Guest extends Component {
         xhr.send();
 	}
 
+	emailGuest(){
+		// exit the function if no email address was provided 
+		if (this.props.guest.email === ""){
+			alert("there is no email on file for this guest");
+			return;
+		};
+		// create the email message components 
+		let to = this.props.guest.email;
+		let subject = "You're on the list for " + this.props.activeEvent.headliner + " at " + this.props.venue.name;
+		let text = "Hi " + this.props.guest.name + "!  \n\n" + this.props.venue.name + " has added you to the guest list for the " + this.props.activeEvent.headliner + " show on " + this.props.activeEvent.date + " at " + this.props.activeEvent.time + " " + this.props.activeEvent.am_pm + "\n\nYour details are as follows:";
+		text += "\n + Name: " + this.props.guest.name;
+		if (this.props.guest.affiliation !== "") {
+			text += "\n + Affiliation: " + this.props.guest.affiliation;
+		};
+		text += "\n + Plus Ones: " + this.props.guest.plusOne;
+		text += "\n + Credential(s): ";
+		if (this.props.guest.vip) { text += "\n    - VIP"};
+		if (this.props.guest.allAccess) { text += "\n    - All Access"};
+		if (this.props.guest.press) { text += "\n    - Press"};
+		if (this.props.guest.photo) { text += "\n    - Photo"};
+		text += "\n + Guest List(s): ";
+		if (this.props.guest.houseList) { 
+			text += "\n    - House List";
+		};
+		if (this.props.guest.headlinerList) { 
+			text += "\n    - " + this.props.activeEvent.headliner;
+		};
+		if (this.props.guest.supportOneList) { 
+			text += "\n    - " + this.props.activeEvent.supportOne;
+		};
+		if (this.props.guest.supportTwoList) { 
+			text += "\n    - " + this.props.activeEvent.supportTwo;
+		};
+		if (this.props.guest.supportThreeList) { 
+			text += "\n    - " + this.props.activeEvent.supportThree;
+		};
+		text += "\n\nThanks, and enjoy the show!\n\n - The Guestmate Team";
+		// email the guest to tell them they are on the list 
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/email");
+        xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.responseType = "json";
+        xhr.addEventListener("load", () => {
+            if (xhr.status === 200) {
+				alert(this.props.guest.name + " has been emailed");
+            } else {
+				console.log("there was an error in emailing the guest. error:", xhr.response)
+			};
+        });
+        xhr.send(JSON.stringify({
+			to: to,
+			subject: subject,
+			text: text
+		}));
+	}
+
 	myColor(){
 		if (this.props.guest.isCheckedIn === true) { 
 			return "grey darken-2";
@@ -114,13 +172,18 @@ class Guest extends Component {
 	}
 
 	render(){
-		
-		//otherwise...
+		// check to make sure a venue is in the props.
+		if (!this.props.guest){
+			return (
+				<DefaultSplash message="Loading guest" />
+			)
+		}
+		// otherwise render the component 
 		return (
 			<tr className={"bordered " + this.backgroundColor()}>
 
-				<td className="guest--td">
-					{this.props.guest.name.toUpperCase()}
+				<td className="guest--td guest-name">
+					{this.props.guest.name && this.props.guest.name.toUpperCase()}
 				</td>
 
 				<td className="guest--td">
@@ -151,6 +214,9 @@ class Guest extends Component {
 				</td>
 
 				<td className="guest--td right-align">
+					<Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" onClick={this.emailGuest}> 
+						<i className="material-icons">email</i>
+					</Link>
 					<Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" onClick={this.editGuest} to="/dash/edit-guest"> 
 						<i className="material-icons">mode_edit</i>
 					</Link>
@@ -168,6 +234,7 @@ function mapStateToProps(state) {
 	// whatever is returned will be mapped to the props of this component
 	return {
 		activeEvent: state.activeEvent,
+		venue: state.venue,
 	};
 }
 

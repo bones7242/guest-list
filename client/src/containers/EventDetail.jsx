@@ -83,16 +83,13 @@ class EventDetail extends Component {
 		// otherwise render full page... 
 		return (
 			<div className="row">
-				<div className="col s12 m12 l12">
-					
+				<div className="col s12 m12 l12">				
 					{/*event details header*/}
 					<ContentHeader onChangeSearchTerm />
 					{/*end of event details header*/}
-
 					{/*search bar*/}
 					<SearchBar onChangeSearchTerm={this.props.onChangeSearchTerm} />
 					{/*end of search bar*/}
-
 					{/*guest details*/}
 					<div className="row">
 						<div className="col s12 m12 l12">
@@ -104,17 +101,15 @@ class EventDetail extends Component {
 										<th >Plus-One</th>
 										<th >Access Type</th>
 										<th >List</th>
-										<th className="center-align">In/Out</th>					
-										<th className="right-align">Edit</th>
+										<th className="center-align">In/Out</th>	
+										<th className="right-align">Tools</th>
 									</tr>
-									
 									{this.renderList(this.props.searchTerm)}
 								</tbody>
 							</table>
 						</div>
 					</div>
 					{/*end of guest details*/}
-
 				</div>
 			</div>
 		);
