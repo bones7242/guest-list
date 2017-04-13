@@ -89,12 +89,12 @@ class ContentHeader extends Component {
 
                 <div className="col s4 m4 l3 header--support">
                     { this.props.activeEvent.supportOne && 
-                        <div><p className="support-text"><i>with</i></p>
-                        <h5>{this.props.activeEvent.supportOne}</h5> </div>}
+                        <div><p className="support-text"><i>With:</i></p>
+                        <h5 className="support-name">{this.props.activeEvent.supportOne}</h5> </div>}
                     { this.props.activeEvent.supportTwo && 
-                        <h5>{this.props.activeEvent.supportTwo}</h5> }
+                        <h5 className="support-name">{this.props.activeEvent.supportTwo}</h5> }
                     { this.props.activeEvent.supportThree && 
-                        <h5>{this.props.activeEvent.supportThree}</h5> }
+                        <h5 className="support-name">{this.props.activeEvent.supportThree}</h5> }
                 </div>
 
                 <div className="col s3 m3 l3 header--event-stats">

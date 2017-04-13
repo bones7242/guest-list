@@ -172,11 +172,18 @@ class Guest extends Component {
 	}
 
 	render(){
+		// check to make sure a venue is in the props.
+		if (!this.props.guest){
+			return (
+				<DefaultSplash message="Loading guest" />
+			)
+		}
+		// otherwise render the component 
 		return (
 			<tr className={"bordered " + this.backgroundColor()}>
 
 				<td className="guest--td guest-name">
-					{this.props.guest.name.toUpperCase()}
+					{this.props.guest.name && this.props.guest.name.toUpperCase()}
 				</td>
 
 				<td className="guest--td">
