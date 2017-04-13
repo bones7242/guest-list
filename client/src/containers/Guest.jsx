@@ -175,7 +175,7 @@ class Guest extends Component {
 		return (
 			<tr className={"bordered " + this.backgroundColor()}>
 
-				<td className="guest--td">
+				<td className="guest--td guest-name">
 					{this.props.guest.name.toUpperCase()}
 				</td>
 

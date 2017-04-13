@@ -6,6 +6,10 @@
   line-height: 0;
 }
 
+.guest-name {
+  padding-left: 5px;
+}
+
 .bordered {
 	border-bottom: 1px solid white;
 }
