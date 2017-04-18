@@ -20,4 +20,8 @@ module.exports.connect = (uri) => {
 
     // Load models.
     require("./user");
+    require("./venue");
+    require("./artist");
+    require("./event");
+    require("./guest");
 }

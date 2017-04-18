@@ -4,15 +4,9 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const config = require("./config");
 
-
 // Connect to the database and load models.
-var mongoose = require("mongoose");
-mongoose.connect(config.dbUri); 
-require("./server/models/user");
-require("./server/models/venue");
-require("./server/models/artist");
-require("./server/models/event");
-require("./server/models/guest");
+require("./server/models").connect(config.dbUri); 
+
 
 // Define variable to hold express.
 const app = express();
