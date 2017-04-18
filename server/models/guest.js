@@ -2,7 +2,7 @@
 //Added houseList - SupportThreeList Boolean values - Lou
 const mongoose = require("mongoose");
 
-console.log("loading Event schema");
+console.log("loading Guest schema");
 
 // define the User model schema
 const GuestSchema = new mongoose.Schema({

@@ -47,7 +47,6 @@ class EditEvent extends Component {
 		const updatedEvent = this.state.updatedEvent;
 		//create the event
 		this.updateEvent(updatedEvent);
-        
     }
 
 	// this custom method will create the event in the database.  if successful, it redirects the user to the dashboard.
@@ -60,7 +59,7 @@ class EditEvent extends Component {
         xhr.responseType = "json";
         xhr.addEventListener("load", () => {
             if (xhr.status === 200) {
-				// update the events in the applicaiton state
+				// update the events in the application state
 				this.props.fetchEvents(this.props.venue._id, Auth.getToken());
 				// select the activeEvent in the application state 
 				this.props.selectEvent(xhr.response.updatedEvent);

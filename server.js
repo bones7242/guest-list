@@ -14,10 +14,7 @@ require("./server/models/artist");
 require("./server/models/event");
 require("./server/models/guest");
 
-
-//mongoose.connect('mongodb://<lkane>:<adminadmin>@ds141490.mlab.com:41490/guestmate'); 
-
-// Define variable to hold express().
+// Define variable to hold express.
 const app = express();
 // Tell app to look for static files in the below directories .
 app.use(express.static("./server/static/"));
@@ -26,14 +23,7 @@ app.use(express.static("./client/dist/"));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 // Pass the passport middleware.
-
-
-var env = process.env.NODE_ENV || "development";
-
-
 app.use(passport.initialize());
-
-
 
 // Load passport strategies.
 const localSignupStrategy = require("./server/passport/local-signup");
@@ -42,8 +32,7 @@ passport.use("local-signup", localSignupStrategy);
 passport.use("local-login", localLoginStrategy);
 
 // pass the authentication checker middleware.
-// we puth this here so that we can be sure that the middleware function will be executed before proceeding to any /api routes below.
-const authCheckMiddleware = require("./server/middleware/auth-check");
+const authCheckMiddleware = require("./server/middleware/auth-check"); // we puth this here so that we can be sure that the middleware function will be executed before proceeding to any /api routes below.
 app.use("/api", authCheckMiddleware);
 
 // Routes.
