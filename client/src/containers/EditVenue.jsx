@@ -1,19 +1,17 @@
+/* This component will be rendered in the content container depending on the route.  It will import the venue's current information and provide functionality to update that information. */
+
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
-
-import Auth from "../modules/Auth"; //added by lou
-
+import Auth from "../modules/Auth"; 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-
 import DefaultSplash from "../components/DefaultSplash.jsx";
 
 class EditVenue extends Component {
-	// constructor is called whenever a new instance of the class is created
 	constructor(props) {
-		// super is calling the parent's method "props" (i think to pass them down)
+		// recieve props
         super(props); 
-		// add default values for optional fields, like 'support's, when setting the initial state
+		// add current values for fields when setting the initial state
         this.state = {
             updatedVenue: this.props.venue
         };
@@ -30,7 +28,7 @@ class EditVenue extends Component {
             updatedVenue
         });
 	}
-	// this custom method will trigger when the submit button is clicked.  it will check the inputs for errors and then initiate the create guest method to actually create the guest.
+	// this custom method will trigger when the submit button is clicked.  it will check the form inputs for errors on the client side and then make the ajax call to update the venue.  If successfull, it will re-route the user to the dashboard.
 	processForm(event) {
         // Prevent default action.  in this case, action is the form submission event.
         event.preventDefault();
@@ -44,7 +42,9 @@ class EditVenue extends Component {
 			state: this.state.updatedVenue.state,
 			zip: this.state.updatedVenue.zip
 		}
-		// validate inputs
+		/* validate inputs 
+			// front-end validation here 
+		*/
 
         // add the new event to the mongo database 
         const xhr = new XMLHttpRequest();
@@ -57,7 +57,6 @@ class EditVenue extends Component {
 				console.log("venue update succeeded");
                 // redirect to the dash, and have the dash display the active event
 				this.props.router.replace("/dash");
-
             } else {
 				console.log("there was an error in updating the guest. error:", xhr.response.message)
 			};
@@ -91,37 +90,35 @@ class EditVenue extends Component {
 						<div className="row">					
 							<div className=" col s12">
 								<label htmlFor="name">Name</label>
-								<input id="name"  name="name" type="text" value={this.state.updatedVenue.name} onChange={this.handleInputChange}></input>								
+								<input id="name"  name="name" type="text" value={this.state.updatedVenue.name} onChange={this.handleInputChange}></input>
 							</div>
 						</div>
 						{/*second row*/}
 						<div className="row">					
 							<div className=" col s6">
 								<label htmlFor="addressOne">Address 1</label>
-								<input id="addressOne"  name="addressOne" type="text" value={this.state.updatedVenue.addressOne} onChange={this.handleInputChange}></input>								
+								<input id="addressOne"  name="addressOne" type="text" value={this.state.updatedVenue.addressOne} onChange={this.handleInputChange}></input>
 							</div>
 							<div className=" col s6">
 								<label htmlFor="addressTwo">Address 2</label>
 								<input id="addressTwo"  name="addressTwo" type="text" value={this.state.updatedVenue.addressTwo} onChange={this.handleInputChange}></input>
 							</div>
 						</div>
-						{/* third row */}
 						<div className="row">
 							<div className="col s6">
 								<label htmlFor="city">City</label>
-								<input  id="city" name="city"  type="text" value={this.state.updatedVenue.city} onChange={this.handleInputChange}></input>								
+								<input  id="city" name="city"  type="text" value={this.state.updatedVenue.city} onChange={this.handleInputChange}></input>
 							</div>					
 							<div className="col s2">
 								<label htmlFor="state">State</label>
-								<input  id="state" name="state"  type="text" value={this.state.updatedVenue.state} onChange={this.handleInputChange}></input>										
+								<input  id="state" name="state"  type="text" value={this.state.updatedVenue.state} onChange={this.handleInputChange}></input>
 							</div>
-							
 							<div className="col s4">
 								<label htmlFor="zip">Zip</label>
-								<input  id="zip" name="zip"  type="number" value={this.state.updatedVenue.zip} onChange={this.handleInputChange}></input>					
-							</div> 	
+								<input  id="zip" name="zip"  type="number" value={this.state.updatedVenue.zip} onChange={this.handleInputChange}></input>
+							</div> 
 						</div>
-					</form>		
+					</form>
 					{/*buttons */}
 					<div className="row">
 						<div className="col s6 right-align" >
@@ -130,10 +127,8 @@ class EditVenue extends Component {
 						<div className="col s6 left-align" >
 							<button type="submit" form="update-venue-form" className="blue accent-2 waves-effect waves-teal btn hoverable center">Submit</button>
 						</div>
-					</div>				
-
+					</div>
 				</div>
-
 			</div>
 		);
 	}

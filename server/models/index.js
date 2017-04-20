@@ -1,5 +1,4 @@
 // this module will hold the database connection
-
 const mongoose = require("mongoose");
 
 module.exports.connect = (uri) => {
@@ -7,7 +6,6 @@ module.exports.connect = (uri) => {
     mongoose.connect(uri);
     // plug in the promise library.
     mongoose.Promise = global.Promise;  //Note: replace with bluebird
-
     // check for connection error
     mongoose.connection.on("error", (err) => {
         console.error(`Mongoose connection error: ${err}`);
@@ -17,8 +15,7 @@ module.exports.connect = (uri) => {
     mongoose.connection.once("open", () => {
         console.log("Mongoose connection successful.");
     })
-
-    // Load models.
+    // Load models
     require("./user");
     require("./venue");
     require("./artist");

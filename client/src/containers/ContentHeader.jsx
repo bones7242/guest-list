@@ -1,3 +1,5 @@
+/* This Container will be displayed at the top of the content component.  It will contain all the information for the event that is currently selected. */
+
 // react 
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
@@ -16,12 +18,11 @@ class ContentHeader extends Component {
     constructor(props){
 		// get parent props 
 		super(props);
-		// bind this to functions in this component 
+		// bind this to methods in this container 
 		this.deleteEvent = this.deleteEvent.bind(this);
         this.findTotalGuests = this.findTotalGuests.bind(this);
         this.findCheckedInGuests = this.findCheckedInGuests.bind(this);
 	}
-
 	// helper method to delete the currently selected event.  if successful, it redirects the user to the dashboard.
     deleteEvent(event){
         const xhr = new XMLHttpRequest();
@@ -68,13 +69,11 @@ class ContentHeader extends Component {
         if (!this.props.activeEvent) {
           return <DefaultSplash message="Select an event to get started" />;
         }
-        
+        // otherwise render the full container
         var newEventDate = new Date(this.props.activeEvent.date);
         var eventDate = newEventDate.toDateString();
-       
         return (
             <div className="row dashboard-header">
-                
                 <div className="col s4 m4 l4 header--headliner ">
                     { this.props.activeEvent.headliner && <h2 className="headliner-text">
                         {this.props.activeEvent.headliner.toUpperCase()}
@@ -86,7 +85,6 @@ class ContentHeader extends Component {
                         {this.props.activeEvent.time + " " + this.props.activeEvent.am_pm}
                     </p> }
                 </div>
-
                 <div className="col s4 m4 l3 header--support">
                     { this.props.activeEvent.supportOne && 
                         <div><p className="support-text"><i>With:</i></p>
@@ -96,7 +94,6 @@ class ContentHeader extends Component {
                     { this.props.activeEvent.supportThree && 
                         <h5 className="support-name">{this.props.activeEvent.supportThree}</h5> }
                 </div>
-
                 <div className="col s3 m3 l3 header--event-stats">
                     <p className="event-stats-text">
                         Total guests:
@@ -111,7 +108,6 @@ class ContentHeader extends Component {
                         {this.findCheckedInGuests()}
                     </p>}
                 </div>
-
                 <div className="col s2 m2 l2 right-align">
                     <Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" to="/dash/edit-event">
                         <i className="material-icons">mode_edit</i>
@@ -120,14 +116,13 @@ class ContentHeader extends Component {
                         <i className="material-icons">delete</i>
                     </Link>
                 </div>
-                
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-	return {  // whatever is returned will be mapped to the props of this component
+	return {
         venue: state.venue,
 		activeEvent: state.activeEvent
 	};
