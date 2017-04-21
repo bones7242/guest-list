@@ -1,3 +1,6 @@
+
+/* This container will be rendered in the EventDetail container.  One Guest container will be rendered for each guest on the guest list. */
+
 // react
 import React, { PropTypes, Component } from 'react';
 import { Link } from "react-router";
@@ -8,8 +11,6 @@ import { refreshActiveEvent, fetchEvents, refreshActiveGuest } from "../actions/
 // methods 
 import Auth from "../modules/Auth";
 
-const Promise = require("bluebird");
-
 class Guest extends Component {
 	constructor(props){
 		// get parent props 
@@ -18,26 +19,22 @@ class Guest extends Component {
 		this.state = {
 			checkedIn: this.props.guest.isCheckedIn
 		}
-		
 		// bind this to functions in this component 
 		this.checkInGuest = this.checkInGuest.bind(this);
 		this.editGuest = this.editGuest.bind(this);
 		this.deleteGuest = this.deleteGuest.bind(this);
 		this.emailGuest = this.emailGuest.bind(this);
 	}
-
 	// helper method to update the event in the database.  if successfull, it tells redux to fetch the newest events list and activeEvent.  The user stays on this event page.
     checkInGuest(event){
 		// Prevent the default action (which is the form submission event)
         event.preventDefault();
-		
 		// create the update object 
 		const checkInObject = {
 			guestId: this.props.guest._id,
 			eventId: this.props.guest.eventId,
 			plusOne: this.props.guest.plusOne,
 		}
-
 		// decide wheter to increment or decriment guests 
 		let queryUrl = "";
 		if (this.props.guest.isCheckedIn === false){
@@ -45,7 +42,6 @@ class Guest extends Component {
 		} else {
 			queryUrl = "/api/guest/checkout";
 		}
-
         // add the new event to the mongo database 
         const xhr = new XMLHttpRequest();
         xhr.open("PUT", queryUrl);
@@ -60,17 +56,16 @@ class Guest extends Component {
 				this.props.fetchEvents(this.props.activeEvent.venue, Auth.getToken());
             } else {
 				console.log("there was an error in updating the event. error message:", xhr.response)
-				//alert("Event could not be updated.  Check the console logs.");
 			};
         });
         xhr.send(JSON.stringify(checkInObject)); //note: stringify an issue for numbers?
     }
-
+	// helper method to referesh the "active"" guest in the application state 
 	editGuest(){
 		//refresh the active event 
 		this.props.refreshActiveGuest(this.props.guest._id, Auth.getToken())
 	}
-
+	// helper method to delete a guest 
 	deleteGuest(){
 		const xhr = new XMLHttpRequest();
         xhr.open("DELETE", "/api/guest/one/" + this.props.guest._id);
@@ -89,7 +84,7 @@ class Guest extends Component {
         });
         xhr.send();
 	}
-
+	// helper method to build and send an email to a guest 
 	emailGuest(){
 		// exit the function if no email address was provided 
 		if (this.props.guest.email === ""){
@@ -181,26 +176,21 @@ class Guest extends Component {
 		// otherwise render the component 
 		return (
 			<tr className={"bordered " + this.backgroundColor()}>
-
 				<td className="guest--td guest-name">
 					{this.props.guest.name && this.props.guest.name.toUpperCase()}
 				</td>
-
 				<td className="guest--td">
 					{this.props.guest.affiliation}
 				</td>
-
 				<td className="guest--td">
 					{this.props.guest.plusOne}
 				</td>
-
 				<td className="guest--td">
 					{this.props.guest.vip && <p>VIP</p>}
 					{this.props.guest.allAccess && <p>All Access</p>}
 					{this.props.guest.photoPass && <p>Photo Pass</p>}
 					{this.props.guest.pressPass && <p>Press Pass</p>}
 				</td>
-
 				<td className="guest--td">
 					{this.props.guest.houseList && <p>House</p>}
 					{this.props.guest.headlinerList && <p>{this.props.activeEvent.headliner}</p>}
@@ -208,11 +198,9 @@ class Guest extends Component {
 					{this.props.guest.supportTwoList && <p>{this.props.activeEvent.supportTwo}</p>}
 					{this.props.guest.supportThreeList && <p>{this.props.activeEvent.supportThree}</p>}
 				</td>
-
 				<td className="guest--td center-align">
 					<button className={"waves-effect waves-light btn small hoverable " + this.myColor()} onClick={this.checkInGuest}>{this.myText()}</button>
 				</td>
-
 				<td className="guest--td right-align">
 					<Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" onClick={this.emailGuest}> 
 						<i className="material-icons">email</i>
@@ -224,14 +212,12 @@ class Guest extends Component {
 						<i className="material-icons">delete</i>
 					</Link>
 				</td>
-
 			</tr>
 		);
 	}		
 }
 
 function mapStateToProps(state) {
-	// whatever is returned will be mapped to the props of this component
 	return {
 		activeEvent: state.activeEvent,
 		venue: state.venue,
