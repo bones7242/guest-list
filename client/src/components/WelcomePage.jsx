@@ -1,3 +1,5 @@
+/* This component will render inside the Content component, depending on the react-router route.  It will display a basic welcome message and introduction to the application. */
+
 import React from 'react';
 import { Link } from "react-router";
 
@@ -8,7 +10,6 @@ const WelcomePage = () => {
 				<div className="row">
 					<div className="col s12">
 						<h2 className="center" >Welcome to <i>Guestmate</i></h2>
-						
 					</div>
 				</div>
 				<div className="row" >
@@ -57,6 +58,5 @@ const WelcomePage = () => {
 		</div>
 	);
 }
-
 
 export default WelcomePage;

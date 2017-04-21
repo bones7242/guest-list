@@ -1,14 +1,10 @@
-/*
-This is the dashboard component.  It will be rendered inside the dashboard page.  
-It will render sub-components that have the nav and content our users want to see.
-*/
-import React, { PropTypes } from "react";
+/*  This component will be rendered inside the dashboard page.  It will render left-hand navbar and the main content component. */
 
+import React, { PropTypes } from "react";
 import NavBar from "../containers/NavBar.jsx";
 import Content from "./Content.jsx";
 
 const Dashboard = ({children}) => {
-    
     return (
         <div className="row dashboard">
             <div className="col s3 m3 l3 grey darken-3" style={{padding:"0px"}}>    

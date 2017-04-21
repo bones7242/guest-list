@@ -1,14 +1,13 @@
+/* This container will be rendered in the content component depending on the route, and it will contain all of the information needed to review and check in guests. */
+
 import React, { PropTypes, Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from "react-router";
-
 import Auth from "../modules/Auth";
-
 import ContentHeader from "./ContentHeader.jsx";
 import Guest from "./Guest.jsx";
 import SearchBar from "../components/SearchBar.jsx"; 
 import DefaultSplash from "../components/DefaultSplash.jsx";
-
 import { onChangeSearchTerm } from '../actions';
 
 class EventDetail extends Component {
@@ -16,8 +15,7 @@ class EventDetail extends Component {
 		// get parent props 
 		super(props);
 	}
-
-	// render guest helper function 
+	// helper function to render guest
 	renderList(term) {
 		if (!term || term === '') { 
 			return this.props.activeEvent.guests.map((guest, index) => {
@@ -125,7 +123,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-	// whatever is returned will be mapped to the props of this component
 	return {
 		activeEvent: state.activeEvent,
 		activeGuest: state.activeGuest,

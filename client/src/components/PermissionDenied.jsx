@@ -1,5 +1,6 @@
-import React, { PropTypes, Component } from 'react';
+/* This is a fallback component to render if a user tries to access a page without being properly authenticated or if they are not authorized. */
 
+import React, { PropTypes, Component } from 'react';
 
 const PermissionDenied = () => {
 	return (

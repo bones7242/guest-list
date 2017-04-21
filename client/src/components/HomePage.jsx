@@ -1,8 +1,6 @@
-import React from "react";
+/* This is the home page that will be displayed when a user arrives at the site before the user logs in or signs up. */
 
-/*
-This is the home page.  It is displayed when a user arrives at the site before the user logs in or signs up.
-*/
+import React from "react";
 
 const HomePage = () => {
     return (

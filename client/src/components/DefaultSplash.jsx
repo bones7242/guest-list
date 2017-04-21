@@ -1,10 +1,9 @@
 
-//	default element to display a message to the user 
+/* This component is a fallback component to be used when data is missing and we want to display a quick message to the user */
 
 import React, { PropTypes } from 'react';
 
 const DefaultSplash = ({message}) => {
-
 	return (
 		<div className="row ">
 			<div className="col s12 m12 l 12 valign-wrapper">

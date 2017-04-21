@@ -1,22 +1,19 @@
+/* This component will be rendered in the content container depending on the route.  It will import the event's current information and provide functionality to update that information. */
+
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
-
 import Auth from "../modules/Auth";
-
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchEvents, selectEvent } from "../actions/index";
-
 import ContentHeader from "./ContentHeader.jsx";
-
 import DefaultSplash from "../components/DefaultSplash.jsx";
 
 class EditEvent extends Component {
-	// constructor is called whenever a new instance of the class is created
-	constructor(props) {
-		// super is calling the parent's method "props" (i think to pass them down)
+	// constructor function. Called whenever a new instance of the class is created
+	constructor(props) { 
         super(props); 
-		// add default values for optional fields, like 'support's, when setting the initial state
+		// add current values for fields when setting the initial state
 		if (this.props.activeEvent){
 			this.state = {
 				updatedEvent: this.props.activeEvent
@@ -27,10 +24,8 @@ class EditEvent extends Component {
 		this.processEventForm = this.processEventForm.bind(this);
 		this.updateEvent = this.updateEvent.bind(this);
     }
-
 	// event handler for input elements.  This takes the input and inserts it into the state using the 'name' of the element that triggered it as the key.
 	handleInputChange(event) {
-		
 		const field = event.target.name;
         const updatedEvent = this.state.updatedEvent;
         updatedEvent[field] = event.target.value;
@@ -38,8 +33,7 @@ class EditEvent extends Component {
             updatedEvent
         });
 	}
-
-	// this custom method will trigger when the submit button is clicked.  it will check the inputs for errors and then initiate the create event method to actually create the event.
+	// this method will trigger when the submit button is clicked.  it will check the inputs for errors and then initiate the create event method to actually create the event.
 	processEventForm(event) {
         // Prevent default action.  in this case, action is the form submission event.
         event.preventDefault();
@@ -48,7 +42,6 @@ class EditEvent extends Component {
 		//create the event
 		this.updateEvent(updatedEvent);
     }
-
 	// this custom method will create the event in the database.  if successful, it redirects the user to the dashboard.
     updateEvent(updatedEvent){
         // add the new event to the mongo database 
@@ -65,14 +58,12 @@ class EditEvent extends Component {
 				this.props.selectEvent(xhr.response.updatedEvent);
                 // redirect to the dash, and have the dash select the newly created event for display
 				this.props.router.push("/dash/event");
-
             } else {
 				console.log("there was an error in creating the event. error:", xhr.response.message)
 			};
         });
         xhr.send(JSON.stringify(updatedEvent));
     }
-
 	// render the component 
 	render() {
 		// check to make sure a venue is in the props.
@@ -155,7 +146,6 @@ class EditEvent extends Component {
 }
 
 function mapStateToProps(state) {
-	// whatever is returned will be mapped to the props of this component
 	return {
 		venue: state.venue,
 		activeEvent: state.activeEvent

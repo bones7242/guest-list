@@ -1,26 +1,21 @@
-import React, { PropTypes } from "react";
-import { Link } from "react-router";
-
 /*
-This is the signup form that will be rendered inside of our signup page.  
+This is the signup form that will be rendered inside of our SignupPage container.  
 The form handles showing the fields and getting the user input and checking the input.
 */
+
+import React, { PropTypes } from "react";
+import { Link } from "react-router";
 
 const SignUpForm = ({onSubmit, onChange, errors, user, toggleRole, roleSelect}) => {
     return (
         <div className="row">
-            <div className="col s1 m3 l4">
-                {/*spacer*/}
-            </div>
-            
+            {/*spacer*/}
+            <div className="col s1 m3 l4"></div>
+            {/* main content */}
             <div className="col s8 m6 l4 center-align">                            
-
                 <form action="/" onSubmit={onSubmit} className="form--front-page">
-
                     <h2>Sign Up</h2>
-                
                     {errors.summary && <p className="error-message ">{errors.summary}</p>}
-
                    <div>
                         <label htmlFor="name" className="label--front-page">Name: </label>
                         <p className="error-message ">{errors.name}</p>
@@ -36,7 +31,6 @@ const SignUpForm = ({onSubmit, onChange, errors, user, toggleRole, roleSelect}) 
                         <p className="error-message">{errors.password}</p>
                         <input type="password" name="password" onChange={onChange} value={user.password} />
                     </div>
-
                     <div className="row role-selection">                           
                         <div className="col s12 m6">
                             <input className="list-radios" name="owner" type="radio" id="owner" onChange={toggleRole} checked={roleSelect.owner} />
@@ -47,7 +41,6 @@ const SignUpForm = ({onSubmit, onChange, errors, user, toggleRole, roleSelect}) 
                             <label htmlFor="artist">Artist (coming soon)</label>
                         </div>                            
                     </div>
-                    
                     {/* display additional questions below, depending on the role selected above */}
                     {(user.role === "artist") && <div>
                         <div>
@@ -79,13 +72,9 @@ const SignUpForm = ({onSubmit, onChange, errors, user, toggleRole, roleSelect}) 
                             <button type="submit" className="blue accent-2 waves-effect waves-light btn hoverable">Create New Account</button>
                         </div>
                     </div> }
-
                     <p className="help-message">Already have an account? <Link to={"/login"}>Log in</Link></p>
-
                 </form>
-            
             </div>
-        
         </div>
     );
 };

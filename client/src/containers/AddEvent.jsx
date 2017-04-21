@@ -1,22 +1,17 @@
-// react
+/* This container will display inside the content component.  It will provide the form and functionality for adding a new event. */
+
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
-// redux 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchEvents, selectEvent } from "../actions/index";
-// methods 
-import Auth from "../modules/Auth";
-// components
+import Auth from "../modules/Auth"; // import authentication methods 
 import DefaultSplash from "../components/DefaultSplash.jsx";
 
 class AddEvent extends Component {
-	// constructor is called whenever a new instance of the class is created
 	constructor(props) {
-		// super is calling the parent's method "props" (i think to pass them down)
         super(props); 
-		
-		// add default values for optional fields, like 'support's, when setting the initial state
+		// add default values for the input fields when setting the initial state
         this.state = {
             newEvent: {
 				venue: "",
@@ -35,15 +30,13 @@ class AddEvent extends Component {
 				totalChecked:0
 			}
         };
-
+		// bind 'this' to methods in this container 
         this.handleInputChange = this.handleInputChange.bind(this);
 		this.processEventForm = this.processEventForm.bind(this);
 		this.createNewEvent = this.createNewEvent.bind(this);
     }
-
-	// event handler for input elements.  This takes the input and inserts it into the state using the 'name' of the element that triggered it as the key.
+	// Event handler for input elements.  This takes the input and inserts it into the state using the name attr of the element that triggered it as the key.
 	handleInputChange(event){
-		
 		const field = event.target.name;
         const newEvent = this.state.newEvent;
         newEvent[field] = event.target.value;
@@ -51,8 +44,7 @@ class AddEvent extends Component {
             newEvent
         });
 	}
-
-	// this custom method will trigger when the submit button is clicked.  it will check the inputs for errors and then initiate the create event method to actually create the event.
+	// This method will trigger when the submit button is clicked.  It will check the inputs for errors and then initiate the createNewEVent method to actually create the event.
 	processEventForm(event) {
         // Prevent default action.  in this case, action is the form submission event.
         event.preventDefault();
@@ -61,12 +53,9 @@ class AddEvent extends Component {
 		newEvent.venue = this.props.venue._id;
 		//create the event
 		this.createNewEvent(newEvent);
-        
     }
-
-	// this custom method will create the event in the database.  if successful, it redirects the user to the dashboard.
+	// This method will create the event in the database.  If successful, it redirects the user to the dashboard.
     createNewEvent(newEvent){
-        // add the new event to the mongo database 
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "/api/event");
         xhr.setRequestHeader("Authorization", `bearer ${Auth.getToken()}`);
@@ -80,23 +69,21 @@ class AddEvent extends Component {
 				this.props.selectEvent(xhr.response.newEvent);
                 // redirect to the dash, and have the dash select the newly created event for display
 				this.props.router.replace("/dash/event");
-
             } else {				
 				console.log("Event could not be added.  Check the console logs");
 			};
         });
         xhr.send(JSON.stringify(newEvent));
     }
-
 	// render the component 
 	render() {
-		// check to make sure a venue is in the props.
+		// check to make sure a venue is in the props...
 		if (!this.props.venue){
 			return (
 				<DefaultSplash message="A venue must be selected before you can start adding events" />
 			)
 		}
-		// if a venue is in the props, show add-event form.
+		// if a venue is in the props, show the add-event form...
 		return (
 			<div className="row"> 
 				<div className=" col s12 m12 l12 add-event-form">
@@ -123,7 +110,6 @@ class AddEvent extends Component {
 								<input type="text" name="am_pm" value={this.state.newEvent.am_pm} onChange={this.handleInputChange}></input>
 							</div>	
 						</div>
-						
 						<div className="row" >						
 							<div className="input-field col s4">
 								<label htmlFor="supportOne">First Support</label>
@@ -138,7 +124,6 @@ class AddEvent extends Component {
 								<input name="supportThree"  type="text" className="validate" onChange={this.handleInputChange}></input>
 							</div>
 						</div>
-
 						<div className="row" >						
 							<div className="input-field col s3">
 								<label htmlFor="headlinerAllotment">Headliner Allotment</label>
@@ -157,9 +142,7 @@ class AddEvent extends Component {
 								<input name="supportThreeAllotment"  type="text" className="validate" onChange={this.handleInputChange}></input>
 							</div>
 						</div>
-						
 					</form>
-
 					{/*buttons*/}
 					<div className="row">
 						<div className="col s6 right-align" >
@@ -169,7 +152,6 @@ class AddEvent extends Component {
 							<button type="submit" form="new-event-form" className="blue accent-2 waves-effect waves-light btn hoverable center">Submit</button>			
 						</div>
 					</div>
-					
 				</div>
 			</div>
 		);
