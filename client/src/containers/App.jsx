@@ -1,16 +1,15 @@
-// Import dependencies.
+/* This container will hold the entire app.  It will render the top nav bar, as well as the HomePage/LoginPage/SignupPage/Dashboard as determined by the route*/
+
 import React from "react";
 import ReactDom from "react-dom";
-
 import TopNav from "../components/TopNav.jsx";
 
-// 1. Create the App component that everything will live inside
 const App = (props) => { 
     return (        
         <div>
-            {/*this is where the top nav goes*/}
+            {/*render the top nav bar*/}
             <TopNav />
-            {/*this is where the HomePage or Dashboard will be displayed */}
+            {/* render children */}
             {props.children}
         </div>
     )

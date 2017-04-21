@@ -8,8 +8,9 @@ const initialState = {
     searchTerm: ''
 }
 
-// the 'state' argument is not application state, only the state this reducer is responsible for.
-export default function(state = null, action) {
+// This function produces the value of our state.
+// note: the 'state' argument is not application state, only the state this reducer is responsible for.
+export default function(state = null, action) {  
     switch(action.type) {
         case EVENT_SELECTED:
             return action.payload;
@@ -29,7 +30,6 @@ export default function(state = null, action) {
                 }
             );
             break;
-    }
-
+    };
     return state;
 }

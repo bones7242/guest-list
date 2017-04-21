@@ -1,9 +1,7 @@
 import { REFRESH_ACTIVE_GUEST } from "../actions/index";
 import { CLEAR_ACTIVE_GUEST } from "../actions/index";
 
-// the 'state' argument is not application state, 
-// only the state this reducer is responsible for.
-
+// This function produces the value of our state.
 export default function(state = null, action) {
     switch(action.type) {
         case REFRESH_ACTIVE_GUEST:

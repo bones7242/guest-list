@@ -166,17 +166,17 @@ router.put("/event/edit", (req, res) => {
         {"_id": req.body._id},  // find using this filter 
         {$set: req.body},  // make this update 
         {
-            new: true // return updated rather than original 
-        },  
-        function(error, doc){
+            new: true // return updated rather than original
+        }).
+        populate("guests").
+        exec((error, doc) => {
             if (error){
                 res.send(error);
             } else {
                 console.log("response from db", doc);
                 res.status(200).json({updatedEvent: doc}); 
             };
-        }
-    );
+        })
 }); 
 // event route - delete an event by that event's id 
 router.delete("/event/:eventId", (req, res) => {
