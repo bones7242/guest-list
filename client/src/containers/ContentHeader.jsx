@@ -109,7 +109,7 @@ class ContentHeader extends Component {
                     </p>}
                 </div>
                 <div className="col s2 m2 l2 right-align">
-                    <Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" to="/dash/edit-event">
+                    <Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" to="/dash/event-data">
                         <i className="material-icons">track_changes</i>
                     </Link>
                     <Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" to="/dash/edit-event">

@@ -90,8 +90,8 @@ class EventData extends Component {
                     </p>}
                 </div>
                 <div className="col s2 m2 l2 right-align">
-                    <Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" to="/dash/edit-event">
-                        <i className="material-icons">track_changes</i>
+                    <Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" to="/dash/event">
+                        <i className="material-icons">reorder</i>
                     </Link>
                     <Link className="grey darken-2 btn-floating btn-small waves-effect waves-light hoverable" to="/dash/edit-event">
                         <i className="material-icons">mode_edit</i>
@@ -114,4 +114,4 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ fetchEvents, clearActiveEvent }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)();
+export default connect(mapStateToProps, mapDispatchToProps)(EventData);
