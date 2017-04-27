@@ -17,6 +17,7 @@ import EditEvent from "./containers/EditEvent.jsx";
 import EditGuest from "./containers/EditGuest.jsx";
 import EventDetail from "./containers/EventDetail.jsx";
 import EditVenue from "./containers/EditVenue.jsx";
+import EventData from "./containers/EventData.jsx";
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from "redux";
@@ -55,7 +56,9 @@ const myRoutes = (
                     {/* view event*/}
                     <Route path= "event" component={EventDetail} />
                     {/* edit venue */} 
-                    <Route path= "edit-venue" component={EditVenue} /> 
+                    <Route path= "edit-venue" component={EditVenue} />
+                    {/* event data */} 
+                    <Route path= "event-data" component={EventData} /> 
                 </Route>
                 
                 {/* login route */}
