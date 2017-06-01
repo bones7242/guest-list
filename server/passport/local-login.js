@@ -15,7 +15,6 @@ module.exports = new PassportLocalStrategy(
     }, 
     // callback.
     (req, email, password, done) => {
-
         // build user data object.
         const userData = {
             email: email.trim(),

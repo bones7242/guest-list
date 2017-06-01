@@ -41,3 +41,6 @@ yarn.lock
 
 # Mac users
 .DS_Store
+
+# app build
+client/dist/jscoverage

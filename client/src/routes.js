@@ -83,13 +83,9 @@ const myRoutes = (
                         // redirect the user to the index page
                         replace("/dash");
                     }}/>
-
             </Route>
-        
         </Router>
-
     </Provider>
-
 );
 
 export default myRoutes;
