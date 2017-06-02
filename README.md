@@ -21,6 +21,7 @@ Guestmate is written in React, utilizing Materialize for front end styling, Redu
 * clone this repo
 * run `npm install`
 * start MongoDB
+* run `webpack`
 * run `npm start`
 * visit [http://localhost:3000]("http://localhost:3000")
 

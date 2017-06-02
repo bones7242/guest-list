@@ -1,8 +1,8 @@
-/*  This component will be rendered inside the dashboard page.  It will render left-hand navbar and the main content component. */
+/*  This component will be rendered inside the dashboard container.
+It will render left-hand navbar and the main content component. */
 
 import React, { PropTypes } from 'react';
-import NavBar from '../containers/NavBar';
-import Content from './Content';
+import NavBar from '../containers/NavBar.jsx';
 
 const Dashboard = ({ children }) => {
   return (
@@ -13,14 +13,14 @@ const Dashboard = ({ children }) => {
       </div>
       <div className="col s9 m9 l9" style={{ padding: '0px' }}>
         {/* Content will show the main page content */ }
-        <Content> {children.children} </Content>
+        { children }
       </div>
     </div>
   );
 }
 
 Dashboard.propTypes = {
-  children: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 export default Dashboard;

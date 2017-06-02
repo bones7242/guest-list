@@ -2,32 +2,32 @@
 
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { fetchEvents, selectEvent } from "../actions/index";
-import Auth from "../modules/Auth"; // import authentication methods 
-import DefaultSplash from "../components/DefaultSplash.jsx";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchEvents, selectEvent } from '../actions/index';
+import Auth from '../modules/Auth'; 
+import DefaultSplash from '../components/DefaultSplash.jsx';
 
 class AddEvent extends Component {
-	constructor(props) {
-        super(props); 
-		// add default values for the input fields when setting the initial state
-        this.state = {
-            newEvent: {
-				venue: "",
-				headliner: "Headliner Name",
-				supportOne: "",
-				supportTwo: "",
-				supportThree: "",
-				date: "MM/DD/YYYY",
-				time: "00:00",
-				am_pm: "PM",
-				headlinerAllotment: 0,
-				supportOneAllotment: 0,
-				supportTwoAllotment: 0,
-				supportThreeAllotment: 0,
-				totalGuest:0,
-				totalChecked:0
+  constructor(props) {
+    super(props); 
+    // add default values for the input fields when setting the initial state
+    this.state = {
+      newEvent: {
+        venue: '',
+        headliner: 'Headliner Name',
+        supportOne: '',
+        supportTwo: '',
+        supportThree: '',
+        date: "MM/DD/YYYY",
+        time: "00:00",
+        am_pm: "PM",
+        headlinerAllotment: 0,
+        supportOneAllotment: 0,
+        supportTwoAllotment: 0,
+        supportThreeAllotment: 0,
+        totalGuest:0,
+        totalChecked:0
 			}
         };
 		// bind 'this' to methods in this container 
