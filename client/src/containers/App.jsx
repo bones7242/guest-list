@@ -1,20 +1,21 @@
-/* This container will hold the entire app.  It will render the top nav bar, as well as the HomePage/LoginPage/SignupPage/Dashboard as determined by the route*/
+/* This container will hold the entire app. */
 
-import React from "react";
-import ReactDom from "react-dom";
-import TopNav from "../components/TopNav.jsx";
+import React, { PropTypes } from 'react';
+import TopNav from '../components/TopNav.jsx';
 
-const App = (props) => { 
-    return (        
-        <div>
-            {/*render the top nav bar*/}
-            <TopNav />
-            {/* render children */}
-            {props.children}
-        </div>
-    )
+const App = (props) => {
+  return (
+    <div>
+      {/* render the top nav bar */}
+      <TopNav />
+      {/* render children */}
+      {props.children}
+    </div>
+  );
+};
+
+App.propTypes = {
+  children: PropTypes.element.isRequired,
 };
 
 export default App;
-
-
