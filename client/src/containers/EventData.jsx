@@ -13,6 +13,8 @@ import moment from 'moment';
 import Auth from "../modules/Auth";
 // components 
 import DefaultSplash from "../components/DefaultSplash.jsx";
+
+import ProgressBar from "../components/ProgressBar.jsx";
   
 class EventData extends Component {
     constructor(props){
@@ -98,7 +100,13 @@ class EventData extends Component {
                     </Link>
                     
                 </div>
+
+                
             </div>
+            
+            
+                <ProgressBar/>
+            
         );
     }
 }

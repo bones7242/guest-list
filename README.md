@@ -59,6 +59,9 @@ This wireframe is a peak into our development process.  In order to efficiently 
 + mongoDB
 + passport
 
+### Future Tech Implimentation
++ Less style structure
+
 ### Screen Shots
 ![Login](http://i.imgur.com/qIqqwMN.png)
 
