@@ -17,13 +17,21 @@ Guestmate is written in React, utilizing Materialize for front end styling, Redu
 @tbikhram
 @ginopark
 
-### Project Highlights
-+ Materialize with custom CSS for styling
-+ React with React-router to manage views
-+ Redux to manage application-level state
-+ Passport.js for authentication
-+ Node and Express for the back-end server and API routes
-+ Mongoose ORM to handle models and communication with mongoDB database
+### How to use locally 
+* clone this repo
+* run `npm install`
+* start MongoDB
+* run `webpack`
+* run `npm start`
+* visit [http://localhost:3000]("http://localhost:3000")
+
+### How to contribute
+If you would like to contribute, we would welcome your help.  Contact us with a brief explanation of your fix/enhancement by opening an issue, and we will let you know if we are already working on it or if we would be open to a PR.  Here are a list of roadmap features we would like to implement and would welcome PRs on:
+* front end validation on all client side forms
+* error handling for error's from Mongoose
+* testing via Mocha or other framework
+* improved email functionality
+* more user roles
 
 ### Application flow
 
@@ -45,7 +53,7 @@ This wireframe is a peak into our development process.  In order to efficiently 
 
 ![wireframe](http://i.imgur.com/8y71XDD.png)
 
-### Libraries, Frameworks and other tech
+### Tech used
 + CSS
 + materialize
 + passport
