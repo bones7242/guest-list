@@ -115,4 +115,3 @@ SignUpPage.contextTypes = {
 };
 
 export default SignUpPage;
-
