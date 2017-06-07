@@ -42,9 +42,8 @@ module.exports = new PassportLocalStrategy(
           if (saveErr) { return done(saveErr); }
           return done(null);
         });
-      } else {
-        return done(null);
       }
+      return done(null);
     });
   },
 );
